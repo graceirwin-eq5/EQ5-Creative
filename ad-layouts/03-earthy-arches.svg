@@ -1,0 +1,37 @@
+<svg width="1080" height="1080" viewBox="0 0 1080 1080" xmlns="http://www.w3.org/2000/svg">
+<title>Ad layout 03 — Earthy, nested arches</title>
+<desc>1080x1080 ad mockup. Warm cream background, three nested terracotta semicircle arches rising from the bottom, vase silhouette nested in smallest arch, serif headline with italic accent, dark CTA.</desc>
+
+<rect width="1080" height="1080" fill="#F2E1CB"/>
+
+<!-- nested arches -->
+<path d="M 40 1080 A 500 500 0 0 1 1040 1080 Z" fill="#993C1D"/>
+<path d="M 180 1080 A 360 360 0 0 1 900 1080 Z" fill="#D85A30"/>
+<path d="M 320 1080 A 220 220 0 0 1 760 1080 Z" fill="#FAC775"/>
+
+<!-- product (vase silhouette) -->
+<rect x="500" y="850" width="80" height="22" fill="#4A1B0C"/>
+<ellipse cx="540" cy="970" rx="78" ry="78" fill="#4A1B0C"/>
+<rect x="510" y="872" width="60" height="20" fill="#4A1B0C"/>
+
+<!-- accent dot/line -->
+<circle cx="900" cy="240" r="14" fill="#993C1D"/>
+<line x1="930" y1="240" x2="1000" y2="240" stroke="#993C1D" stroke-width="2"/>
+
+<!-- LOGO -->
+<text x="80" y="170" font-family="serif" font-style="italic" font-size="44" font-weight="500" fill="#4A1B0C">terra &amp; co.</text>
+<line x1="80" y1="190" x2="200" y2="190" stroke="#4A1B0C" stroke-width="2"/>
+
+<!-- HEADLINE -->
+<text x="80" y="320" font-family="serif" font-size="84" font-weight="500" fill="#4A1B0C">Crafted</text>
+<text x="80" y="410" font-family="serif" font-style="italic" font-size="84" font-weight="500" fill="#993C1D">for warmth.</text>
+
+<!-- BODY copy bars -->
+<rect x="80" y="460" width="560" height="10" rx="5" fill="#4A1B0C" opacity="0.5"/>
+<rect x="80" y="490" width="470" height="10" rx="5" fill="#4A1B0C" opacity="0.5"/>
+<rect x="80" y="520" width="380" height="10" rx="5" fill="#4A1B0C" opacity="0.5"/>
+
+<!-- CTA -->
+<rect x="80" y="580" width="500" height="100" rx="50" fill="#4A1B0C"/>
+<text x="330" y="644" font-family="sans-serif" font-size="32" font-weight="600" fill="#F2E1CB" text-anchor="middle" letter-spacing="5">SHOP THE COLLECTION</text>
+</svg>

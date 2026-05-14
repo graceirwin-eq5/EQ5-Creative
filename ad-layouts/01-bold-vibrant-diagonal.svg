@@ -1,0 +1,39 @@
+<svg width="1080" height="1080" viewBox="0 0 1080 1080" xmlns="http://www.w3.org/2000/svg">
+<title>Ad layout 01 — Bold &amp; vibrant, diagonal slash</title>
+<desc>1080x1080 ad mockup. Cream background, teal diagonal slash from top-right with hatching pattern. Logo top-left, bottle product hero straddling slash, two-line headline, three-line body copy, coral CTA pill.</desc>
+
+<defs>
+  <pattern id="diagstripe" patternUnits="userSpaceOnUse" width="32" height="32" patternTransform="rotate(45)">
+    <line x1="0" y1="0" x2="0" y2="32" stroke="#0F6E56" stroke-width="6"/>
+  </pattern>
+</defs>
+
+<rect width="1080" height="1080" fill="#FAECE7"/>
+<polygon points="1080,0 1080,540 540,0" fill="#1D9E75"/>
+<polygon points="1080,0 1080,480 600,0" fill="url(#diagstripe)" opacity="0.4"/>
+<circle cx="0" cy="1080" r="230" fill="#D85A30" opacity="0.18"/>
+
+<!-- LOGO -->
+<rect x="80" y="100" width="26" height="26" fill="#4A1B0C"/>
+<text x="120" y="122" font-family="sans-serif" font-size="34" font-weight="600" fill="#4A1B0C" letter-spacing="5">NORTHWIND</text>
+
+<!-- PRODUCT (bottle silhouette) -->
+<rect x="650" y="200" width="26" height="44" fill="#4A1B0C"/>
+<rect x="585" y="244" width="156" height="252" rx="20" fill="#FFFFFF" stroke="#993C1D" stroke-width="2.5"/>
+<rect x="585" y="370" width="156" height="68" fill="#D85A30"/>
+<rect x="585" y="370" width="156" height="9" fill="#FFFFFF" opacity="0.45"/>
+<text x="663" y="412" font-family="sans-serif" font-size="20" font-weight="700" fill="#FFFFFF" text-anchor="middle" letter-spacing="3">NORTH</text>
+
+<!-- HEADLINE -->
+<text x="80" y="640" font-family="sans-serif" font-size="72" font-weight="700" fill="#4A1B0C">Bolder days,</text>
+<text x="80" y="720" font-family="sans-serif" font-size="72" font-weight="700" fill="#D85A30">brighter mornings.</text>
+
+<!-- BODY copy bars -->
+<rect x="80" y="770" width="720" height="10" rx="5" fill="#993C1D" opacity="0.5"/>
+<rect x="80" y="800" width="620" height="10" rx="5" fill="#993C1D" opacity="0.5"/>
+<rect x="80" y="830" width="520" height="10" rx="5" fill="#993C1D" opacity="0.5"/>
+
+<!-- CTA -->
+<rect x="80" y="900" width="440" height="112" rx="56" fill="#D85A30"/>
+<text x="300" y="970" font-family="sans-serif" font-size="36" font-weight="600" fill="#FFFFFF" text-anchor="middle" letter-spacing="2">SHOP NOW  →</text>
+</svg>
