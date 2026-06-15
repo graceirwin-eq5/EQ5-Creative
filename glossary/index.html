@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EQ5 Glossary — Marketing & Video Metrics</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --eq5-dark: #0a0e1a;
+    --eq5-navy: #0d1530;
+    --eq5-blue: #1a4aff;
+    --eq5-cyan: #00c8ff;
+    --eq5-purple: #8b5cf6;
+    --eq5-white: #f0f4ff;
+    --eq5-muted: #8a9ac0;
+    --eq5-card: rgba(255,255,255,0.04);
+    --eq5-border: rgba(0,200,255,0.15);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--eq5-dark);
+    color: var(--eq5-white);
+    min-height: 100vh;
+  }
+
+  /* ─── BACKGROUND ─── */
+  .grid-bg {
+    position: fixed;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(0,200,255,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0,200,255,0.04) 1px, transparent 1px);
+    background-size: 60px 60px;
+    pointer-events: none;
+    z-index: 0;
+  }
+  .glow-orb {
+    position: fixed;
+    border-radius: 50%;
+    filter: blur(120px);
+    pointer-events: none;
+    z-index: 0;
+  }
+  .glow-orb-1 {
+    width: 500px; height: 500px;
+    background: radial-gradient(circle, rgba(26,74,255,0.2) 0%, transparent 70%);
+    top: -100px; left: -100px;
+  }
+  .glow-orb-2 {
+    width: 400px; height: 400px;
+    background: radial-gradient(circle, rgba(0,200,255,0.12) 0%, transparent 70%);
+    bottom: -80px; right: -80px;
+  }
+
+  /* ─── LAYOUT ─── */
+  .page-wrap {
+    position: relative;
+    z-index: 2;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 60px 60px 100px;
+  }
+
+  /* ─── HEADER ─── */
+  .page-header {
+    margin-bottom: 48px;
+  }
+  .eyebrow {
+    font-family: 'Syne', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--eq5-cyan);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .eyebrow::before {
+    content: '';
+    display: inline-block;
+    width: 30px; height: 1px;
+    background: var(--eq5-cyan);
+  }
+  h1 {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(36px, 5vw, 60px);
+    font-weight: 800;
+    line-height: 1.0;
+    letter-spacing: -0.02em;
+    margin-bottom: 16px;
+  }
+  .accent { color: var(--eq5-cyan); }
+  .page-subtitle {
+    font-size: 14px;
+    color: var(--eq5-muted);
+    line-height: 1.6;
+    max-width: 520px;
+  }
+
+  /* ─── SECTION DIVIDER ─── */
+  .section-divider {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin: 48px 0 28px;
+  }
+  .section-divider-label {
+    font-family: 'Syne', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+  .section-divider-label.blue { color: var(--eq5-cyan); }
+  .section-divider-label.purple { color: var(--eq5-purple); }
+  .section-divider-line {
+    flex: 1;
+    height: 1px;
+  }
+  .section-divider-line.blue { background: rgba(0,200,255,0.2); }
+  .section-divider-line.purple { background: rgba(139,92,246,0.25); }
+
+  /* ─── CATEGORY ICON ─── */
+  .category-icon {
+    width: 52px;
+    height: 52px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    margin-bottom: 10px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+  }
+  .category-icon.blue  { background: rgba(26,74,255,0.12); border-color: rgba(26,74,255,0.25); }
+  .category-icon.cyan  { background: rgba(0,200,255,0.08); border-color: rgba(0,200,255,0.2); }
+  .category-icon.purple { background: rgba(139,92,246,0.1); border-color: rgba(139,92,246,0.25); }
+  .category-icon.teal  { background: rgba(8,145,178,0.1); border-color: rgba(8,145,178,0.25); }
+
+  /* ─── TERM CATEGORIES (chip style) ─── */
+  .term-category {
+    width: 100%;
+    margin-bottom: 24px;
+  }
+  .term-category-label {
+    font-family: 'Syne', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--eq5-muted);
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .term-category-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: rgba(255,255,255,0.06);
+  }
+  .term-category-label.files { color: rgba(0,200,255,0.6); }
+  .term-category-label.files::after { background: rgba(0,200,255,0.1); }
+
+  .term-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    width: 100%;
+  }
+  .term-chip {
+    background: rgba(26,74,255,0.12);
+    border: 1px solid rgba(26,74,255,0.3);
+    border-radius: 8px;
+    padding: 7px 14px;
+    font-size: 12.5px;
+    font-family: 'Syne', sans-serif;
+    font-weight: 600;
+    color: #a0b8ff;
+    transition: all 0.2s;
+    cursor: pointer;
+    user-select: none;
+  }
+  .term-chip:hover {
+    background: rgba(26,74,255,0.22);
+    border-color: rgba(26,74,255,0.5);
+    color: var(--eq5-white);
+  }
+  .term-chip.active {
+    background: rgba(0,200,255,0.15);
+    border-color: var(--eq5-cyan);
+    color: var(--eq5-white);
+    border-radius: 8px 8px 0 0;
+  }
+  .term-chip.cyan-chip {
+    background: rgba(0,200,255,0.08);
+    border-color: rgba(0,200,255,0.25);
+    color: rgba(0,200,255,0.85);
+  }
+  .term-chip.cyan-chip:hover {
+    background: rgba(0,200,255,0.18);
+    border-color: rgba(0,200,255,0.5);
+    color: var(--eq5-white);
+  }
+  .term-chip.cyan-chip.active {
+    background: rgba(0,200,255,0.18);
+    border-color: var(--eq5-cyan);
+    color: var(--eq5-white);
+  }
+  .term-def-panel {
+    display: none;
+    width: 100%;
+    background: rgba(0,200,255,0.07);
+    border: 1px solid rgba(0,200,255,0.25);
+    border-radius: 0 12px 12px 12px;
+    padding: 14px 18px;
+    font-size: 13px;
+    line-height: 1.65;
+    color: rgba(240,244,255,0.85);
+    margin-top: -2px;
+    margin-bottom: 4px;
+    animation: fadeUp 0.2s ease both;
+    order: 999;
+  }
+  .term-def-panel.visible { display: block; }
+  .term-def-panel strong {
+    color: var(--eq5-cyan);
+    font-family: 'Syne', sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    display: block;
+    margin-bottom: 4px;
+  }
+
+  /* ─── VIDEO METRICS GRID (card style from screenshot) ─── */
+  .video-metrics-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    width: 100%;
+  }
+  .vm-card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(139,92,246,0.2);
+    border-radius: 12px;
+    padding: 16px 20px;
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    transition: border-color 0.25s;
+  }
+  .vm-card:hover { border-color: rgba(139,92,246,0.45); }
+  .vm-pill {
+    flex-shrink: 0;
+    font-family: 'Syne', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    padding: 6px 14px;
+    border-radius: 8px;
+    text-align: center;
+    min-width: 140px;
+    line-height: 1.3;
+    color: #fff;
+  }
+  .vm-pill.blue  { background: #3b5fe2; }
+  .vm-pill.purple { background: #7c3aed; }
+  .vm-pill.teal  { background: #0891b2; }
+  .vm-pill.indigo { background: #4f46e5; }
+  .vm-card-body {
+    font-size: 13px;
+    line-height: 1.6;
+    color: rgba(240,244,255,0.78);
+  }
+
+  .vm-footnote {
+    margin-top: 16px;
+    font-size: 12px;
+    color: var(--eq5-muted);
+    font-style: italic;
+  }
+
+  /* ─── ANIMATIONS ─── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(10px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+</style>
+</head>
+<body>
+
+<div class="grid-bg"></div>
+<div class="glow-orb glow-orb-1"></div>
+<div class="glow-orb glow-orb-2"></div>
+
+<div class="page-wrap">
+
+  <!-- HEADER -->
+  <div class="page-header">
+    <div class="eyebrow">Industry Vocabulary</div>
+    <h1>Marketing &amp; Video<br><span class="accent">Glossary</span></h1>
+    <p class="page-subtitle">Click any term chip to reveal its definition. Video metrics are shown as reference cards below.</p>
+  </div>
+
+  <!-- ══════════════════════════════════════════════ -->
+  <!-- SECTION 1: MARKETING TERMINOLOGY (chip style) -->
+  <!-- ══════════════════════════════════════════════ -->
+  <div class="section-divider">
+    <span class="section-divider-label blue">📊 Marketing Terminology</span>
+    <div class="section-divider-line blue"></div>
+  </div>
+
+  <div id="termGrid"></div>
+
+  <!-- ══════════════════════════════════════════════ -->
+  <!-- SECTION 2: VIDEO METRICS DEFINITIONS          -->
+  <!-- ══════════════════════════════════════════════ -->
+  <div class="section-divider">
+    <span class="section-divider-label purple">🎬 Video Metrics Definitions</span>
+    <div class="section-divider-line purple"></div>
+  </div>
+
+  <div class="video-metrics-grid">
+
+    <!-- Row 1 -->
+    <div class="vm-card">
+      <div class="vm-pill blue">Video Plays</div>
+      <div class="vm-card-body">Total number of times the video began playing for at least 3 seconds or more. Includes autoplay and click-initiated plays across all placements.</div>
+    </div>
+    <div class="vm-card">
+      <div class="vm-pill blue">Video View</div>
+      <div class="vm-card-body">The times a video appears on-screen and plays for at least 1 millisecond – 3 seconds. Under Meta's definition, every video play registers as a view.</div>
+    </div>
+
+    <!-- Row 2 -->
+    <div class="vm-card">
+      <div class="vm-pill purple">Video Plays at 50%</div>
+      <div class="vm-card-body">Number of viewers who watched at least half of the video. Key mid-funnel engagement signal.</div>
+    </div>
+    <div class="vm-card">
+      <div class="vm-pill purple">Video Plays at 25%</div>
+      <div class="vm-card-body">Number of viewers who watched at least 25% of the video's total duration. First retention checkpoint.</div>
+    </div>
+
+    <!-- Row 3 -->
+    <div class="vm-card">
+      <div class="vm-pill purple">Video Plays at 100%</div>
+      <div class="vm-card-body">Number of viewers who watched the video to completion. Highest-intent view metric.</div>
+    </div>
+    <div class="vm-card">
+      <div class="vm-pill purple">Video Plays at 75%</div>
+      <div class="vm-card-body">Number of viewers who watched at least 75% of the video. Strong indicator of sustained interest.</div>
+    </div>
+
+    <!-- Row 4 -->
+    <div class="vm-card">
+      <div class="vm-pill teal">Hook Rate</div>
+      <div class="vm-card-body">3-second video plays divided by total impressions. Measures how effectively the first 3 seconds of creative capture viewer attention in the feed.</div>
+    </div>
+    <div class="vm-card">
+      <div class="vm-pill indigo">ThruPlays</div>
+      <div class="vm-card-body">Views where the viewer watched at least 15 seconds or more, or the full video if under 15 seconds. Meta's primary metric for meaningful video engagement and message retention.</div>
+    </div>
+
+    <!-- Row 5 -->
+    <div class="vm-card">
+      <div class="vm-pill teal">Video Hold Rate</div>
+      <div class="vm-card-body">Total video plays divided by total impressions. Measures how effectively the media placement and targeting converts impressions into actual video views.</div>
+    </div>
+    <div class="vm-card">
+      <div class="vm-pill teal">Video Engagement Rate</div>
+      <div class="vm-card-body">ThruPlays divided by total video plays. Measures the share of viewers who, once they started watching, continued to a meaningful completion threshold.</div>
+    </div>
+
+  </div>
+
+  <p class="vm-footnote">* Video view and video play thresholds vary across social media platforms</p>
+
+</div><!-- /page-wrap -->
+
+<!-- MADE WITH FOOTNOTE -->
+<div style="text-align:center;padding:40px 0 60px;font-family:'Syne',sans-serif;font-size:12px;letter-spacing:0.18em;text-transform:uppercase;color:rgba(138,154,192,0.4);">
+  Made with Grace &nbsp;·&nbsp; <span id="page-date"></span>
+</div>
+
+<!-- VERSION FOOTER -->
+<div style="position:fixed;bottom:14px;right:18px;z-index:100;font-family:'Syne',sans-serif;font-size:10px;letter-spacing:0.12em;color:rgba(138,154,192,0.5);user-select:none;">
+  v1.2.0 · 2026-06-15 · Ron Scalici
+</div>
+
+<script>
+// Set today's date in the footer
+document.getElementById('page-date').textContent = new Date().toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+
+// ─── MARKETING TERMINOLOGY DATA ───
+const termCategories = [
+  {
+    label: "📊 Campaign Metrics",
+    icon: "📊", iconColor: "blue",
+    terms: [
+      { abbr: "Impressions", def: "The total number of times an ad is displayed, regardless of whether it's clicked." },
+      { abbr: "Clicks", def: "The number of times users actively click on an ad." },
+      { abbr: "CTR", def: "Click-Through Rate — the percentage of people who clicked an ad out of total impressions. Measures ad engagement effectiveness." },
+      { abbr: "Reach", def: "The number of unique individuals who saw your ad at least once during a campaign period." },
+      { abbr: "Frequency", def: "The average number of times a single user sees an ad during a campaign period. Too high = ad fatigue; too low = low recall." },
+      { abbr: "CPM", def: "Cost Per Mille — the cost of 1,000 ad impressions. A common pricing model for display advertising." },
+      { abbr: "CPC", def: "Cost Per Click — the cost an advertiser pays each time a user clicks their ad." },
+      { abbr: "KPI", def: "Key Performance Indicator — measurable metrics used to evaluate whether a campaign is meeting its goals (e.g., CTR, reach, engagement score)." },
+      { abbr: "Engagement Scoring", def: "A proprietary metric that assigns a score to each HCP based on how frequently and deeply they interact with campaign content." },
+      { abbr: "Aggregate Reports", def: "Summarized campaign performance data across all channels, showing combined metrics rather than individual user data." },
+      { abbr: "PLD Reports", def: "Physician-Level Data Reports — reports that break down campaign performance metrics by individual NPI/doctor." },
+      { abbr: "Share of Voice", def: "The percentage of total ad impressions in a category that belong to one brand versus its competitors." },
+    ]
+  },
+  {
+    label: "🎯 Targeting & Audience",
+    icon: "🎯", iconColor: "cyan",
+    terms: [
+      { abbr: "NPI", def: "National Provider Identifier — a unique 10-digit ID assigned to every licensed healthcare provider in the US, used to precisely target individual doctors in campaigns." },
+      { abbr: "HCP", def: "Healthcare Professional — any licensed medical provider (doctor, physician, specialist, NP, PA, etc.) targeted in pharma marketing." },
+      { abbr: "PCPs", def: "Primary Care Physicians — general practice doctors who are often a core target audience in HCP marketing campaigns." },
+      { abbr: "KOL / DOL", def: "Key Opinion Leader / Digital Opinion Leader — influential physicians or healthcare voices whose endorsement carries weight in the medical community." },
+      { abbr: "KTL", def: "Key Thought Leader — similar to KOL; a leading physician in a specific therapeutic area whose influence shapes clinical practice." },
+      { abbr: "MSL", def: "Medical Science Liaison — a field-based scientific expert who builds relationships with KOLs and communicates clinical data." },
+      { abbr: "Target Lists", def: "Curated lists of specific HCPs (identified by NPI) that a pharma client wants to reach with their campaign." },
+      { abbr: "List Matching", def: "The process of matching a target list of HCPs (by NPI) against a platform's user database to determine how many can be reached." },
+      { abbr: "Segmentation", def: "Dividing a target list into sub-groups based on specialty, geography, prescribing behavior, or other criteria to tailor messaging." },
+      { abbr: "Geo-Targeting", def: "Delivering ads to users based on their geographic location (country, state, city, or radius)." },
+      { abbr: "Signals", def: "Behavioral data points (page visits, content engagement, search behavior) used to indicate a doctor's interest or intent." },
+    ]
+  },
+  {
+    label: "📢 Ad Types & Channels",
+    icon: "📢", iconColor: "blue",
+    terms: [
+      { abbr: "Programmatic", def: "Automated, data-driven digital ad buying across display networks. Ads are served in real time based on targeting parameters." },
+      { abbr: "LinkedIn Audience Network", def: "A programmatic extension of LinkedIn that serves ads beyond LinkedIn itself, to partner apps and sites, while retaining LinkedIn's professional targeting data." },
+      { abbr: "Dark Ads", def: "Sponsored social media posts that don't appear on the brand's public page — visible only to the targeted audience." },
+      { abbr: "Boosted Ads", def: "Social media posts that are paid to reach a wider or more targeted audience beyond organic followers." },
+      { abbr: "Lead-Gen Ads", def: "Advertisements designed to capture user contact information or intent data (e.g., form fills, email sign-ups)." },
+      { abbr: "Portfolio Ads", def: "Ad formats that showcase multiple products or messages within a single creative unit." },
+      { abbr: "Evergreen Content", def: "Marketing content that remains relevant and useful over a long period without needing to be updated frequently." },
+      { abbr: "Whitelist / Blacklist", def: "Whitelist = approved sites/channels where ads can run. Blacklist = excluded sites/channels to protect brand safety." },
+      { abbr: "Pixel", def: "A small piece of code placed on a website that tracks user behavior, enabling retargeting and conversion measurement." },
+      { abbr: "UTM Parameters", def: "Tracking tags added to URLs that identify the source, medium, and campaign driving traffic to a landing page (used in Google Analytics)." },
+    ]
+  },
+  {
+    label: "📋 Contracts & Process",
+    icon: "📋", iconColor: "teal",
+    terms: [
+      { abbr: "SOW", def: "Statement of Work — a document outlining the scope, deliverables, timeline, and cost of a project before work begins." },
+      { abbr: "RFP", def: "Request for Proposal — a document sent by a client to agencies or vendors, inviting them to submit proposals for a project." },
+      { abbr: "MSA", def: "Master Service Agreement — a contract that establishes the terms and conditions governing the ongoing relationship between two parties." },
+      { abbr: "IO / PO", def: "Insertion Order / Purchase Order — formal documents confirming the terms of an ad buy between an agency and a media vendor." },
+      { abbr: "MLR", def: "Medical, Legal, Regulatory — the internal approval process all pharma marketing materials must pass before going live." },
+      { abbr: "ISI", def: "Important Safety Information — required FDA-mandated safety disclosures included in all pharmaceutical advertising." },
+      { abbr: "Off-Label", def: "Promoting a drug for a use not approved by the FDA. Strictly regulated — pharma marketers must stay within approved indications." },
+      { abbr: "AOR", def: "Agency of Record — the single agency designated as the primary advertising partner for a brand or company." },
+      { abbr: "AFD", def: "Approved for Distribution — a status designation indicating that a piece of creative or content has passed all necessary MLR reviews and is cleared to be distributed or deployed." },
+      { abbr: "CRM", def: "Customer Relationship Management — software used to manage client relationships, pipelines, and communications (e.g., Pipedrive)." },
+      { abbr: "CVA", def: "Core Visual Aid — the primary branded presentation or leave-behind used by a sales rep during an HCP visit." },
+      { abbr: "DSE", def: "Digital Sales Enablement — tools and content that help sales reps (like MSLs) engage HCPs more effectively in the field." },
+    ]
+  },
+  {
+    label: "🎬 Video & Social Metrics",
+    icon: "🎬", iconColor: "purple",
+    terms: [
+      { abbr: "Ad Recall Lift", def: "An estimated metric (used by Meta) measuring how many additional people remember seeing your ad compared to those who didn't see it." },
+      { abbr: "VTR", def: "View-Through Rate — the percentage of ad impressions that resulted in a video view (typically to completion or a defined threshold). Calculated as ThruPlays ÷ Impressions. Measures how effectively an ad drives meaningful video consumption across the full audience reached." },
+      { abbr: "Completion Rate", def: "The percentage of video plays that reached 100%. Similar to VTR but calculated against plays, not impressions." },
+      { abbr: "Organic Reach vs. Paid Reach", def: "Organic reach = people who saw your content without ad spend. Paid reach = people reached through a promoted/sponsored placement." },
+    ]
+  },
+  {
+    label: "💊 Pharma-Specific",
+    icon: "💊", iconColor: "cyan",
+    terms: [
+      { abbr: "Fair Balance", def: "The FDA requirement that all pharma ads present risks and benefits with equal prominence. Risk information must be comparable in size, length, and placement to benefit claims." },
+      { abbr: "Branded vs. Unbranded", def: "Branded ads name a specific drug and its indication. Unbranded (disease awareness) ads discuss a condition without naming a product — subject to different regulatory rules." },
+      { abbr: "DTC vs. HCP", def: "Direct-to-Consumer ads target patients; HCP ads target healthcare professionals. Each has distinct messaging rules, regulatory requirements, and channel strategies." },
+      { abbr: "Indication", def: "The FDA-approved condition or disease a drug is authorized to treat. All pharma marketing must stay within the approved indication." },
+      { abbr: "Reminder Ad", def: "A pharma ad format that names the drug but makes no efficacy or safety claims — therefore exempt from fair balance requirements." },
+    ]
+  },
+  {
+    label: "📱 Platform-Specific",
+    icon: "📱", iconColor: "blue",
+    terms: [
+      { abbr: "Frequency Cap", def: "A setting that limits how many times a single user sees the same ad within a defined time window. Prevents overexposure and ad fatigue." },
+      { abbr: "Lookalike Audience", def: "A targeting method where a platform finds new users who share behavioral and demographic traits with an existing audience (e.g., your NPI list)." },
+      { abbr: "Retargeting / Remarketing", def: "Serving ads to users who have already interacted with your content or visited a page — re-engaging warm audiences." },
+      { abbr: "CPL", def: "Cost Per Lead — the average cost to acquire one lead (form fill, sign-up, etc.). Common KPI for lead-gen ad campaigns." },
+      { abbr: "Ad Auction", def: "The real-time automated process platforms use to determine which ads get shown, to whom, and at what price — based on bid, budget, and relevance score." },
+    ]
+  },
+  {
+    label: "✏️ Creative & Copy",
+    icon: "✏️", iconColor: "purple",
+    terms: [
+      { abbr: "CTA", def: "Call to Action — the specific action an ad asks the viewer to take (e.g., 'Learn More,' 'Request a Sample,' 'Visit Site'). Strong CTAs are clear, direct, and action-oriented." },
+      { abbr: "A/B Testing", def: "Running two versions of an ad simultaneously (changing one variable) to determine which performs better. Also called split testing." },
+      { abbr: "Creative Fatigue", def: "When an audience has seen an ad so many times that engagement drops significantly. Usually signals it's time to refresh the creative." },
+      { abbr: "Above the Fold", def: "The portion of a webpage or ad visible without scrolling. High-priority placement for key messaging and CTAs." },
+      { abbr: "Safe Zone", def: "The area of an ad where text and key visuals must be placed to avoid being cropped or obscured across different placements and screen sizes." },
+    ]
+  },
+  {
+    label: "📁 File Types & Formats",
+    icon: "📁", iconColor: "cyan",
+    isFiles: true,
+    terms: [
+      { abbr: "CSV", def: "Comma-Separated Values — a plain text file format used to store tabular data such as NPI target lists and campaign reports. Opens in Excel or Google Sheets." },
+      { abbr: "BRD File", def: "Brand Reference Document — a file containing brand guidelines, logo usage rules, color palettes, and typography standards." },
+      { abbr: "Matrix File", def: "A structured spreadsheet organizing all ad copy variations, sizes, channels, and annotated claims for a campaign. Central to the MLR submission process." },
+      { abbr: "SFTP", def: "Secure File Transfer Protocol — an encrypted method of transferring files between systems, commonly used to send finalized ad assets to media buyers." },
+      { abbr: "PLD Reports", def: "Physician-Level Data Reports — exported data files (often CSV) that break down campaign performance metrics by individual NPI/doctor." },
+      { abbr: "All Accounts Tracker", def: "An internal document (usually a spreadsheet) that provides a running overview of all active client accounts — including campaign status, key contacts, deadlines, and deliverables — used to keep the full team aligned." },
+      { abbr: "Media Plan", def: "A structured document outlining where, when, and how ads will run across channels. Includes placement details, flight dates, budget allocation, targeting parameters, and ad formats for each campaign." },
+      { abbr: "Creative Timeline", def: "A project management document that maps out every step of the creative development process — from kickoff through final approval — with assigned owners and due dates to keep the campaign on track." },
+    ]
+  },
+];
+
+// ─── BUILD TERM CHIPS ───
+const grid = document.getElementById('termGrid');
+let activeChip = null;
+let activePanel = null;
+
+termCategories.forEach(cat => {
+  const section = document.createElement('div');
+  section.className = 'term-category';
+
+  const label = document.createElement('div');
+  label.className = 'term-category-label' + (cat.isFiles ? ' files' : '');
+  label.textContent = cat.label;
+  section.appendChild(label);
+
+  const chipRow = document.createElement('div');
+  chipRow.className = 'term-grid';
+
+  cat.terms.forEach(t => {
+    const chip = document.createElement('div');
+    chip.className = 'term-chip' + (cat.isFiles ? ' cyan-chip' : '');
+    chip.textContent = t.abbr;
+
+    const panel = document.createElement('div');
+    panel.className = 'term-def-panel';
+    panel.innerHTML = `<strong>${t.abbr}</strong>${t.def}`;
+
+    chip.addEventListener('click', () => {
+      if (activeChip && activeChip !== chip) {
+        activeChip.classList.remove('active');
+        activePanel.classList.remove('visible');
+        if (activePanel.parentNode) activePanel.parentNode.removeChild(activePanel);
+      }
+      if (activeChip === chip) {
+        chip.classList.remove('active');
+        panel.classList.remove('visible');
+        if (panel.parentNode) panel.parentNode.removeChild(panel);
+        activeChip = null;
+        activePanel = null;
+      } else {
+        chip.classList.add('active');
+        chip.insertAdjacentElement('afterend', panel);
+        panel.classList.add('visible');
+        activeChip = chip;
+        activePanel = panel;
+        setTimeout(() => panel.scrollIntoView({ behavior: 'smooth', block: 'nearest' }), 50);
+      }
+    });
+
+    chipRow.appendChild(chip);
+  });
+
+  section.appendChild(chipRow);
+  grid.appendChild(section);
+});
+</script>
+</body>
+</html>
