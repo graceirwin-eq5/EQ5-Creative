@@ -5,6 +5,13 @@ Format: `v{MAJOR}.{MINOR}.{PATCH} — YYYY-MM-DD — Author — Description`
 
 ---
 
+## v1.6.0 — 2026-06-15 — Ron Scalici
+- Full EQ5 brand redesign: Alliance No.1 font, #0a1020 background, blue→cyan gradient, #272f46 surface cards
+- Gradient text on "Glossary" headline, gradient eyebrow bar, gradient section dividers
+- All video metric pills unified to EQ5 gradient
+- Replaced grid/glow background with EQ5 blob accents
+- Moved working location to EQ5-Creative/glossary/
+
 ## v1.5.0 — 2026-06-15 — Grace Irwin
 - Added today's date to page footer
 
