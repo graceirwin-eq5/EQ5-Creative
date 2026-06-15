@@ -3,178 +3,168 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>EQ5 Creative — Resources</title>
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<title>EQ5 Creative — Grace Irwin</title>
 <style>
+  @font-face {
+    font-family: 'Alliance No.1';
+    src: url('https://equals5.com/fonts/AllianceNo1-ExtraBold.woff2') format('woff2');
+    font-weight: 800; font-display: swap;
+  }
+  @font-face {
+    font-family: 'Alliance No.1';
+    src: url('https://equals5.com/fonts/AllianceNo1-Bold.woff2') format('woff2');
+    font-weight: 700; font-display: swap;
+  }
+  @font-face {
+    font-family: 'Alliance No.1';
+    src: url('https://equals5.com/fonts/AllianceNo1-Medium.woff2') format('woff2');
+    font-weight: 500; font-display: swap;
+  }
+  @font-face {
+    font-family: 'Alliance No.1';
+    src: url('https://equals5.com/fonts/AllianceNo1-Regular.woff2') format('woff2');
+    font-weight: 400; font-display: swap;
+  }
+
   :root {
-    --eq5-dark: #0a0e1a;
-    --eq5-navy: #0d1530;
-    --eq5-blue: #1a4aff;
-    --eq5-cyan: #00c8ff;
-    --eq5-purple: #8b5cf6;
-    --eq5-white: #f0f4ff;
-    --eq5-muted: #8a9ac0;
-    --eq5-card: rgba(255,255,255,0.04);
-    --eq5-border: rgba(0,200,255,0.15);
+    --bg:       #0a1020;
+    --surface:  #272f46;
+    --blue:     #3571cb;
+    --cyan:     #01b0b0;
+    --cyan-alt: #06acb3;
+    --muted:    #8a95b1;
+    --border:   rgba(255,255,255,.1);
+    --white:    #fff;
+    --gradient: linear-gradient(93.8deg, #3571cb 0, #01b0b0 100%);
+    --font:     'Alliance No.1', system-ui, -apple-system, 'Segoe UI', sans-serif;
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: var(--font); background: var(--bg); color: var(--white); min-height: 100vh; }
 
-  body {
-    font-family: 'DM Sans', sans-serif;
-    background: var(--eq5-dark);
-    color: var(--eq5-white);
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
+  .blob { position: fixed; border-radius: 50%; filter: blur(90px); opacity: 0.5; pointer-events: none; z-index: 0; }
+  .blob-1 { width: 600px; height: 600px; background: linear-gradient(180deg, #253b62 0, #492040 100%); top: -180px; left: -140px; }
+  .blob-2 { width: 420px; height: 420px; background: linear-gradient(180deg, #253b62 0, #1a3560 100%); bottom: -100px; right: -80px; }
 
-  .grid-bg {
-    position: fixed;
-    inset: 0;
-    background-image:
-      linear-gradient(rgba(0,200,255,0.04) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(0,200,255,0.04) 1px, transparent 1px);
-    background-size: 60px 60px;
-    pointer-events: none;
-    z-index: 0;
-  }
-  .glow-orb {
-    position: fixed;
-    border-radius: 50%;
-    filter: blur(120px);
-    pointer-events: none;
-    z-index: 0;
-  }
-  .glow-orb-1 {
-    width: 500px; height: 500px;
-    background: radial-gradient(circle, rgba(26,74,255,0.2) 0%, transparent 70%);
-    top: -100px; left: -100px;
-  }
-  .glow-orb-2 {
-    width: 400px; height: 400px;
-    background: radial-gradient(circle, rgba(0,200,255,0.12) 0%, transparent 70%);
-    bottom: -80px; right: -80px;
-  }
+  .page-wrap { position: relative; z-index: 2; max-width: 1100px; margin: 0 auto; padding: 72px 60px 120px; }
 
-  .page-wrap {
-    position: relative;
-    z-index: 2;
-    max-width: 800px;
-    width: 100%;
-    padding: 60px 40px;
-    text-align: center;
-  }
+  .page-header { margin-bottom: 72px; border-bottom: 1px solid var(--border); padding-bottom: 48px; }
+  .eyebrow { font-size: 11px; font-weight: 700; letter-spacing: 0.25em; text-transform: uppercase; color: var(--cyan); margin-bottom: 20px; display: flex; align-items: center; gap: 10px; }
+  .eyebrow::before { content: ''; display: inline-block; width: 30px; height: 2px; background: var(--gradient); border-radius: 2px; }
+  h1 { font-size: clamp(42px, 5vw, 68px); font-weight: 800; line-height: 1.0; letter-spacing: -0.02em; margin-bottom: 18px; }
+  .grad { background: var(--gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+  .page-subtitle { font-size: 16px; font-weight: 400; color: var(--muted); line-height: 1.6; max-width: 480px; }
+  .header-meta { margin-top: 28px; }
+  .author-chip { display: inline-flex; align-items: center; gap: 8px; background: var(--surface); border: 1px solid var(--border); border-radius: 100px; padding: 6px 14px 6px 8px; font-size: 13px; font-weight: 500; color: var(--muted); }
+  .author-avatar { width: 26px; height: 26px; border-radius: 50%; background: var(--gradient); display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 800; color: #fff; flex-shrink: 0; }
 
-  .eyebrow {
-    font-family: 'Syne', sans-serif;
-    font-size: 11px;
-    letter-spacing: 0.25em;
-    text-transform: uppercase;
-    color: var(--eq5-cyan);
-    margin-bottom: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-  }
-  .eyebrow::before, .eyebrow::after {
-    content: '';
-    display: inline-block;
-    width: 30px; height: 1px;
-    background: var(--eq5-cyan);
-  }
+  .section { margin-bottom: 64px; }
+  .section-header { display: flex; align-items: center; gap: 16px; margin-bottom: 24px; }
+  .section-title { font-size: 11px; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: var(--cyan); white-space: nowrap; }
+  .section-line { flex: 1; height: 1px; background: linear-gradient(90deg, rgba(53,113,203,0.4) 0%, rgba(1,176,176,0.1) 100%); }
 
-  h1 {
-    font-family: 'Syne', sans-serif;
-    font-size: clamp(36px, 5vw, 64px);
-    font-weight: 800;
-    line-height: 1.0;
-    letter-spacing: -0.02em;
-    margin-bottom: 16px;
-  }
-  .accent { color: var(--eq5-cyan); }
+  /* Resource cards */
+  .resource-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; }
+  .resource-card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 28px; text-decoration: none; color: inherit; display: flex; flex-direction: column; gap: 12px; transition: border-color 0.2s, background 0.2s, transform 0.2s; }
+  .resource-card:hover { border-color: var(--cyan-alt); background: #2d3650; transform: translateY(-2px); }
+  .resource-card-icon { width: 44px; height: 44px; border-radius: 10px; background: linear-gradient(135deg, rgba(53,113,203,0.2), rgba(1,176,176,0.15)); border: 1px solid rgba(1,176,176,0.25); display: flex; align-items: center; justify-content: center; font-size: 20px; }
+  .resource-card-title { font-size: 18px; font-weight: 700; letter-spacing: -0.01em; color: var(--white); }
+  .resource-card-desc { font-size: 13px; font-weight: 400; color: var(--muted); line-height: 1.6; flex: 1; }
+  .resource-card-link { font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; background: var(--gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-top: 4px; }
+  .resource-card-link::after { content: ' →'; }
 
-  .subtitle {
-    font-size: 15px;
-    color: var(--eq5-muted);
-    line-height: 1.6;
-    max-width: 420px;
-    margin: 0 auto 56px;
-  }
+  /* Asset cards */
+  .asset-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+  .asset-card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; transition: border-color 0.2s, transform 0.2s; }
+  .asset-card:hover { border-color: rgba(1,176,176,0.4); transform: translateY(-2px); }
+  .asset-preview { width: 100%; aspect-ratio: 1; background: #1a2238; display: block; }
+  .asset-preview img { width: 100%; height: 100%; display: block; object-fit: cover; }
+  .asset-info { padding: 14px 16px; border-top: 1px solid var(--border); }
+  .asset-name { font-size: 13px; font-weight: 700; color: var(--white); margin-bottom: 3px; letter-spacing: -0.01em; }
+  .asset-meta { font-size: 11px; color: var(--muted); }
+  .asset-badge { display: inline-block; margin-top: 8px; padding: 3px 10px; background: rgba(1,176,176,0.1); border: 1px solid rgba(1,176,176,0.2); border-radius: 100px; font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--cyan); }
 
-  .resource-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 16px;
-    text-align: left;
-  }
-
-  .resource-card {
-    display: block;
-    background: rgba(255,255,255,0.04);
-    border: 1px solid rgba(0,200,255,0.15);
-    border-radius: 16px;
-    padding: 28px 24px;
-    text-decoration: none;
-    color: inherit;
-    transition: all 0.25s;
-  }
-  .resource-card:hover {
-    background: rgba(0,200,255,0.07);
-    border-color: rgba(0,200,255,0.4);
-    transform: translateY(-2px);
-  }
-
-  .card-icon {
-    font-size: 28px;
-    margin-bottom: 16px;
-    display: block;
-  }
-  .card-title {
-    font-family: 'Syne', sans-serif;
-    font-size: 16px;
-    font-weight: 700;
-    margin-bottom: 8px;
-    color: var(--eq5-white);
-  }
-  .card-desc {
-    font-size: 13px;
-    color: var(--eq5-muted);
-    line-height: 1.55;
-  }
-  .card-arrow {
-    display: inline-block;
-    margin-top: 16px;
-    font-size: 11px;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    font-family: 'Syne', sans-serif;
-    color: var(--eq5-cyan);
-  }
+  .version-badge { position: fixed; bottom: 16px; right: 20px; z-index: 100; font-size: 10px; font-weight: 500; letter-spacing: 0.1em; color: rgba(138,149,177,0.4); user-select: none; }
 </style>
 </head>
 <body>
 
-<div class="grid-bg"></div>
-<div class="glow-orb glow-orb-1"></div>
-<div class="glow-orb glow-orb-2"></div>
+<div class="blob blob-1"></div>
+<div class="blob blob-2"></div>
 
 <div class="page-wrap">
-  <div class="eyebrow">Equals 5</div>
-  <h1>EQ5 <span class="accent">Creative</span></h1>
-  <p class="subtitle">Internal resources for the EQ5 team.</p>
 
-  <div class="resource-grid">
-    <a class="resource-card" href="https://eq5-glossary.pages.dev" target="_blank">
-      <span class="card-icon">📖</span>
-      <div class="card-title">Marketing & Video Glossary</div>
-      <div class="card-desc">Definitions for campaign metrics, HCP targeting, pharma terminology, video metrics, and more.</div>
-      <span class="card-arrow">Open →</span>
-    </a>
+  <div class="page-header">
+    <div class="eyebrow">Equals 5</div>
+    <h1>EQ5 <span class="grad">Creative</span></h1>
+    <p class="page-subtitle">Creative assets, tools, and references built for the Equals 5 team.</p>
+    <div class="header-meta">
+      <div class="author-chip">
+        <div class="author-avatar">G</div>
+        Grace Irwin
+      </div>
+    </div>
   </div>
+
+  <div class="section">
+    <div class="section-header">
+      <span class="section-title">Resources</span>
+      <div class="section-line"></div>
+    </div>
+    <div class="resource-grid">
+      <a class="resource-card" href="glossary/">
+        <div class="resource-card-icon">📖</div>
+        <div class="resource-card-title">Glossary</div>
+        <div class="resource-card-desc">Marketing &amp; video metrics terminology — click any term to reveal its definition.</div>
+        <div class="resource-card-link">Open Glossary</div>
+      </a>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-header">
+      <span class="section-title">Creative Assets</span>
+      <div class="section-line"></div>
+    </div>
+    <div class="asset-grid">
+      <div class="asset-card">
+        <div class="asset-preview"><img src="ad-layouts/01-bold-vibrant-diagonal.svg" alt="Bold & Vibrant Diagonal"></div>
+        <div class="asset-info">
+          <div class="asset-name">Bold &amp; Vibrant</div>
+          <div class="asset-meta">Diagonal · Cream / Coral / Teal</div>
+          <span class="asset-badge">1080×1080</span>
+        </div>
+      </div>
+      <div class="asset-card">
+        <div class="asset-preview"><img src="ad-layouts/02-midnight-concentric.svg" alt="Midnight Concentric"></div>
+        <div class="asset-info">
+          <div class="asset-name">Midnight Concentric</div>
+          <div class="asset-meta">Rings · Black / Amber</div>
+          <span class="asset-badge">1080×1080</span>
+        </div>
+      </div>
+      <div class="asset-card">
+        <div class="asset-preview"><img src="ad-layouts/03-earthy-arches.svg" alt="Earthy Arches"></div>
+        <div class="asset-info">
+          <div class="asset-name">Earthy Arches</div>
+          <div class="asset-meta">Arches · Terracotta / Mustard</div>
+          <span class="asset-badge">1080×1080</span>
+        </div>
+      </div>
+      <div class="asset-card">
+        <div class="asset-preview"><img src="ad-layouts/04-modernist-bauhaus.svg" alt="Modernist Bauhaus"></div>
+        <div class="asset-info">
+          <div class="asset-name">Modernist Bauhaus</div>
+          <div class="asset-meta">Grid · Mint / Black / Red</div>
+          <span class="asset-badge">1080×1080</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
 </div>
+
+<div class="version-badge">v1.1.0 · 2026-06-15 · Ron Scalici</div>
 
 </body>
 </html>
