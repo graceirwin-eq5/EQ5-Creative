@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EQ5 Creative — Resources</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --eq5-dark: #0a0e1a;
+    --eq5-navy: #0d1530;
+    --eq5-blue: #1a4aff;
+    --eq5-cyan: #00c8ff;
+    --eq5-purple: #8b5cf6;
+    --eq5-white: #f0f4ff;
+    --eq5-muted: #8a9ac0;
+    --eq5-card: rgba(255,255,255,0.04);
+    --eq5-border: rgba(0,200,255,0.15);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--eq5-dark);
+    color: var(--eq5-white);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .grid-bg {
+    position: fixed;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(0,200,255,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0,200,255,0.04) 1px, transparent 1px);
+    background-size: 60px 60px;
+    pointer-events: none;
+    z-index: 0;
+  }
+  .glow-orb {
+    position: fixed;
+    border-radius: 50%;
+    filter: blur(120px);
+    pointer-events: none;
+    z-index: 0;
+  }
+  .glow-orb-1 {
+    width: 500px; height: 500px;
+    background: radial-gradient(circle, rgba(26,74,255,0.2) 0%, transparent 70%);
+    top: -100px; left: -100px;
+  }
+  .glow-orb-2 {
+    width: 400px; height: 400px;
+    background: radial-gradient(circle, rgba(0,200,255,0.12) 0%, transparent 70%);
+    bottom: -80px; right: -80px;
+  }
+
+  .page-wrap {
+    position: relative;
+    z-index: 2;
+    max-width: 800px;
+    width: 100%;
+    padding: 60px 40px;
+    text-align: center;
+  }
+
+  .eyebrow {
+    font-family: 'Syne', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--eq5-cyan);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+  }
+  .eyebrow::before, .eyebrow::after {
+    content: '';
+    display: inline-block;
+    width: 30px; height: 1px;
+    background: var(--eq5-cyan);
+  }
+
+  h1 {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(36px, 5vw, 64px);
+    font-weight: 800;
+    line-height: 1.0;
+    letter-spacing: -0.02em;
+    margin-bottom: 16px;
+  }
+  .accent { color: var(--eq5-cyan); }
+
+  .subtitle {
+    font-size: 15px;
+    color: var(--eq5-muted);
+    line-height: 1.6;
+    max-width: 420px;
+    margin: 0 auto 56px;
+  }
+
+  .resource-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 16px;
+    text-align: left;
+  }
+
+  .resource-card {
+    display: block;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(0,200,255,0.15);
+    border-radius: 16px;
+    padding: 28px 24px;
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.25s;
+  }
+  .resource-card:hover {
+    background: rgba(0,200,255,0.07);
+    border-color: rgba(0,200,255,0.4);
+    transform: translateY(-2px);
+  }
+
+  .card-icon {
+    font-size: 28px;
+    margin-bottom: 16px;
+    display: block;
+  }
+  .card-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: var(--eq5-white);
+  }
+  .card-desc {
+    font-size: 13px;
+    color: var(--eq5-muted);
+    line-height: 1.55;
+  }
+  .card-arrow {
+    display: inline-block;
+    margin-top: 16px;
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    font-family: 'Syne', sans-serif;
+    color: var(--eq5-cyan);
+  }
+</style>
+</head>
+<body>
+
+<div class="grid-bg"></div>
+<div class="glow-orb glow-orb-1"></div>
+<div class="glow-orb glow-orb-2"></div>
+
+<div class="page-wrap">
+  <div class="eyebrow">Equals 5</div>
+  <h1>EQ5 <span class="accent">Creative</span></h1>
+  <p class="subtitle">Internal resources for the EQ5 team.</p>
+
+  <div class="resource-grid">
+    <a class="resource-card" href="https://eq5-glossary.pages.dev" target="_blank">
+      <span class="card-icon">📖</span>
+      <div class="card-title">Marketing & Video Glossary</div>
+      <div class="card-desc">Definitions for campaign metrics, HCP targeting, pharma terminology, video metrics, and more.</div>
+      <span class="card-arrow">Open →</span>
+    </a>
+  </div>
+</div>
+
+</body>
+</html>
