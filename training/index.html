@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EQ5 Systems Architecture — Training</title>
+<link rel="stylesheet" href="../eq5.css">
+<style>
+
+/* ── Back nav ── */
+.back-nav {
+  margin-bottom: 40px;
+}
+.back-link {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--muted); text-decoration: none;
+  transition: color 0.2s;
+}
+.back-link:hover { color: var(--cyan); }
+.back-link::before { content: '←'; font-size: 14px; }
+
+/* ── Meta strip ── */
+.meta-strip { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 48px; }
+.ms-chip {
+  display: inline-flex; align-items: center; gap: 7px;
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 8px; padding: 7px 14px;
+  font-size: 12px; font-weight: 600; color: var(--muted);
+}
+.ms-chip .dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+
+/* ── Section label ── */
+.section-label {
+  font-size: 10px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--cyan); margin-bottom: 20px; margin-top: 56px;
+  display: flex; align-items: center; gap: 12px;
+}
+.section-label::before { content: ''; display: inline-block; width: 24px; height: 2px; background: var(--gradient); border-radius: 2px; flex-shrink: 0; }
+.section-label:first-of-type { margin-top: 0; }
+
+/* ── Legend ── */
+.legend-bar {
+  background: var(--surface); border: 1px solid var(--border); border-radius: 14px;
+  padding: 18px 22px; margin-bottom: 48px;
+  display: flex; flex-wrap: wrap; gap: 14px; align-items: center;
+}
+.legend-bar-title { font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-right: 4px; }
+.legend-item { display: flex; align-items: center; gap: 8px; font-size: 12px; font-weight: 500; color: var(--muted); }
+.lbadge { font-size: 10px; font-weight: 700; letter-spacing: 0.07em; padding: 3px 9px; border-radius: 5px; text-transform: uppercase; flex-shrink: 0; }
+.lbadge.mcp     { background: rgba(157,23,77,0.25); color: #f9a8d4; border: 1px solid rgba(157,23,77,0.4); }
+.lbadge.api     { background: rgba(30,64,175,0.25); color: #93c5fd; border: 1px solid rgba(30,64,175,0.4); }
+.lbadge.file    { background: rgba(146,64,14,0.25); color: #fcd34d; border: 1px solid rgba(146,64,14,0.4); }
+.lbadge.deploy  { background: rgba(6,95,70,0.25);  color: #6ee7b7; border: 1px solid rgba(6,95,70,0.4); }
+
+/* ── How-it-works steps ── */
+.how-steps { display: flex; flex-direction: column; gap: 14px; margin-bottom: 0; }
+.how-step {
+  display: flex; gap: 16px; align-items: flex-start;
+  background: var(--surface); border: 1px solid var(--border); border-radius: 14px;
+  padding: 18px 20px;
+  transition: border-color 0.2s;
+}
+.how-step:hover { border-color: rgba(1,176,176,0.25); }
+.step-num {
+  width: 32px; height: 32px; border-radius: 50%; flex-shrink: 0;
+  background: var(--gradient); color: #fff;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 13px; font-weight: 800;
+}
+.step-title { font-size: 14px; font-weight: 700; color: var(--white); margin-bottom: 5px; }
+.step-desc { font-size: 13px; color: var(--muted); line-height: 1.65; }
+.step-desc code {
+  font-family: 'SF Mono', 'Fira Code', monospace; font-size: 11px;
+  background: rgba(255,255,255,0.07); padding: 1px 6px;
+  border-radius: 4px; color: var(--cyan);
+}
+
+/* ── Flow diagram ── */
+.flow-wrap {
+  background: var(--surface); border: 1px solid var(--border); border-radius: 16px;
+  padding: 24px 22px; overflow-x: auto;
+}
+.flow-title { font-size: 13px; font-weight: 600; color: var(--muted); margin-bottom: 20px; letter-spacing: 0.02em; }
+.flow-row { display: flex; align-items: center; gap: 0; flex-wrap: nowrap; min-width: 640px; }
+.flow-node {
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  padding: 10px 14px; border-radius: 10px; border: 1px solid var(--border);
+  background: rgba(255,255,255,0.04); text-align: center; min-width: 105px;
+}
+.flow-node.highlight {
+  background: linear-gradient(93.8deg, rgba(53,113,203,0.2) 0%, rgba(1,176,176,0.15) 100%);
+  border-color: rgba(1,176,176,0.4);
+}
+.fn-icon { font-size: 18px; margin-bottom: 4px; }
+.fn-name { font-size: 10px; font-weight: 700; color: var(--white); line-height: 1.3; }
+.fn-name.grad-text {
+  background: var(--gradient);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
+.fn-sub { font-size: 9px; color: var(--muted); margin-top: 2px; }
+.flow-arrow {
+  flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center;
+  min-width: 52px; padding: 0 4px;
+}
+.flow-arrow-line {
+  width: 100%; height: 1px; background: rgba(255,255,255,0.12); position: relative;
+}
+.flow-arrow-line::after {
+  content: '▶'; position: absolute; right: -6px; top: -7px;
+  font-size: 9px; color: var(--muted);
+}
+.flow-arrow-label { font-size: 9px; color: var(--muted); font-weight: 600; margin-top: 4px; letter-spacing: 0.06em; }
+
+/* ── System cards ── */
+.systems-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 18px;
+}
+.sys-card {
+  background: var(--surface); border: 1px solid var(--border); border-radius: 16px;
+  overflow: hidden; transition: border-color 0.2s, transform 0.15s;
+}
+.sys-card:hover { border-color: rgba(1,176,176,0.3); transform: translateY(-2px); }
+
+.sys-card-header {
+  display: flex; align-items: center; gap: 14px;
+  padding: 18px 20px 16px; border-bottom: 1px solid var(--border);
+}
+.sys-icon {
+  width: 42px; height: 42px; border-radius: 11px;
+  background: rgba(255,255,255,0.06);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 20px; flex-shrink: 0;
+}
+.sys-header-text { flex: 1; }
+.sys-name { font-size: 14px; font-weight: 800; color: var(--white); letter-spacing: -0.01em; margin-bottom: 2px; }
+.sys-category { font-size: 11px; font-weight: 500; color: var(--muted); }
+
+.conn-badge {
+  font-size: 10px; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase;
+  padding: 3px 9px; border-radius: 5px; flex-shrink: 0;
+}
+.conn-badge.mcp    { background: rgba(157,23,77,0.25); color: #f9a8d4; border: 1px solid rgba(157,23,77,0.4); }
+.conn-badge.api    { background: rgba(30,64,175,0.25); color: #93c5fd; border: 1px solid rgba(30,64,175,0.4); }
+.conn-badge.file   { background: rgba(146,64,14,0.25); color: #fcd34d; border: 1px solid rgba(146,64,14,0.4); }
+.conn-badge.deploy { background: rgba(6,95,70,0.25);  color: #6ee7b7; border: 1px solid rgba(6,95,70,0.4); }
+.conn-badge.internal { background: rgba(255,255,255,0.06); color: var(--muted); border: 1px solid var(--border); }
+
+.sys-card-body { padding: 16px 20px 20px; }
+.sys-desc { font-size: 13px; color: var(--muted); line-height: 1.65; margin-bottom: 16px; }
+
+.data-section { margin-bottom: 12px; }
+.data-section-label {
+  font-size: 10px; font-weight: 700; letter-spacing: 0.09em; text-transform: uppercase;
+  color: var(--muted); margin-bottom: 8px; opacity: 0.7;
+}
+.data-chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.data-chip {
+  font-size: 11px; font-weight: 500;
+  background: rgba(255,255,255,0.05); border: 1px solid var(--border);
+  color: var(--muted); padding: 3px 9px; border-radius: 6px; line-height: 1.4;
+}
+.data-chip.write { background: rgba(1,176,176,0.1); border-color: rgba(1,176,176,0.25); color: #6ee7b7; }
+.data-chip.read  { background: rgba(53,113,203,0.12); border-color: rgba(53,113,203,0.3); color: #93c5fd; }
+
+.conn-detail {
+  font-size: 11px; color: var(--muted); background: rgba(255,255,255,0.04);
+  border-radius: 8px; padding: 10px 12px; line-height: 1.65; margin-top: 8px;
+}
+.conn-detail code {
+  font-family: 'SF Mono', 'Fira Code', monospace; font-size: 10px;
+  background: rgba(255,255,255,0.08); padding: 1px 5px;
+  border-radius: 4px; color: var(--cyan);
+}
+
+/* ── Prompt examples ── */
+.examples-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 16px;
+}
+.ex-card {
+  background: var(--surface); border: 1px solid var(--border); border-radius: 14px;
+  padding: 18px 20px; transition: border-color 0.2s;
+}
+.ex-card:hover { border-color: rgba(1,176,176,0.3); }
+.ex-system { font-size: 10px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); margin-bottom: 10px; opacity: 0.7; }
+.ex-prompt {
+  font-size: 13px; font-weight: 600; color: var(--white); line-height: 1.5;
+  border-left: 2px solid var(--cyan); padding-left: 12px; margin-bottom: 12px;
+}
+.ex-what { font-size: 12px; color: var(--muted); line-height: 1.6; }
+
+/* ── Contributing ── */
+.contrib-steps { display: flex; flex-direction: column; gap: 14px; }
+
+@media (max-width: 760px) {
+  .systems-grid { grid-template-columns: 1fr; }
+  .examples-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<div class="blob blob-1"></div>
+<div class="blob blob-2"></div>
+<div class="blob blob-3"></div>
+
+<div class="page-wrap">
+
+  <div class="back-nav">
+    <a href="../index.html" class="back-link">Back to Creative Hub</a>
+  </div>
+
+  <div class="page-header">
+    <div class="eyebrow">Equals 5 · Training</div>
+    <h1>Systems <span class="grad">Architecture</span></h1>
+    <p class="page-subtitle">How every platform, tool, and data source connects to the EQ5 AI agent — what flows in, what flows out, and how it all stays in sync.</p>
+    <div class="header-meta">
+      <div class="author-chip">
+        <div class="author-avatar">E</div>
+        Equals 5 Team
+      </div>
+    </div>
+  </div>
+
+  <!-- Meta strip -->
+  <div class="meta-strip">
+    <div class="ms-chip"><div class="dot" style="background:#f9a8d4"></div> 8 MCP Connections</div>
+    <div class="ms-chip"><div class="dot" style="background:#93c5fd"></div> 3 REST API Connections</div>
+    <div class="ms-chip"><div class="dot" style="background:#fcd34d"></div> 2 File-based Sources</div>
+    <div class="ms-chip"><div class="dot" style="background:#6ee7b7"></div> Cloudflare Deploy</div>
+  </div>
+
+  <!-- Legend -->
+  <div class="legend-bar">
+    <span class="legend-bar-title">Connection Type:</span>
+    <div class="legend-item"><span class="lbadge mcp">MCP</span> Model Context Protocol — Claude reads &amp; writes natively, no code required</div>
+    <div class="legend-item"><span class="lbadge api">API</span> REST API — called via skill or curl</div>
+    <div class="legend-item"><span class="lbadge file">File</span> File-based — repo files read as context</div>
+    <div class="legend-item"><span class="lbadge deploy">Deploy</span> Shell script / Cloudflare trigger</div>
+  </div>
+
+  <!-- How the agent loop works -->
+  <div class="section-label">How the agent loop works</div>
+
+  <div class="how-steps">
+    <div class="how-step">
+      <div class="step-num">1</div>
+      <div>
+        <div class="step-title">You send a prompt</div>
+        <div class="step-desc">You type a request in Claude Code (the desktop or CLI app). Claude reads the full repo context — including <code>CLAUDE.md</code>, team files, and any files you mention — before responding.</div>
+      </div>
+    </div>
+    <div class="how-step">
+      <div class="step-num">2</div>
+      <div>
+        <div class="step-title">Claude decides which tools to call</div>
+        <div class="step-desc">Based on your prompt and the instructions in <code>CLAUDE.md</code>, Claude calls MCP servers (Pipedrive, Slack, Notion, etc.) or REST APIs to pull live data. All tool calls are visible and require approval unless pre-allowed in <code>settings.json</code>.</div>
+      </div>
+    </div>
+    <div class="how-step">
+      <div class="step-num">3</div>
+      <div>
+        <div class="step-title">Claude generates or edits files</div>
+        <div class="step-desc">Reports, hub pages, client portals, and team files are written directly to the repo on your local machine. Nothing is deployed automatically — Claude stages changes and you run <code>./deploy.sh</code> when ready.</div>
+      </div>
+    </div>
+    <div class="how-step">
+      <div class="step-num">4</div>
+      <div>
+        <div class="step-title">You deploy</div>
+        <div class="step-desc">Running <code>./deploy.sh</code> pushes updates to GitHub, which triggers Cloudflare Pages to publish the hub. Cloudflare Access enforces who can see each page — no separate auth code needed.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Flow diagram -->
+  <div class="section-label">End-to-end data flow</div>
+
+  <div class="flow-wrap">
+    <div class="flow-title">Example — Generate the weekly board report</div>
+    <div class="flow-row">
+      <div class="flow-node highlight">
+        <div class="fn-icon">💬</div>
+        <div class="fn-name grad-text">Your Prompt</div>
+        <div class="fn-sub">Claude Code</div>
+      </div>
+      <div class="flow-arrow">
+        <div class="flow-arrow-line"></div>
+        <div class="flow-arrow-label">reads</div>
+      </div>
+      <div class="flow-node">
+        <div class="fn-icon">📋</div>
+        <div class="fn-name">CLAUDE.md</div>
+        <div class="fn-sub">Runbook rules</div>
+      </div>
+      <div class="flow-arrow">
+        <div class="flow-arrow-line"></div>
+        <div class="flow-arrow-label">API call</div>
+      </div>
+      <div class="flow-node">
+        <div class="fn-icon">🎯</div>
+        <div class="fn-name">Pipedrive</div>
+        <div class="fn-sub">Live deals + pipeline</div>
+      </div>
+      <div class="flow-arrow">
+        <div class="flow-arrow-line"></div>
+        <div class="flow-arrow-label">writes</div>
+      </div>
+      <div class="flow-node">
+        <div class="fn-icon">📊</div>
+        <div class="fn-name">Report .md</div>
+        <div class="fn-sub">weekly_board_report/</div>
+      </div>
+      <div class="flow-arrow">
+        <div class="flow-arrow-line"></div>
+        <div class="flow-arrow-label">deploy.sh</div>
+      </div>
+      <div class="flow-node">
+        <div class="fn-icon">🌐</div>
+        <div class="fn-name">Hub Site</div>
+        <div class="fn-sub">hub.equals5.com</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- System cards -->
+  <div class="section-label">All Connected Systems</div>
+
+  <div class="systems-grid">
+
+    <div class="sys-card">
+      <div class="sys-card-header">
+        <div class="sys-icon">🤖</div>
+        <div class="sys-header-text">
+          <div class="sys-name">Claude Code</div>
+          <div class="sys-category">AI Agent · Local App</div>
+        </div>
+        <span class="conn-badge internal">Internal</span>
+      </div>
+      <div class="sys-card-body">
+        <div class="sys-desc">The orchestration hub. Runs on your machine, reads the full repo as context, and calls every other system listed here. Powered by the Anthropic API (claude-sonnet-4-6).</div>
+        <div class="data-section">
+          <div class="data-section-label">Reads from repo</div>
+          <div class="data-chips">
+            <span class="data-chip read">CLAUDE.md — instructions</span>
+            <span class="data-chip read">team/{name}/*.md — rep profiles</span>
+            <span class="data-chip read">hub/ — all HTML files</span>
+            <span class="data-chip read">settings.json — permissions</span>
+          </div>
+        </div>
+        <div class="data-section">
+          <div class="data-section-label">Writes to repo</div>
+          <div class="data-chips">
+            <span class="data-chip write">hub/ pages</span>
+            <span class="data-chip write">reports/*.md</span>
+            <span class="data-chip write">news/weekly/</span>
+            <span class="data-chip write">team/*.md updates</span>
+          </div>
+        </div>
+        <div class="conn-detail">Connects to all MCP servers defined in <code>.claude/launch.json</code>. Tool calls require approval unless pre-allowed in <code>settings.json</code>.</div>
+      </div>
+    </div>
+
+    <div class="sys-card">
+      <div class="sys-card-header">
+        <div class="sys-icon">🐙</div>
+        <div class="sys-header-text">
+          <div class="sys-name">GitHub</div>
+          <div class="sys-category">Version Control · Source of Truth</div>
+        </div>
+        <span class="conn-badge file">File + CLI</span>
+      </div>
+      <div class="sys-card-body">
+        <div class="sys-desc">The <code>eq5-sales</code> repo stores everything: agent instructions, hub HTML, team profiles, Pipedrive exports, and weekly reports. Git is how changes get tracked and deployed.</div>
+        <div class="data-section">
+          <div class="data-section-label">What lives here</div>
+          <div class="data-chips">
+            <span class="data-chip read">All hub/ HTML pages</span>
+            <span class="data-chip read">CLAUDE.md + settings.json</span>
+            <span class="data-chip read">team/ rep files</span>
+            <span class="data-chip read">reports/ + archive/</span>
+            <span class="data-chip read">news/weekly/ briefings</span>
+          </div>
+        </div>
+        <div class="conn-detail">Claude uses <code>git</code> via Bash — reads status, diffs, and log. You commit and push; Claude stages but does not push without confirmation.</div>
+      </div>
+    </div>
+
+    <div class="sys-card">
+      <div class="sys-card-header">
+        <div class="sys-icon">🎯</div>
+        <div class="sys-header-text">
+          <div class="sys-name">Pipedrive</div>
+          <div class="sys-category">CRM · Deal Intelligence</div>
+        </div>
+        <span class="conn-badge api">REST API</span>
+      </div>
+      <div class="sys-card-body">
+        <div class="sys-desc">The live CRM. Claude queries deals, pipeline stages, contacts, activities, and leads in real time using the <code>/pipedrive</code> skill — no exported files needed for current data.</div>
+        <div class="data-section">
+          <div class="data-section-label">Data Claude can read</div>
+          <div class="data-chips">
+            <span class="data-chip read">Open + won deals by rep</span>
+            <span class="data-chip read">Deal value, stage, probability</span>
+            <span class="data-chip read">Brand, Disease, Agency (custom fields)</span>
+            <span class="data-chip read">Contacts + organizations</span>
+            <span class="data-chip read">Activities (calls, emails, meetings)</span>
+            <span class="data-chip read">Leads inbox + conversion status</span>
+          </div>
+        </div>
+        <div class="conn-detail">Accessed via the <code>/pipedrive</code> skill, which loads curl examples and custom field mappings. Prefer live API over snapshot exports — snapshots go stale. Read-only in current setup.</div>
+      </div>
+    </div>
+
+    <div class="sys-card">
+      <div class="sys-card-header">
+        <div class="sys-icon">💬</div>
+        <div class="sys-header-text">
+          <div class="sys-name">Slack</div>
+          <div class="sys-category">Team Communications</div>
+        </div>
+        <span class="conn-badge mcp">MCP</span>
+      </div>
+      <div class="sys-card-body">
+        <div class="sys-desc">Claude can read channels, search message history, read threads, draft messages, and post on your behalf — directly from conversation context.</div>
+        <div class="data-section">
+          <div class="data-section-label">Data Claude can read</div>
+          <div class="data-chips">
+            <span class="data-chip read">Channel messages + threads</span>
+            <span class="data-chip read">User profiles</span>
+            <span class="data-chip read">Public search results</span>
+          </div>
+        </div>
+        <div class="data-section">
+          <div class="data-section-label">Data Claude can write</div>
+          <div class="data-chips">
+            <span class="data-chip write">Messages (draft or send)</span>
+            <span class="data-chip write">Scheduled messages</span>
+            <span class="data-chip write">Canvases</span>
+          </div>
+        </div>
+        <div class="conn-detail">Connected via MCP server. The hub also pulls a <code>slack-feed.json</code> for the homepage news ticker — separate from the live MCP connection.</div>
+      </div>
+    </div>
+
+    <div class="sys-card">
+      <div class="sys-card-header">
+        <div class="sys-icon">📅</div>
+        <div class="sys-header-text">
+          <div class="sys-name">Google Calendar</div>
+          <div class="sys-category">Scheduling · Meeting Management</div>
+        </div>
+        <span class="conn-badge mcp">MCP</span>
+      </div>
+      <div class="sys-card-body">
+        <div class="sys-desc">Claude can list, create, update, and respond to calendar events — scheduling client calls, rep check-ins, and campaign milestones without leaving the conversation.</div>
+        <div class="data-section">
+          <div class="data-section-label">Data Claude can read</div>
+          <div class="data-chips">
+            <span class="data-chip read">All calendars + events</span>
+            <span class="data-chip read">Attendees + RSVPs</span>
+            <span class="data-chip read">Available time slots</span>
+          </div>
+        </div>
+        <div class="data-section">
+          <div class="data-section-label">Data Claude can write</div>
+          <div class="data-chips">
+            <span class="data-chip write">Create events</span>
+            <span class="data-chip write">Update / reschedule</span>
+            <span class="data-chip write">RSVP responses</span>
+          </div>
+        </div>
+        <div class="conn-detail">OAuth-authenticated. Confirm before Claude sends invites or modifies shared calendars.</div>
+      </div>
+    </div>
+
+    <div class="sys-card">
+      <div class="sys-card-header">
+        <div class="sys-icon">📧</div>
+        <div class="sys-header-text">
+          <div class="sys-name">Gmail</div>
+          <div class="sys-category">Email · Thread Intelligence</div>
+        </div>
+        <span class="conn-badge mcp">MCP</span>
+      </div>
+      <div class="sys-card-body">
+        <div class="sys-desc">Claude can search threads, read emails, create drafts, and apply labels. Most useful for meeting prep (surfacing relevant client threads) and drafting follow-ups in a rep's voice.</div>
+        <div class="data-section">
+          <div class="data-section-label">Data Claude can read</div>
+          <div class="data-chips">
+            <span class="data-chip read">Thread search results</span>
+            <span class="data-chip read">Full email body + attachments</span>
+            <span class="data-chip read">Labels + metadata</span>
+          </div>
+        </div>
+        <div class="data-section">
+          <div class="data-section-label">Data Claude can write</div>
+          <div class="data-chips">
+            <span class="data-chip write">Draft emails</span>
+            <span class="data-chip write">Apply / create labels</span>
+          </div>
+        </div>
+        <div class="conn-detail">Claude creates drafts only — it does not send email autonomously. Always review in Gmail before sending.</div>
+      </div>
+    </div>
+
+    <div class="sys-card">
+      <div class="sys-card-header">
+        <div class="sys-icon">📓</div>
+        <div class="sys-header-text">
+          <div class="sys-name">Notion</div>
+          <div class="sys-category">Knowledge Base · Shared Docs</div>
+        </div>
+        <span class="conn-badge mcp">MCP</span>
+      </div>
+      <div class="sys-card-body">
+        <div class="sys-desc">Used for structured knowledge and team-readable content that lives outside the repo. Claude can read and write pages and databases — campaign briefs, meeting notes, onboarding docs.</div>
+        <div class="data-section">
+          <div class="data-section-label">Data Claude can read</div>
+          <div class="data-chips">
+            <span class="data-chip read">Pages + sub-pages</span>
+            <span class="data-chip read">Database rows + properties</span>
+            <span class="data-chip read">Comments</span>
+          </div>
+        </div>
+        <div class="data-section">
+          <div class="data-section-label">Data Claude can write</div>
+          <div class="data-chips">
+            <span class="data-chip write">Create / update pages</span>
+            <span class="data-chip write">Add database rows</span>
+            <span class="data-chip write">Post comments</span>
+          </div>
+        </div>
+        <div class="conn-detail">Good for content that needs rich formatting or non-developer access. Repo files remain the source of truth for agent instructions.</div>
+      </div>
+    </div>
+
+    <div class="sys-card">
+      <div class="sys-card-header">
+        <div class="sys-icon">✅</div>
+        <div class="sys-header-text">
+          <div class="sys-name">ClickUp</div>
+          <div class="sys-category">Project Management · Tasks</div>
+        </div>
+        <span class="conn-badge mcp">MCP</span>
+      </div>
+      <div class="sys-card-body">
+        <div class="sys-desc">Task and project tracking for campaigns, deliverables, and rep action items. Claude can read and update tasks — pulling open items into a briefing or logging next steps after a meeting.</div>
+        <div class="data-section">
+          <div class="data-section-label">Data Claude can read</div>
+          <div class="data-chips">
+            <span class="data-chip read">Tasks + subtasks</span>
+            <span class="data-chip read">Assignees + due dates</span>
+            <span class="data-chip read">Lists, folders, spaces</span>
+            <span class="data-chip read">Time entries</span>
+          </div>
+        </div>
+        <div class="data-section">
+          <div class="data-section-label">Data Claude can write</div>
+          <div class="data-chips">
+            <span class="data-chip write">Create tasks</span>
+            <span class="data-chip write">Update status + assignee</span>
+            <span class="data-chip write">Add comments</span>
+          </div>
+        </div>
+        <div class="conn-detail">Full workspace hierarchy is accessible. Useful for campaign kickoff checklists — see <code>internal/campaign_processes/</code> for templates.</div>
+      </div>
+    </div>
+
+    <div class="sys-card">
+      <div class="sys-card-header">
+        <div class="sys-icon">🦋</div>
+        <div class="sys-header-text">
+          <div class="sys-name">Fireflies.ai</div>
+          <div class="sys-category">Meeting Intelligence · Transcription</div>
+        </div>
+        <span class="conn-badge mcp">MCP</span>
+      </div>
+      <div class="sys-card-body">
+        <div class="sys-desc">Records and transcribes all meetings. Claude can fetch full transcripts, AI summaries, soundbites, and analytics — enabling post-meeting deal updates and action item extraction.</div>
+        <div class="data-section">
+          <div class="data-section-label">Data Claude can read</div>
+          <div class="data-chips">
+            <span class="data-chip read">Full meeting transcripts</span>
+            <span class="data-chip read">AI summaries + action items</span>
+            <span class="data-chip read">Soundbites</span>
+            <span class="data-chip read">Meeting analytics</span>
+            <span class="data-chip read">Participant list</span>
+          </div>
+        </div>
+        <div class="conn-detail">Use after client calls to extract intel, update rep narrative files, or draft Pipedrive activity notes — without re-watching the recording.</div>
+      </div>
+    </div>
+
+    <div class="sys-card">
+      <div class="sys-card-header">
+        <div class="sys-icon">🎨</div>
+        <div class="sys-header-text">
+          <div class="sys-name">Figma</div>
+          <div class="sys-category">Design System · Presentation Templates</div>
+        </div>
+        <span class="conn-badge mcp">MCP</span>
+      </div>
+      <div class="sys-card-body">
+        <div class="sys-desc">Stores the EQ5 Brandbook and SLIDES presentation templates. Primary flow is code→Figma: Claude generates design output and pushes it into Figma for review and refinement.</div>
+        <div class="data-section">
+          <div class="data-section-label">Data Claude can read</div>
+          <div class="data-chips">
+            <span class="data-chip read">Design context + tokens</span>
+            <span class="data-chip read">Component screenshots</span>
+            <span class="data-chip read">File metadata</span>
+          </div>
+        </div>
+        <div class="data-section">
+          <div class="data-section-label">Data Claude can write</div>
+          <div class="data-chips">
+            <span class="data-chip write">Push designs into files</span>
+            <span class="data-chip write">Create new frames</span>
+            <span class="data-chip write">Upload assets</span>
+          </div>
+        </div>
+        <div class="conn-detail">Two files: <strong>SLIDES</strong> (<code>zkasJapbZWbZ88TXj5oHSk</code>) and <strong>Brandbook</strong> (<code>MoIYxNnhadZgmS7uFXr4Bf</code>). Always run <code>/figma-use</code> before calling <code>use_figma</code>.</div>
+      </div>
+    </div>
+
+    <div class="sys-card">
+      <div class="sys-card-header">
+        <div class="sys-icon">🌐</div>
+        <div class="sys-header-text">
+          <div class="sys-name">EQ5 Hub Site</div>
+          <div class="sys-category">Internal Dashboard · Client Portals</div>
+        </div>
+        <span class="conn-badge deploy">Deploy</span>
+      </div>
+      <div class="sys-card-body">
+        <div class="sys-desc">The internal intelligence hub. All pages are static HTML/CSS/JS generated and maintained by Claude, deployed to Cloudflare Pages via <code>./deploy.sh</code>.</div>
+        <div class="data-section">
+          <div class="data-section-label">What it contains</div>
+          <div class="data-chips">
+            <span class="data-chip read">Home feed (news + signals)</span>
+            <span class="data-chip read">Leaderboard</span>
+            <span class="data-chip read">Team pages</span>
+            <span class="data-chip read">Client portals (INTERNAL + CLIENT-FACING)</span>
+            <span class="data-chip read">Competitive intelligence</span>
+          </div>
+        </div>
+        <div class="conn-detail">Two portal types: <strong>INTERNAL</strong> (pipeline, pricing, strategy — never share) and <strong>CLIENT-FACING</strong> (sanitized performance data — safe to share). Each is gated individually by Cloudflare Access.</div>
+      </div>
+    </div>
+
+    <div class="sys-card">
+      <div class="sys-card-header">
+        <div class="sys-icon">🔒</div>
+        <div class="sys-header-text">
+          <div class="sys-name">Cloudflare</div>
+          <div class="sys-category">Hosting · Access Control</div>
+        </div>
+        <span class="conn-badge deploy">Deploy</span>
+      </div>
+      <div class="sys-card-body">
+        <div class="sys-desc">Cloudflare Pages hosts the hub. Cloudflare Access gates every page with email-based allowlists — no login UI to build. Each client portal gets its own Access application.</div>
+        <div class="data-section">
+          <div class="data-section-label">What it controls</div>
+          <div class="data-chips">
+            <span class="data-chip read">Hosting for hub.equals5.com</span>
+            <span class="data-chip read">Per-page access policies</span>
+            <span class="data-chip read">Employee + client email allowlists</span>
+          </div>
+        </div>
+        <div class="conn-detail">See <code>internal/access_management/README.md</code> for onboarding/offboarding runbooks. Per-client access is mirrored in <code>hub/clients/{client}/access.md</code>.</div>
+      </div>
+    </div>
+
+  </div><!-- /systems-grid -->
+
+  <!-- Example prompts -->
+  <div class="section-label">Example prompts — what you can ask Claude to do</div>
+
+  <div class="examples-grid">
+
+    <div class="ex-card">
+      <div class="ex-system">Pipedrive · API</div>
+      <div class="ex-prompt">"What's in Chris Colella's pipeline this week?"</div>
+      <div class="ex-what">Claude calls the Pipedrive API live, pulls open deals for Chris, groups by stage, and formats a briefing with deal values, next steps, and probability.</div>
+    </div>
+
+    <div class="ex-card">
+      <div class="ex-system">Pipedrive + Hub · API + File</div>
+      <div class="ex-prompt">"Generate the weekly board report and update the hub."</div>
+      <div class="ex-what">Pulls live deal data from Pipedrive, writes the board report MD, updates team home pages, then you run <code style="font-size:11px;color:var(--cyan)">./deploy.sh</code>.</div>
+    </div>
+
+    <div class="ex-card">
+      <div class="ex-system">Fireflies · MCP</div>
+      <div class="ex-prompt">"Summarize yesterday's Incyte call and update the portal."</div>
+      <div class="ex-what">Fetches the Fireflies transcript, extracts key topics and action items, updates the client portal with fresh intel.</div>
+    </div>
+
+    <div class="ex-card">
+      <div class="ex-system">Slack · MCP</div>
+      <div class="ex-prompt">"Draft a Slack message about this week's top opportunity."</div>
+      <div class="ex-what">Claude reads the pipeline, identifies the highest-probability deal, drafts a message in your voice, and posts after your approval.</div>
+    </div>
+
+    <div class="ex-card">
+      <div class="ex-system">Gmail · MCP</div>
+      <div class="ex-prompt">"Prep me for my call with Regeneron — pull any recent emails."</div>
+      <div class="ex-what">Searches Gmail for Regeneron threads, surfaces the most recent, combines with CRM deal data, and generates a pre-call briefing.</div>
+    </div>
+
+    <div class="ex-card">
+      <div class="ex-system">ClickUp · MCP</div>
+      <div class="ex-prompt">"What are the open campaign tasks for the Opzelura launch?"</div>
+      <div class="ex-what">Searches ClickUp for Opzelura tasks, returns open items with assignees and due dates, and flags anything overdue.</div>
+    </div>
+
+    <div class="ex-card">
+      <div class="ex-system">Google Calendar · MCP</div>
+      <div class="ex-prompt">"Schedule a follow-up with Amgen for next Tuesday at 2pm."</div>
+      <div class="ex-what">Creates the calendar event with attendees, adds deal context from Pipedrive, and returns the event link.</div>
+    </div>
+
+    <div class="ex-card">
+      <div class="ex-system">Figma · MCP</div>
+      <div class="ex-prompt">"Build a new slide deck for the Zynyz pitch."</div>
+      <div class="ex-what">Uses the SLIDES Figma template, generates brand-compliant slides with Zynyz messaging, and pushes the result into Figma for review.</div>
+    </div>
+
+  </div><!-- /examples-grid -->
+
+  <!-- Contributing -->
+  <div class="section-label">Contributing — how to add a new integration</div>
+
+  <div class="contrib-steps how-steps">
+    <div class="how-step">
+      <div class="step-num">1</div>
+      <div>
+        <div class="step-title">Add the MCP server to .claude/launch.json</div>
+        <div class="step-desc">Tells Claude Code which MCP servers to connect to at startup. Each entry needs a name, command, and any auth env vars. Restart Claude Code after changes.</div>
+      </div>
+    </div>
+    <div class="how-step">
+      <div class="step-num">2</div>
+      <div>
+        <div class="step-title">Auto-allow safe tool calls in settings.json</div>
+        <div class="step-desc">Add read-only tool calls to <code>allow</code> so Claude doesn't prompt you every time. Never auto-allow destructive operations (delete, send, post). Run <code>/fewer-permission-prompts</code> to get suggestions.</div>
+      </div>
+    </div>
+    <div class="how-step">
+      <div class="step-num">3</div>
+      <div>
+        <div class="step-title">Document the integration in CLAUDE.md</div>
+        <div class="step-desc">Add a row to the Reference Materials table and relevant instructions to the matching section. No documentation = Claude won't know the integration exists.</div>
+      </div>
+    </div>
+    <div class="how-step">
+      <div class="step-num">4</div>
+      <div>
+        <div class="step-title">Add a card to this page</div>
+        <div class="step-desc">Copy a <code>.sys-card</code> block in <code>training/index.html</code>, update the name, category, connection type badge, and data chips to keep the team's mental model current.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="page-footer">EQUALS 5 · Systems Architecture · Training</div>
+
+</div><!-- /page-wrap -->
+
+<div class="version-badge">v1.0</div>
+
+</body>
+</html>
