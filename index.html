@@ -3,8 +3,127 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>EQ5 Creative — Grace Irwin</title>
+<title>EQ5 Creative Hub</title>
 <link rel="stylesheet" href="eq5.css">
+<style>
+/* ── MAIN NAV ── */
+.main-nav {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 2.5rem;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 0;
+}
+.main-nav-btn {
+  font-family: var(--font);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--muted);
+  background: none;
+  border: none;
+  padding: 12px 20px;
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -1px;
+  transition: color 0.15s, border-color 0.15s;
+}
+.main-nav-btn:hover { color: var(--white); }
+.main-nav-btn.active { color: var(--white); border-bottom-color: var(--cyan); }
+
+/* ── SECTION PANELS ── */
+.panel { display: none; }
+.panel.active { display: block; }
+
+/* ── ACCOUNT NAV ── */
+.account-nav {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+}
+.account-btn {
+  font-family: var(--font);
+  font-size: 13px;
+  font-weight: 600;
+  padding: 8px 18px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.account-btn:hover { border-color: var(--cyan); color: var(--white); }
+.account-btn.active { background: var(--surface); border-color: var(--cyan-alt); color: var(--white); }
+
+/* ── ACCOUNT PANEL ── */
+.account-panel { display: none; }
+.account-panel.active { display: block; }
+.account-status-section { margin-bottom: 2rem; }
+.status-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.status-label.running { color: var(--cyan); }
+.status-label.dev { color: #f59e0b; }
+.status-label.review { color: #a78bfa; }
+.status-label.past { color: var(--muted); }
+.status-dot {
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.running .status-dot { background: var(--cyan); }
+.dev .status-dot { background: #f59e0b; }
+.review .status-dot { background: #a78bfa; }
+.past .status-dot { background: var(--muted); }
+
+/* ── AD LIBRARY SUB-NAV ── */
+.sub-nav {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 1.5rem;
+  background: var(--surface);
+  border-radius: 10px;
+  padding: 4px;
+  width: fit-content;
+}
+.sub-nav-btn {
+  font-family: var(--font);
+  font-size: 13px;
+  font-weight: 600;
+  padding: 8px 18px;
+  border-radius: 7px;
+  border: none;
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.sub-nav-btn:hover { color: var(--white); }
+.sub-nav-btn.active { background: var(--surface-deep); color: var(--white); }
+
+/* ── LIBRARY GROUP ── */
+.lib-group { margin-bottom: 2rem; }
+.lib-group-label {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 12px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--border);
+}
+.lib-view { display: none; }
+.lib-view.active { display: block; }
+</style>
 </head>
 <body>
 
@@ -16,88 +135,153 @@
   <div class="page-header">
     <div class="eyebrow">Equals 5</div>
     <h1>EQ5 <span class="grad">Creative</span></h1>
-    <p class="page-subtitle">Creative assets, tools, and references built for the Equals 5 team.</p>
-    <div class="header-meta">
-      <div class="author-chip">
-        <div class="author-avatar">G</div>
-        Grace Irwin
-      </div>
-    </div>
+    <p class="page-subtitle">Creative intelligence — past ads, active development, and strategy in one place.</p>
   </div>
 
-  <div class="section">
-    <div class="section-header">
-      <span class="section-title">Resources</span>
-      <div class="section-line"></div>
-    </div>
-    <div class="resource-grid">
-      <a class="resource-card" href="glossary/">
-        <div class="resource-card-icon">📖</div>
-        <div class="resource-card-title">Glossary</div>
-        <div class="resource-card-desc">Marketing &amp; video metrics terminology — click any term to reveal its definition.</div>
-        <div class="resource-card-link">Open Glossary</div>
-      </a>
-      <a class="resource-card" href="training/">
-        <div class="resource-card-icon">🏗️</div>
-        <div class="resource-card-title">Systems Architecture</div>
-        <div class="resource-card-desc">How every platform connects to the EQ5 AI agent — API vs MCP, data flows, and how to contribute.</div>
-        <div class="resource-card-link">Open Training</div>
-      </a>
-    </div>
-  </div>
+  <!-- ── MAIN NAV ── -->
+  <nav class="main-nav">
+    <button class="main-nav-btn active" onclick="showPanel('accounts')">Accounts</button>
+    <button class="main-nav-btn" onclick="showPanel('library')">Ad Library</button>
+    <button class="main-nav-btn" onclick="showPanel('timeline')">Creative Timeline</button>
+    <button class="main-nav-btn" onclick="showPanel('resources')">Resources</button>
+  </nav>
 
-  <!-- ── AD LIBRARY ── -->
-  <div class="section">
-    <div class="section-header">
-      <span class="section-title">Ad Library</span>
-      <div class="section-line"></div>
+  <!-- ══════════════════════════════════════════ -->
+  <!-- ACCOUNTS PANEL                            -->
+  <!-- ══════════════════════════════════════════ -->
+  <div class="panel active" id="panel-accounts">
+
+    <div class="account-nav">
+      <button class="account-btn active" onclick="showAccount('client-a')">Client A</button>
+      <button class="account-btn" onclick="showAccount('client-b')">Client B</button>
+      <button class="account-btn" onclick="showAccount('client-c')">Client C</button>
+      <button class="account-btn" onclick="showAccount('client-d')">Client D</button>
     </div>
 
-    <div class="filter-bar">
-      <button class="filter-chip active" data-filter="all">All</button>
-      <button class="filter-chip" data-filter="Meta">Meta</button>
-      <button class="filter-chip" data-filter="LinkedIn">LinkedIn</button>
-      <button class="filter-chip" data-filter="Programmatic">Programmatic</button>
-      <button class="filter-chip" data-filter="Static">Static</button>
-      <button class="filter-chip" data-filter="Video">Video</button>
-      <button class="filter-chip" data-filter="Carousel">Carousel</button>
-      <button class="filter-chip" data-filter="Static-Dynamic">Static-Dynamic</button>
-      <button class="filter-chip" data-filter="HCP">HCP</button>
-      <button class="filter-chip" data-filter="DTC">DTC</button>
-      <button class="filter-chip" data-filter="MLR Approved">MLR Approved</button>
-    </div>
-
-    <div class="ad-grid" id="adGrid">
-      <div class="ad-card" data-tags="LinkedIn,Static,HCP,Minimal,MLR Approved" onclick="showAdDetail(this)">
-        <div class="ad-thumb"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></div>
-        <div class="ad-info">
-          <div class="ad-name">Cardiologist awareness — 1:1</div>
-          <div class="ad-tags"><span class="ad-tag">LinkedIn</span><span class="ad-tag">Static</span><span class="ad-tag">HCP</span></div>
+    <!-- Client A -->
+    <div class="account-panel active" id="account-client-a">
+      <div class="account-status-section">
+        <div class="status-label running"><span class="status-dot"></span>Running Ads</div>
+        <div class="ad-grid">
+          <div class="ad-card" data-tags="LinkedIn,Static,HCP,Minimal,MLR Approved" onclick="showAdDetail(this)">
+            <div class="ad-thumb"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></div>
+            <div class="ad-info"><div class="ad-name">Awareness — 1:1</div><div class="ad-tags"><span class="ad-tag">LinkedIn</span><span class="ad-tag">Static</span></div></div>
+          </div>
+          <div class="ad-card" data-tags="Meta,Video,HCP,Prescribing" onclick="showAdDetail(this)">
+            <div class="ad-thumb"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="5,3 19,12 5,21"/></svg></div>
+            <div class="ad-info"><div class="ad-name">Branded recall — 9:16</div><div class="ad-tags"><span class="ad-tag">Meta</span><span class="ad-tag">Video</span></div></div>
+          </div>
         </div>
       </div>
-      <div class="ad-card" data-tags="Meta,Video,Prescribing,Playful" onclick="showAdDetail(this)">
-        <div class="ad-thumb"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="5,3 19,12 5,21"/></svg></div>
-        <div class="ad-info">
-          <div class="ad-name">Branded recall — 9:16</div>
-          <div class="ad-tags"><span class="ad-tag">Meta</span><span class="ad-tag">Video</span><span class="ad-tag">Prescribing</span></div>
+      <div class="account-status-section">
+        <div class="status-label dev"><span class="status-dot"></span>In Development</div>
+        <div class="ad-grid">
+          <div class="ad-card" data-tags="Meta,Carousel,Unbranded" onclick="showAdDetail(this)">
+            <div class="ad-thumb"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="6" width="6" height="12" rx="1"/><rect x="9" y="6" width="6" height="12" rx="1"/><rect x="16" y="6" width="6" height="12" rx="1"/></svg></div>
+            <div class="ad-info"><div class="ad-name">Disease awareness — carousel</div><div class="ad-tags"><span class="ad-tag">Meta</span><span class="ad-tag">Carousel</span></div></div>
+          </div>
         </div>
       </div>
-      <div class="ad-card" data-tags="Meta,Carousel,Unbranded,Disease Awareness" onclick="showAdDetail(this)">
-        <div class="ad-thumb"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="6" width="6" height="12" rx="1"/><rect x="9" y="6" width="6" height="12" rx="1"/><rect x="16" y="6" width="6" height="12" rx="1"/></svg></div>
-        <div class="ad-info">
-          <div class="ad-name">Disease awareness — carousel</div>
-          <div class="ad-tags"><span class="ad-tag">Meta</span><span class="ad-tag">Carousel</span><span class="ad-tag">Unbranded</span></div>
+      <div class="account-status-section">
+        <div class="status-label review"><span class="status-dot"></span>In Review</div>
+        <div class="ad-grid">
+          <div class="ad-card" data-tags="Programmatic,Static-Dynamic,HCP" onclick="showAdDetail(this)">
+            <div class="ad-thumb"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 15h18M12 15v6"/></svg></div>
+            <div class="ad-info"><div class="ad-name">ISI banner — 300×600</div><div class="ad-tags"><span class="ad-tag">Programmatic</span><span class="ad-tag">Static-Dynamic</span></div></div>
+          </div>
         </div>
       </div>
-      <div class="ad-card" data-tags="Programmatic,Static-Dynamic,HCP,MLR Approved" onclick="showAdDetail(this)">
-        <div class="ad-thumb"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 15h18"/><path d="M12 15v6"/></svg></div>
-        <div class="ad-info">
-          <div class="ad-name">ISI scrolling banner — 300×600</div>
-          <div class="ad-tags"><span class="ad-tag">Programmatic</span><span class="ad-tag">Static-Dynamic</span></div>
+      <div class="account-status-section">
+        <div class="status-label past"><span class="status-dot"></span>Past Ads</div>
+        <div class="ad-grid">
+          <div class="ad-card" data-tags="LinkedIn,Static,HCP,Clinical" onclick="showAdDetail(this)">
+            <div class="ad-thumb"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M8 12h8M12 8v8"/></svg></div>
+            <div class="ad-info"><div class="ad-name">Q1 HCP campaign — 1:1</div><div class="ad-tags"><span class="ad-tag">LinkedIn</span><span class="ad-tag">Static</span></div></div>
+          </div>
+          <div class="ad-card" data-tags="Meta,Static,DTC,Minimal" onclick="showAdDetail(this)">
+            <div class="ad-thumb"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><path d="M12 8v4l3 3"/></svg></div>
+            <div class="ad-info"><div class="ad-name">Q4 awareness — 4:5</div><div class="ad-tags"><span class="ad-tag">Meta</span><span class="ad-tag">Static</span></div></div>
+          </div>
         </div>
       </div>
     </div>
 
+    <!-- Client B -->
+    <div class="account-panel" id="account-client-b">
+      <div class="account-status-section">
+        <div class="status-label running"><span class="status-dot"></span>Running Ads</div>
+        <div class="ad-grid">
+          <div class="ad-card" data-tags="Meta,Static,DTC,Bold" onclick="showAdDetail(this)">
+            <div class="ad-thumb"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/></svg></div>
+            <div class="ad-info"><div class="ad-name">Brand launch — 1:1</div><div class="ad-tags"><span class="ad-tag">Meta</span><span class="ad-tag">Static</span></div></div>
+          </div>
+        </div>
+      </div>
+      <div class="account-status-section">
+        <div class="status-label dev"><span class="status-dot"></span>In Development</div>
+        <div class="ad-grid">
+          <div class="ad-card" data-tags="LinkedIn,Video,HCP" onclick="showAdDetail(this)">
+            <div class="ad-thumb"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="5,3 19,12 5,21"/></svg></div>
+            <div class="ad-info"><div class="ad-name">KOL spotlight — 16:9</div><div class="ad-tags"><span class="ad-tag">LinkedIn</span><span class="ad-tag">Video</span></div></div>
+          </div>
+        </div>
+      </div>
+      <div class="account-status-section">
+        <div class="status-label review"><span class="status-dot"></span>In Review</div>
+        <p style="color:var(--muted);font-size:13px;">No ads currently in review.</p>
+      </div>
+      <div class="account-status-section">
+        <div class="status-label past"><span class="status-dot"></span>Past Ads</div>
+        <p style="color:var(--muted);font-size:13px;">No past ads yet.</p>
+      </div>
+    </div>
+
+    <!-- Client C -->
+    <div class="account-panel" id="account-client-c">
+      <div class="account-status-section">
+        <div class="status-label running"><span class="status-dot"></span>Running Ads</div>
+        <p style="color:var(--muted);font-size:13px;">No ads currently running.</p>
+      </div>
+      <div class="account-status-section">
+        <div class="status-label dev"><span class="status-dot"></span>In Development</div>
+        <div class="ad-grid">
+          <div class="ad-card" data-tags="Programmatic,Static,HCP,Clinical" onclick="showAdDetail(this)">
+            <div class="ad-thumb"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/></svg></div>
+            <div class="ad-info"><div class="ad-name">Reminder ad — 728×90</div><div class="ad-tags"><span class="ad-tag">Programmatic</span><span class="ad-tag">Static</span></div></div>
+          </div>
+        </div>
+      </div>
+      <div class="account-status-section">
+        <div class="status-label review"><span class="status-dot"></span>In Review</div>
+        <p style="color:var(--muted);font-size:13px;">No ads currently in review.</p>
+      </div>
+      <div class="account-status-section">
+        <div class="status-label past"><span class="status-dot"></span>Past Ads</div>
+        <p style="color:var(--muted);font-size:13px;">No past ads yet.</p>
+      </div>
+    </div>
+
+    <!-- Client D -->
+    <div class="account-panel" id="account-client-d">
+      <div class="account-status-section">
+        <div class="status-label running"><span class="status-dot"></span>Running Ads</div>
+        <p style="color:var(--muted);font-size:13px;">No ads currently running.</p>
+      </div>
+      <div class="account-status-section">
+        <div class="status-label dev"><span class="status-dot"></span>In Development</div>
+        <p style="color:var(--muted);font-size:13px;">No ads in development.</p>
+      </div>
+      <div class="account-status-section">
+        <div class="status-label review"><span class="status-dot"></span>In Review</div>
+        <p style="color:var(--muted);font-size:13px;">No ads currently in review.</p>
+      </div>
+      <div class="account-status-section">
+        <div class="status-label past"><span class="status-dot"></span>Past Ads</div>
+        <p style="color:var(--muted);font-size:13px;">No past ads yet.</p>
+      </div>
+    </div>
+
+    <!-- Shared ad detail panel -->
     <div class="ad-detail-panel" id="adDetailPanel">
       <div class="ad-detail-header">
         <div class="ad-detail-thumb"></div>
@@ -117,14 +301,156 @@
         </div>
       </div>
     </div>
+
   </div>
 
-  <!-- ── CREATIVE TIMELINE ── -->
-  <div class="section">
-    <div class="section-header">
-      <span class="section-title">Creative Development Timeline</span>
-      <div class="section-line"></div>
+  <!-- ══════════════════════════════════════════ -->
+  <!-- AD LIBRARY PANEL                          -->
+  <!-- ══════════════════════════════════════════ -->
+  <div class="panel" id="panel-library">
+
+    <div class="sub-nav">
+      <button class="sub-nav-btn active" onclick="showLibView('channel')">By Channel</button>
+      <button class="sub-nav-btn" onclick="showLibView('type')">By Ad Type</button>
+      <button class="sub-nav-btn" onclick="showLibView('design')">By Design</button>
     </div>
+
+    <!-- By Channel -->
+    <div class="lib-view active" id="lib-channel">
+      <div class="lib-group">
+        <div class="lib-group-label">Meta</div>
+        <div class="ad-grid">
+          <div class="ad-card" data-tags="Meta,Video,Prescribing,Playful" onclick="showAdDetail(this)">
+            <div class="ad-thumb"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="5,3 19,12 5,21"/></svg></div>
+            <div class="ad-info"><div class="ad-name">Branded recall — 9:16</div><div class="ad-tags"><span class="ad-tag">Video</span><span class="ad-tag">Prescribing</span></div></div>
+          </div>
+          <div class="ad-card" data-tags="Meta,Carousel,Unbranded,Disease Awareness" onclick="showAdDetail(this)">
+            <div class="ad-thumb"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="6" width="6" height="12" rx="1"/><rect x="9" y="6" width="6" height="12" rx="1"/><rect x="16" y="6" width="6" height="12" rx="1"/></svg></div>
+            <div class="ad-info"><div class="ad-name">Disease awareness — carousel</div><div class="ad-tags"><span class="ad-tag">Carousel</span><span class="ad-tag">Unbranded</span></div></div>
+          </div>
+        </div>
+      </div>
+      <div class="lib-group">
+        <div class="lib-group-label">LinkedIn</div>
+        <div class="ad-grid">
+          <div class="ad-card" data-tags="LinkedIn,Static,HCP,Minimal,MLR Approved" onclick="showAdDetail(this)">
+            <div class="ad-thumb"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></div>
+            <div class="ad-info"><div class="ad-name">Cardiologist awareness — 1:1</div><div class="ad-tags"><span class="ad-tag">Static</span><span class="ad-tag">HCP</span></div></div>
+          </div>
+        </div>
+      </div>
+      <div class="lib-group">
+        <div class="lib-group-label">Programmatic</div>
+        <div class="ad-grid">
+          <div class="ad-card" data-tags="Programmatic,Static-Dynamic,HCP,MLR Approved" onclick="showAdDetail(this)">
+            <div class="ad-thumb"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 15h18M12 15v6"/></svg></div>
+            <div class="ad-info"><div class="ad-name">ISI scrolling banner — 300×600</div><div class="ad-tags"><span class="ad-tag">Static-Dynamic</span></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- By Ad Type -->
+    <div class="lib-view" id="lib-type">
+      <div class="lib-group">
+        <div class="lib-group-label">Static</div>
+        <div class="ad-grid">
+          <div class="ad-card" data-tags="LinkedIn,Static,HCP,Minimal,MLR Approved" onclick="showAdDetail(this)">
+            <div class="ad-thumb"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></div>
+            <div class="ad-info"><div class="ad-name">Cardiologist awareness — 1:1</div><div class="ad-tags"><span class="ad-tag">LinkedIn</span><span class="ad-tag">Minimal</span></div></div>
+          </div>
+        </div>
+      </div>
+      <div class="lib-group">
+        <div class="lib-group-label">Static-Dynamic</div>
+        <div class="ad-grid">
+          <div class="ad-card" data-tags="Programmatic,Static-Dynamic,HCP,MLR Approved" onclick="showAdDetail(this)">
+            <div class="ad-thumb"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 15h18M12 15v6"/></svg></div>
+            <div class="ad-info"><div class="ad-name">ISI scrolling banner — 300×600</div><div class="ad-tags"><span class="ad-tag">Programmatic</span></div></div>
+          </div>
+        </div>
+      </div>
+      <div class="lib-group">
+        <div class="lib-group-label">Video</div>
+        <div class="ad-grid">
+          <div class="ad-card" data-tags="Meta,Video,Prescribing,Playful" onclick="showAdDetail(this)">
+            <div class="ad-thumb"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="5,3 19,12 5,21"/></svg></div>
+            <div class="ad-info"><div class="ad-name">Branded recall — 9:16</div><div class="ad-tags"><span class="ad-tag">Meta</span><span class="ad-tag">Prescribing</span></div></div>
+          </div>
+        </div>
+      </div>
+      <div class="lib-group">
+        <div class="lib-group-label">Carousel</div>
+        <div class="ad-grid">
+          <div class="ad-card" data-tags="Meta,Carousel,Unbranded,Disease Awareness" onclick="showAdDetail(this)">
+            <div class="ad-thumb"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="6" width="6" height="12" rx="1"/><rect x="9" y="6" width="6" height="12" rx="1"/><rect x="16" y="6" width="6" height="12" rx="1"/></svg></div>
+            <div class="ad-info"><div class="ad-name">Disease awareness — carousel</div><div class="ad-tags"><span class="ad-tag">Meta</span><span class="ad-tag">Unbranded</span></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- By Design -->
+    <div class="lib-view" id="lib-design">
+      <div class="lib-group">
+        <div class="lib-group-label">Minimal</div>
+        <div class="ad-grid">
+          <div class="ad-card" data-tags="LinkedIn,Static,HCP,Minimal,MLR Approved" onclick="showAdDetail(this)">
+            <div class="ad-thumb"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></div>
+            <div class="ad-info"><div class="ad-name">Cardiologist awareness — 1:1</div><div class="ad-tags"><span class="ad-tag">LinkedIn</span><span class="ad-tag">Static</span></div></div>
+          </div>
+        </div>
+      </div>
+      <div class="lib-group">
+        <div class="lib-group-label">Playful</div>
+        <div class="ad-grid">
+          <div class="ad-card" data-tags="Meta,Video,Prescribing,Playful" onclick="showAdDetail(this)">
+            <div class="ad-thumb"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="5,3 19,12 5,21"/></svg></div>
+            <div class="ad-info"><div class="ad-name">Branded recall — 9:16</div><div class="ad-tags"><span class="ad-tag">Meta</span><span class="ad-tag">Video</span></div></div>
+          </div>
+        </div>
+      </div>
+      <div class="lib-group">
+        <div class="lib-group-label">Data-Driven</div>
+        <p style="color:var(--muted);font-size:13px;">No ads in this category yet.</p>
+      </div>
+      <div class="lib-group">
+        <div class="lib-group-label">Clinical / Professional</div>
+        <p style="color:var(--muted);font-size:13px;">No ads in this category yet.</p>
+      </div>
+      <div class="lib-group">
+        <div class="lib-group-label">Bold / High Contrast</div>
+        <p style="color:var(--muted);font-size:13px;">No ads in this category yet.</p>
+      </div>
+    </div>
+
+    <!-- Shared detail panel for library -->
+    <div class="ad-detail-panel" id="adDetailPanelLib">
+      <div class="ad-detail-header">
+        <div class="ad-detail-thumb"></div>
+        <div>
+          <div class="ad-detail-title" id="adDetailTitleLib"></div>
+          <div class="ad-tags" id="adDetailTagsLib"></div>
+        </div>
+      </div>
+      <div class="ad-detail-body">
+        <div class="ad-detail-box">
+          <div class="ad-detail-box-label">What's working</div>
+          <p>Strong hook in the first 3 seconds. Minimal copy keeps focus on the brand claim. Color contrast drives thumb-stop in feed.</p>
+        </div>
+        <div class="ad-detail-box">
+          <div class="ad-detail-box-label">Strategy recommendations</div>
+          <p>Test a version with a stat headline. Try a darker colorway for the prescribing segment. A/B the CTA copy.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ══════════════════════════════════════════ -->
+  <!-- CREATIVE TIMELINE PANEL                   -->
+  <!-- ══════════════════════════════════════════ -->
+  <div class="panel" id="panel-timeline">
     <div class="timeline">
       <div class="tl-item tl-done"><div class="tl-dot"></div><div class="tl-content"><div class="tl-title">Creative brief development</div><div class="tl-sub">Brief finalized and approved</div></div></div>
       <div class="tl-item tl-done"><div class="tl-dot"></div><div class="tl-content"><div class="tl-title">Creative kickoff meeting</div><div class="tl-sub">Team aligned on direction</div></div></div>
@@ -139,43 +465,45 @@
     </div>
   </div>
 
-  <!-- ── CREATIVE ASSETS ── -->
-  <div class="section">
-    <div class="section-header">
-      <span class="section-title">Creative Assets</span>
-      <div class="section-line"></div>
+  <!-- ══════════════════════════════════════════ -->
+  <!-- RESOURCES PANEL                           -->
+  <!-- ══════════════════════════════════════════ -->
+  <div class="panel" id="panel-resources">
+    <div class="resource-grid">
+      <a class="resource-card" href="glossary/">
+        <div class="resource-card-icon">📖</div>
+        <div class="resource-card-title">Glossary</div>
+        <div class="resource-card-desc">Marketing &amp; video metrics terminology — click any term to reveal its definition.</div>
+        <div class="resource-card-link">Open Glossary</div>
+      </a>
+      <a class="resource-card" href="training/">
+        <div class="resource-card-icon">🏗️</div>
+        <div class="resource-card-title">Systems Architecture</div>
+        <div class="resource-card-desc">How every platform connects to the EQ5 AI agent — API vs MCP, data flows, and how to contribute.</div>
+        <div class="resource-card-link">Open Training</div>
+      </a>
     </div>
-    <div class="asset-grid">
-      <div class="asset-card">
-        <div class="asset-preview"><img src="ad-layouts/01-bold-vibrant-diagonal.svg" alt="Bold & Vibrant Diagonal"></div>
-        <div class="asset-info">
-          <div class="asset-name">Bold &amp; Vibrant</div>
-          <div class="asset-meta">Diagonal · Cream / Coral / Teal</div>
-          <span class="asset-badge">1080×1080</span>
-        </div>
+    <div class="section" style="margin-top:2rem;">
+      <div class="section-header">
+        <span class="section-title">Creative Assets</span>
+        <div class="section-line"></div>
       </div>
-      <div class="asset-card">
-        <div class="asset-preview"><img src="ad-layouts/02-midnight-concentric.svg" alt="Midnight Concentric"></div>
-        <div class="asset-info">
-          <div class="asset-name">Midnight Concentric</div>
-          <div class="asset-meta">Rings · Black / Amber</div>
-          <span class="asset-badge">1080×1080</span>
+      <div class="asset-grid">
+        <div class="asset-card">
+          <div class="asset-preview"><img src="ad-layouts/01-bold-vibrant-diagonal.svg" alt="Bold & Vibrant Diagonal"></div>
+          <div class="asset-info"><div class="asset-name">Bold &amp; Vibrant</div><div class="asset-meta">Diagonal · Cream / Coral / Teal</div><span class="asset-badge">1080×1080</span></div>
         </div>
-      </div>
-      <div class="asset-card">
-        <div class="asset-preview"><img src="ad-layouts/03-earthy-arches.svg" alt="Earthy Arches"></div>
-        <div class="asset-info">
-          <div class="asset-name">Earthy Arches</div>
-          <div class="asset-meta">Arches · Terracotta / Mustard</div>
-          <span class="asset-badge">1080×1080</span>
+        <div class="asset-card">
+          <div class="asset-preview"><img src="ad-layouts/02-midnight-concentric.svg" alt="Midnight Concentric"></div>
+          <div class="asset-info"><div class="asset-name">Midnight Concentric</div><div class="asset-meta">Rings · Black / Amber</div><span class="asset-badge">1080×1080</span></div>
         </div>
-      </div>
-      <div class="asset-card">
-        <div class="asset-preview"><img src="ad-layouts/04-modernist-bauhaus.svg" alt="Modernist Bauhaus"></div>
-        <div class="asset-info">
-          <div class="asset-name">Modernist Bauhaus</div>
-          <div class="asset-meta">Grid · Mint / Black / Red</div>
-          <span class="asset-badge">1080×1080</span>
+        <div class="asset-card">
+          <div class="asset-preview"><img src="ad-layouts/03-earthy-arches.svg" alt="Earthy Arches"></div>
+          <div class="asset-info"><div class="asset-name">Earthy Arches</div><div class="asset-meta">Arches · Terracotta / Mustard</div><span class="asset-badge">1080×1080</span></div>
+        </div>
+        <div class="asset-card">
+          <div class="asset-preview"><img src="ad-layouts/04-modernist-bauhaus.svg" alt="Modernist Bauhaus"></div>
+          <div class="asset-info"><div class="asset-name">Modernist Bauhaus</div><div class="asset-meta">Grid · Mint / Black / Red</div><span class="asset-badge">1080×1080</span></div>
         </div>
       </div>
     </div>
@@ -183,28 +511,41 @@
 
 </div>
 
-<div class="version-badge">v1.3.0 · 2026-06-18 · Grace Irwin</div>
+<div class="version-badge">v1.4.0 · 2026-06-18 · Grace Irwin</div>
 
 <script>
-document.querySelectorAll('.filter-chip').forEach(chip => {
-  chip.addEventListener('click', () => {
-    document.querySelectorAll('.filter-chip').forEach(c => c.classList.remove('active'));
-    chip.classList.add('active');
-    const filter = chip.dataset.filter;
-    document.querySelectorAll('.ad-card').forEach(card => {
-      const tags = card.dataset.tags || '';
-      card.classList.toggle('hidden', filter !== 'all' && !tags.includes(filter));
-    });
-    document.getElementById('adDetailPanel').classList.remove('visible');
-  });
-});
+function showPanel(id) {
+  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.main-nav-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('panel-' + id).classList.add('active');
+  event.target.classList.add('active');
+}
+
+function showAccount(id) {
+  document.querySelectorAll('.account-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.account-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('account-' + id).classList.add('active');
+  event.target.classList.add('active');
+  document.getElementById('adDetailPanel').classList.remove('visible');
+}
+
+function showLibView(id) {
+  document.querySelectorAll('.lib-view').forEach(v => v.classList.remove('active'));
+  document.querySelectorAll('.sub-nav-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('lib-' + id).classList.add('active');
+  event.target.classList.add('active');
+  document.getElementById('adDetailPanelLib').classList.remove('visible');
+}
 
 function showAdDetail(card) {
   const name = card.querySelector('.ad-name').textContent;
   const tags = card.dataset.tags.split(',');
-  document.getElementById('adDetailTitle').textContent = name;
-  document.getElementById('adDetailTags').innerHTML = tags.map(t => `<span class="ad-tag">${t}</span>`).join('');
-  const panel = document.getElementById('adDetailPanel');
+  const inLibrary = document.getElementById('panel-library').classList.contains('active');
+  const titleEl = inLibrary ? document.getElementById('adDetailTitleLib') : document.getElementById('adDetailTitle');
+  const tagsEl = inLibrary ? document.getElementById('adDetailTagsLib') : document.getElementById('adDetailTags');
+  const panel = inLibrary ? document.getElementById('adDetailPanelLib') : document.getElementById('adDetailPanel');
+  titleEl.textContent = name;
+  tagsEl.innerHTML = tags.map(t => `<span class="ad-tag">${t.trim()}</span>`).join('');
   panel.classList.add('visible');
   setTimeout(() => panel.scrollIntoView({ behavior: 'smooth', block: 'nearest' }), 50);
 }
