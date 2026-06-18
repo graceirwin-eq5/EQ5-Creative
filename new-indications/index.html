@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>New Indications — EQ5 Creative</title>
+<link rel="stylesheet" href="../eq5.css">
+<style>
+.back-link { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; color: var(--muted); text-decoration: none; margin-bottom: 2rem; transition: color 0.15s; }
+.back-link:hover { color: var(--white); }
+.indication-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 14px; margin-bottom: 2rem; }
+.indication-card { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 20px; cursor: pointer; transition: border-color 0.2s; }
+.indication-card:hover { border-color: var(--cyan); }
+.indication-card.active { border-color: var(--cyan-alt); background: var(--surface-deep); }
+.indication-badge { display: inline-block; font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 3px 10px; border-radius: 99px; background: var(--gradient); color: var(--white); margin-bottom: 10px; }
+.indication-name { font-size: 15px; font-weight: 700; color: var(--white); margin-bottom: 4px; }
+.indication-drug { font-size: 12px; color: var(--muted); margin-bottom: 4px; }
+.indication-count { font-size: 12px; color: var(--muted); }
+.indication-detail { display: none; background: var(--surface); border: 1px solid var(--cyan-alt); border-radius: 14px; padding: 20px; margin-bottom: 2rem; animation: fadeUp 0.2s ease both; }
+.indication-detail.visible { display: block; }
+.detail-heading { font-size: 16px; font-weight: 700; color: var(--white); margin-bottom: 4px; }
+.detail-sub { font-size: 13px; color: var(--muted); margin-bottom: 16px; }
+.empty-state { font-size: 13px; color: var(--muted); font-style: italic; }
+</style>
+</head>
+<body>
+<div class="blob blob-1"></div>
+<div class="blob blob-2"></div>
+<div class="page-wrap">
+  <a class="back-link" href="../">← Back to Hub</a>
+  <div class="page-header">
+    <div class="eyebrow">Ad Library</div>
+    <h1>New <span class="grad">Indications</span></h1>
+    <p class="page-subtitle">Creative organized around newly approved indications and label expansions. Ads will populate as campaigns are added to the library.</p>
+  </div>
+
+  <div class="indication-grid">
+    <div class="indication-card" onclick="showIndication(this)">
+      <div class="indication-badge">Now Approved</div>
+      <div class="indication-name">Indication Placeholder A</div>
+      <div class="indication-drug">Drug / Brand Name TBD</div>
+      <div class="indication-count">0 ads</div>
+    </div>
+    <div class="indication-card" onclick="showIndication(this)">
+      <div class="indication-badge">Now Approved</div>
+      <div class="indication-name">Indication Placeholder B</div>
+      <div class="indication-drug">Drug / Brand Name TBD</div>
+      <div class="indication-count">0 ads</div>
+    </div>
+    <div class="indication-card" onclick="showIndication(this)">
+      <div class="indication-badge">Label Expansion</div>
+      <div class="indication-name">Indication Placeholder C</div>
+      <div class="indication-drug">Drug / Brand Name TBD</div>
+      <div class="indication-count">0 ads</div>
+    </div>
+    <div class="indication-card" onclick="showIndication(this)">
+      <div class="indication-badge">Label Expansion</div>
+      <div class="indication-name">Indication Placeholder D</div>
+      <div class="indication-drug">Drug / Brand Name TBD</div>
+      <div class="indication-count">0 ads</div>
+    </div>
+  </div>
+
+  <div class="indication-detail" id="indicationDetail">
+    <div class="detail-heading" id="indicationDetailTitle"></div>
+    <div class="detail-sub" id="indicationDetailSub"></div>
+    <p class="empty-state">No ads for this indication yet. Ads will populate here once data is available from the ad library.</p>
+  </div>
+</div>
+
+<div class="version-badge">v1.0.0 · 2026-06-18 · Grace Irwin</div>
+
+<script>
+function showIndication(card) {
+  document.querySelectorAll('.indication-card').forEach(c => c.classList.remove('active'));
+  card.classList.add('active');
+  document.getElementById('indicationDetailTitle').textContent = card.querySelector('.indication-name').textContent;
+  document.getElementById('indicationDetailSub').textContent = card.querySelector('.indication-drug').textContent;
+  const detail = document.getElementById('indicationDetail');
+  detail.classList.add('visible');
+  setTimeout(() => detail.scrollIntoView({ behavior: 'smooth', block: 'nearest' }), 50);
+}
+</script>
+</body>
+</html>

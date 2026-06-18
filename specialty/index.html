@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>By Specialty — EQ5 Creative</title>
+<link rel="stylesheet" href="../eq5.css">
+<style>
+.back-link { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; color: var(--muted); text-decoration: none; margin-bottom: 2rem; transition: color 0.15s; }
+.back-link:hover { color: var(--white); }
+.specialty-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; margin-bottom: 2rem; }
+.specialty-card { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 20px; cursor: pointer; transition: border-color 0.2s; }
+.specialty-card:hover { border-color: var(--cyan); }
+.specialty-card.active { border-color: var(--cyan-alt); background: var(--surface-deep); }
+.specialty-name { font-size: 15px; font-weight: 700; color: var(--white); margin-bottom: 4px; }
+.specialty-count { font-size: 12px; color: var(--muted); }
+.specialty-detail { display: none; background: var(--surface); border: 1px solid var(--cyan-alt); border-radius: 14px; padding: 20px; margin-bottom: 2rem; animation: fadeUp 0.2s ease both; }
+.specialty-detail.visible { display: block; }
+.detail-heading { font-size: 16px; font-weight: 700; color: var(--white); margin-bottom: 16px; }
+.empty-state { font-size: 13px; color: var(--muted); font-style: italic; }
+</style>
+</head>
+<body>
+<div class="blob blob-1"></div>
+<div class="blob blob-2"></div>
+<div class="page-wrap">
+  <a class="back-link" href="../">← Back to Hub</a>
+  <div class="page-header">
+    <div class="eyebrow">Ad Library</div>
+    <h1>By <span class="grad">Specialty</span></h1>
+    <p class="page-subtitle">Ads organized by physician specialty. Click a specialty to see all related creative.</p>
+  </div>
+
+  <div class="specialty-grid">
+    <div class="specialty-card" onclick="showSpecialty('cardiology', this)">
+      <div class="specialty-name">Cardiology</div>
+      <div class="specialty-count">0 ads</div>
+    </div>
+    <div class="specialty-card" onclick="showSpecialty('oncology', this)">
+      <div class="specialty-name">Oncology</div>
+      <div class="specialty-count">0 ads</div>
+    </div>
+    <div class="specialty-card" onclick="showSpecialty('neurology', this)">
+      <div class="specialty-name">Neurology</div>
+      <div class="specialty-count">0 ads</div>
+    </div>
+    <div class="specialty-card" onclick="showSpecialty('rare-disease', this)">
+      <div class="specialty-name">Rare Disease</div>
+      <div class="specialty-count">0 ads</div>
+    </div>
+    <div class="specialty-card" onclick="showSpecialty('pcp', this)">
+      <div class="specialty-name">Primary Care (PCP)</div>
+      <div class="specialty-count">0 ads</div>
+    </div>
+    <div class="specialty-card" onclick="showSpecialty('hematology', this)">
+      <div class="specialty-name">Hematology</div>
+      <div class="specialty-count">0 ads</div>
+    </div>
+    <div class="specialty-card" onclick="showSpecialty('endocrinology', this)">
+      <div class="specialty-name">Endocrinology</div>
+      <div class="specialty-count">0 ads</div>
+    </div>
+    <div class="specialty-card" onclick="showSpecialty('pulmonology', this)">
+      <div class="specialty-name">Pulmonology</div>
+      <div class="specialty-count">0 ads</div>
+    </div>
+    <div class="specialty-card" onclick="showSpecialty('rheumatology', this)">
+      <div class="specialty-name">Rheumatology</div>
+      <div class="specialty-count">0 ads</div>
+    </div>
+    <div class="specialty-card" onclick="showSpecialty('gastroenterology', this)">
+      <div class="specialty-name">Gastroenterology</div>
+      <div class="specialty-count">0 ads</div>
+    </div>
+  </div>
+
+  <div class="specialty-detail" id="specialtyDetail">
+    <div class="detail-heading" id="specialtyDetailTitle"></div>
+    <p class="empty-state">No ads in this specialty yet. Ads will populate here once data is available from the ad library.</p>
+  </div>
+</div>
+
+<div class="version-badge">v1.0.0 · 2026-06-18 · Grace Irwin</div>
+
+<script>
+function showSpecialty(id, card) {
+  document.querySelectorAll('.specialty-card').forEach(c => c.classList.remove('active'));
+  card.classList.add('active');
+  document.getElementById('specialtyDetailTitle').textContent = card.querySelector('.specialty-name').textContent;
+  const detail = document.getElementById('specialtyDetail');
+  detail.classList.add('visible');
+  setTimeout(() => detail.scrollIntoView({ behavior: 'smooth', block: 'nearest' }), 50);
+}
+</script>
+</body>
+</html>

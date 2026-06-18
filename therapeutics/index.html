@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>By Therapeutics — EQ5 Creative</title>
+<link rel="stylesheet" href="../eq5.css">
+<style>
+.back-link { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; color: var(--muted); text-decoration: none; margin-bottom: 2rem; transition: color 0.15s; }
+.back-link:hover { color: var(--white); }
+.therapeutic-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; margin-bottom: 2rem; }
+.therapeutic-card { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 20px; cursor: pointer; transition: border-color 0.2s; }
+.therapeutic-card:hover { border-color: var(--cyan); }
+.therapeutic-card.active { border-color: var(--cyan-alt); background: var(--surface-deep); }
+.therapeutic-name { font-size: 15px; font-weight: 700; color: var(--white); margin-bottom: 4px; }
+.therapeutic-count { font-size: 12px; color: var(--muted); }
+.therapeutic-detail { display: none; background: var(--surface); border: 1px solid var(--cyan-alt); border-radius: 14px; padding: 20px; margin-bottom: 2rem; animation: fadeUp 0.2s ease both; }
+.therapeutic-detail.visible { display: block; }
+.detail-heading { font-size: 16px; font-weight: 700; color: var(--white); margin-bottom: 16px; }
+.empty-state { font-size: 13px; color: var(--muted); font-style: italic; }
+</style>
+</head>
+<body>
+<div class="blob blob-1"></div>
+<div class="blob blob-2"></div>
+<div class="page-wrap">
+  <a class="back-link" href="../">← Back to Hub</a>
+  <div class="page-header">
+    <div class="eyebrow">Ad Library</div>
+    <h1>By <span class="grad">Therapeutics</span></h1>
+    <p class="page-subtitle">Ads organized by therapeutic area. Click a category to see all related creative.</p>
+  </div>
+
+  <div class="therapeutic-grid">
+    <div class="therapeutic-card" onclick="showTherapeutic(this)">
+      <div class="therapeutic-name">Cardiovascular</div>
+      <div class="therapeutic-count">0 ads</div>
+    </div>
+    <div class="therapeutic-card" onclick="showTherapeutic(this)">
+      <div class="therapeutic-name">Oncology</div>
+      <div class="therapeutic-count">0 ads</div>
+    </div>
+    <div class="therapeutic-card" onclick="showTherapeutic(this)">
+      <div class="therapeutic-name">CNS / Neurology</div>
+      <div class="therapeutic-count">0 ads</div>
+    </div>
+    <div class="therapeutic-card" onclick="showTherapeutic(this)">
+      <div class="therapeutic-name">Immunology</div>
+      <div class="therapeutic-count">0 ads</div>
+    </div>
+    <div class="therapeutic-card" onclick="showTherapeutic(this)">
+      <div class="therapeutic-name">Rare Disease</div>
+      <div class="therapeutic-count">0 ads</div>
+    </div>
+    <div class="therapeutic-card" onclick="showTherapeutic(this)">
+      <div class="therapeutic-name">Hematology</div>
+      <div class="therapeutic-count">0 ads</div>
+    </div>
+    <div class="therapeutic-card" onclick="showTherapeutic(this)">
+      <div class="therapeutic-name">Metabolic / Endocrine</div>
+      <div class="therapeutic-count">0 ads</div>
+    </div>
+    <div class="therapeutic-card" onclick="showTherapeutic(this)">
+      <div class="therapeutic-name">Respiratory</div>
+      <div class="therapeutic-count">0 ads</div>
+    </div>
+    <div class="therapeutic-card" onclick="showTherapeutic(this)">
+      <div class="therapeutic-name">Gastroenterology</div>
+      <div class="therapeutic-count">0 ads</div>
+    </div>
+    <div class="therapeutic-card" onclick="showTherapeutic(this)">
+      <div class="therapeutic-name">Musculoskeletal</div>
+      <div class="therapeutic-count">0 ads</div>
+    </div>
+    <div class="therapeutic-card" onclick="showTherapeutic(this)">
+      <div class="therapeutic-name">Dermatology</div>
+      <div class="therapeutic-count">0 ads</div>
+    </div>
+    <div class="therapeutic-card" onclick="showTherapeutic(this)">
+      <div class="therapeutic-name">Infectious Disease</div>
+      <div class="therapeutic-count">0 ads</div>
+    </div>
+  </div>
+
+  <div class="therapeutic-detail" id="therapeuticDetail">
+    <div class="detail-heading" id="therapeuticDetailTitle"></div>
+    <p class="empty-state">No ads in this therapeutic area yet. Ads will populate here once data is available from the ad library.</p>
+  </div>
+</div>
+
+<div class="version-badge">v1.0.0 · 2026-06-18 · Grace Irwin</div>
+
+<script>
+function showTherapeutic(card) {
+  document.querySelectorAll('.therapeutic-card').forEach(c => c.classList.remove('active'));
+  card.classList.add('active');
+  document.getElementById('therapeuticDetailTitle').textContent = card.querySelector('.therapeutic-name').textContent;
+  const detail = document.getElementById('therapeuticDetail');
+  detail.classList.add('visible');
+  setTimeout(() => detail.scrollIntoView({ behavior: 'smooth', block: 'nearest' }), 50);
+}
+</script>
+</body>
+</html>
