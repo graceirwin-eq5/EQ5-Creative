@@ -552,6 +552,65 @@ h3 { font-size: clamp(24px, 3vw, 32px); font-weight: 700; margin-bottom: 12px; }
 .tl-sub { font-size: 10px; color: var(--cyan); }
 .tl-done .tl-title { color: var(--muted); }
 
+/* ─── DETAILED TIMELINE ─── */
+.detail-timeline { display: flex; flex-direction: column; gap: 12px; }
+.dtl-stage {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+}
+.dtl-stage-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 18px;
+  border-bottom: 1px solid var(--border);
+}
+.dtl-num {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--white);
+  background: var(--gradient);
+  border-radius: 6px;
+  padding: 4px 9px;
+  flex-shrink: 0;
+}
+.dtl-stage-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--white);
+}
+.dtl-steps {
+  list-style: none;
+  padding: 14px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.dtl-steps li {
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.5;
+  padding-left: 14px;
+  position: relative;
+}
+.dtl-steps li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 7px;
+  width: 5px; height: 5px;
+  border-radius: 50%;
+  background: var(--cyan);
+  opacity: 0.6;
+}
+.dtl-steps li strong {
+  color: var(--white);
+  font-weight: 600;
+}
+
 /* ─── ANIMATIONS ─── */
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(8px); }

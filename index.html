@@ -511,17 +511,135 @@
   <!-- CREATIVE TIMELINE PANEL                   -->
   <!-- ══════════════════════════════════════════ -->
   <div class="panel" id="panel-timeline">
-    <div class="timeline">
-      <div class="tl-item tl-done"><div class="tl-dot"></div><div class="tl-content"><div class="tl-title">Creative brief development</div><div class="tl-sub">Brief finalized and approved</div></div></div>
-      <div class="tl-item tl-done"><div class="tl-dot"></div><div class="tl-content"><div class="tl-title">Creative kickoff meeting</div><div class="tl-sub">Team aligned on direction</div></div></div>
-      <div class="tl-item tl-active"><div class="tl-dot"></div><div class="tl-content"><div class="tl-title">Draft mockups of ads</div><div class="tl-sub">In progress</div></div></div>
-      <div class="tl-item"><div class="tl-dot"></div><div class="tl-content"><div class="tl-title">Art to draft layouts</div></div></div>
-      <div class="tl-item"><div class="tl-dot"></div><div class="tl-content"><div class="tl-title">Internal reviews</div></div></div>
-      <div class="tl-item"><div class="tl-dot"></div><div class="tl-content"><div class="tl-title">Art to implement revisions</div></div></div>
-      <div class="tl-item"><div class="tl-dot"></div><div class="tl-content"><div class="tl-title">AM to send to client review</div></div></div>
-      <div class="tl-item"><div class="tl-dot"></div><div class="tl-content"><div class="tl-title">Art to implement client feedback</div></div></div>
-      <div class="tl-item"><div class="tl-dot"></div><div class="tl-content"><div class="tl-title">Client approval for MLR submission</div></div></div>
-      <div class="tl-item"><div class="tl-dot"></div><div class="tl-content"><div class="tl-title">MLR submission</div></div></div>
+    <div class="detail-timeline">
+
+      <div class="dtl-stage">
+        <div class="dtl-stage-header">
+          <div class="dtl-num">01</div>
+          <div class="dtl-stage-title">Creative Brief Development</div>
+        </div>
+        <ul class="dtl-steps">
+          <li>Create brief document for internal reference to be stored in Google Drive and sent to those on account</li>
+          <li>Creative kickoff call complete</li>
+          <li>Make updates and approve brief document</li>
+          <li>Align on brand guidelines and assets</li>
+          <li>Align on company rules for MLR</li>
+        </ul>
+      </div>
+
+      <div class="dtl-stage">
+        <div class="dtl-stage-header">
+          <div class="dtl-num">02</div>
+          <div class="dtl-stage-title">Draft Creative Mockup of Ads</div>
+        </div>
+        <ul class="dtl-steps">
+          <li>Matrix input</li>
+          <li>Provide Claude with content to be referenced/leveraged from approved banners and website</li>
+          <li>Claude to compare Fireflies, Slack, and email content to matrix</li>
+        </ul>
+      </div>
+
+      <div class="dtl-stage">
+        <div class="dtl-stage-header">
+          <div class="dtl-num">03</div>
+          <div class="dtl-stage-title">Art to Draft Layouts</div>
+        </div>
+        <ul class="dtl-steps">
+          <li>Claude to offer design ideation/variation</li>
+          <li>Export layouts from Claude to Figma</li>
+          <li>Revise layouts in Figma / rework assets</li>
+          <li>Claude to check layouts against matrix</li>
+        </ul>
+      </div>
+
+      <div class="dtl-stage">
+        <div class="dtl-stage-header">
+          <div class="dtl-num">04</div>
+          <div class="dtl-stage-title">Internal Reviews</div>
+        </div>
+        <ul class="dtl-steps">
+          <li>Upload unmarked Figma file to Claude</li>
+          <li>Set internal review meeting with core team</li>
+          <li>Art to make comments in Figma for proposed changes</li>
+        </ul>
+      </div>
+
+      <div class="dtl-stage">
+        <div class="dtl-stage-header">
+          <div class="dtl-num">05</div>
+          <div class="dtl-stage-title">Art to Implement Revisions</div>
+        </div>
+        <ul class="dtl-steps">
+          <li>Upload marked Figma file to Claude for Claude to read</li>
+          <li>Claude to itemize proposed changes</li>
+          <li>Make edits</li>
+          <li>Upload revised Figma file to Claude as most recent copy to reference</li>
+        </ul>
+      </div>
+
+      <div class="dtl-stage">
+        <div class="dtl-stage-header">
+          <div class="dtl-num">06</div>
+          <div class="dtl-stage-title">AM to Send to Client Review</div>
+        </div>
+        <ul class="dtl-steps">
+          <li>AM to set up client review meeting (if applicable)</li>
+        </ul>
+      </div>
+
+      <div class="dtl-stage">
+        <div class="dtl-stage-header">
+          <div class="dtl-num">07</div>
+          <div class="dtl-stage-title">Art to Implement Client Feedback</div>
+        </div>
+        <ul class="dtl-steps">
+          <li>Claude to itemize new revisions to be made</li>
+          <li>Make revisions</li>
+          <li>Upload revised Figma file and have Claude compare to client feedback</li>
+        </ul>
+      </div>
+
+      <div class="dtl-stage">
+        <div class="dtl-stage-header">
+          <div class="dtl-num">08</div>
+          <div class="dtl-stage-title">Client Approval for MLR Submission</div>
+        </div>
+        <ul class="dtl-steps">
+          <li><strong>For multi-page, heavy content PDF development:</strong></li>
+          <li>Create in mockups design system in Claude</li>
+          <li>Instruct layout edits and rework where needed</li>
+          <li>If too difficult, switch to Figma</li>
+          <li>Use Claude to place ads in mockups using design system</li>
+          <li>Input all necessary information/assets as labelled in template and command to place in mockup PDF</li>
+          <li>Clarify what info is what for template to read and place accurately</li>
+          <li>Clarify which social channels to be used in mockup</li>
+          <li>If multipage PDF, clarify ad layouts to be separated by page</li>
+          <li>Once PDF looks right, ask Claude to open PDF in new tab in order to save</li>
+          <li>Once open in new tab, Cmd+P to save</li>
+          <li>For multipage PDF files, export mockup PDF as SVG into Figma</li>
+          <li>Make edits and export in Figma</li>
+          <li>Return to Claude to check placements</li>
+        </ul>
+      </div>
+
+      <div class="dtl-stage">
+        <div class="dtl-stage-header">
+          <div class="dtl-num">09</div>
+          <div class="dtl-stage-title">MLR Submission</div>
+        </div>
+        <ul class="dtl-steps">
+          <li>Submit creatives for MLR review</li>
+          <li>Track MLR review date</li>
+          <li>AM to review and markup MLR comments</li>
+          <li>Art to implement comments</li>
+          <li>Claude to compare new layout to comments</li>
+          <li>Internal QA / Approval</li>
+          <li>Client Review</li>
+          <li>Submit for final approval / AFD</li>
+          <li>Approval for distribution received</li>
+        </ul>
+      </div>
+
     </div>
   </div>
 
