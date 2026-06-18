@@ -46,6 +46,100 @@
     </div>
   </div>
 
+  <!-- ── AD LIBRARY ── -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-title">Ad Library</span>
+      <div class="section-line"></div>
+    </div>
+
+    <div class="filter-bar">
+      <button class="filter-chip active" data-filter="all">All</button>
+      <button class="filter-chip" data-filter="Meta">Meta</button>
+      <button class="filter-chip" data-filter="LinkedIn">LinkedIn</button>
+      <button class="filter-chip" data-filter="Programmatic">Programmatic</button>
+      <button class="filter-chip" data-filter="Static">Static</button>
+      <button class="filter-chip" data-filter="Video">Video</button>
+      <button class="filter-chip" data-filter="Carousel">Carousel</button>
+      <button class="filter-chip" data-filter="Static-Dynamic">Static-Dynamic</button>
+      <button class="filter-chip" data-filter="HCP">HCP</button>
+      <button class="filter-chip" data-filter="DTC">DTC</button>
+      <button class="filter-chip" data-filter="MLR Approved">MLR Approved</button>
+    </div>
+
+    <div class="ad-grid" id="adGrid">
+      <div class="ad-card" data-tags="LinkedIn,Static,HCP,Minimal,MLR Approved" onclick="showAdDetail(this)">
+        <div class="ad-thumb"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></div>
+        <div class="ad-info">
+          <div class="ad-name">Cardiologist awareness — 1:1</div>
+          <div class="ad-tags"><span class="ad-tag">LinkedIn</span><span class="ad-tag">Static</span><span class="ad-tag">HCP</span></div>
+        </div>
+      </div>
+      <div class="ad-card" data-tags="Meta,Video,Prescribing,Playful" onclick="showAdDetail(this)">
+        <div class="ad-thumb"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="5,3 19,12 5,21"/></svg></div>
+        <div class="ad-info">
+          <div class="ad-name">Branded recall — 9:16</div>
+          <div class="ad-tags"><span class="ad-tag">Meta</span><span class="ad-tag">Video</span><span class="ad-tag">Prescribing</span></div>
+        </div>
+      </div>
+      <div class="ad-card" data-tags="Meta,Carousel,Unbranded,Disease Awareness" onclick="showAdDetail(this)">
+        <div class="ad-thumb"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="6" width="6" height="12" rx="1"/><rect x="9" y="6" width="6" height="12" rx="1"/><rect x="16" y="6" width="6" height="12" rx="1"/></svg></div>
+        <div class="ad-info">
+          <div class="ad-name">Disease awareness — carousel</div>
+          <div class="ad-tags"><span class="ad-tag">Meta</span><span class="ad-tag">Carousel</span><span class="ad-tag">Unbranded</span></div>
+        </div>
+      </div>
+      <div class="ad-card" data-tags="Programmatic,Static-Dynamic,HCP,MLR Approved" onclick="showAdDetail(this)">
+        <div class="ad-thumb"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 15h18"/><path d="M12 15v6"/></svg></div>
+        <div class="ad-info">
+          <div class="ad-name">ISI scrolling banner — 300×600</div>
+          <div class="ad-tags"><span class="ad-tag">Programmatic</span><span class="ad-tag">Static-Dynamic</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ad-detail-panel" id="adDetailPanel">
+      <div class="ad-detail-header">
+        <div class="ad-detail-thumb"></div>
+        <div>
+          <div class="ad-detail-title" id="adDetailTitle"></div>
+          <div class="ad-tags" id="adDetailTags"></div>
+        </div>
+      </div>
+      <div class="ad-detail-body">
+        <div class="ad-detail-box">
+          <div class="ad-detail-box-label">What's working</div>
+          <p id="adDetailWorking">Strong hook in the first 3 seconds. Minimal copy keeps focus on the brand claim. Color contrast drives thumb-stop in feed.</p>
+        </div>
+        <div class="ad-detail-box">
+          <div class="ad-detail-box-label">Strategy recommendations</div>
+          <p id="adDetailRecs">Test a version with a stat headline. Try a darker colorway for the prescribing segment. A/B the CTA copy.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── CREATIVE TIMELINE ── -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-title">Creative Development Timeline</span>
+      <div class="section-line"></div>
+    </div>
+    <div class="timeline">
+      <div class="tl-item tl-done"><div class="tl-dot"></div><div class="tl-content"><div class="tl-title">Creative brief development</div><div class="tl-sub">Brief finalized and approved</div></div></div>
+      <div class="tl-item tl-done"><div class="tl-dot"></div><div class="tl-content"><div class="tl-title">Creative kickoff meeting</div><div class="tl-sub">Team aligned on direction</div></div></div>
+      <div class="tl-item tl-active"><div class="tl-dot"></div><div class="tl-content"><div class="tl-title">Draft mockups of ads</div><div class="tl-sub">In progress</div></div></div>
+      <div class="tl-item"><div class="tl-dot"></div><div class="tl-content"><div class="tl-title">Art to draft layouts</div></div></div>
+      <div class="tl-item"><div class="tl-dot"></div><div class="tl-content"><div class="tl-title">Internal reviews</div></div></div>
+      <div class="tl-item"><div class="tl-dot"></div><div class="tl-content"><div class="tl-title">Art to implement revisions</div></div></div>
+      <div class="tl-item"><div class="tl-dot"></div><div class="tl-content"><div class="tl-title">AM to send to client review</div></div></div>
+      <div class="tl-item"><div class="tl-dot"></div><div class="tl-content"><div class="tl-title">Art to implement client feedback</div></div></div>
+      <div class="tl-item"><div class="tl-dot"></div><div class="tl-content"><div class="tl-title">Client approval for MLR submission</div></div></div>
+      <div class="tl-item"><div class="tl-dot"></div><div class="tl-content"><div class="tl-title">MLR submission</div></div></div>
+    </div>
+  </div>
+
+  <!-- ── CREATIVE ASSETS ── -->
   <div class="section">
     <div class="section-header">
       <span class="section-title">Creative Assets</span>
@@ -89,7 +183,32 @@
 
 </div>
 
-<div class="version-badge">v1.2.0 · 2026-06-15 · Ron Scalici</div>
+<div class="version-badge">v1.3.0 · 2026-06-18 · Grace Irwin</div>
+
+<script>
+document.querySelectorAll('.filter-chip').forEach(chip => {
+  chip.addEventListener('click', () => {
+    document.querySelectorAll('.filter-chip').forEach(c => c.classList.remove('active'));
+    chip.classList.add('active');
+    const filter = chip.dataset.filter;
+    document.querySelectorAll('.ad-card').forEach(card => {
+      const tags = card.dataset.tags || '';
+      card.classList.toggle('hidden', filter !== 'all' && !tags.includes(filter));
+    });
+    document.getElementById('adDetailPanel').classList.remove('visible');
+  });
+});
+
+function showAdDetail(card) {
+  const name = card.querySelector('.ad-name').textContent;
+  const tags = card.dataset.tags.split(',');
+  document.getElementById('adDetailTitle').textContent = name;
+  document.getElementById('adDetailTags').innerHTML = tags.map(t => `<span class="ad-tag">${t}</span>`).join('');
+  const panel = document.getElementById('adDetailPanel');
+  panel.classList.add('visible');
+  setTimeout(() => panel.scrollIntoView({ behavior: 'smooth', block: 'nearest' }), 50);
+}
+</script>
 
 </body>
 </html>
