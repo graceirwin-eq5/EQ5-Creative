@@ -238,6 +238,87 @@
 #panel-design .coming-soon { text-align:center; padding:60px 40px; color:var(--gray-400); font-size:14px; }
 #panel-design .de-loading { padding:60px 0; text-align:center; color:var(--muted); font-size:14px; }
 
+/* Creative Asset Search */
+.cas-search-bar { display:flex; gap:10px; margin-bottom:1.25rem; }
+.cas-search-bar input {
+  flex:1; background:var(--surface); border:1px solid var(--border); border-radius:10px;
+  padding:12px 16px; color:#dde4f5; font-family:var(--font); font-size:14px; outline:none;
+  transition:border-color 0.15s;
+}
+.cas-search-bar input::placeholder { color:var(--muted); }
+.cas-search-bar input:focus { border-color:var(--cyan); }
+.cas-filters { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:1.75rem; }
+.cas-filter-btn {
+  font-family:var(--font); font-size:12px; font-weight:600; padding:6px 14px;
+  border-radius:20px; border:1px solid var(--border); background:transparent;
+  color:var(--muted); cursor:pointer; transition:all 0.15s;
+}
+.cas-filter-btn:hover { border-color:var(--cyan); color:#fff; }
+.cas-filter-btn.active { background:rgba(1,176,176,.12); border-color:var(--cyan); color:var(--cyan); }
+.cas-filter-btn .cas-chevron { margin-left:5px; font-size:10px; }
+.cas-dropdown-wrap { position:relative; }
+.cas-dropdown {
+  display:none; position:absolute; top:calc(100% + 6px); left:0; z-index:100;
+  background:#1a2236; border:1px solid var(--border); border-radius:10px;
+  padding:8px 0; min-width:180px; box-shadow:0 8px 24px rgba(0,0,0,.4);
+}
+.cas-dropdown.open { display:block; }
+.cas-dropdown-item {
+  padding:8px 16px; font-size:13px; color:var(--muted); cursor:pointer; transition:all 0.1s;
+  display:flex; align-items:center; gap:8px;
+}
+.cas-dropdown-item:hover { background:rgba(255,255,255,.05); color:#fff; }
+.cas-dropdown-item.selected { color:var(--cyan); }
+.cas-dropdown-item .cas-check { width:14px; opacity:0; }
+.cas-dropdown-item.selected .cas-check { opacity:1; }
+.cas-active-filters { display:flex; flex-wrap:wrap; gap:6px; margin-bottom:1.25rem; min-height:0; }
+.cas-tag {
+  display:flex; align-items:center; gap:6px; font-size:11px; font-weight:600;
+  padding:4px 10px; border-radius:12px; background:rgba(1,176,176,.12);
+  border:1px solid rgba(1,176,176,.3); color:var(--cyan);
+}
+.cas-tag button { background:none; border:none; color:var(--cyan); cursor:pointer; padding:0; font-size:13px; line-height:1; }
+.cas-results-meta { font-size:12px; color:var(--muted); margin-bottom:1rem; }
+.cas-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:16px; }
+.cas-card {
+  background:var(--surface); border:1px solid var(--border); border-radius:12px;
+  overflow:hidden; cursor:pointer; transition:all 0.15s;
+}
+.cas-card:hover { border-color:var(--cyan); transform:translateY(-2px); }
+.cas-card.active { border-color:var(--cyan); }
+.cas-thumb {
+  width:100%; aspect-ratio:1/1; background:var(--bg);
+  display:flex; align-items:center; justify-content:center;
+  color:var(--muted); font-size:12px; border-bottom:1px solid var(--border);
+}
+.cas-thumb-placeholder { text-align:center; }
+.cas-thumb-placeholder .cas-thumb-icon { font-size:28px; margin-bottom:6px; }
+.cas-card-body { padding:12px 14px; }
+.cas-card-title { font-size:13px; font-weight:600; color:#dde4f5; margin-bottom:6px; }
+.cas-card-tags { display:flex; flex-wrap:wrap; gap:4px; }
+.cas-card-tag { font-size:10px; padding:2px 7px; border-radius:8px; background:rgba(53,113,203,.15); color:#6fa3e8; }
+.cas-card-tag.tag-font { background:rgba(1,176,176,.1); color:var(--cyan); }
+.cas-card-tag.tag-layout { background:rgba(53,113,203,.15); color:#6fa3e8; }
+.cas-card-tag.tag-color { background:rgba(120,80,200,.15); color:#a87de8; }
+.cas-detail {
+  display:none; background:var(--surface); border:1px solid var(--border);
+  border-radius:14px; padding:28px 32px; margin-top:20px;
+}
+.cas-detail.visible { display:block; }
+.cas-detail-header { display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:20px; }
+.cas-detail-title { font-size:20px; font-weight:700; color:#dde4f5; }
+.cas-detail-close { background:none; border:none; color:var(--muted); cursor:pointer; font-size:20px; line-height:1; }
+.cas-detail-close:hover { color:#fff; }
+.cas-detail-body { display:grid; grid-template-columns:1fr 1fr; gap:24px; }
+.cas-detail-preview {
+  aspect-ratio:1/1; background:var(--bg); border:1px solid var(--border); border-radius:10px;
+  display:flex; align-items:center; justify-content:center; color:var(--muted); font-size:13px; text-align:center;
+}
+.cas-detail-meta h4 { font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:.06em; color:var(--muted); margin-bottom:8px; margin-top:16px; }
+.cas-detail-meta h4:first-child { margin-top:0; }
+.cas-detail-tags { display:flex; flex-wrap:wrap; gap:6px; }
+.cas-empty { padding:60px 0; text-align:center; color:var(--muted); font-size:14px; }
+
 /* Clinical Index inline grids */
 .specialty-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(180px,1fr)); gap:12px; margin-bottom:1.5rem; }
 .specialty-card { background:var(--surface); border:1px solid var(--border); border-radius:12px; padding:16px 18px; cursor:pointer; transition:all 0.15s; }
@@ -273,6 +354,7 @@
     <button class="main-nav-btn" onclick="showPanel('clinical')">Clinical Index</button>
     <button class="main-nav-btn" onclick="showPanel('library')">Ad Library</button>
     <button class="main-nav-btn" onclick="showPanel('timeline')">Creative Timeline</button>
+    <button class="main-nav-btn" onclick="showPanel('asset-search')">Creative Asset Search</button>
     <button class="main-nav-btn" onclick="showPanel('resources')">Resources</button>
   </nav>
 
@@ -865,6 +947,83 @@
     </div>
   </div>
 
+  <!-- ── CREATIVE ASSET SEARCH PANEL ── -->
+  <div class="panel" id="panel-asset-search">
+    <div class="page-header" style="margin-bottom:1.75rem;">
+      <div class="eyebrow">Design Intelligence</div>
+      <h2>Creative <span class="grad">Asset Search</span></h2>
+      <p class="page-subtitle">Search and filter every EQ5 ad by design element — font, layout, color, ad type, or account.</p>
+    </div>
+
+    <div class="cas-search-bar">
+      <input type="text" id="casSearchInput" placeholder="Search by ad name, drug, account…" oninput="casRender()">
+    </div>
+
+    <div class="cas-filters">
+      <div class="cas-dropdown-wrap">
+        <button class="cas-filter-btn" onclick="casToggleDropdown('font')">Font <span class="cas-chevron">▾</span></button>
+        <div class="cas-dropdown" id="cas-dd-font">
+          <div class="cas-dropdown-item" onclick="casToggleFilter('font','Neue Haas Grotesk')"><span class="cas-check">✓</span>Neue Haas Grotesk</div>
+          <div class="cas-dropdown-item" onclick="casToggleFilter('font','Canela')"><span class="cas-check">✓</span>Canela</div>
+          <div class="cas-dropdown-item" onclick="casToggleFilter('font','GT Alpina')"><span class="cas-check">✓</span>GT Alpina</div>
+          <div class="cas-dropdown-item" onclick="casToggleFilter('font','Suisse Int\'l')"><span class="cas-check">✓</span>Suisse Int'l</div>
+          <div class="cas-dropdown-item" onclick="casToggleFilter('font','Custom')"><span class="cas-check">✓</span>Custom / Brand Font</div>
+        </div>
+      </div>
+      <div class="cas-dropdown-wrap">
+        <button class="cas-filter-btn" onclick="casToggleDropdown('layout')">Layout <span class="cas-chevron">▾</span></button>
+        <div class="cas-dropdown" id="cas-dd-layout">
+          <div class="cas-dropdown-item" onclick="casToggleFilter('layout','Split Screen')"><span class="cas-check">✓</span>Split Screen</div>
+          <div class="cas-dropdown-item" onclick="casToggleFilter('layout','Full Bleed')"><span class="cas-check">✓</span>Full Bleed</div>
+          <div class="cas-dropdown-item" onclick="casToggleFilter('layout','Grid')"><span class="cas-check">✓</span>Grid</div>
+          <div class="cas-dropdown-item" onclick="casToggleFilter('layout','Centered')"><span class="cas-check">✓</span>Centered</div>
+          <div class="cas-dropdown-item" onclick="casToggleFilter('layout','Overlay Text')"><span class="cas-check">✓</span>Overlay Text</div>
+        </div>
+      </div>
+      <div class="cas-dropdown-wrap">
+        <button class="cas-filter-btn" onclick="casToggleDropdown('color')">Color Palette <span class="cas-chevron">▾</span></button>
+        <div class="cas-dropdown" id="cas-dd-color">
+          <div class="cas-dropdown-item" onclick="casToggleFilter('color','Dark / Navy')"><span class="cas-check">✓</span>Dark / Navy</div>
+          <div class="cas-dropdown-item" onclick="casToggleFilter('color','Light / White')"><span class="cas-check">✓</span>Light / White</div>
+          <div class="cas-dropdown-item" onclick="casToggleFilter('color','Brand Color')"><span class="cas-check">✓</span>Brand Color</div>
+          <div class="cas-dropdown-item" onclick="casToggleFilter('color','Gradient')"><span class="cas-check">✓</span>Gradient</div>
+          <div class="cas-dropdown-item" onclick="casToggleFilter('color','Muted / Neutral')"><span class="cas-check">✓</span>Muted / Neutral</div>
+        </div>
+      </div>
+      <div class="cas-dropdown-wrap">
+        <button class="cas-filter-btn" onclick="casToggleDropdown('type')">Ad Type <span class="cas-chevron">▾</span></button>
+        <div class="cas-dropdown" id="cas-dd-type">
+          <div class="cas-dropdown-item" onclick="casToggleFilter('type','Static')"><span class="cas-check">✓</span>Static</div>
+          <div class="cas-dropdown-item" onclick="casToggleFilter('type','Animated')"><span class="cas-check">✓</span>Animated</div>
+          <div class="cas-dropdown-item" onclick="casToggleFilter('type','Video')"><span class="cas-check">✓</span>Video</div>
+          <div class="cas-dropdown-item" onclick="casToggleFilter('type','Carousel')"><span class="cas-check">✓</span>Carousel</div>
+        </div>
+      </div>
+      <div class="cas-dropdown-wrap">
+        <button class="cas-filter-btn" onclick="casToggleDropdown('account')">Account <span class="cas-chevron">▾</span></button>
+        <div class="cas-dropdown" id="cas-dd-account">
+          <div class="cas-dropdown-item" onclick="casToggleFilter('account','Placeholder Account A')"><span class="cas-check">✓</span>Placeholder Account A</div>
+          <div class="cas-dropdown-item" onclick="casToggleFilter('account','Placeholder Account B')"><span class="cas-check">✓</span>Placeholder Account B</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cas-active-filters" id="casActiveTags"></div>
+    <div class="cas-results-meta" id="casResultsMeta"></div>
+    <div class="cas-grid" id="casGrid"></div>
+
+    <div class="cas-detail" id="casDetail">
+      <div class="cas-detail-header">
+        <div class="cas-detail-title" id="casDetailTitle"></div>
+        <button class="cas-detail-close" onclick="casCloseDetail()">✕</button>
+      </div>
+      <div class="cas-detail-body">
+        <div class="cas-detail-preview">Ad thumbnail will appear here once assets are connected.</div>
+        <div class="cas-detail-meta" id="casDetailMeta"></div>
+      </div>
+    </div>
+  </div>
+
   <div class="panel" id="panel-resources">
     <div class="resource-grid">
       <a class="resource-card" href="glossary/">
@@ -1054,6 +1213,167 @@ function showAdDetail(card) {
   panel.classList.add('visible');
   setTimeout(() => panel.scrollIntoView({ behavior: 'smooth', block: 'nearest' }), 50);
 }
+
+// ── CREATIVE ASSET SEARCH ──────────────────────────────────
+const CAS_ADS = [
+  // Populate this array when real assets are available.
+  // Each entry: { id, title, account, font, layout, color, type, thumb }
+  // Example:
+  // { id: 'ad-001', title: 'Drug A — Launch Static', account: 'Account Name',
+  //   font: 'Neue Haas Grotesk', layout: 'Split Screen', color: 'Dark / Navy', type: 'Static', thumb: '' }
+];
+
+const CAS_PLACEHOLDER_ADS = [
+  { id: 'ph-1', title: 'Ad Placeholder 01', account: 'Placeholder Account A', font: 'Neue Haas Grotesk', layout: 'Split Screen', color: 'Dark / Navy', type: 'Static' },
+  { id: 'ph-2', title: 'Ad Placeholder 02', account: 'Placeholder Account A', font: 'Canela', layout: 'Full Bleed', color: 'Brand Color', type: 'Animated' },
+  { id: 'ph-3', title: 'Ad Placeholder 03', account: 'Placeholder Account B', font: 'Neue Haas Grotesk', layout: 'Centered', color: 'Light / White', type: 'Static' },
+  { id: 'ph-4', title: 'Ad Placeholder 04', account: 'Placeholder Account B', font: 'GT Alpina', layout: 'Grid', color: 'Gradient', type: 'Video' },
+  { id: 'ph-5', title: 'Ad Placeholder 05', account: 'Placeholder Account A', font: 'Suisse Int\'l', layout: 'Overlay Text', color: 'Muted / Neutral', type: 'Carousel' },
+  { id: 'ph-6', title: 'Ad Placeholder 06', account: 'Placeholder Account B', font: 'Neue Haas Grotesk', layout: 'Split Screen', color: 'Dark / Navy', type: 'Animated' },
+];
+
+let casActiveFilters = {};
+let casSelectedCard = null;
+
+function casToggleDropdown(key) {
+  document.querySelectorAll('.cas-dropdown').forEach(d => {
+    if (d.id !== 'cas-dd-' + key) d.classList.remove('open');
+  });
+  document.getElementById('cas-dd-' + key).classList.toggle('open');
+}
+
+document.addEventListener('click', e => {
+  if (!e.target.closest('.cas-dropdown-wrap')) {
+    document.querySelectorAll('.cas-dropdown').forEach(d => d.classList.remove('open'));
+  }
+});
+
+function casToggleFilter(key, value) {
+  if (!casActiveFilters[key]) casActiveFilters[key] = new Set();
+  if (casActiveFilters[key].has(value)) {
+    casActiveFilters[key].delete(value);
+    if (casActiveFilters[key].size === 0) delete casActiveFilters[key];
+  } else {
+    casActiveFilters[key].add(value);
+  }
+  casSyncDropdownState();
+  casRenderTags();
+  casRender();
+}
+
+function casRemoveFilter(key, value) {
+  if (casActiveFilters[key]) {
+    casActiveFilters[key].delete(value);
+    if (casActiveFilters[key].size === 0) delete casActiveFilters[key];
+  }
+  casSyncDropdownState();
+  casRenderTags();
+  casRender();
+}
+
+function casSyncDropdownState() {
+  document.querySelectorAll('.cas-dropdown-item').forEach(item => {
+    const dd = item.closest('.cas-dropdown');
+    const key = dd.id.replace('cas-dd-', '');
+    const value = item.querySelector('.cas-check').nextSibling.textContent.trim();
+    const active = casActiveFilters[key] && casActiveFilters[key].has(value);
+    item.classList.toggle('selected', active);
+  });
+  document.querySelectorAll('.cas-filter-btn').forEach(btn => {
+    const key = btn.getAttribute('onclick').match(/'(\w+)'/)[1];
+    const hasActive = casActiveFilters[key] && casActiveFilters[key].size > 0;
+    btn.classList.toggle('active', hasActive);
+  });
+}
+
+function casRenderTags() {
+  const wrap = document.getElementById('casActiveTags');
+  wrap.innerHTML = '';
+  Object.entries(casActiveFilters).forEach(([key, vals]) => {
+    vals.forEach(val => {
+      const tag = document.createElement('div');
+      tag.className = 'cas-tag';
+      tag.innerHTML = `<span>${val}</span><button onclick="casRemoveFilter('${key}','${val.replace(/'/g,"\\'")}')">✕</button>`;
+      wrap.appendChild(tag);
+    });
+  });
+}
+
+function casMatches(ad) {
+  const q = document.getElementById('casSearchInput').value.toLowerCase();
+  if (q && !ad.title.toLowerCase().includes(q) && !ad.account.toLowerCase().includes(q)) return false;
+  for (const [key, vals] of Object.entries(casActiveFilters)) {
+    if (vals.size && !vals.has(ad[key])) return false;
+  }
+  return true;
+}
+
+function casRender() {
+  const source = CAS_ADS.length > 0 ? CAS_ADS : CAS_PLACEHOLDER_ADS;
+  const filtered = source.filter(casMatches);
+  const grid = document.getElementById('casGrid');
+  const meta = document.getElementById('casResultsMeta');
+  const isPlaceholder = CAS_ADS.length === 0;
+
+  meta.textContent = isPlaceholder
+    ? `${filtered.length} placeholder${filtered.length !== 1 ? 's' : ''} shown — real ads will appear here once assets are connected`
+    : `${filtered.length} ad${filtered.length !== 1 ? 's' : ''} found`;
+
+  if (filtered.length === 0) {
+    grid.innerHTML = '<div class="cas-empty">No ads match the current filters.</div>';
+    return;
+  }
+
+  grid.innerHTML = '';
+  filtered.forEach(ad => {
+    const card = document.createElement('div');
+    card.className = 'cas-card';
+    card.dataset.id = ad.id;
+    card.innerHTML = `
+      <div class="cas-thumb">
+        ${ad.thumb ? `<img src="${ad.thumb}" style="width:100%;height:100%;object-fit:cover;">` : `<div class="cas-thumb-placeholder"><div class="cas-thumb-icon">🖼</div><div>Thumbnail pending</div></div>`}
+      </div>
+      <div class="cas-card-body">
+        <div class="cas-card-title">${ad.title}</div>
+        <div class="cas-card-tags">
+          <span class="cas-card-tag tag-font">${ad.font}</span>
+          <span class="cas-card-tag tag-layout">${ad.layout}</span>
+          <span class="cas-card-tag tag-color">${ad.color}</span>
+        </div>
+      </div>`;
+    card.onclick = () => casOpenDetail(ad, card);
+    grid.appendChild(card);
+  });
+}
+
+function casOpenDetail(ad, card) {
+  document.querySelectorAll('.cas-card').forEach(c => c.classList.remove('active'));
+  card.classList.add('active');
+  casSelectedCard = card;
+  document.getElementById('casDetailTitle').textContent = ad.title;
+  document.getElementById('casDetailMeta').innerHTML = `
+    <h4>Account</h4><p style="color:#dde4f5;font-size:14px;">${ad.account}</p>
+    <h4>Design Tags</h4>
+    <div class="cas-detail-tags">
+      <span class="cas-card-tag tag-font">${ad.font}</span>
+      <span class="cas-card-tag tag-layout">${ad.layout}</span>
+      <span class="cas-card-tag tag-color">${ad.color}</span>
+      <span class="cas-card-tag">${ad.type}</span>
+    </div>
+    <h4 style="margin-top:20px;">Asset</h4>
+    <p style="color:var(--muted);font-size:13px;">Ad file will appear here once assets are connected to the hub.</p>`;
+  const detail = document.getElementById('casDetail');
+  detail.classList.add('visible');
+  setTimeout(() => detail.scrollIntoView({ behavior: 'smooth', block: 'nearest' }), 50);
+}
+
+function casCloseDetail() {
+  document.getElementById('casDetail').classList.remove('visible');
+  document.querySelectorAll('.cas-card').forEach(c => c.classList.remove('active'));
+  casSelectedCard = null;
+}
+
+document.addEventListener('DOMContentLoaded', () => casRender());
 </script>
 
 </body>
