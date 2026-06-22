@@ -140,47 +140,24 @@
   --tag-bg:     rgba(1,176,176,0.15);
   --tag-text:   var(--cyan);
   --rule:       var(--border);
-  --sidebar-w:  240px;
   font-family: 'Inter', var(--font), sans-serif;
   font-size: 15px;
   line-height: 1.7;
 }
-#panel-design .de-shell { display: flex; gap: 0; min-height: 60vh; }
-#panel-design .sidebar {
-  width: var(--sidebar-w); flex-shrink: 0;
-  background: var(--navy-mid); padding: 24px 0;
-  border-radius: 14px; align-self: flex-start;
-  position: sticky; top: 0; max-height: 85vh; overflow-y: auto;
+/* Top nav (mirrors account-nav) */
+#panel-design .de-top-nav {
+  display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 2rem;
 }
-#panel-design .sidebar::-webkit-scrollbar { width: 4px; }
-#panel-design .sidebar::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius:2px; }
-#panel-design .main { flex:1; min-width:0; padding: 0 0 80px 40px; }
-#panel-design .sidebar-section { margin-bottom: 4px; }
-#panel-design .sidebar-section-btn {
-  width:100%; background:none; border:none; display:flex; align-items:center;
-  justify-content:space-between; padding:10px 20px; cursor:pointer; text-align:left; transition:background 0.15s;
+#panel-design .de-nav-btn {
+  font-family: var(--font); font-size: 13px; font-weight: 600;
+  padding: 8px 18px; border-radius: 8px; border: 1px solid var(--border);
+  background: transparent; color: var(--muted); cursor: pointer; transition: all 0.15s;
 }
-#panel-design .sidebar-section-btn:hover { background:rgba(255,255,255,0.05); }
-#panel-design .sidebar-section-btn.active { background:rgba(1,176,176,0.08); }
-#panel-design .sidebar-section-label { display:flex; align-items:center; gap:10px; }
-#panel-design .sidebar-num { font-size:10px; font-weight:700; letter-spacing:0.08em; color:var(--cyan); opacity:0.7; width:18px; }
-#panel-design .sidebar-section-btn.active .sidebar-num { opacity:1; }
-#panel-design .sidebar-section-name { font-size:12px; font-weight:600; color:rgba(255,255,255,0.55); letter-spacing:0.02em; }
-#panel-design .sidebar-section-btn.active .sidebar-section-name { color:rgba(255,255,255,0.9); }
-#panel-design .sidebar-chevron { font-size:10px; color:rgba(255,255,255,0.25); transition:transform 0.2s; flex-shrink:0; }
-#panel-design .sidebar-section.open .sidebar-chevron { transform:rotate(90deg); }
-#panel-design .sidebar-sub-list { display:none; padding:4px 0 8px; }
-#panel-design .sidebar-section.open .sidebar-sub-list { display:block; }
-#panel-design .sidebar-sub-btn {
-  width:100%; background:none; border:none; padding:6px 20px 6px 48px;
-  cursor:pointer; text-align:left; font-size:12px; color:rgba(255,255,255,0.38);
-  transition:color 0.15s,background 0.15s; display:flex; align-items:center; gap:8px; line-height:1.4;
-}
-#panel-design .sidebar-sub-btn:hover { color:rgba(255,255,255,0.7); background:rgba(255,255,255,0.03); }
-#panel-design .sidebar-sub-btn.active { color:var(--cyan); }
-#panel-design .sidebar-sub-dot { width:4px; height:4px; border-radius:50%; background:currentColor; flex-shrink:0; }
-#panel-design .doc-section { display:none; }
-#panel-design .doc-section.active { display:block; }
+#panel-design .de-nav-btn:hover { border-color: var(--cyan); color: var(--white); }
+#panel-design .de-nav-btn.active { background: var(--surface); border-color: var(--cyan-alt); color: var(--white); }
+/* Section content */
+#panel-design .doc-section { display: none; }
+#panel-design .doc-section.active { display: block; }
 #panel-design .section-header { padding:40px 0 24px; border-bottom:1px solid var(--rule); margin-bottom:32px; }
 #panel-design .section-num { font-size:11px; font-weight:600; letter-spacing:0.12em; text-transform:uppercase; color:var(--cyan); margin-bottom:8px; }
 #panel-design .section-title { font-family:var(--font); font-size:34px; font-weight:800; color:var(--white); letter-spacing:-0.02em; line-height:1.1; }
@@ -870,23 +847,49 @@ async function loadDesignElements() {
     const html = await res.text();
     const doc = new DOMParser().parseFromString(html, 'text/html');
 
-    // Build shell: sidebar + main content
-    const sidebar = doc.querySelector('.sidebar');
-    const main    = doc.querySelector('.main');
-    if (!sidebar || !main) return;
+    const sections = [
+      { key: 'typography',  label: 'Typography' },
+      { key: 'color',       label: 'Color Palettes' },
+      { key: 'layout',      label: 'Layout & Placement' },
+      { key: 'sizing',      label: 'Sizing' },
+      { key: 'imagery',     label: 'Imagery' },
+      { key: 'iconography', label: 'Iconography' },
+    ];
 
-    // Fix sidebar sticky within panel (not full viewport)
-    sidebar.style.cssText = '';
+    // Build top nav
+    const nav = document.createElement('div');
+    nav.className = 'de-top-nav';
 
-    const shell = document.createElement('div');
-    shell.className = 'de-shell';
-    shell.appendChild(sidebar);
-    shell.appendChild(main);
+    // Content wrapper
+    const content = document.createElement('div');
+
+    sections.forEach((s, i) => {
+      // Nav button
+      const btn = document.createElement('button');
+      btn.className = 'de-nav-btn' + (i === 0 ? ' active' : '');
+      btn.textContent = s.label;
+      btn.onclick = () => {
+        nav.querySelectorAll('.de-nav-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        content.querySelectorAll('.doc-section').forEach(p => p.classList.remove('active'));
+        const target = content.querySelector('#section-' + s.key);
+        if (target) target.classList.add('active');
+      };
+      nav.appendChild(btn);
+
+      // Section content
+      const section = doc.querySelector('#section-' + s.key);
+      if (section) {
+        if (i === 0) section.classList.add('active');
+        content.appendChild(section);
+      }
+    });
 
     container.innerHTML = '';
-    container.appendChild(shell);
+    container.appendChild(nav);
+    container.appendChild(content);
 
-    // Run design-elements JS (toggleSection, toggleAccordion, scrollToAccordion)
+    // Run accordion JS
     const scriptEl = doc.querySelector('script');
     if (scriptEl) { try { new Function(scriptEl.textContent)(); } catch(e) {} }
 
