@@ -237,6 +237,20 @@
 #panel-design .personality-quote { margin-top:10px; padding-top:10px; border-top:1px solid var(--rule); font-size:12px; font-style:italic; color:var(--gray-400); }
 #panel-design .coming-soon { text-align:center; padding:60px 40px; color:var(--gray-400); font-size:14px; }
 #panel-design .de-loading { padding:60px 0; text-align:center; color:var(--muted); font-size:14px; }
+
+/* Clinical Index inline grids */
+.specialty-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(180px,1fr)); gap:12px; margin-bottom:1.5rem; }
+.specialty-card { background:var(--surface); border:1px solid var(--border); border-radius:12px; padding:16px 18px; cursor:pointer; transition:all 0.15s; }
+.specialty-card:hover { border-color:var(--cyan); }
+.specialty-card.active { border-color:var(--cyan); background:rgba(1,176,176,.08); }
+.specialty-name { font-weight:600; font-size:14px; color:#dde4f5; margin-bottom:4px; }
+.specialty-count { font-size:12px; color:var(--muted); }
+.indication-badge { display:inline-block; font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:.05em; padding:2px 8px; border-radius:4px; margin-bottom:8px; background:rgba(1,176,176,.15); color:var(--cyan); }
+.indication-badge:has(+ .specialty-name) { }
+.clinical-detail { display:none; background:var(--surface); border:1px solid var(--border); border-radius:12px; padding:24px 28px; margin-top:8px; }
+.clinical-detail.visible { display:block; }
+.detail-heading { font-size:18px; font-weight:700; color:#dde4f5; margin-bottom:12px; }
+.empty-state { color:var(--muted); font-size:14px; }
 </style>
 </head>
 <body>
@@ -769,47 +783,84 @@
 
   <!-- ── CLINICAL INDEX PANEL ── -->
   <div class="panel" id="panel-clinical">
-    <div class="page-header" style="margin-bottom:2rem;">
-      <div class="eyebrow">Ad Library</div>
-      <h2>Clinical <span class="grad">Index</span></h2>
-      <p class="page-subtitle">Browse the ad library by clinical category — organized by physician specialty, therapeutic area, and new indications.</p>
-    </div>
     <div class="account-nav">
       <button class="account-btn active" onclick="showClinical('specialty')">By Specialty</button>
       <button class="account-btn" onclick="showClinical('therapeutics')">By Therapeutics</button>
       <button class="account-btn" onclick="showClinical('indications')">New Indications</button>
     </div>
+
+    <!-- BY SPECIALTY -->
     <div class="account-panel active" id="clinical-specialty">
-      <p class="page-subtitle" style="margin-bottom:1.5rem;">Ad library organized by physician specialty. Data will populate as campaigns are added.</p>
-      <div class="resource-grid">
-        <a class="resource-card" href="specialty/">
-          <div class="resource-card-icon">🩺</div>
-          <div class="resource-card-title">By Specialty</div>
-          <div class="resource-card-desc">Cardiology, Oncology, Neurology, Rare Disease, PCP, Hematology, Endocrinology, Pulmonology, Rheumatology, Gastroenterology.</div>
-          <div class="resource-card-link">Open Full View</div>
-        </a>
+      <p class="page-subtitle" style="margin-bottom:1.5rem;">Ads organized by physician specialty. Click a specialty to see all related creative.</p>
+      <div class="specialty-grid">
+        <div class="specialty-card" onclick="showSpecialty(this)"><div class="specialty-name">Cardiology</div><div class="specialty-count">0 ads</div></div>
+        <div class="specialty-card" onclick="showSpecialty(this)"><div class="specialty-name">Oncology</div><div class="specialty-count">0 ads</div></div>
+        <div class="specialty-card" onclick="showSpecialty(this)"><div class="specialty-name">Neurology</div><div class="specialty-count">0 ads</div></div>
+        <div class="specialty-card" onclick="showSpecialty(this)"><div class="specialty-name">Rare Disease</div><div class="specialty-count">0 ads</div></div>
+        <div class="specialty-card" onclick="showSpecialty(this)"><div class="specialty-name">Primary Care (PCP)</div><div class="specialty-count">0 ads</div></div>
+        <div class="specialty-card" onclick="showSpecialty(this)"><div class="specialty-name">Hematology</div><div class="specialty-count">0 ads</div></div>
+        <div class="specialty-card" onclick="showSpecialty(this)"><div class="specialty-name">Endocrinology</div><div class="specialty-count">0 ads</div></div>
+        <div class="specialty-card" onclick="showSpecialty(this)"><div class="specialty-name">Pulmonology</div><div class="specialty-count">0 ads</div></div>
+        <div class="specialty-card" onclick="showSpecialty(this)"><div class="specialty-name">Rheumatology</div><div class="specialty-count">0 ads</div></div>
+        <div class="specialty-card" onclick="showSpecialty(this)"><div class="specialty-name">Gastroenterology</div><div class="specialty-count">0 ads</div></div>
+      </div>
+      <div class="clinical-detail" id="specialtyDetail">
+        <div class="detail-heading" id="specialtyDetailTitle"></div>
+        <p class="empty-state">No ads in this specialty yet. Ads will populate here once data is available from the ad library.</p>
       </div>
     </div>
+
+    <!-- BY THERAPEUTICS -->
     <div class="account-panel" id="clinical-therapeutics">
-      <p class="page-subtitle" style="margin-bottom:1.5rem;">Ad library organized by therapeutic area. Data will populate as campaigns are added.</p>
-      <div class="resource-grid">
-        <a class="resource-card" href="therapeutics/">
-          <div class="resource-card-icon">💊</div>
-          <div class="resource-card-title">By Therapeutics</div>
-          <div class="resource-card-desc">Cardiovascular, Oncology, Rare Disease, Immunology, Neurology, Dermatology, Respiratory, Endocrinology, Hematology, Gastroenterology, Musculoskeletal, Infectious Disease.</div>
-          <div class="resource-card-link">Open Full View</div>
-        </a>
+      <p class="page-subtitle" style="margin-bottom:1.5rem;">Ads organized by therapeutic area. Click a category to see all related creative.</p>
+      <div class="specialty-grid">
+        <div class="specialty-card" onclick="showTherapeutic(this)"><div class="specialty-name">Cardiovascular</div><div class="specialty-count">0 ads</div></div>
+        <div class="specialty-card" onclick="showTherapeutic(this)"><div class="specialty-name">Oncology</div><div class="specialty-count">0 ads</div></div>
+        <div class="specialty-card" onclick="showTherapeutic(this)"><div class="specialty-name">CNS / Neurology</div><div class="specialty-count">0 ads</div></div>
+        <div class="specialty-card" onclick="showTherapeutic(this)"><div class="specialty-name">Immunology</div><div class="specialty-count">0 ads</div></div>
+        <div class="specialty-card" onclick="showTherapeutic(this)"><div class="specialty-name">Rare Disease</div><div class="specialty-count">0 ads</div></div>
+        <div class="specialty-card" onclick="showTherapeutic(this)"><div class="specialty-name">Hematology</div><div class="specialty-count">0 ads</div></div>
+        <div class="specialty-card" onclick="showTherapeutic(this)"><div class="specialty-name">Metabolic / Endocrine</div><div class="specialty-count">0 ads</div></div>
+        <div class="specialty-card" onclick="showTherapeutic(this)"><div class="specialty-name">Respiratory</div><div class="specialty-count">0 ads</div></div>
+        <div class="specialty-card" onclick="showTherapeutic(this)"><div class="specialty-name">Gastroenterology</div><div class="specialty-count">0 ads</div></div>
+        <div class="specialty-card" onclick="showTherapeutic(this)"><div class="specialty-name">Musculoskeletal</div><div class="specialty-count">0 ads</div></div>
+        <div class="specialty-card" onclick="showTherapeutic(this)"><div class="specialty-name">Dermatology</div><div class="specialty-count">0 ads</div></div>
+        <div class="specialty-card" onclick="showTherapeutic(this)"><div class="specialty-name">Infectious Disease</div><div class="specialty-count">0 ads</div></div>
+      </div>
+      <div class="clinical-detail" id="therapeuticDetail">
+        <div class="detail-heading" id="therapeuticDetailTitle"></div>
+        <p class="empty-state">No ads in this therapeutic area yet. Ads will populate here once data is available from the ad library.</p>
       </div>
     </div>
+
+    <!-- NEW INDICATIONS -->
     <div class="account-panel" id="clinical-indications">
       <p class="page-subtitle" style="margin-bottom:1.5rem;">Creative organized around newly approved indications and label expansions.</p>
-      <div class="resource-grid">
-        <a class="resource-card" href="new-indications/">
-          <div class="resource-card-icon">✅</div>
-          <div class="resource-card-title">New Indications</div>
-          <div class="resource-card-desc">Ads organized by newly approved indications and label expansions. Populate as new approvals are added to the library.</div>
-          <div class="resource-card-link">Open Full View</div>
-        </a>
+      <div class="specialty-grid">
+        <div class="specialty-card" onclick="showIndication(this)">
+          <div class="indication-badge">Now Approved</div>
+          <div class="specialty-name">Indication Placeholder A</div>
+          <div class="specialty-count">Drug / Brand Name TBD · 0 ads</div>
+        </div>
+        <div class="specialty-card" onclick="showIndication(this)">
+          <div class="indication-badge">Now Approved</div>
+          <div class="specialty-name">Indication Placeholder B</div>
+          <div class="specialty-count">Drug / Brand Name TBD · 0 ads</div>
+        </div>
+        <div class="specialty-card" onclick="showIndication(this)">
+          <div class="indication-badge">Label Expansion</div>
+          <div class="specialty-name">Indication Placeholder C</div>
+          <div class="specialty-count">Drug / Brand Name TBD · 0 ads</div>
+        </div>
+        <div class="specialty-card" onclick="showIndication(this)">
+          <div class="indication-badge">Label Expansion</div>
+          <div class="specialty-name">Indication Placeholder D</div>
+          <div class="specialty-count">Drug / Brand Name TBD · 0 ads</div>
+        </div>
+      </div>
+      <div class="clinical-detail" id="indicationDetail">
+        <div class="detail-heading" id="indicationDetailTitle"></div>
+        <p class="empty-state">No ads for this indication yet. Ads will populate here once data is available from the ad library.</p>
       </div>
     </div>
   </div>
@@ -954,6 +1005,33 @@ function showClinical(id) {
   document.querySelectorAll('#panel-clinical .account-btn').forEach(b => b.classList.remove('active'));
   document.getElementById('clinical-' + id).classList.add('active');
   event.target.classList.add('active');
+}
+
+function showSpecialty(card) {
+  const grid = card.closest('.specialty-grid');
+  grid.querySelectorAll('.specialty-card').forEach(c => c.classList.remove('active'));
+  card.classList.add('active');
+  const detail = document.getElementById('specialtyDetail');
+  document.getElementById('specialtyDetailTitle').textContent = card.querySelector('.specialty-name').textContent;
+  detail.classList.add('visible');
+}
+
+function showTherapeutic(card) {
+  const grid = card.closest('.specialty-grid');
+  grid.querySelectorAll('.specialty-card').forEach(c => c.classList.remove('active'));
+  card.classList.add('active');
+  const detail = document.getElementById('therapeuticDetail');
+  document.getElementById('therapeuticDetailTitle').textContent = card.querySelector('.specialty-name').textContent;
+  detail.classList.add('visible');
+}
+
+function showIndication(card) {
+  const grid = card.closest('.specialty-grid');
+  grid.querySelectorAll('.specialty-card').forEach(c => c.classList.remove('active'));
+  card.classList.add('active');
+  const detail = document.getElementById('indicationDetail');
+  document.getElementById('indicationDetailTitle').textContent = card.querySelector('.specialty-name').textContent;
+  detail.classList.add('visible');
 }
 
 function showLibView(id) {
