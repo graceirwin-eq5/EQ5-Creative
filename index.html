@@ -256,6 +256,7 @@
   <nav class="main-nav">
     <button class="main-nav-btn active" onclick="showPanel('accounts')">Accounts</button>
     <button class="main-nav-btn" onclick="showPanel('design')">Design Elements</button>
+    <button class="main-nav-btn" onclick="showPanel('clinical')">Clinical Index</button>
     <button class="main-nav-btn" onclick="showPanel('library')">Ad Library</button>
     <button class="main-nav-btn" onclick="showPanel('timeline')">Creative Timeline</button>
     <button class="main-nav-btn" onclick="showPanel('resources')">Resources</button>
@@ -766,6 +767,53 @@
     <div id="design-content"><div class="de-loading">Loading design elements…</div></div>
   </div>
 
+  <!-- ── CLINICAL INDEX PANEL ── -->
+  <div class="panel" id="panel-clinical">
+    <div class="page-header" style="margin-bottom:2rem;">
+      <div class="eyebrow">Ad Library</div>
+      <h2>Clinical <span class="grad">Index</span></h2>
+      <p class="page-subtitle">Browse the ad library by clinical category — organized by physician specialty, therapeutic area, and new indications.</p>
+    </div>
+    <div class="account-nav">
+      <button class="account-btn active" onclick="showClinical('specialty')">By Specialty</button>
+      <button class="account-btn" onclick="showClinical('therapeutics')">By Therapeutics</button>
+      <button class="account-btn" onclick="showClinical('indications')">New Indications</button>
+    </div>
+    <div class="account-panel active" id="clinical-specialty">
+      <p class="page-subtitle" style="margin-bottom:1.5rem;">Ad library organized by physician specialty. Data will populate as campaigns are added.</p>
+      <div class="resource-grid">
+        <a class="resource-card" href="specialty/">
+          <div class="resource-card-icon">🩺</div>
+          <div class="resource-card-title">By Specialty</div>
+          <div class="resource-card-desc">Cardiology, Oncology, Neurology, Rare Disease, PCP, Hematology, Endocrinology, Pulmonology, Rheumatology, Gastroenterology.</div>
+          <div class="resource-card-link">Open Full View</div>
+        </a>
+      </div>
+    </div>
+    <div class="account-panel" id="clinical-therapeutics">
+      <p class="page-subtitle" style="margin-bottom:1.5rem;">Ad library organized by therapeutic area. Data will populate as campaigns are added.</p>
+      <div class="resource-grid">
+        <a class="resource-card" href="therapeutics/">
+          <div class="resource-card-icon">💊</div>
+          <div class="resource-card-title">By Therapeutics</div>
+          <div class="resource-card-desc">Cardiovascular, Oncology, Rare Disease, Immunology, Neurology, Dermatology, Respiratory, Endocrinology, Hematology, Gastroenterology, Musculoskeletal, Infectious Disease.</div>
+          <div class="resource-card-link">Open Full View</div>
+        </a>
+      </div>
+    </div>
+    <div class="account-panel" id="clinical-indications">
+      <p class="page-subtitle" style="margin-bottom:1.5rem;">Creative organized around newly approved indications and label expansions.</p>
+      <div class="resource-grid">
+        <a class="resource-card" href="new-indications/">
+          <div class="resource-card-icon">✅</div>
+          <div class="resource-card-title">New Indications</div>
+          <div class="resource-card-desc">Ads organized by newly approved indications and label expansions. Populate as new approvals are added to the library.</div>
+          <div class="resource-card-link">Open Full View</div>
+        </a>
+      </div>
+    </div>
+  </div>
+
   <div class="panel" id="panel-resources">
     <div class="resource-grid">
       <a class="resource-card" href="glossary/">
@@ -774,23 +822,11 @@
         <div class="resource-card-desc">Marketing &amp; video metrics terminology — click any term to reveal its definition.</div>
         <div class="resource-card-link">Open Glossary</div>
       </a>
-      <a class="resource-card" href="specialty/">
-        <div class="resource-card-icon">🩺</div>
-        <div class="resource-card-title">By Specialty</div>
-        <div class="resource-card-desc">Ad library organized by physician specialty — cardiology, oncology, neurology, and more.</div>
-        <div class="resource-card-link">Open</div>
-      </a>
-      <a class="resource-card" href="therapeutics/">
-        <div class="resource-card-icon">💊</div>
-        <div class="resource-card-title">By Therapeutics</div>
-        <div class="resource-card-desc">Ad library organized by therapeutic area — cardiovascular, rare disease, immunology, and more.</div>
-        <div class="resource-card-link">Open</div>
-      </a>
-      <a class="resource-card" href="new-indications/">
-        <div class="resource-card-icon">✅</div>
-        <div class="resource-card-title">New Indications</div>
-        <div class="resource-card-desc">Creative organized around newly approved indications and label expansions.</div>
-        <div class="resource-card-link">Open</div>
+      <a class="resource-card" href="#" onclick="event.preventDefault();document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));document.querySelectorAll('.main-nav-btn').forEach(b=>b.classList.remove('active'));document.getElementById('panel-clinical').classList.add('active');document.querySelector('[onclick*=\'clinical\']').classList.add('active');">
+        <div class="resource-card-icon">🔬</div>
+        <div class="resource-card-title">Clinical Index</div>
+        <div class="resource-card-desc">Browse ads by physician specialty, therapeutic area, and new indications.</div>
+        <div class="resource-card-link">Open Clinical Index</div>
       </a>
       <a class="resource-card" href="design-elements/">
         <div class="resource-card-icon">🎨</div>
@@ -911,6 +947,13 @@ function showAccount(id) {
   document.getElementById('account-' + id).classList.add('active');
   event.target.classList.add('active');
   document.getElementById('adDetailPanel').classList.remove('visible');
+}
+
+function showClinical(id) {
+  document.querySelectorAll('#panel-clinical .account-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('#panel-clinical .account-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('clinical-' + id).classList.add('active');
+  event.target.classList.add('active');
 }
 
 function showLibView(id) {
