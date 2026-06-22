@@ -1006,6 +1006,15 @@
           <div class="cas-dropdown-item" onclick="casToggleFilter('account','Placeholder Account B')"><span class="cas-check">✓</span>Placeholder Account B</div>
         </div>
       </div>
+      <div class="cas-dropdown-wrap">
+        <button class="cas-filter-btn" onclick="casToggleDropdown('iconography')">Iconography <span class="cas-chevron">▾</span></button>
+        <div class="cas-dropdown" id="cas-dd-iconography">
+          <div class="cas-dropdown-item" onclick="casToggleFilter('iconography','Line Icons')"><span class="cas-check">✓</span>Line Icons</div>
+          <div class="cas-dropdown-item" onclick="casToggleFilter('iconography','Filled Icons')"><span class="cas-check">✓</span>Filled Icons</div>
+          <div class="cas-dropdown-item" onclick="casToggleFilter('iconography','Custom Illustrated')"><span class="cas-check">✓</span>Custom Illustrated</div>
+          <div class="cas-dropdown-item" onclick="casToggleFilter('iconography','No Icons')"><span class="cas-check">✓</span>No Icons</div>
+        </div>
+      </div>
     </div>
 
     <div class="cas-active-filters" id="casActiveTags"></div>
@@ -1224,12 +1233,12 @@ const CAS_ADS = [
 ];
 
 const CAS_PLACEHOLDER_ADS = [
-  { id: 'ph-1', title: 'Ad Placeholder 01', account: 'Placeholder Account A', font: 'Neue Haas Grotesk', layout: 'Split Screen', color: 'Dark / Navy', type: 'Static' },
-  { id: 'ph-2', title: 'Ad Placeholder 02', account: 'Placeholder Account A', font: 'Canela', layout: 'Full Bleed', color: 'Brand Color', type: 'Animated' },
-  { id: 'ph-3', title: 'Ad Placeholder 03', account: 'Placeholder Account B', font: 'Neue Haas Grotesk', layout: 'Centered', color: 'Light / White', type: 'Static' },
-  { id: 'ph-4', title: 'Ad Placeholder 04', account: 'Placeholder Account B', font: 'GT Alpina', layout: 'Grid', color: 'Gradient', type: 'Video' },
-  { id: 'ph-5', title: 'Ad Placeholder 05', account: 'Placeholder Account A', font: 'Suisse Int\'l', layout: 'Overlay Text', color: 'Muted / Neutral', type: 'Carousel' },
-  { id: 'ph-6', title: 'Ad Placeholder 06', account: 'Placeholder Account B', font: 'Neue Haas Grotesk', layout: 'Split Screen', color: 'Dark / Navy', type: 'Animated' },
+  { id: 'ph-1', title: 'Ad Placeholder 01', account: 'Placeholder Account A', font: 'Neue Haas Grotesk', layout: 'Split Screen', color: 'Dark / Navy', type: 'Static', iconography: 'Line Icons' },
+  { id: 'ph-2', title: 'Ad Placeholder 02', account: 'Placeholder Account A', font: 'Canela', layout: 'Full Bleed', color: 'Brand Color', type: 'Animated', iconography: 'No Icons' },
+  { id: 'ph-3', title: 'Ad Placeholder 03', account: 'Placeholder Account B', font: 'Neue Haas Grotesk', layout: 'Centered', color: 'Light / White', type: 'Static', iconography: 'Filled Icons' },
+  { id: 'ph-4', title: 'Ad Placeholder 04', account: 'Placeholder Account B', font: 'GT Alpina', layout: 'Grid', color: 'Gradient', type: 'Video', iconography: 'Custom Illustrated' },
+  { id: 'ph-5', title: 'Ad Placeholder 05', account: 'Placeholder Account A', font: 'Suisse Int\'l', layout: 'Overlay Text', color: 'Muted / Neutral', type: 'Carousel', iconography: 'Line Icons' },
+  { id: 'ph-6', title: 'Ad Placeholder 06', account: 'Placeholder Account B', font: 'Neue Haas Grotesk', layout: 'Split Screen', color: 'Dark / Navy', type: 'Animated', iconography: 'Filled Icons' },
 ];
 
 let casActiveFilters = {};
@@ -1359,6 +1368,7 @@ function casOpenDetail(ad, card) {
       <span class="cas-card-tag tag-layout">${ad.layout}</span>
       <span class="cas-card-tag tag-color">${ad.color}</span>
       <span class="cas-card-tag">${ad.type}</span>
+      ${ad.iconography ? `<span class="cas-card-tag">${ad.iconography}</span>` : ''}
     </div>
     <h4 style="margin-top:20px;">Asset</h4>
     <p style="color:var(--muted);font-size:13px;">Ad file will appear here once assets are connected to the hub.</p>`;
