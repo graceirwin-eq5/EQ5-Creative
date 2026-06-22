@@ -340,6 +340,45 @@
     font-size: 11px; flex-shrink: 0;
   }
   .footer span { color: var(--cyan); }
+
+  /* ── EQ5 HUB DARK THEME OVERRIDE ── */
+  :root {
+    --white:      #0a1020;
+    --gray-100:   #1c2844;
+    --gray-200:   #253050;
+    --navy:       #0a1020;
+    --navy-mid:   #141e35;
+    --navy-light: #1c2844;
+    --text:       #dde4f5;
+    --text-light: #8a95b1;
+    --rule:       rgba(255,255,255,0.1);
+    --tag-bg:     rgba(1,176,176,0.15);
+    --tag-text:   #01b0b0;
+    --cyan:       #01b0b0;
+    --accent:     #01b0b0;
+  }
+  /* elements that used --navy as text color (not bg) — override to light */
+  .section-title,
+  h3,
+  .card-title,
+  .card-specimen,
+  .weight-specimen,
+  .hier-primary,
+  .hier-secondary,
+  .accordion-title,
+  .callout strong,
+  .personality-key { color: #dde4f5; }
+
+  .accordion-body        { background: #141e35; border-top-color: rgba(255,255,255,0.08); }
+  .accordion-trigger     { background: #1c2844; }
+  .accordion-trigger:hover { background: #253050; }
+  .accordion.open .accordion-trigger { background: #253b62; }
+  .hierarchy-demo        { background: #141e35; border-color: rgba(255,255,255,0.1); }
+  .personality-body      { background: #141e35; }
+  .personality-header    { background: #253b62; }
+  .pill                  { background: #1c2844; color: #dde4f5; border-color: rgba(255,255,255,0.1); }
+  .accordion-icon        { color: rgba(255,255,255,0.3); }
+  .back-link-bar         { background: #0a1020 !important; }
 </style>
 </head>
 <body>
