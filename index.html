@@ -140,18 +140,24 @@
   --tag-bg:     rgba(1,176,176,0.15);
   --tag-text:   var(--cyan);
   --rule:       var(--border);
-  font-family: 'Inter', var(--font), sans-serif;
   font-size: 15px;
   line-height: 1.7;
 }
-/* Top nav (mirrors account-nav) */
+/* Top nav — exact match of .account-nav / .account-btn */
 #panel-design .de-top-nav {
   display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 2rem;
 }
 #panel-design .de-nav-btn {
-  font-family: var(--font); font-size: 13px; font-weight: 600;
-  padding: 8px 18px; border-radius: 8px; border: 1px solid var(--border);
-  background: transparent; color: var(--muted); cursor: pointer; transition: all 0.15s;
+  font-family: var(--font);
+  font-size: 13px;
+  font-weight: 600;
+  padding: 8px 18px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+  transition: all 0.15s;
 }
 #panel-design .de-nav-btn:hover { border-color: var(--cyan); color: var(--white); }
 #panel-design .de-nav-btn.active { background: var(--surface); border-color: var(--cyan-alt); color: var(--white); }
