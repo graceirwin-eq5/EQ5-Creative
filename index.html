@@ -332,6 +332,56 @@
 .clinical-detail.visible { display:block; }
 .detail-heading { font-size:18px; font-weight:700; color:#dde4f5; margin-bottom:12px; }
 .empty-state { color:var(--muted); font-size:14px; }
+/* Ad Specs panel */
+.specs-platform-nav { display:flex; flex-wrap:wrap; gap:6px; margin-bottom:2rem; }
+.specs-platform-btn { font-family:var(--font); font-size:12px; font-weight:600; padding:6px 14px; border-radius:20px; border:1px solid var(--border); background:transparent; color:var(--muted); cursor:pointer; transition:all 0.15s; }
+.specs-platform-btn:hover { border-color:var(--cyan); color:#fff; }
+.specs-platform-btn.active { background:rgba(1,176,176,.12); border-color:var(--cyan); color:var(--cyan); }
+.specs-platform-panel { display:none; }
+.specs-platform-panel.active { display:block; }
+.specs-channel-header { margin-bottom:1.5rem; }
+.specs-channel-title { font-size:22px; font-weight:700; color:#dde4f5; margin-bottom:6px; }
+.specs-channel-desc { color:var(--muted); font-size:14px; margin-bottom:1rem; }
+.specs-stats { display:flex; flex-wrap:wrap; gap:10px; margin-bottom:1.5rem; }
+.specs-stat { background:var(--surface); border:1px solid var(--border); border-radius:10px; padding:10px 16px; min-width:140px; }
+.specs-stat-label { font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:.06em; color:var(--muted); margin-bottom:4px; }
+.specs-stat-value { font-size:15px; font-weight:700; color:#dde4f5; }
+.specs-stat-value.highlight { background:linear-gradient(93.8deg,#3571cb,#01b0b0); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
+.specs-ad-types { display:flex; flex-wrap:wrap; gap:6px; margin-bottom:2rem; }
+.specs-ad-type { font-size:11px; font-weight:600; padding:4px 10px; border-radius:8px; background:rgba(53,113,203,.15); color:#6fa3e8; }
+.specs-formats { display:flex; flex-direction:column; gap:16px; }
+.specs-format-card { background:var(--surface); border:1px solid var(--border); border-radius:12px; overflow:hidden; }
+.specs-format-title { font-size:13px; font-weight:700; color:#dde4f5; padding:14px 18px; border-bottom:1px solid var(--border); background:rgba(255,255,255,.03); }
+.specs-format-body { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:0; }
+.specs-format-col { padding:14px 18px; border-right:1px solid var(--border); }
+.specs-format-col:last-child { border-right:none; }
+.specs-format-col-label { font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:.06em; color:var(--cyan); margin-bottom:8px; }
+.specs-format-col ul { margin:0; padding:0; list-style:none; }
+.specs-format-col li { font-size:12px; color:#dde4f5; padding:2px 0; line-height:1.5; }
+.specs-format-col li::before { content:"·"; color:var(--muted); margin-right:6px; }
+.specs-ctas { margin-top:1.5rem; }
+.specs-ctas-label { font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:.06em; color:var(--muted); margin-bottom:8px; }
+.specs-ctas-list { display:flex; flex-wrap:wrap; gap:6px; }
+.specs-cta-tag { font-size:11px; padding:3px 9px; border-radius:8px; background:rgba(255,255,255,.05); border:1px solid var(--border); color:var(--muted); }
+.specs-section-divider { margin:2rem 0 1.5rem; border:none; border-top:1px solid var(--border); }
+.specs-best-practices { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:16px; margin-bottom:2rem; }
+.specs-bp-card { background:var(--surface); border:1px solid var(--border); border-radius:12px; padding:20px 22px; }
+.specs-bp-card h4 { font-size:13px; font-weight:700; text-transform:uppercase; letter-spacing:.05em; color:var(--cyan); margin-bottom:10px; }
+.specs-bp-card ul { margin:0; padding:0; list-style:none; }
+.specs-bp-card li { font-size:13px; color:#dde4f5; padding:4px 0; line-height:1.5; padding-left:14px; position:relative; }
+.specs-bp-card li::before { content:"–"; position:absolute; left:0; color:var(--muted); }
+.specs-benchmark-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:12px; margin-bottom:1.5rem; }
+.specs-benchmark-card { background:var(--surface); border:1px solid var(--border); border-radius:12px; padding:18px 20px; text-align:center; }
+.specs-benchmark-number { font-size:28px; font-weight:800; background:linear-gradient(93.8deg,#3571cb,#01b0b0); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
+.specs-benchmark-label { font-size:12px; color:var(--muted); margin-top:4px; }
+.specs-listening-cards { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:16px; }
+.specs-listening-card { background:var(--surface); border:1px solid var(--border); border-radius:12px; padding:20px 22px; }
+.specs-listening-card h4 { font-size:14px; font-weight:700; color:#dde4f5; margin-bottom:8px; }
+.specs-listening-card p { font-size:13px; color:var(--muted); line-height:1.6; margin:0; }
+.specs-isi-cards { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:12px; }
+.specs-isi-card { background:var(--surface); border:1px solid var(--border); border-radius:12px; padding:18px 20px; }
+.specs-isi-number { font-size:24px; font-weight:800; color:var(--cyan); margin-bottom:8px; }
+.specs-isi-desc { font-size:13px; color:#dde4f5; line-height:1.5; }
 </style>
 </head>
 <body>
@@ -352,6 +402,7 @@
     <button class="main-nav-btn active" onclick="showPanel('accounts')">Accounts</button>
     <button class="main-nav-btn" onclick="showPanel('timeline')">Creative Timeline</button>
     <button class="main-nav-btn" onclick="showPanel('asset-search')">Creative Asset Search</button>
+    <button class="main-nav-btn" onclick="showPanel('adspecs')">Ad Specs</button>
     <button class="main-nav-btn" onclick="showPanel('clinical')">Clinical Index</button>
     <button class="main-nav-btn" onclick="showPanel('library')">Ad Library</button>
     <button class="main-nav-btn" onclick="showPanel('design')">Design Elements</button>
@@ -866,6 +917,938 @@
   <!-- ── DESIGN ELEMENTS PANEL ── -->
   <div class="panel" id="panel-design">
     <div id="design-content"><div class="de-loading">Loading design elements…</div></div>
+  </div>
+
+  <!-- ── AD SPECS PANEL ── -->
+  <div class="panel" id="panel-adspecs">
+    <div class="account-nav" style="margin-bottom:0;">
+      <div class="specs-platform-nav">
+        <button class="specs-platform-btn active" onclick="showSpecsPlatform('bestpractices')">Best Practices</button>
+        <button class="specs-platform-btn" onclick="showSpecsPlatform('facebook')">Facebook</button>
+        <button class="specs-platform-btn" onclick="showSpecsPlatform('instagram')">Instagram</button>
+        <button class="specs-platform-btn" onclick="showSpecsPlatform('linkedin')">LinkedIn</button>
+        <button class="specs-platform-btn" onclick="showSpecsPlatform('twitter')">X (Twitter)</button>
+        <button class="specs-platform-btn" onclick="showSpecsPlatform('tiktok')">TikTok</button>
+        <button class="specs-platform-btn" onclick="showSpecsPlatform('reddit')">Reddit</button>
+        <button class="specs-platform-btn" onclick="showSpecsPlatform('pinterest')">Pinterest</button>
+        <button class="specs-platform-btn" onclick="showSpecsPlatform('quora')">Quora</button>
+        <button class="specs-platform-btn" onclick="showSpecsPlatform('snapchat')">Snapchat</button>
+        <button class="specs-platform-btn" onclick="showSpecsPlatform('programmatic')">Programmatic / Email</button>
+        <button class="specs-platform-btn" onclick="showSpecsPlatform('ctv')">CTV &amp; Geofencing</button>
+        <button class="specs-platform-btn" onclick="showSpecsPlatform('taboola')">Taboola / Outbrain</button>
+        <button class="specs-platform-btn" onclick="showSpecsPlatform('yahoo')">Yahoo / Microsoft</button>
+        <button class="specs-platform-btn" onclick="showSpecsPlatform('amazon')">Amazon</button>
+        <button class="specs-platform-btn" onclick="showSpecsPlatform('sociallistening')">Social Listening</button>
+        <button class="specs-platform-btn" onclick="showSpecsPlatform('isi')">ISI Formats</button>
+        <button class="specs-platform-btn" onclick="showSpecsPlatform('benchmarks')">Performance Benchmarks</button>
+      </div>
+    </div>
+
+    <!-- BEST PRACTICES -->
+    <div class="specs-platform-panel active" id="specs-bestpractices">
+      <div class="specs-channel-header">
+        <div class="specs-channel-title">Best Practices</div>
+        <div class="specs-channel-desc">Guidelines for maximizing ad performance across all HCP-targeted platforms.</div>
+      </div>
+      <div class="specs-best-practices">
+        <div class="specs-bp-card">
+          <h4>Overall Ad Goals</h4>
+          <ul>
+            <li>Develop compelling and relevant ad copy that speaks to your ideal HCP</li>
+            <li>Focus ad copy on brand goals and objectives (awareness, traffic, etc.)</li>
+            <li>Be consistent across all promotional content, devices, and platforms</li>
+          </ul>
+        </div>
+        <div class="specs-bp-card">
+          <h4>Optimizations</h4>
+          <ul>
+            <li>Create multiple ads — 1 unique ad per month of campaign duration (e.g., 3-month campaign = at least 3 unique ads)</li>
+            <li>Test everything: casual vs. professional imagery, text overlay vs. no overlay, short vs. long text</li>
+          </ul>
+        </div>
+        <div class="specs-bp-card">
+          <h4>Copy &amp; Visuals</h4>
+          <ul>
+            <li>Use less text on video — videos with less than 20% text perform better</li>
+            <li>Shorten text — people scan quickly; on average it takes 23 seconds to cognitively recognize ads</li>
+            <li>Put your main message in the first sentence or two of primary text</li>
+            <li>Use proper grammar — excessive symbols, characters, punctuation, and misused capitalization are prohibited</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- FACEBOOK -->
+    <div class="specs-platform-panel" id="specs-facebook">
+      <div class="specs-channel-header">
+        <div class="specs-channel-title">Facebook</div>
+        <div class="specs-channel-desc">NPI-level targeted HCP advertising across Facebook feed and stories placements.</div>
+      </div>
+      <div class="specs-stats">
+        <div class="specs-stat"><div class="specs-stat-label">HCP Avg. Match Rate</div><div class="specs-stat-value highlight">87%</div></div>
+        <div class="specs-stat"><div class="specs-stat-label">Buy Type</div><div class="specs-stat-value">CPM / CPC</div></div>
+        <div class="specs-stat"><div class="specs-stat-label">Avg. Time on Site Daily</div><div class="specs-stat-value">33 min</div></div>
+        <div class="specs-stat"><div class="specs-stat-label">Engagement Definition</div><div class="specs-stat-value">Impression / Click</div></div>
+        <div class="specs-stat"><div class="specs-stat-label">Data Passback</div><div class="specs-stat-value">Weekly / Biweekly / Monthly / EOC</div></div>
+        <div class="specs-stat"><div class="specs-stat-label">Reporting</div><div class="specs-stat-value">NPI-Level Targeting &amp; Reporting</div></div>
+      </div>
+      <div class="specs-ad-types">
+        <span class="specs-ad-type">Image Ads</span><span class="specs-ad-type">Stories Image Ads</span><span class="specs-ad-type">Video Ads</span><span class="specs-ad-type">Stories Video Ads</span><span class="specs-ad-type">Carousel Ads</span>
+      </div>
+      <div class="specs-formats">
+        <div class="specs-format-card">
+          <div class="specs-format-title">Feed | Static Ads</div>
+          <div class="specs-format-body">
+            <div class="specs-format-col"><div class="specs-format-col-label">Design</div><ul><li>File Type: JPG / PNG</li><li>Ratio: 1.91:1 to 1:1</li><li>Resolution: at least 1080×1080px</li></ul></div>
+            <div class="specs-format-col"><div class="specs-format-col-label">Text</div><ul><li>Primary Text: 125 chars (truncated after)</li><li>Description: 27 chars (optional, truncated after)</li><li>Headline: 27 chars (truncated after)</li></ul></div>
+            <div class="specs-format-col"><div class="specs-format-col-label">Technical</div><ul><li>Max File Size: 30MB</li><li>Min Width: 600px</li><li>Min Height: 600px</li><li>Aspect Ratio Tolerance: 3%</li><li>Data: Impressions, Clicks</li></ul></div>
+          </div>
+        </div>
+        <div class="specs-format-card">
+          <div class="specs-format-title">Feed | Video Ads</div>
+          <div class="specs-format-body">
+            <div class="specs-format-col"><div class="specs-format-col-label">Design</div><ul><li>File Type: MP4 / MOV / GIF</li><li>Ratio: 1:1 (desktop or mobile), 4:5 (mobile only), 16:9 to 9:16 supported</li><li>Resolution: at least 1080×1080px</li></ul></div>
+            <div class="specs-format-col"><div class="specs-format-col-label">Text</div><ul><li>Primary Text: 125 chars</li><li>Description: 27 chars (optional)</li><li>Headline: 27 chars</li></ul></div>
+            <div class="specs-format-col"><div class="specs-format-col-label">Technical</div><ul><li>Max File Size: 4GB</li><li>Video Duration: 1 sec – 241 min</li><li>Data: Impressions, Clicks, Video Plays</li></ul></div>
+          </div>
+        </div>
+        <div class="specs-format-card">
+          <div class="specs-format-title">Feed | Carousel Ads</div>
+          <div class="specs-format-body">
+            <div class="specs-format-col"><div class="specs-format-col-label">Design</div><ul><li>Image: JPG / PNG</li><li>Video: MP4 / MOV / GIF</li><li>Ratio: 1:1 to 1.91:1</li><li>Resolution: at least 1080×1080px</li></ul></div>
+            <div class="specs-format-col"><div class="specs-format-col-label">Text</div><ul><li>Primary Text: 125 chars</li><li>Description: 18 chars (optional)</li><li>Headline: 32 chars</li></ul></div>
+            <div class="specs-format-col"><div class="specs-format-col-label">Technical</div><ul><li>Max Video Size: 4GB</li><li>Max Image Size: 30MB</li><li>Video Duration: 1 sec – 240 min</li><li>Number of Cards: 2–10</li><li>Data: Impressions, Clicks, Video Plays</li></ul></div>
+          </div>
+        </div>
+        <div class="specs-format-card">
+          <div class="specs-format-title">Stories | Static Ads</div>
+          <div class="specs-format-body">
+            <div class="specs-format-col"><div class="specs-format-col-label">Design</div><ul><li>File Type: JPG / PNG</li><li>Ratio: 9:16 recommended (1.91:1 to 9:16 supported)</li><li>Resolution: at least 1080×1080px</li></ul></div>
+            <div class="specs-format-col"><div class="specs-format-col-label">Text</div><ul><li>Primary Text: 125 chars</li></ul></div>
+            <div class="specs-format-col"><div class="specs-format-col-label">Technical</div><ul><li>Max File Size: 30MB</li><li>Min Width: 500px</li><li>Data: Impressions, Clicks</li></ul></div>
+          </div>
+        </div>
+        <div class="specs-format-card">
+          <div class="specs-format-title">Stories | Video Ads</div>
+          <div class="specs-format-body">
+            <div class="specs-format-col"><div class="specs-format-col-label">Design</div><ul><li>File Type: MP4 / MOV / GIF</li><li>Ratio: 1.91:1 to 9:16</li><li>Resolution: at least 1080×1080px</li></ul></div>
+            <div class="specs-format-col"><div class="specs-format-col-label">Text</div><ul><li>Primary Text: 125 chars</li></ul></div>
+            <div class="specs-format-col"><div class="specs-format-col-label">Technical</div><ul><li>Max File Size: 4GB</li><li>Video Duration: 1 sec – 2 min</li><li>Data: Impressions, Clicks, Video Plays</li></ul></div>
+          </div>
+        </div>
+        <div class="specs-format-card">
+          <div class="specs-format-title">Stories | Carousel Ads</div>
+          <div class="specs-format-body">
+            <div class="specs-format-col"><div class="specs-format-col-label">Design</div><ul><li>File Type: JPG / PNG</li><li>Ratio: 1.91:1 to 1:1</li><li>Resolution: at least 1080×1920px</li></ul></div>
+            <div class="specs-format-col"><div class="specs-format-col-label">Text</div><ul><li>Primary Text: 125 chars</li></ul></div>
+            <div class="specs-format-col"><div class="specs-format-col-label">Technical</div><ul><li>Max File Size: 30MB</li><li>Data: Impressions, Clicks, Video Plays</li></ul></div>
+          </div>
+        </div>
+      </div>
+      <div class="specs-ctas">
+        <div class="specs-ctas-label">Available CTAs</div>
+        <div class="specs-ctas-list">
+          <span class="specs-cta-tag">Learn More</span><span class="specs-cta-tag">Listen Now</span><span class="specs-cta-tag">Order Now</span><span class="specs-cta-tag">Request Time</span><span class="specs-cta-tag">Sign Up</span><span class="specs-cta-tag">Subscribe</span><span class="specs-cta-tag">Watch More</span><span class="specs-cta-tag">Apply Now</span><span class="specs-cta-tag">Book Now</span><span class="specs-cta-tag">Contact Us</span><span class="specs-cta-tag">Download</span><span class="specs-cta-tag">Get Offer</span><span class="specs-cta-tag">Get Quote</span><span class="specs-cta-tag">See Menu</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- INSTAGRAM -->
+    <div class="specs-platform-panel" id="specs-instagram">
+      <div class="specs-channel-header">
+        <div class="specs-channel-title">Instagram</div>
+        <div class="specs-channel-desc">NPI-level targeted HCP advertising across Instagram feed, stories, and reels.</div>
+      </div>
+      <div class="specs-stats">
+        <div class="specs-stat"><div class="specs-stat-label">HCP Avg. Match Rate</div><div class="specs-stat-value highlight">87%</div></div>
+        <div class="specs-stat"><div class="specs-stat-label">Buy Type</div><div class="specs-stat-value">CPM / CPC</div></div>
+        <div class="specs-stat"><div class="specs-stat-label">Avg. Time on Site Daily</div><div class="specs-stat-value">53 min</div></div>
+        <div class="specs-stat"><div class="specs-stat-label">Engagement Definition</div><div class="specs-stat-value">Impression / Click</div></div>
+        <div class="specs-stat"><div class="specs-stat-label">Reporting</div><div class="specs-stat-value">NPI-Level Targeting &amp; Reporting</div></div>
+      </div>
+      <div class="specs-ad-types">
+        <span class="specs-ad-type">Image Ads</span><span class="specs-ad-type">Stories Image Ads</span><span class="specs-ad-type">Video Ads</span><span class="specs-ad-type">Stories Video Ads</span><span class="specs-ad-type">Carousel Ads</span>
+      </div>
+      <div class="specs-formats">
+        <div class="specs-format-card">
+          <div class="specs-format-title">Feed | Static Ads</div>
+          <div class="specs-format-body">
+            <div class="specs-format-col"><div class="specs-format-col-label">Design</div><ul><li>File Type: JPG / PNG</li><li>Ratio: 1:1</li><li>Resolution: at least 1080×1080px</li></ul></div>
+            <div class="specs-format-col"><div class="specs-format-col-label">Text</div><ul><li>Primary Text: 125 chars (no click-through URLs)</li><li>Max Hashtags: 30</li></ul></div>
+            <div class="specs-format-col"><div class="specs-format-col-label">Technical</div><ul><li>Max File Size: 30MB</li><li>Min Width: 500px</li><li>Data: Impressions, Clicks</li></ul></div>
+          </div>
+        </div>
+        <div class="specs-format-card">
+          <div class="specs-format-title">Feed | Video Ads</div>
+          <div class="specs-format-body">
+            <div class="specs-format-col"><div class="specs-format-col-label">Design</div><ul><li>File Type: MP4 / MOV / GIF</li><li>Ratio: 4:5 recommended (1.91:1 to 9:16 supported)</li><li>Resolution: at least 1080×1080px</li></ul></div>
+            <div class="specs-format-col"><div class="specs-format-col-label">Text</div><ul><li>Primary Text: 125 chars (no click-through URLs)</li><li>Max Hashtags: 30</li></ul></div>
+            <div class="specs-format-col"><div class="specs-format-col-label">Technical</div><ul><li>Max File Size: 4GB</li><li>Duration: 1 sec – 60 min</li><li>Data: Impressions, Clicks, Video Plays</li></ul></div>
+          </div>
+        </div>
+        <div class="specs-format-card">
+          <div class="specs-format-title">Feed | Carousel Ads</div>
+          <div class="specs-format-body">
+            <div class="specs-format-col"><div class="specs-format-col-label">Design</div><ul><li>Video: MP4 / MOV / GIF</li><li>Image: JPG / PNG</li><li>Ratio: 1:1 recommended (1.91:1 to 4:5 supported)</li><li>Resolution: at least 1080×1080px</li></ul></div>
+            <div class="specs-format-col"><div class="specs-format-col-label">Text</div><ul><li>Primary Text: 125 chars (no click-through URLs)</li><li>Headline: 40 chars</li><li>Max Hashtags: 30</li></ul></div>
+            <div class="specs-format-col"><div class="specs-format-col-label">Technical</div><ul><li>Max Video Size: 4GB</li><li>Max Image Size: 30MB</li><li>Duration: 1 sec – 2 min</li><li>Cards: 2–10</li><li>Data: Impressions, Clicks, Video Plays</li></ul></div>
+          </div>
+        </div>
+        <div class="specs-format-card">
+          <div class="specs-format-title">Stories | Static Ads</div>
+          <div class="specs-format-body">
+            <div class="specs-format-col"><div class="specs-format-col-label">Design</div><ul><li>File Type: JPG / PNG</li><li>Ratio: 9:16 recommended (16:9 to 4:5 supported)</li><li>Resolution: at least 1080×1080px</li></ul></div>
+            <div class="specs-format-col"><div class="specs-format-col-label">Text</div><ul><li>Primary Text: 125 chars (no click-through URLs)</li></ul></div>
+            <div class="specs-format-col"><div class="specs-format-col-label">Technical</div><ul><li>Max File Size: 30MB</li><li>Min Width: 500px</li><li>Aspect Ratio Tolerance: 1%</li><li>Data: Impressions, Clicks</li></ul></div>
+          </div>
+        </div>
+        <div class="specs-format-card">
+          <div class="specs-format-title">Stories + Reels | Video Ads</div>
+          <div class="specs-format-body">
+            <div class="specs-format-col"><div class="specs-format-col-label">Design</div><ul><li>File Type: MP4 / MOV / GIF</li><li>Ratio: 9:16 recommended (16:9 to 4:5 supported)</li><li>Resolution: at least 1080×1080px</li></ul></div>
+            <div class="specs-format-col"><div class="specs-format-col-label">Text</div><ul><li>Primary Text: 125 chars (no click-through URLs)</li><li>Max Hashtags: 30</li></ul></div>
+            <div class="specs-format-col"><div class="specs-format-col-label">Technical</div><ul><li>Max File Size: 4GB</li><li>Duration: 1 sec – 60 min</li><li>Data: Impressions, Clicks, Video Plays</li></ul></div>
+          </div>
+        </div>
+        <div class="specs-format-card">
+          <div class="specs-format-title">Stories | Carousel Ads</div>
+          <div class="specs-format-body">
+            <div class="specs-format-col"><div class="specs-format-col-label">Design</div><ul><li>Video: MP4 / MOV / GIF</li><li>Image: JPG / PNG</li><li>Ratio: 9:16 recommended</li><li>Resolution: at least 1080×1920px</li></ul></div>
+            <div class="specs-format-col"><div class="specs-format-col-label">Text</div><ul><li>Primary Text: 125 chars</li><li>Headline: 40 chars</li></ul></div>
+            <div class="specs-format-col"><div class="specs-format-col-label">Technical</div><ul><li>Video: 4GB</li><li>Image: 30MB</li><li>Duration: 1 sec – 15 sec</li><li>Cards: 2–10</li><li>Data: Impressions, Clicks, Video Plays</li></ul></div>
+          </div>
+        </div>
+      </div>
+      <div class="specs-ctas">
+        <div class="specs-ctas-label">Available CTAs</div>
+        <div class="specs-ctas-list">
+          <span class="specs-cta-tag">Learn More</span><span class="specs-cta-tag">Listen Now</span><span class="specs-cta-tag">Order Now</span><span class="specs-cta-tag">Request Time</span><span class="specs-cta-tag">Sign Up</span><span class="specs-cta-tag">Subscribe</span><span class="specs-cta-tag">Watch More</span><span class="specs-cta-tag">Apply Now</span><span class="specs-cta-tag">Book Now</span><span class="specs-cta-tag">Contact Us</span><span class="specs-cta-tag">Download</span><span class="specs-cta-tag">Get Offer</span><span class="specs-cta-tag">Get Quote</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- LINKEDIN -->
+    <div class="specs-platform-panel" id="specs-linkedin">
+      <div class="specs-channel-header">
+        <div class="specs-channel-title">LinkedIn</div>
+        <div class="specs-channel-desc">Professional network ideal for unbranded disease education, study results, and corporate HCP communications.</div>
+      </div>
+      <div class="specs-stats">
+        <div class="specs-stat"><div class="specs-stat-label">HCP Avg. Match Rate</div><div class="specs-stat-value highlight">78%</div></div>
+        <div class="specs-stat"><div class="specs-stat-label">Buy Type</div><div class="specs-stat-value">CPM / CPC</div></div>
+        <div class="specs-stat"><div class="specs-stat-label">Avg. Time on Site Daily</div><div class="specs-stat-value">8 min</div></div>
+        <div class="specs-stat"><div class="specs-stat-label">Engagement Definition</div><div class="specs-stat-value">Impression / Click</div></div>
+        <div class="specs-stat"><div class="specs-stat-label">Reporting</div><div class="specs-stat-value">NPI-Level Targeting &amp; Reporting</div></div>
+      </div>
+      <div class="specs-ad-types">
+        <span class="specs-ad-type">Image Ads</span><span class="specs-ad-type">Video Ads</span><span class="specs-ad-type">Carousel Ads</span>
+      </div>
+      <div class="specs-formats">
+        <div class="specs-format-card">
+          <div class="specs-format-title">Feed + LAN | Static Ads</div>
+          <div class="specs-format-body">
+            <div class="specs-format-col"><div class="specs-format-col-label">Design</div><ul><li>File Type: JPG / PNG / GIF</li><li>Ratio: 1.91:1 or 1:1</li><li>Resolution: 640×360 or 360×360px</li></ul></div>
+            <div class="specs-format-col"><div class="specs-format-col-label">Text</div><ul><li>Headline: 200 chars (truncated after 70)</li><li>Primary Text: 600 chars (truncated after 150)</li></ul></div>
+            <div class="specs-format-col"><div class="specs-format-col-label">Technical</div><ul><li>Max File Size: 5MB</li><li>Data: Impressions, Clicks</li></ul></div>
+          </div>
+        </div>
+        <div class="specs-format-card">
+          <div class="specs-format-title">Feed + LAN | Video Ads</div>
+          <div class="specs-format-body">
+            <div class="specs-format-col"><div class="specs-format-col-label">Design</div><ul><li>File Type: MP4</li><li>Ratio: 4:5 / 9:16 / 16:9 / 1:1</li><li>Resolution: 360×450 to 1080×1350 / 360×640 to 1080×1920 / 640×360 to 1920×1080 / 360×360 to 1920×1920</li><li>Thumbnail recommended (match video ratio &amp; resolution)</li></ul></div>
+            <div class="specs-format-col"><div class="specs-format-col-label">Text</div><ul><li>Headline: 200 chars (truncated after 70)</li><li>Primary Text: 600 chars (truncated after 150)</li></ul></div>
+            <div class="specs-format-col"><div class="specs-format-col-label">Technical</div><ul><li>Max File Size: 75KB–200MB</li><li>Duration: 3 sec – 30 min</li><li>Data: Impressions, Clicks, Video Plays</li></ul></div>
+          </div>
+        </div>
+        <div class="specs-format-card">
+          <div class="specs-format-title">Feed | Carousel Ads</div>
+          <div class="specs-format-body">
+            <div class="specs-format-col"><div class="specs-format-col-label">Design</div><ul><li>File Type: JPG / PNG / GIF</li><li>Ratio: 1:1</li><li>Resolution: 1080×1080 to 4320×4320px</li></ul></div>
+            <div class="specs-format-col"><div class="specs-format-col-label">Text</div><ul><li>Headline: 45 chars (destination URL) or 30 chars (Lead Gen Form CTA)</li><li>Primary Text: 255 chars (truncated after 150)</li></ul></div>
+            <div class="specs-format-col"><div class="specs-format-col-label">Technical</div><ul><li>Max File Size: 10MB</li><li>Cards: 2–10</li><li>Data: Impressions, Clicks, Video Plays</li></ul></div>
+          </div>
+        </div>
+      </div>
+      <div class="specs-ctas">
+        <div class="specs-ctas-label">Available CTAs</div>
+        <div class="specs-ctas-list">
+          <span class="specs-cta-tag">Learn More</span><span class="specs-cta-tag">Request Demo</span><span class="specs-cta-tag">Get Started</span><span class="specs-cta-tag">Follow</span><span class="specs-cta-tag">Download</span><span class="specs-cta-tag">Apply</span><span class="specs-cta-tag">Subscribe</span><span class="specs-cta-tag">View Quote</span><span class="specs-cta-tag">Sign Up</span><span class="specs-cta-tag">Join</span><span class="specs-cta-tag">Register</span><span class="specs-cta-tag">Attend</span><span class="specs-cta-tag">Buy Now</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- X (TWITTER) -->
+    <div class="specs-platform-panel" id="specs-twitter">
+      <div class="specs-channel-header">
+        <div class="specs-channel-title">X (Twitter)</div>
+        <div class="specs-channel-desc">Brand awareness, disease education, and brand alerts with NPI-level targeting and partial NPI-level reporting via EQ5 Pixel.</div>
+      </div>
+      <div class="specs-stats">
+        <div class="specs-stat"><div class="specs-stat-label">HCP Avg. Match Rate</div><div class="specs-stat-value highlight">33%</div></div>
+        <div class="specs-stat"><div class="specs-stat-label">Buy Type</div><div class="specs-stat-value">CPM / CPC</div></div>
+        <div class="specs-stat"><div class="specs-stat-label">Avg. Time on Site Daily</div><div class="specs-stat-value">31 min</div></div>
+        <div class="specs-stat"><div class="specs-stat-label">Engagement Definition</div><div class="specs-stat-value">Impression / Click</div></div>
+        <div class="specs-stat"><div class="specs-stat-label">Reporting</div><div class="specs-stat-value">NPI Targeting; Partial Reporting via EQ5 Pixel</div></div>
+      </div>
+      <div class="specs-ad-types">
+        <span class="specs-ad-type">Image Ads</span><span class="specs-ad-type">Video Ads</span><span class="specs-ad-type">Carousel Ads</span>
+      </div>
+      <div class="specs-formats">
+        <div class="specs-format-card">
+          <div class="specs-format-title">Feed | Static Ads</div>
+          <div class="specs-format-body">
+            <div class="specs-format-col"><div class="specs-format-col-label">Design</div><ul><li>File Type: JPG / PNG</li><li>Ratio: 1:1 or 1.91:1</li><li>Resolution: at least 800×800 or 800×418px</li></ul></div>
+            <div class="specs-format-col"><div class="specs-format-col-label">Text</div><ul><li>Headline: 70 chars</li><li>Primary Text: 280 chars</li></ul></div>
+            <div class="specs-format-col"><div class="specs-format-col-label">Technical</div><ul><li>Max File Size: 5MB</li><li>Data: Clicks</li></ul></div>
+          </div>
+        </div>
+        <div class="specs-format-card">
+          <div class="specs-format-title">Feed | Video Ads</div>
+          <div class="specs-format-body">
+            <div class="specs-format-col"><div class="specs-format-col-label">Design</div><ul><li>File Type: MP4 / MOV</li><li>Ratio: 1:1 or 16:9</li><li>Resolution: 800×800 or 800×450px</li></ul></div>
+            <div class="specs-format-col"><div class="specs-format-col-label">Text</div><ul><li>Headline: 70 chars</li><li>Primary Text: 280 chars</li></ul></div>
+            <div class="specs-format-col"><div class="specs-format-col-label">Technical</div><ul><li>Max File Size: 1GB</li><li>Duration: 1 sec – 2 min 20 sec</li><li>Data: Clicks</li></ul></div>
+          </div>
+        </div>
+        <div class="specs-format-card">
+          <div class="specs-format-title">Feed | Static Carousel Ads</div>
+          <div class="specs-format-body">
+            <div class="specs-format-col"><div class="specs-format-col-label">Design</div><ul><li>File Type: JPG / PNG</li><li>Ratio: 1:1 or 1.91:1</li><li>Resolution: 1080×1080 or 1080×565px</li></ul></div>
+            <div class="specs-format-col"><div class="specs-format-col-label">Text</div><ul><li>Headline: 70 chars</li><li>Primary Text: 280 chars</li></ul></div>
+            <div class="specs-format-col"><div class="specs-format-col-label">Technical</div><ul><li>Max File Size: 5MB</li><li>Cards: 2–6</li><li>Data: Clicks</li></ul></div>
+          </div>
+        </div>
+        <div class="specs-format-card">
+          <div class="specs-format-title">Feed | Video Carousel Ads</div>
+          <div class="specs-format-body">
+            <div class="specs-format-col"><div class="specs-format-col-label">Design</div><ul><li>File Type: MP4 / MOV</li><li>Ratio: 1:1 or 16:9</li><li>Resolution: 800×800 or 800×450px</li></ul></div>
+            <div class="specs-format-col"><div class="specs-format-col-label">Text</div><ul><li>Headline: 70 chars</li><li>Primary Text: 280 chars</li></ul></div>
+            <div class="specs-format-col"><div class="specs-format-col-label">Technical</div><ul><li>Max File Size: 1GB</li><li>Duration: 1 sec – 2 min 20 sec</li><li>Cards: 2–6</li><li>Data: Clicks</li></ul></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TIKTOK -->
+    <div class="specs-platform-panel" id="specs-tiktok">
+      <div class="specs-channel-header">
+        <div class="specs-channel-title">TikTok</div>
+        <div class="specs-channel-desc">Short-form video platform with NPI-level targeting; partial NPI-level reporting via EQ5 Pixel.</div>
+      </div>
+      <div class="specs-stats">
+        <div class="specs-stat"><div class="specs-stat-label">HCP Avg. Match Rate</div><div class="specs-stat-value highlight">31%</div></div>
+        <div class="specs-stat"><div class="specs-stat-label">Buy Type</div><div class="specs-stat-value">CPM / CPC</div></div>
+        <div class="specs-stat"><div class="specs-stat-label">Avg. Time on Site Daily</div><div class="specs-stat-value">58 min</div></div>
+        <div class="specs-stat"><div class="specs-stat-label">Engagement Definition</div><div class="specs-stat-value">Impression / Click</div></div>
+        <div class="specs-stat"><div class="specs-stat-label">Reporting</div><div class="specs-stat-value">NPI Targeting; Partial Reporting via EQ5 Pixel</div></div>
+      </div>
+      <div class="specs-ad-types">
+        <span class="specs-ad-type">Video Ads</span>
+      </div>
+      <div class="specs-formats">
+        <div class="specs-format-card">
+          <div class="specs-format-title">Feed | Video Ads</div>
+          <div class="specs-format-body">
+            <div class="specs-format-col"><div class="specs-format-col-label">Design</div><ul><li>Profile Image: JPG / PNG (1:1)</li><li>Video: MP4 / MOV / MPEG / 3GP / AVI</li><li>Ratio: 16:9 / 1:1 / 9:16</li><li>Resolution: at least 960×540 / 640×640 / 540×960</li></ul></div>
+            <div class="specs-format-col"><div class="specs-format-col-label">Text</div><ul><li>Company Name: 40 chars</li><li>Primary Text: 100 chars</li></ul></div>
+            <div class="specs-format-col"><div class="specs-format-col-label">Technical</div><ul><li>Max Profile Image Size: 50KB</li><li>Max Video Size: 500MB</li><li>Duration: 5 sec – 1 min</li><li>Data: Clicks</li></ul></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- REDDIT -->
+    <div class="specs-platform-panel" id="specs-reddit">
+      <div class="specs-channel-header">
+        <div class="specs-channel-title">Reddit</div>
+        <div class="specs-channel-desc">Community-driven platform with NPI-level targeting; partial NPI-level reporting via EQ5 Pixel.</div>
+      </div>
+      <div class="specs-stats">
+        <div class="specs-stat"><div class="specs-stat-label">HCP Avg. Match Rate</div><div class="specs-stat-value highlight">29%</div></div>
+        <div class="specs-stat"><div class="specs-stat-label">Buy Type</div><div class="specs-stat-value">CPM / CPC</div></div>
+        <div class="specs-stat"><div class="specs-stat-label">Avg. Time on Site Daily</div><div class="specs-stat-value">31 min</div></div>
+        <div class="specs-stat"><div class="specs-stat-label">Engagement Definition</div><div class="specs-stat-value">Impression / Click</div></div>
+        <div class="specs-stat"><div class="specs-stat-label">Reporting</div><div class="specs-stat-value">NPI Targeting; Partial Reporting via EQ5 Pixel</div></div>
+      </div>
+      <div class="specs-ad-types">
+        <span class="specs-ad-type">Image Ads</span><span class="specs-ad-type">Video Ads</span><span class="specs-ad-type">Carousel Ads</span>
+      </div>
+      <div class="specs-formats">
+        <div class="specs-format-card">
+          <div class="specs-format-title">Feed | Static Ads</div>
+          <div class="specs-format-body">
+            <div class="specs-format-col"><div class="specs-format-col-label">Design</div><ul><li>File Type: JPG / PNG</li><li>Ratio: 1:1 / 4:5 / 4:3 / 16:9</li><li>Resolutions: 1080×1080 / 1080×1350 / 1440×1080 / 1920×1080</li><li>Thumbnail: 400×300px</li></ul></div>
+            <div class="specs-format-col"><div class="specs-format-col-label">Text</div><ul><li>Headline: 300 chars</li></ul></div>
+            <div class="specs-format-col"><div class="specs-format-col-label">Technical</div><ul><li>Max File Size: 3MB</li><li>Max Thumbnail Size: 500KB</li><li>Data: Clicks</li></ul></div>
+          </div>
+        </div>
+        <div class="specs-format-card">
+          <div class="specs-format-title">Feed | Video Ads</div>
+          <div class="specs-format-body">
+            <div class="specs-format-col"><div class="specs-format-col-label">Design</div><ul><li>File Type: MP4 / MOV</li><li>Ratio: 1:1 / 4:5 / 4:3</li><li>Thumbnail: 400×300px</li></ul></div>
+            <div class="specs-format-col"><div class="specs-format-col-label">Text</div><ul><li>Headline: 300 chars</li></ul></div>
+            <div class="specs-format-col"><div class="specs-format-col-label">Technical</div><ul><li>Max File Size: 1GB</li><li>Thumbnail Size: 500KB</li><li>Duration: 5 sec – 15 min</li><li>Data: Clicks</li></ul></div>
+          </div>
+        </div>
+        <div class="specs-format-card">
+          <div class="specs-format-title">Feed | Carousel Ads</div>
+          <div class="specs-format-body">
+            <div class="specs-format-col"><div class="specs-format-col-label">Design</div><ul><li>File Type: JPG / PNG</li><li>Ratio: 1:1 / 16:9</li><li>Resolution: 1200×1200 or 1200×628px</li></ul></div>
+            <div class="specs-format-col"><div class="specs-format-col-label">Text</div><ul><li>Headline: 300 chars</li></ul></div>
+            <div class="specs-format-col"><div class="specs-format-col-label">Technical</div><ul><li>Max File Size: 20MB</li><li>Cards: 2–10</li><li>Data: Clicks</li></ul></div>
+          </div>
+        </div>
+      </div>
+      <div class="specs-ctas">
+        <div class="specs-ctas-label">Available CTAs</div>
+        <div class="specs-ctas-list">
+          <span class="specs-cta-tag">Learn More</span><span class="specs-cta-tag">Download</span><span class="specs-cta-tag">Install</span><span class="specs-cta-tag">Shop Now</span><span class="specs-cta-tag">View More</span><span class="specs-cta-tag">Sign Up</span><span class="specs-cta-tag">Contact Us</span><span class="specs-cta-tag">Get Showtimes</span><span class="specs-cta-tag">Get Quote</span><span class="specs-cta-tag">See Menu</span><span class="specs-cta-tag">Apply Now</span><span class="specs-cta-tag">Watch Now</span><span class="specs-cta-tag">Play Now</span><span class="specs-cta-tag">Pre-order Now</span><span class="specs-cta-tag">Order Now</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- PINTEREST -->
+    <div class="specs-platform-panel" id="specs-pinterest">
+      <div class="specs-channel-header">
+        <div class="specs-channel-title">Pinterest</div>
+        <div class="specs-channel-desc">Visual discovery platform with NPI-level targeting; partial NPI-level reporting via EQ5 Pixel.</div>
+      </div>
+      <div class="specs-stats">
+        <div class="specs-stat"><div class="specs-stat-label">HCP Avg. Match Rate</div><div class="specs-stat-value highlight">41%</div></div>
+        <div class="specs-stat"><div class="specs-stat-label">Buy Type</div><div class="specs-stat-value">CPM / CPC</div></div>
+        <div class="specs-stat"><div class="specs-stat-label">Avg. Time on Site Daily</div><div class="specs-stat-value">14 min</div></div>
+        <div class="specs-stat"><div class="specs-stat-label">Engagement Definition</div><div class="specs-stat-value">Impression / Click</div></div>
+        <div class="specs-stat"><div class="specs-stat-label">Reporting</div><div class="specs-stat-value">NPI Targeting; Partial Reporting via EQ5 Pixel</div></div>
+      </div>
+      <div class="specs-ad-types">
+        <span class="specs-ad-type">Image Ads</span><span class="specs-ad-type">Video Ads</span><span class="specs-ad-type">Carousel Ads</span>
+      </div>
+      <div class="specs-formats">
+        <div class="specs-format-card">
+          <div class="specs-format-title">Feed | Static Ads</div>
+          <div class="specs-format-body">
+            <div class="specs-format-col"><div class="specs-format-col-label">Design</div><ul><li>File Type: JPG / PNG</li><li>Ratio: 2:3</li><li>Resolution: at least 1000×1500px</li></ul></div>
+            <div class="specs-format-col"><div class="specs-format-col-label">Text</div><ul><li>Headline: 100 chars (truncated after 40, optional)</li><li>Description: 500 chars (truncated after 50, optional)</li></ul></div>
+            <div class="specs-format-col"><div class="specs-format-col-label">Technical</div><ul><li>Max File Size: 20MB</li><li>Data: Clicks</li></ul></div>
+          </div>
+        </div>
+        <div class="specs-format-card">
+          <div class="specs-format-title">Feed | Video Ads</div>
+          <div class="specs-format-body">
+            <div class="specs-format-col"><div class="specs-format-col-label">Design</div><ul><li>File Type: MP4 / MOV / M4V</li><li>Ratio: 1:1 or 1.91:1 to 1:2 supported</li></ul></div>
+            <div class="specs-format-col"><div class="specs-format-col-label">Text</div><ul><li>Headline: 100 chars (truncated after 40, optional)</li><li>Description: 500 chars (truncated after 50, optional)</li></ul></div>
+            <div class="specs-format-col"><div class="specs-format-col-label">Technical</div><ul><li>Max File Size: 2GB</li><li>Duration: 4 sec – 15 min</li><li>Data: Clicks</li></ul></div>
+          </div>
+        </div>
+        <div class="specs-format-card">
+          <div class="specs-format-title">Feed | Carousel Ads</div>
+          <div class="specs-format-body">
+            <div class="specs-format-col"><div class="specs-format-col-label">Design</div><ul><li>File Type: JPG / PNG</li><li>Ratio: 1:1 or 2:3</li></ul></div>
+            <div class="specs-format-col"><div class="specs-format-col-label">Text</div><ul><li>Headline: 100 chars (truncated after 40, optional)</li><li>Description: 500 chars (truncated after 50, optional)</li></ul></div>
+            <div class="specs-format-col"><div class="specs-format-col-label">Technical</div><ul><li>Max File Size: 20MB</li><li>Cards: 2–5</li><li>Data: Clicks</li></ul></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- QUORA -->
+    <div class="specs-platform-panel" id="specs-quora">
+      <div class="specs-channel-header">
+        <div class="specs-channel-title">Quora</div>
+        <div class="specs-channel-desc">Q&amp;A platform with NPI-level targeting; partial NPI-level reporting via EQ5 Pixel. No preview link available.</div>
+      </div>
+      <div class="specs-stats">
+        <div class="specs-stat"><div class="specs-stat-label">HCP Avg. Match Rate</div><div class="specs-stat-value highlight">26%</div></div>
+        <div class="specs-stat"><div class="specs-stat-label">Buy Type</div><div class="specs-stat-value">CPM / CPC</div></div>
+        <div class="specs-stat"><div class="specs-stat-label">Avg. Time on Site Daily</div><div class="specs-stat-value">10 min</div></div>
+        <div class="specs-stat"><div class="specs-stat-label">Engagement Definition</div><div class="specs-stat-value">Impression / Click</div></div>
+        <div class="specs-stat"><div class="specs-stat-label">Reporting</div><div class="specs-stat-value">NPI Targeting; Partial Reporting via EQ5 Pixel</div></div>
+      </div>
+      <div class="specs-ad-types">
+        <span class="specs-ad-type">Image Ads</span><span class="specs-ad-type">Video Ads</span>
+      </div>
+      <div class="specs-formats">
+        <div class="specs-format-card">
+          <div class="specs-format-title">Feed | Static Ads</div>
+          <div class="specs-format-body">
+            <div class="specs-format-col"><div class="specs-format-col-label">Design</div><ul><li>File Type: JPG / PNG</li><li>Ratio: 16:9 / 4:5 / 1:1</li><li>Resolution: at least 580×580px</li></ul></div>
+            <div class="specs-format-col"><div class="specs-format-col-label">Text</div><ul><li>Headline: 65 chars</li><li>Primary Text: 105 chars</li><li>Company Name: 40 chars</li></ul></div>
+            <div class="specs-format-col"><div class="specs-format-col-label">Technical</div><ul><li>Max File Size: 10MB</li><li>Data: Clicks. No preview link.</li></ul></div>
+          </div>
+        </div>
+        <div class="specs-format-card">
+          <div class="specs-format-title">Feed | Video Ads</div>
+          <div class="specs-format-body">
+            <div class="specs-format-col"><div class="specs-format-col-label">Design</div><ul><li>File Type: MOV / MP4</li><li>Ratio: 16:9</li><li>Resolution: 1280×720px</li></ul></div>
+            <div class="specs-format-col"><div class="specs-format-col-label">Text</div><ul><li>Headline: 65 chars</li><li>Primary Text: 105 chars</li><li>Company Name: 40 chars</li></ul></div>
+            <div class="specs-format-col"><div class="specs-format-col-label">Technical</div><ul><li>Max File Size: 70MB</li><li>Width: 640–1920px</li><li>Height: 360–1080px</li><li>Duration: 3 sec – 1 min</li><li>Data: Clicks. No preview link.</li></ul></div>
+          </div>
+        </div>
+      </div>
+      <div class="specs-ctas">
+        <div class="specs-ctas-label">Available CTAs</div>
+        <div class="specs-ctas-list">
+          <span class="specs-cta-tag">Apply Now</span><span class="specs-cta-tag">Learn More</span><span class="specs-cta-tag">Book Now</span><span class="specs-cta-tag">Read More</span><span class="specs-cta-tag">Download</span><span class="specs-cta-tag">Shop Now</span><span class="specs-cta-tag">Sign Up</span><span class="specs-cta-tag">Start Now</span><span class="specs-cta-tag">Contact Us</span><span class="specs-cta-tag">Watch Now</span><span class="specs-cta-tag">Follow Us</span><span class="specs-cta-tag">Get the App</span><span class="specs-cta-tag">Free Trial</span><span class="specs-cta-tag">Donate Now</span><span class="specs-cta-tag">Get Quote</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- SNAPCHAT -->
+    <div class="specs-platform-panel" id="specs-snapchat">
+      <div class="specs-channel-header">
+        <div class="specs-channel-title">Snapchat</div>
+        <div class="specs-channel-desc">Mobile-first platform with NPI-level targeting; partial NPI-level reporting via EQ5 Pixel. No preview link available.</div>
+      </div>
+      <div class="specs-stats">
+        <div class="specs-stat"><div class="specs-stat-label">HCP Avg. Match Rate</div><div class="specs-stat-value highlight">21%</div></div>
+        <div class="specs-stat"><div class="specs-stat-label">Buy Type</div><div class="specs-stat-value">CPM / CPC</div></div>
+        <div class="specs-stat"><div class="specs-stat-label">Avg. Time on Site Daily</div><div class="specs-stat-value">15 min</div></div>
+        <div class="specs-stat"><div class="specs-stat-label">Engagement Definition</div><div class="specs-stat-value">Impression / Click</div></div>
+        <div class="specs-stat"><div class="specs-stat-label">Reporting</div><div class="specs-stat-value">NPI Targeting; Partial Reporting via EQ5 Pixel</div></div>
+      </div>
+      <div class="specs-ad-types">
+        <span class="specs-ad-type">Image Ads</span><span class="specs-ad-type">Video Ads</span><span class="specs-ad-type">Carousel Ads</span>
+      </div>
+      <div class="specs-formats">
+        <div class="specs-format-card">
+          <div class="specs-format-title">Feed | Static Ads</div>
+          <div class="specs-format-body">
+            <div class="specs-format-col"><div class="specs-format-col-label">Design</div><ul><li>File Type: JPG / PNG</li><li>Ratio: 9:16</li><li>Resolution: 1080×1920px</li></ul></div>
+            <div class="specs-format-col"><div class="specs-format-col-label">Text</div><ul><li>Company Name: 32 chars</li><li>Headline: 34 chars</li></ul></div>
+            <div class="specs-format-col"><div class="specs-format-col-label">Technical</div><ul><li>Max File Size: 6MB</li><li>Data: Clicks. No preview link.</li></ul></div>
+          </div>
+        </div>
+        <div class="specs-format-card">
+          <div class="specs-format-title">Feed | Video Ads</div>
+          <div class="specs-format-body">
+            <div class="specs-format-col"><div class="specs-format-col-label">Design</div><ul><li>File Type: MP4 / MOV</li><li>Ratio: 9:16</li><li>Resolution: 1080×1920px</li></ul></div>
+            <div class="specs-format-col"><div class="specs-format-col-label">Text</div><ul><li>Company Name: 32 chars</li><li>Headline: 34 chars</li></ul></div>
+            <div class="specs-format-col"><div class="specs-format-col-label">Technical</div><ul><li>Max File Size: 1GB</li><li>Duration: 3 sec – 3 min</li><li>Data: Clicks. No preview link.</li></ul></div>
+          </div>
+        </div>
+        <div class="specs-format-card">
+          <div class="specs-format-title">Feed | Static Carousel Ads</div>
+          <div class="specs-format-body">
+            <div class="specs-format-col"><div class="specs-format-col-label">Design</div><ul><li>Main Image: JPG/PNG, 9:16, 1080×1920px</li><li>Carousel Image: JPG/PNG, 1:1, at least 160×160px</li></ul></div>
+            <div class="specs-format-col"><div class="specs-format-col-label">Text</div><ul><li>Company Name: 32 chars</li><li>Headline: 34 chars</li></ul></div>
+            <div class="specs-format-col"><div class="specs-format-col-label">Technical</div><ul><li>Max Main Image Size: 6MB</li><li>Max Carousel Image Size: 2MB</li><li>Cards: 2–4</li><li>Data: Clicks. No preview link.</li></ul></div>
+          </div>
+        </div>
+        <div class="specs-format-card">
+          <div class="specs-format-title">Feed | Video Carousel Ads</div>
+          <div class="specs-format-body">
+            <div class="specs-format-col"><div class="specs-format-col-label">Design</div><ul><li>Main Video: MP4/MOV, 9:16, 1080×1920px</li><li>Carousel Image: JPG/PNG, 1:1, at least 160×160px</li></ul></div>
+            <div class="specs-format-col"><div class="specs-format-col-label">Text</div><ul><li>Company Name: 32 chars</li><li>Headline: 34 chars</li></ul></div>
+            <div class="specs-format-col"><div class="specs-format-col-label">Technical</div><ul><li>Max Main Video Size: 1GB</li><li>Max Carousel Image Size: 2MB</li><li>Duration: 3 sec – 3 min</li><li>Cards: 2–4</li><li>Data: Clicks. No preview link.</li></ul></div>
+          </div>
+        </div>
+      </div>
+      <div class="specs-ctas">
+        <div class="specs-ctas-label">Available CTAs</div>
+        <div class="specs-ctas-list">
+          <span class="specs-cta-tag">Apply Now</span><span class="specs-cta-tag">Show</span><span class="specs-cta-tag">Book Now</span><span class="specs-cta-tag">Sign Up</span><span class="specs-cta-tag">Buy Tickets</span><span class="specs-cta-tag">View</span><span class="specs-cta-tag">Get Now</span><span class="specs-cta-tag">Watch</span><span class="specs-cta-tag">Listen</span><span class="specs-cta-tag">Donate</span><span class="specs-cta-tag">More</span><span class="specs-cta-tag">Shop Now</span><span class="specs-cta-tag">Order Now</span><span class="specs-cta-tag">Read</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- PROGRAMMATIC / EMAIL -->
+    <div class="specs-platform-panel" id="specs-programmatic">
+      <div class="specs-channel-header">
+        <div class="specs-channel-title">Programmatic / Email</div>
+        <div class="specs-channel-desc">Equals 5 targets physicians by NPI and delivers ads within newsletter subscriptions of thousands of publishers.</div>
+      </div>
+      <div class="specs-stats">
+        <div class="specs-stat"><div class="specs-stat-label">HCP Avg. Match Rate</div><div class="specs-stat-value highlight">62%</div></div>
+        <div class="specs-stat"><div class="specs-stat-label">Buy Type</div><div class="specs-stat-value">CPM / CPC</div></div>
+        <div class="specs-stat"><div class="specs-stat-label">Engagement Definition</div><div class="specs-stat-value">Impression / Click</div></div>
+        <div class="specs-stat"><div class="specs-stat-label">Reporting</div><div class="specs-stat-value">NPI Targeting; Partial Reporting via EQ5 Pixel</div></div>
+      </div>
+      <div class="specs-ad-types">
+        <span class="specs-ad-type">Static Banner Ads</span>
+      </div>
+      <div class="specs-formats">
+        <div class="specs-format-card">
+          <div class="specs-format-title">Email Ads | Static Banner Ads</div>
+          <div class="specs-format-body">
+            <div class="specs-format-col"><div class="specs-format-col-label">Design</div><ul><li>File Type: JPG / PNG / GIF</li><li>Display Creative Sizes (all required): 300×250, 970×250, 970×550, 728×90</li><li>Must include a clear Call to Action and display your company logo</li></ul></div>
+            <div class="specs-format-col"><div class="specs-format-col-label">Text</div><ul><li>Clear Call to Action required</li><li>Company logo must be displayed</li></ul></div>
+            <div class="specs-format-col"><div class="specs-format-col-label">Technical</div><ul><li>Max File Size: 250KB</li><li>Do not use bit.ly or other URL shorteners</li><li>Data: Impressions, Clicks. No preview link.</li></ul></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CTV & GEOFENCING -->
+    <div class="specs-platform-panel" id="specs-ctv">
+      <div class="specs-channel-header">
+        <div class="specs-channel-title">CTV &amp; Geofencing</div>
+        <div class="specs-channel-desc">Connected TV and location-based NPI-level targeting — ideal for reaching HCPs via streaming and proximity-based campaigns.</div>
+      </div>
+      <hr class="specs-section-divider" style="margin-top:0;">
+      <div style="margin-bottom:1.5rem;">
+        <div class="specs-channel-title" style="font-size:16px;margin-bottom:.5rem;">Connected TV</div>
+        <div class="specs-channel-desc" style="margin-bottom:1rem;">Reach healthcare providers directly via video streaming, bypassing traditional TV providers.</div>
+        <div class="specs-stats">
+          <div class="specs-stat"><div class="specs-stat-label">HCP Avg. Match Rate</div><div class="specs-stat-value highlight">37%</div></div>
+          <div class="specs-stat"><div class="specs-stat-label">Buy Type</div><div class="specs-stat-value">CPM</div></div>
+          <div class="specs-stat"><div class="specs-stat-label">Avg. Time on Site Daily</div><div class="specs-stat-value">80 min</div></div>
+          <div class="specs-stat"><div class="specs-stat-label">Engagement Definition</div><div class="specs-stat-value">Impression</div></div>
+          <div class="specs-stat"><div class="specs-stat-label">Reporting</div><div class="specs-stat-value">NPI Targeting; Partial Reporting via EQ5 Pixel</div></div>
+        </div>
+        <div class="specs-ad-types"><span class="specs-ad-type">Video Ads</span></div>
+      </div>
+      <hr class="specs-section-divider">
+      <div>
+        <div class="specs-channel-title" style="font-size:16px;margin-bottom:.5rem;">Geofencing</div>
+        <div class="specs-channel-desc" style="margin-bottom:1rem;">Location-based NPI-level targeting to HCP devices — ideal for account-based marketing strategies.</div>
+        <div class="specs-stats">
+          <div class="specs-stat"><div class="specs-stat-label">HCP Avg. Match Rate</div><div class="specs-stat-value highlight">93%</div></div>
+          <div class="specs-stat"><div class="specs-stat-label">Buy Type</div><div class="specs-stat-value">CPM / CPC</div></div>
+          <div class="specs-stat"><div class="specs-stat-label">Avg. Time on Site Daily</div><div class="specs-stat-value">180 min</div></div>
+          <div class="specs-stat"><div class="specs-stat-label">Engagement Definition</div><div class="specs-stat-value">Impression / Click</div></div>
+          <div class="specs-stat"><div class="specs-stat-label">Reporting</div><div class="specs-stat-value">NPI Targeting; Partial Reporting via EQ5 Pixel</div></div>
+        </div>
+        <div class="specs-ad-types"><span class="specs-ad-type">Banner Ads</span></div>
+        <div class="specs-ctas" style="margin-top:1rem;">
+          <div class="specs-ctas-label">Geofencing Use Cases</div>
+          <div class="specs-ctas-list">
+            <span class="specs-cta-tag">Out of Office — Webcast</span><span class="specs-cta-tag">Out of Office — KOL Videos</span><span class="specs-cta-tag">Conference — Booth Drivers</span><span class="specs-cta-tag">Conference — Event Invites</span><span class="specs-cta-tag">Physician Office — Co-Pay Cards</span><span class="specs-cta-tag">Physician Office — Patient Material</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TABOOLA / OUTBRAIN -->
+    <div class="specs-platform-panel" id="specs-taboola">
+      <div class="specs-channel-header">
+        <div class="specs-channel-title">Taboola / Outbrain</div>
+        <div class="specs-channel-desc">Native content discovery networks for brand awareness, disease education, and coverage messaging. No preview link available.</div>
+      </div>
+      <hr class="specs-section-divider" style="margin-top:0;">
+      <div style="margin-bottom:2rem;">
+        <div class="specs-channel-title" style="font-size:16px;margin-bottom:.75rem;">Taboola</div>
+        <div class="specs-stats">
+          <div class="specs-stat"><div class="specs-stat-label">HCP Avg. Match Rate</div><div class="specs-stat-value highlight">41%</div></div>
+          <div class="specs-stat"><div class="specs-stat-label">Buy Type</div><div class="specs-stat-value">CPM / CPC</div></div>
+          <div class="specs-stat"><div class="specs-stat-label">Engagement Definition</div><div class="specs-stat-value">Impression / Click</div></div>
+          <div class="specs-stat"><div class="specs-stat-label">Reporting</div><div class="specs-stat-value">NPI Targeting; Partial Reporting via EQ5 Pixel</div></div>
+        </div>
+        <div class="specs-ad-types"><span class="specs-ad-type">Image Ads</span><span class="specs-ad-type">Video Ads</span></div>
+        <div class="specs-formats">
+          <div class="specs-format-card">
+            <div class="specs-format-title">Network | Static Ads</div>
+            <div class="specs-format-body">
+              <div class="specs-format-col"><div class="specs-format-col-label">Design</div><ul><li>File Type: PNG / BMP / WBMP / GIF / JPG</li><li>Ratio: 16:9 preferred (4:3 / 6:5 / 2:1 also supported)</li><li>Resolution: at least 600×400px</li></ul></div>
+              <div class="specs-format-col"><div class="specs-format-col-label">Text</div><ul><li>Headline: 100 chars</li><li>Primary Text: 250 chars (optional, may not show on all placements)</li><li>Company Name: 30 chars</li></ul></div>
+              <div class="specs-format-col"><div class="specs-format-col-label">Technical</div><ul><li>Max File Size: 2.5MB</li><li>Data: Clicks. No preview link.</li></ul></div>
+            </div>
+          </div>
+          <div class="specs-format-card">
+            <div class="specs-format-title">Network | Video Ads</div>
+            <div class="specs-format-body">
+              <div class="specs-format-col"><div class="specs-format-col-label">Design</div><ul><li>File Type: MP4 / MOV / GIF</li><li>Ratio: 16:9 preferred (4:3 / 6:5 / 2:1)</li><li>Resolution: at least 600×400px</li></ul></div>
+              <div class="specs-format-col"><div class="specs-format-col-label">Text</div><ul><li>Headline: 100 chars</li><li>Primary Text: 250 chars (optional)</li><li>Company Name: 30 chars</li></ul></div>
+              <div class="specs-format-col"><div class="specs-format-col-label">Technical</div><ul><li>Max File Size: 50MB</li><li>Duration: 1 sec – 15 sec</li><li>Data: Clicks. No preview link.</li></ul></div>
+            </div>
+          </div>
+        </div>
+        <div class="specs-ctas" style="margin-top:1rem;">
+          <div class="specs-ctas-label">Taboola CTAs</div>
+          <div class="specs-ctas-list">
+            <span class="specs-cta-tag">Download</span><span class="specs-cta-tag">Get Quote</span><span class="specs-cta-tag">Install Now</span><span class="specs-cta-tag">Get Offer</span><span class="specs-cta-tag">Learn More</span><span class="specs-cta-tag">Try Now</span><span class="specs-cta-tag">Shop Now</span><span class="specs-cta-tag">Search Now</span><span class="specs-cta-tag">Click Here</span><span class="specs-cta-tag">Book Now</span><span class="specs-cta-tag">Sign Up</span><span class="specs-cta-tag">Watch Now</span><span class="specs-cta-tag">Play Now</span><span class="specs-cta-tag">Buy Now</span><span class="specs-cta-tag">Read More</span>
+          </div>
+        </div>
+      </div>
+      <hr class="specs-section-divider">
+      <div>
+        <div class="specs-channel-title" style="font-size:16px;margin-bottom:.75rem;">Outbrain</div>
+        <div class="specs-stats">
+          <div class="specs-stat"><div class="specs-stat-label">HCP Avg. Match Rate</div><div class="specs-stat-value highlight">42%</div></div>
+          <div class="specs-stat"><div class="specs-stat-label">Buy Type</div><div class="specs-stat-value">CPM / CPC</div></div>
+          <div class="specs-stat"><div class="specs-stat-label">Engagement Definition</div><div class="specs-stat-value">Impression / Click</div></div>
+          <div class="specs-stat"><div class="specs-stat-label">Reporting</div><div class="specs-stat-value">NPI Targeting; Partial Reporting via EQ5 Pixel</div></div>
+        </div>
+        <div class="specs-ad-types"><span class="specs-ad-type">Image Ads</span><span class="specs-ad-type">Video Ads</span><span class="specs-ad-type">Carousel Ads</span></div>
+        <div class="specs-formats">
+          <div class="specs-format-card">
+            <div class="specs-format-title">Network | Static Ads</div>
+            <div class="specs-format-body">
+              <div class="specs-format-col"><div class="specs-format-col-label">Design</div><ul><li>File Type: JPG / PNG</li><li>Resolution: 1200×800px</li></ul></div>
+              <div class="specs-format-col"><div class="specs-format-col-label">Text</div><ul><li>Company Name: 60 chars</li><li>Headline: 100 chars</li><li>Primary Text: 150 chars (optional)</li></ul></div>
+              <div class="specs-format-col"><div class="specs-format-col-label">Technical</div><ul><li>Max File Size: 2.5MB</li><li>Data: Clicks. No preview link.</li></ul></div>
+            </div>
+          </div>
+          <div class="specs-format-card">
+            <div class="specs-format-title">Network | Video Ads</div>
+            <div class="specs-format-body">
+              <div class="specs-format-col"><div class="specs-format-col-label">Design</div><ul><li>File Type: MP4 / MOV / VAST / VPAID</li><li>Ratio: 16:9</li></ul></div>
+              <div class="specs-format-col"><div class="specs-format-col-label">Text</div><ul><li>Company Name: 60 chars</li><li>Headline: 100 chars</li></ul></div>
+              <div class="specs-format-col"><div class="specs-format-col-label">Technical</div><ul><li>Max File Size: 300MB</li><li>Duration: 6 sec – 3 min</li><li>Data: Clicks. No preview link.</li></ul></div>
+            </div>
+          </div>
+          <div class="specs-format-card">
+            <div class="specs-format-title">Network | Static Carousel Ads</div>
+            <div class="specs-format-body">
+              <div class="specs-format-col"><div class="specs-format-col-label">Design</div><ul><li>File Type: JPG / PNG</li><li>Ratio: 1:1</li><li>Resolution: 300×300 to 1200×1200px</li></ul></div>
+              <div class="specs-format-col"><div class="specs-format-col-label">Text</div><ul><li>Company Name: 50 chars</li><li>Primary Text: 100 chars (one title for all cards)</li><li>Headline: 100 chars (unique per card)</li></ul></div>
+              <div class="specs-format-col"><div class="specs-format-col-label">Technical</div><ul><li>Max File Size: 2.5MB</li><li>Cards: 3–10</li><li>Data: Clicks. No preview link.</li></ul></div>
+            </div>
+          </div>
+          <div class="specs-format-card">
+            <div class="specs-format-title">Network | Video Carousel Ads</div>
+            <div class="specs-format-body">
+              <div class="specs-format-col"><div class="specs-format-col-label">Design</div><ul><li>File Type: GIF / MP4</li><li>Ratio: 1:1</li><li>Resolution: at least 300×300px</li></ul></div>
+              <div class="specs-format-col"><div class="specs-format-col-label">Text</div><ul><li>Company Name: 60 chars</li><li>Primary Text: 100 chars (one title for all cards)</li><li>Headline: 100 chars (unique per card)</li></ul></div>
+              <div class="specs-format-col"><div class="specs-format-col-label">Technical</div><ul><li>Max File Size: 2.5MB</li><li>Cards: 3–10</li><li>Data: Clicks. No preview link.</li></ul></div>
+            </div>
+          </div>
+        </div>
+        <div class="specs-ctas" style="margin-top:1rem;">
+          <div class="specs-ctas-label">Outbrain CTAs</div>
+          <div class="specs-ctas-list">
+            <span class="specs-cta-tag">Apply Now</span><span class="specs-cta-tag">Watch More</span><span class="specs-cta-tag">Book Now</span><span class="specs-cta-tag">Listen Now</span><span class="specs-cta-tag">Contact Us</span><span class="specs-cta-tag">Subscribe</span><span class="specs-cta-tag">Download</span><span class="specs-cta-tag">Register Now</span><span class="specs-cta-tag">Learn More</span><span class="specs-cta-tag">Read More</span><span class="specs-cta-tag">Get Quote</span><span class="specs-cta-tag">Order Now</span><span class="specs-cta-tag">Shop Now</span><span class="specs-cta-tag">Test Now</span><span class="specs-cta-tag">Sign Up</span><span class="specs-cta-tag">Click Here</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- YAHOO / MICROSOFT -->
+    <div class="specs-platform-panel" id="specs-yahoo">
+      <div class="specs-channel-header">
+        <div class="specs-channel-title">Yahoo / Microsoft</div>
+        <div class="specs-channel-desc">Premium display and search network reaching HCPs across Yahoo, Bing, MSN, Outlook, Xbox, and Microsoft Edge. No preview link available.</div>
+      </div>
+      <hr class="specs-section-divider" style="margin-top:0;">
+      <div style="margin-bottom:2rem;">
+        <div class="specs-channel-title" style="font-size:16px;margin-bottom:.75rem;">Yahoo</div>
+        <div class="specs-stats">
+          <div class="specs-stat"><div class="specs-stat-label">HCP Avg. Match Rate</div><div class="specs-stat-value highlight">89%</div></div>
+          <div class="specs-stat"><div class="specs-stat-label">Buy Type</div><div class="specs-stat-value">CPM / CPC</div></div>
+          <div class="specs-stat"><div class="specs-stat-label">Avg. Time on Site Daily</div><div class="specs-stat-value">180 min</div></div>
+          <div class="specs-stat"><div class="specs-stat-label">Engagement Definition</div><div class="specs-stat-value">Impression / Click</div></div>
+          <div class="specs-stat"><div class="specs-stat-label">Reporting</div><div class="specs-stat-value">NPI Targeting; Partial Reporting via EQ5 Pixel</div></div>
+        </div>
+        <div class="specs-ad-types"><span class="specs-ad-type">Image Ads</span><span class="specs-ad-type">Carousel Ads</span></div>
+        <div class="specs-formats">
+          <div class="specs-format-card">
+            <div class="specs-format-title">Network | Static Ads</div>
+            <div class="specs-format-body">
+              <div class="specs-format-col"><div class="specs-format-col-label">Design</div><ul><li>File Type: JPG / PNG</li><li>Ratio: 1.91:1 or 1:1</li><li>Resolution: at least 1200×627 or 627×627px</li></ul></div>
+              <div class="specs-format-col"><div class="specs-format-col-label">Text</div><ul><li>Company Name: 35 chars</li><li>Headline: 50 chars</li><li>Primary Text: 150 chars</li></ul></div>
+              <div class="specs-format-col"><div class="specs-format-col-label">Technical</div><ul><li>Max File Size: 2MB</li><li>Data: Clicks. No preview link.</li></ul></div>
+            </div>
+          </div>
+          <div class="specs-format-card">
+            <div class="specs-format-title">Network | Carousel Ads</div>
+            <div class="specs-format-body">
+              <div class="specs-format-col"><div class="specs-format-col-label">Design</div><ul><li>File Type: JPG / PNG</li><li>Ratio: 1.91:1 or 1:1</li><li>Resolution: at least 1200×627 or 627×627px</li></ul></div>
+              <div class="specs-format-col"><div class="specs-format-col-label">Text</div><ul><li>Company Name: 35 chars (may not show on all placements)</li><li>Headline: 50 chars</li><li>Primary Text: 150 chars (truncated after 41)</li></ul></div>
+              <div class="specs-format-col"><div class="specs-format-col-label">Technical</div><ul><li>Max File Size: 2MB</li><li>Cards: 3–10</li><li>Data: Clicks. No preview link.</li></ul></div>
+            </div>
+          </div>
+        </div>
+        <div class="specs-ctas" style="margin-top:1rem;">
+          <div class="specs-ctas-label">Yahoo CTAs</div>
+          <div class="specs-ctas-list">
+            <span class="specs-cta-tag">Apply Now</span><span class="specs-cta-tag">Register</span><span class="specs-cta-tag">Book Now</span><span class="specs-cta-tag">Shop Now</span><span class="specs-cta-tag">Contact Us</span><span class="specs-cta-tag">Sign Up</span><span class="specs-cta-tag">Download</span><span class="specs-cta-tag">Subscribe</span><span class="specs-cta-tag">Explore</span><span class="specs-cta-tag">Watch More</span><span class="specs-cta-tag">Get Info</span><span class="specs-cta-tag">Watch Now</span><span class="specs-cta-tag">Read More</span><span class="specs-cta-tag">Enroll Now</span><span class="specs-cta-tag">Read Now</span>
+          </div>
+        </div>
+      </div>
+      <hr class="specs-section-divider">
+      <div>
+        <div class="specs-channel-title" style="font-size:16px;margin-bottom:.5rem;">Microsoft Display</div>
+        <div class="specs-channel-desc" style="margin-bottom:.75rem;">Reach HCPs via Xbox, Microsoft Start, MSN, Microsoft Edge, and Outlook.com.</div>
+        <div class="specs-stats">
+          <div class="specs-stat"><div class="specs-stat-label">HCP Avg. Match Rate</div><div class="specs-stat-value highlight">44%</div></div>
+          <div class="specs-stat"><div class="specs-stat-label">Buy Type</div><div class="specs-stat-value">CPM / CPC</div></div>
+          <div class="specs-stat"><div class="specs-stat-label">Avg. Time on Site Daily</div><div class="specs-stat-value">16 min</div></div>
+        </div>
+        <div class="specs-ad-types" style="margin-top:1rem;"><span class="specs-ad-type">Image Ads</span><span class="specs-ad-type">Carousel Ads</span></div>
+        <div class="specs-channel-title" style="font-size:16px;margin-bottom:.5rem;margin-top:1.5rem;">Microsoft Search</div>
+        <div class="specs-channel-desc" style="margin-bottom:.75rem;">Search network campaigns (text and dynamic ads). Partner network includes Bing and AOL.</div>
+        <div class="specs-stats">
+          <div class="specs-stat"><div class="specs-stat-label">HCP Avg. Match Rate</div><div class="specs-stat-value highlight">28%</div></div>
+          <div class="specs-stat"><div class="specs-stat-label">Buy Type</div><div class="specs-stat-value">CPM / CPC</div></div>
+          <div class="specs-stat"><div class="specs-stat-label">Avg. Time on Site Daily</div><div class="specs-stat-value">12 min</div></div>
+        </div>
+        <div class="specs-ad-types" style="margin-top:1rem;"><span class="specs-ad-type">Text Ads</span></div>
+        <div class="specs-formats" style="margin-top:1.5rem;">
+          <div class="specs-format-card">
+            <div class="specs-format-title">Network | Static Ads</div>
+            <div class="specs-format-body">
+              <div class="specs-format-col"><div class="specs-format-col-label">Design</div><ul><li>File Type: JPG / PNG / GIF</li><li>Ratio: 1.91:1 / 1.78:1 / 1.5:1 / 1.33:1 / 1:1</li><li>Resolution: 1200×628 / 1200×674 / 1200×800 / 1200×902 / 1200×1200</li></ul></div>
+              <div class="specs-format-col"><div class="specs-format-col-label">Text</div><ul><li>Company Name: 25 chars</li><li>Short Headline: 30 chars</li><li>Long Headline: 90 chars (may not show)</li><li>Primary Text: 90 chars</li></ul></div>
+              <div class="specs-format-col"><div class="specs-format-col-label">Technical</div><ul><li>Max File Size: 10MB</li><li>Data: Clicks. No preview link.</li></ul></div>
+            </div>
+          </div>
+          <div class="specs-format-card">
+            <div class="specs-format-title">Network | Video Ads</div>
+            <div class="specs-format-body">
+              <div class="specs-format-col"><div class="specs-format-col-label">Design</div><ul><li>File Type: FLV / WAV / MOV / MP4 / WMV / MPEG2PS / MPEG2TS / 3GP / MXF / GXF / AVI</li><li>Ratio: 16:9</li><li>Resolution: at least 1280×720px</li></ul></div>
+              <div class="specs-format-col"><div class="specs-format-col-label">Text</div><ul><li>Company Name: 25 chars</li><li>Short Headline: 30 chars</li><li>Long Headline: 90 chars (may not show)</li><li>Primary Text: 90 chars</li></ul></div>
+              <div class="specs-format-col"><div class="specs-format-col-label">Technical</div><ul><li>Max File Size: 10GB</li><li>Duration: 6 sec – 2 min</li><li>Data: Clicks. No preview link.</li></ul></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- AMAZON -->
+    <div class="specs-platform-panel" id="specs-amazon">
+      <div class="specs-channel-header">
+        <div class="specs-channel-title">Amazon</div>
+        <div class="specs-channel-desc">NPI-level targeted HCP advertising across Amazon's display network. No preview link available.</div>
+      </div>
+      <div class="specs-stats">
+        <div class="specs-stat"><div class="specs-stat-label">HCP Avg. Match Rate</div><div class="specs-stat-value highlight">56%</div></div>
+        <div class="specs-stat"><div class="specs-stat-label">Buy Type</div><div class="specs-stat-value">CPM / CPC</div></div>
+        <div class="specs-stat"><div class="specs-stat-label">Avg. Time on Site Daily</div><div class="specs-stat-value">40 min</div></div>
+        <div class="specs-stat"><div class="specs-stat-label">Engagement Definition</div><div class="specs-stat-value">Impression / Click</div></div>
+        <div class="specs-stat"><div class="specs-stat-label">Reporting</div><div class="specs-stat-value">NPI Targeting; Partial Reporting via EQ5 Pixel</div></div>
+      </div>
+      <div class="specs-ad-types">
+        <span class="specs-ad-type">Image Ads</span><span class="specs-ad-type">Video Ads</span>
+      </div>
+      <div class="specs-formats">
+        <div class="specs-format-card">
+          <div class="specs-format-title">Network | Static Banner Ads</div>
+          <div class="specs-format-body">
+            <div class="specs-format-col"><div class="specs-format-col-label">Design</div><ul><li>File Type: PNG8 / JPG</li><li>Dimensions: 300×250 / 728×90 / 160×600 / 300×600</li></ul></div>
+            <div class="specs-format-col"><div class="specs-format-col-label">Text</div><ul><li>Font size should not be smaller than 16pt (at 2X resolution)</li><li>Must be legible when viewed on device</li></ul></div>
+            <div class="specs-format-col"><div class="specs-format-col-label">Technical</div><ul><li>Max File Size: 200KB (HTML) or 40KB (static)</li><li>Data: Impressions, Clicks. No preview link.</li></ul></div>
+          </div>
+        </div>
+        <div class="specs-format-card">
+          <div class="specs-format-title">Network | Video Ads</div>
+          <div class="specs-format-body">
+            <div class="specs-format-col"><div class="specs-format-col-label">Design</div><ul><li>File Type: MP4 / .M4V / .MOV / .MPEG / .AVI / .DV</li><li>Ratio: 16:9</li><li>Dimensions: 1920×1080</li></ul></div>
+            <div class="specs-format-col"><div class="specs-format-col-label">Text</div><ul><li>—</li></ul></div>
+            <div class="specs-format-col"><div class="specs-format-col-label">Technical</div><ul><li>Max File Size: 500MB</li><li>Duration: 1 sec – 3 min</li><li>Data: Clicks. No preview link.</li></ul></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SOCIAL LISTENING -->
+    <div class="specs-platform-panel" id="specs-sociallistening">
+      <div class="specs-channel-header">
+        <div class="specs-channel-title">Social Listening</div>
+        <div class="specs-channel-desc">Monitor and analyze digital conversations across 187 languages, 196 countries, and 150+ million sources — owned and earned media including text, image, video, speech, and LLMs.</div>
+      </div>
+      <div class="specs-stats">
+        <div class="specs-stat"><div class="specs-stat-label">Buy Type</div><div class="specs-stat-value">Flat Fee</div></div>
+        <div class="specs-stat"><div class="specs-stat-label">Engagement</div><div class="specs-stat-value">SOV / Sentiment</div></div>
+        <div class="specs-stat"><div class="specs-stat-label">Reporting Passback</div><div class="specs-stat-value">Weekly / Biweekly / Monthly / Time Period</div></div>
+        <div class="specs-stat"><div class="specs-stat-label">Coverage</div><div class="specs-stat-value">187 languages, 196 countries</div></div>
+        <div class="specs-stat"><div class="specs-stat-label">Sources</div><div class="specs-stat-value">150+ million</div></div>
+      </div>
+      <div class="specs-listening-cards">
+        <div class="specs-listening-card">
+          <h4>Share of Voice (SOV)</h4>
+          <p>Understand how your brand stacks up against competitors in the digital conversation. Measures the percentage of total online mentions, engagements, and media coverage your brand commands across social platforms, forums, news outlets, and HCP communities.</p>
+        </div>
+        <div class="specs-listening-card">
+          <h4>Competitor Analysis</h4>
+          <p>Stay ahead of competitive moves with ongoing monitoring of rival brands, pipeline announcements, and sentiment shifts. Tracks competitor messaging, channel activity, share of conversation, and emerging narratives. Maps the digital landscape at brand and therapeutic area level.</p>
+        </div>
+        <div class="specs-listening-card">
+          <h4>Identify Trends</h4>
+          <p>Analyzes real-time conversations across social media, patient communities, HCP forums, and news to uncover emerging themes, unmet needs, and shifts in behavior before they show up in traditional data sources.</p>
+        </div>
+        <div class="specs-listening-card">
+          <h4>Sentiment Analysis</h4>
+          <p>Tracks positive, negative, and neutral signals from patients, caregivers, and healthcare professionals across social platforms, patient communities, and HCP forums. Integrates with pharmacovigilance escalation protocols built for compliance requirements.</p>
+        </div>
+        <div class="specs-listening-card">
+          <h4>Identify Key Influencers</h4>
+          <p>Identify and profile HCPs, patient advocates, medical journalists, and digital-first clinicians (DOLs) actively shaping perception in your therapeutic area. Goes beyond follower counts — analyzing posting frequency, audience relevance, sentiment alignment, and engagement quality.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ISI FORMATS -->
+    <div class="specs-platform-panel" id="specs-isi">
+      <div class="specs-channel-header">
+        <div class="specs-channel-title">ISI Formats</div>
+        <div class="specs-channel-desc">Four approved ISI ad format options for pharmaceutical advertising compliance.</div>
+      </div>
+      <div class="specs-isi-cards">
+        <div class="specs-isi-card">
+          <div class="specs-isi-number">01</div>
+          <div class="specs-isi-desc">Static Ad with ISI expandable in primary text section</div>
+        </div>
+        <div class="specs-isi-card">
+          <div class="specs-isi-number">02</div>
+          <div class="specs-isi-desc">Static Ad with ISI snippet included in image area (clicks to full ISI on website)</div>
+        </div>
+        <div class="specs-isi-card">
+          <div class="specs-isi-number">03</div>
+          <div class="specs-isi-desc">Video Ad with scrolling ISI included in video section of ad</div>
+        </div>
+        <div class="specs-isi-card">
+          <div class="specs-isi-number">04</div>
+          <div class="specs-isi-desc">Video Ad — no ISI and no PI</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PERFORMANCE BENCHMARKS -->
+    <div class="specs-platform-panel" id="specs-benchmarks">
+      <div class="specs-channel-header">
+        <div class="specs-channel-title">Performance Benchmarks</div>
+        <div class="specs-channel-desc">EQ5 campaign performance benchmarks vs. pharma industry averages for HCP-targeted social advertising.</div>
+      </div>
+      <div class="specs-benchmark-grid">
+        <div class="specs-benchmark-card">
+          <div class="specs-benchmark-number">0.65%</div>
+          <div class="specs-benchmark-label">Industry Avg. CTR — Static Ads (Pharma Social)</div>
+        </div>
+        <div class="specs-benchmark-card">
+          <div class="specs-benchmark-number">0.45%</div>
+          <div class="specs-benchmark-label">Industry Avg. CTR — Video Ads (Pharma Social)</div>
+        </div>
+        <div class="specs-benchmark-card">
+          <div class="specs-benchmark-number">5.50%</div>
+          <div class="specs-benchmark-label">EQ5 Best Performer CTR</div>
+        </div>
+        <div class="specs-benchmark-card">
+          <div class="specs-benchmark-number">4.67%</div>
+          <div class="specs-benchmark-label">EQ5 2nd Best Performer CTR</div>
+        </div>
+        <div class="specs-benchmark-card">
+          <div class="specs-benchmark-number">4.15%</div>
+          <div class="specs-benchmark-label">EQ5 3rd Best Performer CTR</div>
+        </div>
+      </div>
+      <div class="specs-bp-card" style="margin-bottom:1.5rem;">
+        <h4>Top Performing Ad Type</h4>
+        <ul>
+          <li>Unbranded disease state ads with intriguing techniques to test HCP knowledge</li>
+        </ul>
+      </div>
+      <div class="specs-best-practices">
+        <div class="specs-bp-card">
+          <h4>Unbranded Ad Series — Rare Disease Education</h4>
+          <ul>
+            <li>Best CTR: 3.62%</li>
+            <li>Also achieved: 2.93%, 2.42%, 1.78%</li>
+          </ul>
+        </div>
+        <div class="specs-bp-card">
+          <h4>Branded Ad Series — KOL Focus</h4>
+          <ul>
+            <li>Notable for high credibility with HCP audiences</li>
+          </ul>
+        </div>
+        <div class="specs-bp-card">
+          <h4>Unbranded Ads — Disease State Event &amp; KOL</h4>
+          <ul>
+            <li>CTRs: 0.84%, 0.85%, 0.62%, 0.40%</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
   </div>
 
   <!-- ── CLINICAL INDEX PANEL ── -->
@@ -1395,6 +2378,13 @@ function casCloseDetail() {
 }
 
 document.addEventListener('DOMContentLoaded', () => casRender());
+
+function showSpecsPlatform(id) {
+  document.querySelectorAll('.specs-platform-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.specs-platform-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('specs-' + id).classList.add('active');
+  event.target.classList.add('active');
+}
 </script>
 
 </body>
