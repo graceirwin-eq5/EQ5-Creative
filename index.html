@@ -6,6 +6,13 @@
 <title>EQ5 Creative Hub</title>
 <link rel="stylesheet" href="eq5.css">
 <style>
+/* ── PAGE-WRAP OVERRIDE — widen to Figma's 1440px ── */
+.page-wrap {
+  max-width: 1440px !important;
+  padding-left: 48px !important;
+  padding-right: 48px !important;
+}
+
 /* ── MAIN NAV ── */
 .main-nav {
   display: flex;
@@ -83,6 +90,100 @@
 .dev .status-dot { background: #f59e0b; }
 .review .status-dot { background: #a78bfa; }
 .past .status-dot { background: var(--muted); }
+
+/* ── CAMPAIGN NAV ── */
+.campaign-nav {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 1.75rem;
+  background: var(--surface);
+  border-radius: 10px;
+  padding: 4px;
+  width: fit-content;
+}
+.campaign-btn {
+  font-family: var(--font);
+  font-size: 13px;
+  font-weight: 600;
+  padding: 8px 18px;
+  border-radius: 7px;
+  border: none;
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.campaign-btn:hover { color: var(--white); }
+.campaign-btn.active { background: var(--surface-deep); color: var(--white); }
+.campaign-panel { display: none; }
+.campaign-panel.active { display: block; }
+
+/* ── BRAND GUIDELINES ── */
+.brand-guidelines {
+  margin-bottom: 2rem;
+  padding-bottom: 1.75rem;
+  border-bottom: 1px solid var(--border);
+}
+.bg-section-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 14px;
+}
+.bg-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 12px;
+}
+.bg-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 16px 18px;
+}
+.bg-card-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--cyan);
+  margin-bottom: 8px;
+}
+.bg-card-content { font-size: 13px; color: #dde4f5; line-height: 1.6; }
+.bg-swatch-row { display: flex; gap: 8px; margin-top: 6px; flex-wrap: wrap; }
+.bg-swatch { width: 26px; height: 26px; border-radius: 6px; border: 1px solid rgba(255,255,255,0.1); flex-shrink: 0; }
+
+/* ── CAMPAIGN GOALS ── */
+.campaign-goals { margin-bottom: 2rem; }
+.goal-type-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 5px 14px;
+  border-radius: 20px;
+  background: rgba(1,176,176,0.12);
+  border: 1px solid rgba(1,176,176,0.3);
+  color: var(--cyan);
+  margin-bottom: 14px;
+}
+.goal-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 10px;
+}
+.goal-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 14px 16px;
+}
+.goal-card-label { font-size: 10px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); margin-bottom: 6px; }
+.goal-card-value { font-size: 14px; font-weight: 700; color: #dde4f5; }
+.goal-card-sub { font-size: 11px; color: var(--muted); margin-top: 3px; }
 
 /* ── AD LIBRARY SUB-NAV ── */
 .sub-nav {
@@ -332,6 +433,128 @@
 .clinical-detail.visible { display:block; }
 .detail-heading { font-size:18px; font-weight:700; color:#dde4f5; margin-bottom:12px; }
 .empty-state { color:var(--muted); font-size:14px; }
+/* ── ACCOUNTS ── */
+#panel-accounts.active {
+  display: flex !important;
+  flex-direction: column;
+  /* Break out of page-wrap padding to fill edge-to-edge */
+  margin-left: -48px;
+  margin-right: -48px;
+  padding-left: 48px;
+  padding-right: 48px;
+}
+
+#acct-grid-view { flex:1; padding:40px 0; }
+.acct-grid-main { max-width:1200px; margin:0 auto; padding:0 32px; }
+.clients-heading { text-align:center; font-size:34px; font-weight:700; color:var(--white); letter-spacing:-0.02em; margin-bottom:32px; }
+.client-grid { display:grid; grid-template-columns:repeat(3,375px); gap:15px; justify-content:center; }
+.client-grid-card { width:375px; height:140px; background:var(--surface); border-radius:8px; border-top:3px solid var(--cyan); cursor:pointer; display:flex; align-items:flex-end; padding:0 16px 16px; font-size:16px; font-weight:700; color:#dde4f5; text-transform:uppercase; letter-spacing:0.08em; transition:opacity .2s; }
+.client-grid-card:hover { opacity:.85; }
+.client-grid-card--placeholder { cursor:default; opacity:.45; }
+.client-grid-card--placeholder:hover { opacity:.45; }
+
+#acct-detail-view, #acct-message-view { display:flex; }
+
+.acct-sidebar { width:200px; min-width:200px; border-right:1px solid var(--border); padding-top:0; display:flex; flex-direction:column; }
+.acct-sidebar-section-label { font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:0.15em; color:var(--muted); padding:20px 16px 8px; }
+.acct-sidebar-top-tab { display:block; width:184px; height:40px; margin:12px 8px 4px; background:transparent; border:none; border-left:3px solid var(--cyan); border-radius:4px; text-align:left; padding:0 0 0 14px; font-family:var(--font); font-size:13px; font-weight:700; text-transform:uppercase; letter-spacing:0.12em; color:var(--white); cursor:pointer; line-height:40px; transition:all .15s; }
+.acct-sidebar-top-tab:hover { background:rgba(1,176,176,0.06); }
+.acct-sidebar-client-btn,
+.acct-sidebar-campaign-btn { display:block; width:184px; height:40px; margin:0 8px; background:transparent; border:none; border-left:3px solid transparent; border-radius:4px; text-align:left; padding:0 0 0 14px; font-size:16px; font-weight:500; color:#dde4f5; cursor:pointer; line-height:40px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+.acct-sidebar-client-btn:hover,
+.acct-sidebar-campaign-btn:hover { background:rgba(1,176,176,0.06); }
+.acct-sidebar-client-btn.active,
+.acct-sidebar-campaign-btn.active { background:rgba(1,176,176,0.1); border-left:3px solid var(--cyan); }
+.acct-sidebar-sub { display:flex; flex-direction:column; }
+.acct-sidebar-msg-btn { display:block; width:184px; height:40px; margin:0 8px; background:transparent; border:none; border-left:3px solid transparent; border-radius:4px; text-align:left; padding:0 0 0 28px; font-size:14px; font-weight:500; color:var(--muted); cursor:pointer; line-height:40px; }
+.acct-sidebar-msg-btn:hover { background:rgba(1,176,176,0.06); color:#dde4f5; }
+.acct-sidebar-msg-btn.active { background:rgba(1,176,176,0.1); border-left:3px solid var(--cyan); color:#dde4f5; }
+
+.acct-main { flex:1; padding:28px 32px 40px; }
+.acct-main-title { font-size:34px; font-weight:700; color:#dde4f5; letter-spacing:-0.02em; margin-bottom:8px; }
+.acct-main-subtitle { font-size:16px; color:var(--muted); margin-bottom:24px; }
+
+.acct-tabs { display:flex; align-items:center; gap:8px; height:44px; margin-bottom:28px; }
+.acct-tab-btn { height:36px; padding:0 24px; background:transparent; border:1px solid transparent; border-radius:8px; font-size:14px; font-weight:500; color:var(--muted); cursor:pointer; white-space:nowrap; transition:all .15s; }
+.acct-tab-btn:hover { color:#dde4f5; }
+.acct-tab-btn.active { background:var(--surface); border-color:var(--cyan); color:var(--white); }
+
+.acct-tab-panel { display:none; }
+.acct-tab-panel.active { display:block; }
+
+.acct-section-label { font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:0.15em; color:var(--muted); margin-bottom:16px; }
+
+.acct-info-grid { display:grid; grid-template-columns:repeat(3,375px); gap:15px; margin-bottom:28px; }
+.acct-info-card { width:375px; height:140px; background:var(--surface); border-radius:8px; border-top:3px solid var(--cyan); padding:16px; box-sizing:border-box; }
+.acct-info-label { font-size:13px; font-weight:600; text-transform:uppercase; letter-spacing:0.08em; color:var(--muted); margin-bottom:8px; }
+.acct-info-value { font-size:16px; font-weight:500; color:#dde4f5; max-width:343px; }
+
+.acct-timeline { display:flex; align-items:flex-start; position:relative; height:70px; margin-bottom:8px; }
+.acct-timeline::before { content:''; position:absolute; top:29px; left:0; right:0; height:1px; background:var(--border); z-index:0; }
+.acct-tl-milestone { flex:1; display:flex; flex-direction:column; align-items:center; position:relative; z-index:1; }
+.acct-tl-date { font-size:12px; color:var(--muted); margin-bottom:8px; }
+.acct-tl-dot { width:10px; height:10px; border-radius:50%; background:var(--border); border:1px solid var(--muted); margin-bottom:8px; }
+.acct-tl-dot.active { background:var(--cyan); border-color:var(--cyan); }
+.acct-tl-dot.passed { background:var(--muted); border-color:var(--muted); }
+.acct-tl-label { font-size:13px; color:#dde4f5; }
+
+.acct-metric-grid { display:grid; grid-template-columns:repeat(4,280px); gap:12px; margin-bottom:8px; }
+.acct-metric-card { width:280px; height:100px; background:var(--surface); border-radius:8px; border-top:2px solid var(--cyan); padding:14px; box-sizing:border-box; }
+.acct-metric-label { font-size:13px; font-weight:600; text-transform:uppercase; letter-spacing:0.08em; color:var(--muted); margin-bottom:4px; }
+.acct-metric-value { font-size:28px; font-weight:800; color:#dde4f5; letter-spacing:-0.02em; margin-bottom:4px; }
+.acct-metric-sub { font-size:13px; color:var(--muted); }
+
+.acct-msg-grid { display:grid; grid-template-columns:repeat(4,280px); gap:12px; }
+.acct-msg-card { width:280px; height:120px; background:var(--surface); border-radius:8px; border-top:3px solid var(--cyan); padding:12px; box-sizing:border-box; cursor:pointer; transition:opacity .15s; }
+.acct-msg-card:hover { opacity:.85; }
+.acct-msg-status { display:inline-block; height:20px; line-height:20px; padding:0 8px; border-radius:4px; font-size:12px; font-weight:600; margin-bottom:8px; }
+.acct-msg-status.running { background:rgba(1,176,176,0.12); color:var(--cyan); }
+.acct-msg-status.review { background:rgba(167,139,250,0.12); color:#a78bfa; }
+.acct-msg-name { font-size:16px; font-weight:600; color:#dde4f5; margin-bottom:4px; }
+.acct-msg-campaign { font-size:13px; color:var(--muted); }
+.acct-msg-heading { font-size:24px; font-weight:700; color:#dde4f5; margin-bottom:20px; }
+
+.acct-msg-detail-layout { display:flex; gap:32px; align-items:flex-start; margin-top:16px; }
+.acct-creative-preview { flex-shrink:0; width:384px; }
+.acct-creative-meta { flex:1; }
+/* Social media ad mockup */
+.ad-mock { background:#fff; border-radius:12px; overflow:hidden; font-family:-apple-system,'Segoe UI',sans-serif; }
+.ad-mock-header { display:flex; align-items:center; padding:10px 12px; gap:10px; }
+.ad-mock-logo { width:40px; height:40px; border-radius:50%; background:#1a7a3c; display:flex; align-items:center; justify-content:center; color:#fff; font-weight:900; font-size:18px; flex-shrink:0; }
+.ad-mock-brand { flex:1; }
+.ad-mock-name { font-size:14px; font-weight:700; color:#000; display:flex; align-items:center; gap:4px; }
+.ad-mock-verified { width:14px; height:14px; background:#1877f2; border-radius:50%; display:inline-flex; align-items:center; justify-content:center; color:#fff; font-size:9px; font-weight:900; }
+.ad-mock-sponsored { font-size:12px; color:#65676b; display:flex; align-items:center; gap:3px; margin-top:1px; }
+.ad-mock-dots { color:#65676b; font-size:20px; line-height:1; padding:4px; }
+.ad-mock-image { width:100%; aspect-ratio:1/1; background:#8e9bb5; display:flex; align-items:center; justify-content:center; }
+.ad-mock-image span { font-size:22px; font-weight:900; color:#fff; letter-spacing:0.02em; }
+.ad-mock-cta { display:flex; align-items:center; justify-content:space-between; padding:10px 14px; border-bottom:1px solid #efefef; }
+.ad-mock-cta-text { font-size:14px; font-weight:700; color:#000; }
+.ad-mock-cta-arrow { font-size:18px; color:#65676b; }
+.ad-mock-actions { display:flex; align-items:center; padding:8px 14px; gap:16px; }
+.ad-mock-action-icon { font-size:22px; color:#000; cursor:pointer; }
+.ad-mock-dots-row { display:flex; gap:4px; margin-left:auto; margin-right:auto; align-items:center; }
+.ad-mock-dot { width:6px; height:6px; border-radius:50%; background:#1877f2; }
+.ad-mock-dot.inactive { background:#c8c8c8; width:5px; height:5px; }
+.ad-mock-bookmark { margin-left:auto; font-size:22px; color:#000; }
+.ad-mock-likes { font-size:14px; font-weight:700; color:#000; padding:0 14px 6px; }
+.ad-mock-caption { font-size:14px; color:#000; padding:0 14px 14px; line-height:1.4; }
+.acct-creative-meta { flex:1; }
+.acct-meta-fields { display:grid; grid-template-columns:repeat(3, auto); gap:20px 56px; margin-bottom:24px; justify-content:start; }
+.acct-meta-field { display:flex; flex-direction:column; gap:6px; }
+.acct-meta-label { font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; color:var(--muted); white-space:nowrap; }
+.acct-meta-value { font-size:18px; color:#dde4f5; white-space:nowrap; }
+.acct-creative-cols { display:grid; grid-template-columns:1fr 1fr; gap:24px; }
+.acct-creative-list { font-size:13px; color:#dde4f5; line-height:1.8; margin-top:8px; }
+.alt-copy-block { display:flex; flex-direction:column; gap:20px; margin-top:12px; }
+.alt-copy-group { display:flex; flex-direction:column; gap:10px; }
+.alt-copy-label { font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; color:var(--muted); margin-bottom:2px; }
+.alt-copy-row { display:flex; align-items:flex-start; gap:12px; }
+.alt-copy-tag { flex-shrink:0; font-size:10px; font-weight:700; letter-spacing:0.06em; padding:3px 8px; border-radius:4px; margin-top:2px; }
+.alt-copy-tag.opt-b { background:#3571cb; color:#fff; }
+.alt-copy-tag.opt-c { background:#f4941f; color:#fff; }
+.alt-copy-text { font-size:14px; color:#dde4f5; line-height:1.6; }
+
 /* Ad Specs panel */
 .specs-platform-nav { display:flex; flex-wrap:wrap; gap:6px; margin-bottom:2rem; }
 .specs-platform-btn { font-family:var(--font); font-size:12px; font-weight:600; padding:6px 14px; border-radius:20px; border:1px solid var(--border); background:transparent; color:var(--muted); cursor:pointer; transition:all 0.15s; }
@@ -400,12 +623,9 @@
   <!-- ── MAIN NAV ── -->
   <nav class="main-nav">
     <button class="main-nav-btn active" onclick="showPanel('accounts')">Accounts</button>
-    <button class="main-nav-btn" onclick="showPanel('timeline')">Creative Timeline</button>
     <button class="main-nav-btn" onclick="showPanel('asset-search')">Creative Asset Search</button>
-    <button class="main-nav-btn" onclick="showPanel('adspecs')">Ad Specs</button>
     <button class="main-nav-btn" onclick="showPanel('clinical')">Clinical Index</button>
     <button class="main-nav-btn" onclick="showPanel('library')">Ad Library</button>
-    <button class="main-nav-btn" onclick="showPanel('design')">Design Elements</button>
     <button class="main-nav-btn" onclick="showPanel('resources')">Resources</button>
   </nav>
 
@@ -414,220 +634,223 @@
   <!-- ══════════════════════════════════════════ -->
   <div class="panel active" id="panel-accounts">
 
-    <div class="account-nav">
-      <button class="account-btn active" onclick="showAccount('client-a')">Client A</button>
-      <button class="account-btn" onclick="showAccount('client-b')">Client B</button>
-      <button class="account-btn" onclick="showAccount('client-c')">Client C</button>
-      <button class="account-btn" onclick="showAccount('client-d')">Client D</button>
-    </div>
-
-    <!-- Client A -->
-    <div class="account-panel active" id="account-client-a">
-      <div class="account-status-section">
-        <div class="status-label" style="color:var(--cyan);">Creative Development Timeline</div>
-        <div class="timeline">
-          <div class="tl-item tl-done"><div class="tl-dot"></div><div class="tl-content"><div class="tl-title">Creative brief development</div></div></div>
-          <div class="tl-item tl-done"><div class="tl-dot"></div><div class="tl-content"><div class="tl-title">Creative kickoff meeting</div></div></div>
-          <div class="tl-item tl-active"><div class="tl-dot"></div><div class="tl-content"><div class="tl-title">Draft mockups of ads</div><div class="tl-sub">In progress</div></div></div>
-          <div class="tl-item"><div class="tl-dot"></div><div class="tl-content"><div class="tl-title">Art to draft layouts</div></div></div>
-          <div class="tl-item"><div class="tl-dot"></div><div class="tl-content"><div class="tl-title">Internal reviews</div></div></div>
-          <div class="tl-item"><div class="tl-dot"></div><div class="tl-content"><div class="tl-title">Art to implement revisions</div></div></div>
-          <div class="tl-item"><div class="tl-dot"></div><div class="tl-content"><div class="tl-title">AM to send to client review</div></div></div>
-          <div class="tl-item"><div class="tl-dot"></div><div class="tl-content"><div class="tl-title">Art to implement client feedback</div></div></div>
-          <div class="tl-item"><div class="tl-dot"></div><div class="tl-content"><div class="tl-title">Client approval for MLR submission</div></div></div>
-          <div class="tl-item"><div class="tl-dot"></div><div class="tl-content"><div class="tl-title">MLR submission</div></div></div>
-        </div>
-      </div>
-      <div class="account-status-section">
-        <div class="status-label running"><span class="status-dot"></span>Running Ads</div>
-        <div class="ad-grid">
-          <div class="ad-card" data-tags="LinkedIn,Static,HCP,Minimal,MLR Approved" onclick="showAdDetail(this)">
-            <div class="ad-thumb"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></div>
-            <div class="ad-info"><div class="ad-name">Awareness — 1:1</div><div class="ad-tags"><span class="ad-tag">LinkedIn</span><span class="ad-tag">Static</span></div></div>
-          </div>
-          <div class="ad-card" data-tags="Meta,Video,HCP,Prescribing" onclick="showAdDetail(this)">
-            <div class="ad-thumb"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="5,3 19,12 5,21"/></svg></div>
-            <div class="ad-info"><div class="ad-name">Branded recall — 9:16</div><div class="ad-tags"><span class="ad-tag">Meta</span><span class="ad-tag">Video</span></div></div>
-          </div>
-        </div>
-      </div>
-      <div class="account-status-section">
-        <div class="status-label dev"><span class="status-dot"></span>In Development</div>
-        <div class="ad-grid">
-          <div class="ad-card" data-tags="Meta,Carousel,Unbranded" onclick="showAdDetail(this)">
-            <div class="ad-thumb"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="6" width="6" height="12" rx="1"/><rect x="9" y="6" width="6" height="12" rx="1"/><rect x="16" y="6" width="6" height="12" rx="1"/></svg></div>
-            <div class="ad-info"><div class="ad-name">Disease awareness — carousel</div><div class="ad-tags"><span class="ad-tag">Meta</span><span class="ad-tag">Carousel</span></div></div>
-          </div>
-        </div>
-      </div>
-      <div class="account-status-section">
-        <div class="status-label review"><span class="status-dot"></span>In Review</div>
-        <div class="ad-grid">
-          <div class="ad-card" data-tags="Programmatic,Static-Dynamic,HCP" onclick="showAdDetail(this)">
-            <div class="ad-thumb"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 15h18M12 15v6"/></svg></div>
-            <div class="ad-info"><div class="ad-name">ISI banner — 300×600</div><div class="ad-tags"><span class="ad-tag">Programmatic</span><span class="ad-tag">Static-Dynamic</span></div></div>
-          </div>
-        </div>
-      </div>
-      <div class="account-status-section">
-        <div class="status-label past"><span class="status-dot"></span>Past Ads</div>
-        <div class="ad-grid">
-          <div class="ad-card" data-tags="LinkedIn,Static,HCP,Clinical" onclick="showAdDetail(this)">
-            <div class="ad-thumb"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M8 12h8M12 8v8"/></svg></div>
-            <div class="ad-info"><div class="ad-name">Q1 HCP campaign — 1:1</div><div class="ad-tags"><span class="ad-tag">LinkedIn</span><span class="ad-tag">Static</span></div></div>
-          </div>
-          <div class="ad-card" data-tags="Meta,Static,DTC,Minimal" onclick="showAdDetail(this)">
-            <div class="ad-thumb"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><path d="M12 8v4l3 3"/></svg></div>
-            <div class="ad-info"><div class="ad-name">Q4 awareness — 4:5</div><div class="ad-tags"><span class="ad-tag">Meta</span><span class="ad-tag">Static</span></div></div>
-          </div>
+    <!-- Grid view -->
+    <div id="acct-grid-view">
+      <div class="acct-grid-main">
+        <h2 class="clients-heading">Clients</h2>
+        <div class="client-grid">
+          <div class="client-grid-card" onclick="showClient('a')">CLIENT A</div>
+          <div class="client-grid-card" onclick="showClient('b')">CLIENT B</div>
+          <div class="client-grid-card" onclick="showClient('c')">CLIENT C</div>
+          <div class="client-grid-card" onclick="showClient('d')">CLIENT D</div>
+          <div class="client-grid-card" onclick="showClient('mesoblast')">MESOBLAST</div>
+          <div class="client-grid-card client-grid-card--placeholder">CLIENT F</div>
+          <div class="client-grid-card client-grid-card--placeholder">CLIENT G</div>
+          <div class="client-grid-card client-grid-card--placeholder">CLIENT H</div>
+          <div class="client-grid-card client-grid-card--placeholder">CLIENT I</div>
+          <div class="client-grid-card client-grid-card--placeholder">CLIENT J</div>
+          <div class="client-grid-card client-grid-card--placeholder">CLIENT K</div>
+          <div class="client-grid-card client-grid-card--placeholder">CLIENT L</div>
+          <div class="client-grid-card client-grid-card--placeholder">CLIENT M</div>
+          <div class="client-grid-card client-grid-card--placeholder">CLIENT N</div>
+          <div class="client-grid-card client-grid-card--placeholder">CLIENT O</div>
         </div>
       </div>
     </div>
 
-    <!-- Client B -->
-    <div class="account-panel" id="account-client-b">
-      <div class="account-status-section">
-        <div class="status-label" style="color:var(--cyan);">Creative Development Timeline</div>
-        <div class="timeline">
-          <div class="tl-item tl-done"><div class="tl-dot"></div><div class="tl-content"><div class="tl-title">Creative brief development</div></div></div>
-          <div class="tl-item tl-active"><div class="tl-dot"></div><div class="tl-content"><div class="tl-title">Creative kickoff meeting</div><div class="tl-sub">In progress</div></div></div>
-          <div class="tl-item"><div class="tl-dot"></div><div class="tl-content"><div class="tl-title">Draft mockups of ads</div></div></div>
-          <div class="tl-item"><div class="tl-dot"></div><div class="tl-content"><div class="tl-title">Art to draft layouts</div></div></div>
-          <div class="tl-item"><div class="tl-dot"></div><div class="tl-content"><div class="tl-title">Internal reviews</div></div></div>
-          <div class="tl-item"><div class="tl-dot"></div><div class="tl-content"><div class="tl-title">Art to implement revisions</div></div></div>
-          <div class="tl-item"><div class="tl-dot"></div><div class="tl-content"><div class="tl-title">AM to send to client review</div></div></div>
-          <div class="tl-item"><div class="tl-dot"></div><div class="tl-content"><div class="tl-title">Art to implement client feedback</div></div></div>
-          <div class="tl-item"><div class="tl-dot"></div><div class="tl-content"><div class="tl-title">Client approval for MLR submission</div></div></div>
-          <div class="tl-item"><div class="tl-dot"></div><div class="tl-content"><div class="tl-title">MLR submission</div></div></div>
+    <!-- Detail view (client-level: Brand Guidelines / MLR) -->
+    <div id="acct-detail-view" style="display:none">
+      <div class="acct-sidebar" id="acctSidebar"></div>
+      <div class="acct-main">
+        <div class="acct-main-title" id="acctTitle"></div>
+        <div class="acct-main-subtitle" id="acctSubtitle"></div>
+        <div class="acct-tabs">
+          <button class="acct-tab-btn active" onclick="showAcctTab(this,'guidelines')">Brand Guidelines</button>
+          <button class="acct-tab-btn" onclick="showAcctTab(this,'mlr')">MLR Requirements</button>
+          <button class="acct-tab-btn" onclick="showCampaignOverview(_acctClient,0)">Campaigns</button>
         </div>
-      </div>
-      <div class="account-status-section">
-        <div class="status-label running"><span class="status-dot"></span>Running Ads</div>
-        <div class="ad-grid">
-          <div class="ad-card" data-tags="Meta,Static,DTC,Bold" onclick="showAdDetail(this)">
-            <div class="ad-thumb"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/></svg></div>
-            <div class="ad-info"><div class="ad-name">Brand launch — 1:1</div><div class="ad-tags"><span class="ad-tag">Meta</span><span class="ad-tag">Static</span></div></div>
-          </div>
-        </div>
-      </div>
-      <div class="account-status-section">
-        <div class="status-label dev"><span class="status-dot"></span>In Development</div>
-        <div class="ad-grid">
-          <div class="ad-card" data-tags="LinkedIn,Video,HCP" onclick="showAdDetail(this)">
-            <div class="ad-thumb"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="5,3 19,12 5,21"/></svg></div>
-            <div class="ad-info"><div class="ad-name">KOL spotlight — 16:9</div><div class="ad-tags"><span class="ad-tag">LinkedIn</span><span class="ad-tag">Video</span></div></div>
-          </div>
-        </div>
-      </div>
-      <div class="account-status-section">
-        <div class="status-label review"><span class="status-dot"></span>In Review</div>
-        <p style="color:var(--muted);font-size:13px;">No ads currently in review.</p>
-      </div>
-      <div class="account-status-section">
-        <div class="status-label past"><span class="status-dot"></span>Past Ads</div>
-        <p style="color:var(--muted);font-size:13px;">No past ads yet.</p>
+        <div class="acct-tab-panel active" id="acct-tab-guidelines"></div>
+        <div class="acct-tab-panel" id="acct-tab-mlr"></div>
+        <div class="acct-tab-panel" id="acct-tab-campaigns"></div>
       </div>
     </div>
 
-    <!-- Client C -->
-    <div class="account-panel" id="account-client-c">
-      <div class="account-status-section">
-        <div class="status-label" style="color:var(--cyan);">Creative Development Timeline</div>
-        <div class="timeline">
-          <div class="tl-item tl-active"><div class="tl-dot"></div><div class="tl-content"><div class="tl-title">Creative brief development</div><div class="tl-sub">In progress</div></div></div>
-          <div class="tl-item"><div class="tl-dot"></div><div class="tl-content"><div class="tl-title">Creative kickoff meeting</div></div></div>
-          <div class="tl-item"><div class="tl-dot"></div><div class="tl-content"><div class="tl-title">Draft mockups of ads</div></div></div>
-          <div class="tl-item"><div class="tl-dot"></div><div class="tl-content"><div class="tl-title">Art to draft layouts</div></div></div>
-          <div class="tl-item"><div class="tl-dot"></div><div class="tl-content"><div class="tl-title">Internal reviews</div></div></div>
-          <div class="tl-item"><div class="tl-dot"></div><div class="tl-content"><div class="tl-title">Art to implement revisions</div></div></div>
-          <div class="tl-item"><div class="tl-dot"></div><div class="tl-content"><div class="tl-title">AM to send to client review</div></div></div>
-          <div class="tl-item"><div class="tl-dot"></div><div class="tl-content"><div class="tl-title">Art to implement client feedback</div></div></div>
-          <div class="tl-item"><div class="tl-dot"></div><div class="tl-content"><div class="tl-title">Client approval for MLR submission</div></div></div>
-          <div class="tl-item"><div class="tl-dot"></div><div class="tl-content"><div class="tl-title">MLR submission</div></div></div>
-        </div>
-      </div>
-      <div class="account-status-section">
-        <div class="status-label running"><span class="status-dot"></span>Running Ads</div>
-        <p style="color:var(--muted);font-size:13px;">No ads currently running.</p>
-      </div>
-      <div class="account-status-section">
-        <div class="status-label dev"><span class="status-dot"></span>In Development</div>
-        <div class="ad-grid">
-          <div class="ad-card" data-tags="Programmatic,Static,HCP,Clinical" onclick="showAdDetail(this)">
-            <div class="ad-thumb"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/></svg></div>
-            <div class="ad-info"><div class="ad-name">Reminder ad — 728×90</div><div class="ad-tags"><span class="ad-tag">Programmatic</span><span class="ad-tag">Static</span></div></div>
-          </div>
-        </div>
-      </div>
-      <div class="account-status-section">
-        <div class="status-label review"><span class="status-dot"></span>In Review</div>
-        <p style="color:var(--muted);font-size:13px;">No ads currently in review.</p>
-      </div>
-      <div class="account-status-section">
-        <div class="status-label past"><span class="status-dot"></span>Past Ads</div>
-        <p style="color:var(--muted);font-size:13px;">No past ads yet.</p>
-      </div>
+    <!-- Message/Campaign view -->
+    <div id="acct-message-view" style="display:none">
+      <div class="acct-sidebar" id="acctMsgSidebar"></div>
+      <div class="acct-main" id="acctMsgMain"></div>
     </div>
 
-    <!-- Client D -->
-    <div class="account-panel" id="account-client-d">
-      <div class="account-status-section">
-        <div class="status-label" style="color:var(--cyan);">Creative Development Timeline</div>
-        <div class="timeline">
-          <div class="tl-item"><div class="tl-dot"></div><div class="tl-content"><div class="tl-title">Creative brief development</div></div></div>
-          <div class="tl-item"><div class="tl-dot"></div><div class="tl-content"><div class="tl-title">Creative kickoff meeting</div></div></div>
-          <div class="tl-item"><div class="tl-dot"></div><div class="tl-content"><div class="tl-title">Draft mockups of ads</div></div></div>
-          <div class="tl-item"><div class="tl-dot"></div><div class="tl-content"><div class="tl-title">Art to draft layouts</div></div></div>
-          <div class="tl-item"><div class="tl-dot"></div><div class="tl-content"><div class="tl-title">Internal reviews</div></div></div>
-          <div class="tl-item"><div class="tl-dot"></div><div class="tl-content"><div class="tl-title">Art to implement revisions</div></div></div>
-          <div class="tl-item"><div class="tl-dot"></div><div class="tl-content"><div class="tl-title">AM to send to client review</div></div></div>
-          <div class="tl-item"><div class="tl-dot"></div><div class="tl-content"><div class="tl-title">Art to implement client feedback</div></div></div>
-          <div class="tl-item"><div class="tl-dot"></div><div class="tl-content"><div class="tl-title">Client approval for MLR submission</div></div></div>
-          <div class="tl-item"><div class="tl-dot"></div><div class="tl-content"><div class="tl-title">MLR submission</div></div></div>
+    <!-- ── Hidden data: Client A ── -->
+    <div id="acct-data-a" style="display:none">
+      <span class="acct-client-label">Client A</span>
+      <div class="acct-guidelines-data">
+        <div class="acct-section-label">BRAND GUIDELINES</div>
+        <div class="acct-info-grid">
+          <div class="acct-info-card"><div class="acct-info-label">Primary Colors</div><div class="acct-info-value">#0A1020 #3571CB #01B0B0</div></div>
+          <div class="acct-info-card"><div class="acct-info-label">Typography</div><div class="acct-info-value">Alliance No.1 / Inter — Weights: 300–900</div></div>
+          <div class="acct-info-card"><div class="acct-info-label">Logo Usage</div><div class="acct-info-value">Full color on dark — Monochrome on light</div></div>
+          <div class="acct-info-card"><div class="acct-info-label">Brand Voice</div><div class="acct-info-value">Clinical authority with human warmth</div></div>
+          <div class="acct-info-card"><div class="acct-info-label">Photography</div><div class="acct-info-value">HCP-focused imagery — Warm, professional</div></div>
+          <div class="acct-info-card"><div class="acct-info-label">Spacing &amp; Grid</div><div class="acct-info-value">8px base unit — 12-col grid system</div></div>
         </div>
       </div>
-      <div class="account-status-section">
-        <div class="status-label running"><span class="status-dot"></span>Running Ads</div>
-        <p style="color:var(--muted);font-size:13px;">No ads currently running.</p>
+      <div class="acct-mlr-data">
+        <div class="acct-section-label">MLR REQUIREMENTS</div>
+        <div class="acct-info-grid">
+          <div class="acct-info-card"><div class="acct-info-label">Ad Name</div><div class="acct-info-value">XXXXX</div></div>
+          <div class="acct-info-card"><div class="acct-info-label">Job Code</div><div class="acct-info-value">US-BBB-XXXX</div></div>
+          <div class="acct-info-card"><div class="acct-info-label">Social Channel</div><div class="acct-info-value">Meta</div></div>
+          <div class="acct-info-card"><div class="acct-info-label">Run Dates</div><div class="acct-info-value">X/XX/XX–X/XX/XX</div></div>
+          <div class="acct-info-card"><div class="acct-info-label">ISI</div><div class="acct-info-value">LINK</div></div>
+          <div class="acct-info-card"><div class="acct-info-label">Destination Link</div><div class="acct-info-value">URL</div></div>
+        </div>
       </div>
-      <div class="account-status-section">
-        <div class="status-label dev"><span class="status-dot"></span>In Development</div>
-        <p style="color:var(--muted);font-size:13px;">No ads in development.</p>
-      </div>
-      <div class="account-status-section">
-        <div class="status-label review"><span class="status-dot"></span>In Review</div>
-        <p style="color:var(--muted);font-size:13px;">No ads currently in review.</p>
-      </div>
-      <div class="account-status-section">
-        <div class="status-label past"><span class="status-dot"></span>Past Ads</div>
-        <p style="color:var(--muted);font-size:13px;">No past ads yet.</p>
-      </div>
+      <div class="acct-campaign" data-label="HCP Awareness — Q2 2025"></div>
+      <div class="acct-campaign" data-label="Patient Retention — Q3 2025"></div>
     </div>
 
-    <!-- Shared ad detail panel -->
-    <div class="ad-detail-panel" id="adDetailPanel">
-      <div class="ad-detail-header">
-        <div class="ad-detail-thumb"></div>
-        <div>
-          <div class="ad-detail-title" id="adDetailTitle"></div>
-          <div class="ad-tags" id="adDetailTags"></div>
+    <!-- ── Hidden data: Client B ── -->
+    <div id="acct-data-b" style="display:none">
+      <span class="acct-client-label">Client B</span>
+      <div class="acct-guidelines-data">
+        <div class="acct-section-label">BRAND GUIDELINES</div>
+        <div class="acct-info-grid">
+          <div class="acct-info-card"><div class="acct-info-label">Primary Colors</div><div class="acct-info-value">TBD</div></div>
+          <div class="acct-info-card"><div class="acct-info-label">Typography</div><div class="acct-info-value">TBD</div></div>
+          <div class="acct-info-card"><div class="acct-info-label">Logo Usage</div><div class="acct-info-value">TBD</div></div>
+          <div class="acct-info-card"><div class="acct-info-label">Brand Voice</div><div class="acct-info-value">TBD</div></div>
+          <div class="acct-info-card"><div class="acct-info-label">Photography</div><div class="acct-info-value">TBD</div></div>
+          <div class="acct-info-card"><div class="acct-info-label">Spacing &amp; Grid</div><div class="acct-info-value">TBD</div></div>
         </div>
       </div>
-      <div class="ad-detail-body">
-        <div class="ad-detail-box">
-          <div class="ad-detail-box-label">What's working</div>
-          <p id="adDetailWorking">Strong hook in the first 3 seconds. Minimal copy keeps focus on the brand claim. Color contrast drives thumb-stop in feed.</p>
-        </div>
-        <div class="ad-detail-box">
-          <div class="ad-detail-box-label">Strategy recommendations</div>
-          <p id="adDetailRecs">Test a version with a stat headline. Try a darker colorway for the prescribing segment. A/B the CTA copy.</p>
+      <div class="acct-mlr-data">
+        <div class="acct-section-label">MLR REQUIREMENTS</div>
+        <div class="acct-info-grid">
+          <div class="acct-info-card"><div class="acct-info-label">Ad Name</div><div class="acct-info-value">XXXXX</div></div>
+          <div class="acct-info-card"><div class="acct-info-label">Job Code</div><div class="acct-info-value">US-BBB-XXXX</div></div>
+          <div class="acct-info-card"><div class="acct-info-label">Social Channel</div><div class="acct-info-value">Meta</div></div>
+          <div class="acct-info-card"><div class="acct-info-label">Run Dates</div><div class="acct-info-value">X/XX/XX–X/XX/XX</div></div>
+          <div class="acct-info-card"><div class="acct-info-label">ISI</div><div class="acct-info-value">LINK</div></div>
+          <div class="acct-info-card"><div class="acct-info-label">Destination Link</div><div class="acct-info-value">URL</div></div>
         </div>
       </div>
+      <div class="acct-campaign" data-label="Brand Launch — Q1 2025"></div>
+      <div class="acct-campaign" data-label="HCP Outreach — Q2 2025"></div>
+    </div>
+
+    <!-- ── Hidden data: Client C ── -->
+    <div id="acct-data-c" style="display:none">
+      <span class="acct-client-label">Client C</span>
+      <div class="acct-guidelines-data">
+        <div class="acct-section-label">BRAND GUIDELINES</div>
+        <div class="acct-info-grid">
+          <div class="acct-info-card"><div class="acct-info-label">Primary Colors</div><div class="acct-info-value">TBD</div></div>
+          <div class="acct-info-card"><div class="acct-info-label">Typography</div><div class="acct-info-value">TBD</div></div>
+          <div class="acct-info-card"><div class="acct-info-label">Logo Usage</div><div class="acct-info-value">TBD</div></div>
+          <div class="acct-info-card"><div class="acct-info-label">Brand Voice</div><div class="acct-info-value">TBD</div></div>
+          <div class="acct-info-card"><div class="acct-info-label">Photography</div><div class="acct-info-value">TBD</div></div>
+          <div class="acct-info-card"><div class="acct-info-label">Spacing &amp; Grid</div><div class="acct-info-value">TBD</div></div>
+        </div>
+      </div>
+      <div class="acct-mlr-data">
+        <div class="acct-section-label">MLR REQUIREMENTS</div>
+        <div class="acct-info-grid">
+          <div class="acct-info-card"><div class="acct-info-label">Ad Name</div><div class="acct-info-value">XXXXX</div></div>
+          <div class="acct-info-card"><div class="acct-info-label">Job Code</div><div class="acct-info-value">US-BBB-XXXX</div></div>
+          <div class="acct-info-card"><div class="acct-info-label">Social Channel</div><div class="acct-info-value">Meta</div></div>
+          <div class="acct-info-card"><div class="acct-info-label">Run Dates</div><div class="acct-info-value">X/XX/XX–X/XX/XX</div></div>
+          <div class="acct-info-card"><div class="acct-info-label">ISI</div><div class="acct-info-value">LINK</div></div>
+          <div class="acct-info-card"><div class="acct-info-label">Destination Link</div><div class="acct-info-value">URL</div></div>
+        </div>
+      </div>
+      <div class="acct-campaign" data-label="Awareness Campaign — Q1 2025"></div>
+      <div class="acct-campaign" data-label="Retention Drive — Q2 2025"></div>
+    </div>
+
+    <!-- ── Hidden data: Client D ── -->
+    <div id="acct-data-d" style="display:none">
+      <span class="acct-client-label">Client D</span>
+      <div class="acct-guidelines-data">
+        <div class="acct-section-label">BRAND GUIDELINES</div>
+        <div class="acct-info-grid">
+          <div class="acct-info-card"><div class="acct-info-label">Primary Colors</div><div class="acct-info-value">TBD</div></div>
+          <div class="acct-info-card"><div class="acct-info-label">Typography</div><div class="acct-info-value">TBD</div></div>
+          <div class="acct-info-card"><div class="acct-info-label">Logo Usage</div><div class="acct-info-value">TBD</div></div>
+          <div class="acct-info-card"><div class="acct-info-label">Brand Voice</div><div class="acct-info-value">TBD</div></div>
+          <div class="acct-info-card"><div class="acct-info-label">Photography</div><div class="acct-info-value">TBD</div></div>
+          <div class="acct-info-card"><div class="acct-info-label">Spacing &amp; Grid</div><div class="acct-info-value">TBD</div></div>
+        </div>
+      </div>
+      <div class="acct-mlr-data">
+        <div class="acct-section-label">MLR REQUIREMENTS</div>
+        <div class="acct-info-grid">
+          <div class="acct-info-card"><div class="acct-info-label">Ad Name</div><div class="acct-info-value">XXXXX</div></div>
+          <div class="acct-info-card"><div class="acct-info-label">Job Code</div><div class="acct-info-value">US-BBB-XXXX</div></div>
+          <div class="acct-info-card"><div class="acct-info-label">Social Channel</div><div class="acct-info-value">Meta</div></div>
+          <div class="acct-info-card"><div class="acct-info-label">Run Dates</div><div class="acct-info-value">X/XX/XX–X/XX/XX</div></div>
+          <div class="acct-info-card"><div class="acct-info-label">ISI</div><div class="acct-info-value">LINK</div></div>
+          <div class="acct-info-card"><div class="acct-info-label">Destination Link</div><div class="acct-info-value">URL</div></div>
+        </div>
+      </div>
+      <div class="acct-campaign" data-label="Market Entry — Q1 2025"></div>
+      <div class="acct-campaign" data-label="Patient Support — Q3 2025"></div>
+    </div>
+
+    <!-- ── Hidden data: Mesoblast ── -->
+    <div id="acct-data-mesoblast" data-subtitle="Pharma — Ryoncil HCP Social" data-logo="assets/mesoblast/ryoncil-logo.png" style="display:none">
+      <span class="acct-client-label">Mesoblast</span>
+      <div class="acct-guidelines-data">
+        <div class="acct-section-label">BRAND GUIDELINES</div>
+        <div class="acct-info-grid">
+          <div class="acct-info-card"><div class="acct-info-label">Primary Colors</div><div class="acct-info-value">#1A3A6E (Navy) · #F5A623 (Orange) · #FFFFFF</div></div>
+          <div class="acct-info-card"><div class="acct-info-label">Typography</div><div class="acct-info-value">Helvetica Neue — Regular, Bold</div></div>
+          <div class="acct-info-card"><div class="acct-info-label">Logo Usage</div><div class="acct-info-value">Ryoncil logo with remestemcel-L-rknd tagline</div></div>
+          <div class="acct-info-card"><div class="acct-info-label">Brand Voice</div><div class="acct-info-value">Evidence-based · Clinically authoritative · Compassionate</div></div>
+          <div class="acct-info-card"><div class="acct-info-label">Photography</div><div class="acct-info-value">Pediatric patients · HCP-patient moments · Warm, hopeful</div></div>
+          <div class="acct-info-card"><div class="acct-info-label">Indication</div><div class="acct-info-value">SR-aGvHD — pediatric patients 2 months of age and older</div></div>
+        </div>
+      </div>
+      <div class="acct-mlr-data">
+        <div class="acct-section-label">MLR REQUIREMENTS</div>
+        <div class="acct-info-grid">
+          <div class="acct-info-card"><div class="acct-info-label">Campaign</div><div class="acct-info-value">Ryoncil HCP Social — Concept Mockups</div></div>
+          <div class="acct-info-card"><div class="acct-info-label">Job Codes</div><div class="acct-info-value">MAT298–MAT315</div></div>
+          <div class="acct-info-card"><div class="acct-info-label">Social Channels</div><div class="acct-info-value">Instagram · Facebook · LinkedIn</div></div>
+          <div class="acct-info-card"><div class="acct-info-label">Handle</div><div class="acct-info-value">@ Rare Pediatric News</div></div>
+          <div class="acct-info-card"><div class="acct-info-label">ISI</div><div class="acct-info-value">See full Prescribing Information</div></div>
+          <div class="acct-info-card"><div class="acct-info-label">Audience</div><div class="acct-info-value">Prescribing · Non-prescribing physicians</div></div>
+        </div>
+      </div>
+      <div class="acct-campaign" data-label="Concept 01 — Awareness" data-msgs="6">
+        <div class="acct-msg-data" data-msg="0" data-img="assets/mesoblast/awareness-prescribers-ig.png" data-title="Prescribing — Instagram" data-ig="MAT299" data-fb="" data-li="" data-headline="70% ORR at Day 28 — including patients with Grade C and D disease" data-caption="RYONCIL is the first and only FDA-approved SR-aGvHD treatment for pediatric patients 2 months of age and older." data-dest="https://www.ryoncilhcp.com/efficacy/" data-channel="Instagram" data-placement="Static" data-brief="Prescribing physicians · Instagram|70% ORR at Day 28 — including Grade C and D disease|Discover a Different Approach CTA|Destination: ryoncilhcp.com/efficacy/" data-alt-headline-b="~50% of pediatric aGvHD patients become steroid-refractory" data-alt-headline-c="70% ORR at Day 28 in pediatric SR-aGvHD" data-alt-callout-b="The first and only FDA-approved treatment for pediatric SR-aGvHD — including the only option for patients under 12." data-alt-callout-c="RYONCIL is the first and only FDA-approved therapy for pediatric SR-aGvHD — including the only option for patients under 12" data-alt-primary-b="The FDA-approved MSC therapy for pediatric SR-aGvHD. Familiar, proven, and ready within 24–48 hours." data-alt-primary-c="Off-the-shelf and ready in 24–48 hours. For your patients — and the families beside them."></div>
+        <div class="acct-msg-data" data-msg="1" data-img="assets/mesoblast/awareness-prescribers-fb.png" data-title="Prescribing — Facebook" data-ig="" data-fb="MAT298" data-li="" data-headline="70% ORR at Day 28 — including patients with Grade C and D disease" data-caption="RYONCIL is the first and only FDA-approved SR-aGvHD treatment for pediatric patients 2 months of age and older." data-dest="https://www.ryoncilhcp.com/efficacy/" data-channel="Facebook" data-placement="Static" data-brief="Prescribing physicians · Facebook|70% ORR at Day 28 — including Grade C and D disease|Discover a Different Approach CTA|Destination: ryoncilhcp.com/efficacy/" data-alt-headline-b="~50% of pediatric aGvHD patients become steroid-refractory" data-alt-headline-c="70% ORR at Day 28 in pediatric SR-aGvHD" data-alt-callout-b="The first and only FDA-approved treatment for pediatric SR-aGvHD — including the only option for patients under 12." data-alt-callout-c="RYONCIL is the first and only FDA-approved therapy for pediatric SR-aGvHD — including the only option for patients under 12" data-alt-primary-b="The FDA-approved MSC therapy for pediatric SR-aGvHD. Familiar, proven, and ready within 24–48 hours." data-alt-primary-c="Off-the-shelf and ready in 24–48 hours. For your patients — and the families beside them."></div>
+        <div class="acct-msg-data" data-msg="2" data-img="assets/mesoblast/awareness-prescribers-li.png" data-title="Prescribing — LinkedIn" data-ig="" data-fb="" data-li="MAT300" data-headline="First FDA-approved therapy for SR-aGvHD in pediatric patients ≥2 months of age" data-caption="RYONCIL is the first and only FDA-approved SR-aGvHD treatment for pediatric patients 2 months of age and older." data-dest="https://www.ryoncilhcp.com/efficacy/" data-channel="LinkedIn" data-placement="Static" data-brief="Prescribing physicians · LinkedIn|First FDA-approved therapy for SR-aGvHD in pediatric patients|Phase 3 data: 70% ORR at Day 28 including Grade C and D|Destination: ryoncilhcp.com/efficacy/" data-alt-headline-b="Only FDA-approved SR-aGvHD treatment indicated for pediatric patients under 12 years of age" data-alt-headline-c="RYONCIL: 70% ORR at Day 28 in pediatric SR-aGvHD (95% CI: 56.4, 82; P=0.0003)" data-alt-callout-b="~50% of pediatric patients with aGvHD are refractory to first-line corticosteroid therapy — RYONCIL is the first approved treatment option for this population" data-alt-callout-c="The first and only FDA-approved allogeneic MSC therapy indicated for SR-aGvHD in pediatric patients 2 months of age and older" data-alt-primary-b="The FDA-approved MSC therapy for pediatric SR-aGvHD. Familiar, proven, and ready within 24–48 hours." data-alt-primary-c="Off-the-shelf and ready in 24–48 hours. For your patients — and the families beside them."></div>
+        <div class="acct-msg-data" data-msg="3" data-img="assets/mesoblast/awareness-nonprescribers-ig.png" data-title="Non-Prescribing — Instagram" data-ig="MAT302" data-fb="" data-li="" data-headline="~50% of pediatric SR-aGvHD patients become steroid-refractory" data-caption="RYONCIL is the first and only FDA-approved SR-aGvHD treatment for pediatric patients 2 months of age and older." data-dest="https://www.ryoncilhcp.com/efficacy/" data-channel="Instagram" data-placement="Static" data-brief="Non-prescribing physicians · Instagram|~50% of pediatric SR-aGvHD patients become steroid-refractory|Discover a Different Approach CTA|Destination: ryoncilhcp.com/efficacy/" data-alt-headline-b="RYONCIL is the first and only FDA-approved treatment for pediatric SR-aGvHD" data-alt-headline-c="A proven treatment option now exists for pediatric SR-aGvHD" data-alt-callout-b="Indicated for pediatric patients 2 months of age and older — and the only approved option for patients under 12 years of age" data-alt-callout-c="RYONCIL is the first and only FDA-approved SR-aGvHD therapy for pediatric patients 2 months and older — with a 70% ORR at Day 28 in a Phase 3 clinical trial"></div>
+        <div class="acct-msg-data" data-msg="4" data-img="assets/mesoblast/awareness-nonprescribers-fb.png" data-title="Non-Prescribing — Facebook" data-ig="" data-fb="MAT301" data-li="" data-headline="~50% of pediatric SR-aGvHD patients become steroid-refractory" data-caption="RYONCIL is the first and only FDA-approved SR-aGvHD treatment for pediatric patients 2 months of age and older." data-dest="https://www.ryoncilhcp.com/efficacy/" data-channel="Facebook" data-placement="Static" data-brief="Non-prescribing physicians · Facebook|~50% of pediatric SR-aGvHD patients become steroid-refractory|Discover a Different Approach CTA|Destination: ryoncilhcp.com/efficacy/" data-alt-headline-b="RYONCIL is the first and only FDA-approved treatment for pediatric SR-aGvHD" data-alt-headline-c="A proven treatment option now exists for pediatric SR-aGvHD" data-alt-callout-b="Indicated for pediatric patients 2 months of age and older — and the only approved option for patients under 12 years of age" data-alt-callout-c="RYONCIL is the first and only FDA-approved SR-aGvHD therapy for pediatric patients 2 months and older — with a 70% ORR at Day 28 in a Phase 3 clinical trial"></div>
+        <div class="acct-msg-data" data-msg="5" data-img="assets/mesoblast/awareness-nonprescribers-li.png" data-title="Non-Prescribing — LinkedIn" data-ig="" data-fb="" data-li="MAT303" data-headline="RYONCIL: first and only FDA-approved therapy for pediatric SR-aGvHD" data-caption="RYONCIL is the first and only FDA-approved SR-aGvHD treatment for pediatric patients 2 months of age and older." data-dest="https://www.ryoncilhcp.com/efficacy/" data-channel="LinkedIn" data-placement="Static" data-brief="Non-prescribing physicians · LinkedIn|First and only FDA-approved therapy for pediatric SR-aGvHD|Indicated for patients ≥2 months — only approved option for patients under 12|Destination: ryoncilhcp.com/efficacy/" data-alt-headline-b="An FDA-approved treatment option now exists for pediatric SR-aGvHD" data-alt-headline-c="~50% of pediatric aGvHD patients are refractory to first-line steroid therapy" data-alt-callout-b="RYONCIL is the first FDA-approved allogeneic MSC therapy for pediatric SR-aGvHD — with a 70% ORR at Day 28 in a prospective, multicenter Phase 3 clinical trial" data-alt-callout-c="RYONCIL is the first and only FDA-approved SR-aGvHD treatment for pediatric patients ≥2 months, including the only approved option for those under 12 years of age"></div>
+      </div>
+      <div class="acct-campaign" data-label="Concept 02 — Education" data-msgs="6">
+        <div class="acct-msg-data" data-msg="0" data-img="assets/mesoblast/education-prescribers-ig.png" data-title="Prescribing — Instagram" data-ig="MAT305" data-fb="" data-li="" data-headline="The 70% ORR you know — across the patients you see" data-caption="70% ORR at Day 28 — even in patients with the most severe SR-aGvHD (76% Grade D)." data-dest="https://www.ryoncilhcp.com/efficacy/" data-channel="Instagram" data-placement="Static" data-brief="Prescribing physicians · Instagram|Consistent response rates regardless of disease severity, organ involvement, or age — from 2 months to 17 years|Destination: ryoncilhcp.com/efficacy/" data-alt-headline-b="Support your SR-aGvHD patients with data you can stand behind" data-alt-headline-c="Consistent results across every subgroup — from 2 months to 17 years" data-alt-callout-b="RYONCIL can be ordered, shipped, and delivered within 24 to 48 hours — with inpatient and outpatient administration options" data-alt-callout-c="ORR at Day 28 achieved by the majority of patients regardless of disease severity, organ involvement, or age group" data-alt-primary-b="70% ORR at Day 28. Consistent subgroup results. A treatment you and your families can count on." data-alt-primary-c="Whatever your patient looks like — the response data is there. Keep RYONCIL as your confident first call."></div>
+        <div class="acct-msg-data" data-msg="1" data-img="assets/mesoblast/education-prescribers-fb.png" data-title="Prescribing — Facebook" data-ig="" data-fb="MAT304" data-li="" data-headline="The 70% ORR you know — across the patients you see" data-caption="70% ORR at Day 28 — even in patients with the most severe SR-aGvHD (76% Grade D)." data-dest="https://www.ryoncilhcp.com/efficacy/" data-channel="Facebook" data-placement="Static" data-brief="Prescribing physicians · Facebook|Consistent response rates regardless of disease severity, organ involvement, or age — from 2 months to 17 years|Destination: ryoncilhcp.com/efficacy/" data-alt-headline-b="Support your SR-aGvHD patients with data you can stand behind" data-alt-headline-c="Consistent results across every subgroup — from 2 months to 17 years" data-alt-callout-b="RYONCIL can be ordered, shipped, and delivered within 24 to 48 hours — with inpatient and outpatient administration options" data-alt-callout-c="ORR at Day 28 achieved by the majority of patients regardless of disease severity, organ involvement, or age group" data-alt-primary-b="70% ORR at Day 28. Consistent subgroup results. A treatment you and your families can count on." data-alt-primary-c="Whatever your patient looks like — the response data is there. Keep RYONCIL as your confident first call."></div>
+        <div class="acct-msg-data" data-msg="2" data-img="assets/mesoblast/education-prescribers-li.png" data-title="Prescribing — LinkedIn" data-ig="" data-fb="" data-li="MAT306" data-headline="RYONCIL: 70% ORR at Day 28 in pediatric SR-aGvHD — 70% Grade C, 76% Grade D" data-caption="70% ORR at Day 28 — even in patients with the most severe SR-aGvHD (76% Grade D)." data-dest="https://www.ryoncilhcp.com/efficacy/" data-channel="LinkedIn" data-placement="Static" data-brief="Prescribing physicians · LinkedIn|Phase 3 data (n=54): 89% of enrolled patients had severe SR-aGvHD at baseline|Full treatment course completed without interruption in  data-alt-headline-b="High Day 28 ORR in Grade C (70%) and Grade D (76%) pediatric SR-aGvHD" data-alt-headline-c="Consistent Day 28 ORR across disease severity, organ involvement, and age group" data-alt-callout-b="In a multicenter, prospective, open-label Phase 3 trial, RYONCIL achieved 70% ORR at Day 28 in a population where 89% of patients had severe disease at baseline" data-alt-callout-c="RYONCIL demonstrated 70% ORR at Day 28 across Grade C and D disease — with the full treatment course completed without interruption in >85% of patients" data-alt-primary-b="70% ORR at Day 28. Consistent subgroup results. A treatment you and your families can count on." data-alt-primary-c="Whatever your patient looks like — the response data is there. Keep RYONCIL as your confident first call.">85% of patients|Destination: ryoncilhcp.com/efficacy/"></div>
+        <div class="acct-msg-data" data-msg="3" data-img="assets/mesoblast/education-nonprescribers-ig.png" data-title="Non-Prescribing — Instagram" data-ig="MAT308" data-fb="" data-li="" data-headline="70% ORR at Day 28 — Even With 89% Severe Disease at Baseline" data-caption="70% ORR at Day 28 — even in patients with the most severe SR-aGvHD (76% Grade D)." data-dest="https://www.ryoncilhcp.com/efficacy/" data-channel="Instagram" data-placement="Static" data-brief="Non-prescribing physicians · Instagram|ORR at Day 28 achieved by majority regardless of disease severity, organ involvement, or age group|Destination: ryoncilhcp.com/efficacy/" data-alt-headline-b="RYONCIL is the first and only cryopreserved, allogeneic MSC therapy" data-alt-headline-c="Weight-Based Dosing and No HLA or Donor Matching Required" data-alt-callout-b="RYONCIL may be administered in both inpatient and outpatient treatment facilities to fit the changing needs of your pediatric patients" data-alt-callout-c="RYONCIL can be ordered, shipped, and delivered within 24 to 48 hours"></div>
+        <div class="acct-msg-data" data-msg="4" data-img="assets/mesoblast/education-nonprescribers-fb.png" data-title="Non-Prescribing — Facebook" data-ig="" data-fb="MAT307" data-li="" data-headline="70% ORR at Day 28 — Even With 89% Severe Disease at Baseline" data-caption="70% ORR at Day 28 — even in patients with the most severe SR-aGvHD (76% Grade D)." data-dest="https://www.ryoncilhcp.com/efficacy/" data-channel="Facebook" data-placement="Static" data-brief="Non-prescribing physicians · Facebook|ORR at Day 28 achieved by majority regardless of disease severity, organ involvement, or age group|Destination: ryoncilhcp.com/efficacy/" data-alt-headline-b="RYONCIL is the first and only cryopreserved, allogeneic MSC therapy" data-alt-headline-c="Weight-Based Dosing and No HLA or Donor Matching Required" data-alt-callout-b="RYONCIL may be administered in both inpatient and outpatient treatment facilities to fit the changing needs of your pediatric patients" data-alt-callout-c="RYONCIL can be ordered, shipped, and delivered within 24 to 48 hours"></div>
+        <div class="acct-msg-data" data-msg="5" data-img="assets/mesoblast/education-nonprescribers-li.png" data-title="Non-Prescribing — LinkedIn" data-ig="" data-fb="" data-li="MAT309" data-headline="Phase 3 data: 70% ORR at Day 28 in pediatric SR-aGvHD" data-caption="70% ORR at Day 28 — even in patients with the most severe SR-aGvHD (76% Grade D)." data-dest="https://www.ryoncilhcp.com/efficacy/" data-channel="LinkedIn" data-placement="Static" data-brief="Non-prescribing physicians · LinkedIn|RYONCIL demonstrated responses across SR-aGvHD presentations involving skin, liver, and GI tract|Administered in both inpatient and outpatient clinical settings|Destination: ryoncilhcp.com/efficacy/" data-alt-headline-b="Day 28 ORR consistent across age groups: 71% (0–7 yrs), 71% (8–12 yrs), 67% (13–17 yrs)" data-alt-headline-c="Allogeneic MSC therapy with no HLA matching required — available off-the-shelf" data-alt-callout-b="RYONCIL demonstrated responses across SR-aGvHD presentations involving skin, liver, and GI tract — administered in both inpatient and outpatient clinical settings" data-alt-callout-c="In a Phase 3 trial, RYONCIL achieved 70% ORR at Day 28 across pediatric SR-aGvHD presentations — with responses seen in patients with skin, liver, and GI involvement"></div>
+      </div>
+      <div class="acct-campaign" data-label="Concept 03 — MOA" data-msgs="6">
+        <div class="acct-msg-data" data-msg="0" data-img="assets/mesoblast/moa-prescribers-ig.png" data-title="Prescribing — Instagram" data-ig="MAT311" data-fb="" data-li="" data-headline="For years, pediatric SR-aGvHD patients under 12 had no approved option. Now there is one." data-caption="RYONCIL's MSCs are activated by inflammatory cytokines, triggering a cascade of antiinflammatory effects." data-dest="https://www.ryoncilhcp.com/moa/" data-channel="Instagram" data-placement="Static" data-brief="Prescribing physicians · Instagram|First and only FDA-approved MSC therapy for pediatric SR-aGvHD|70% ORR at Day 28 — n=54 · P=0.0003|Destination: ryoncilhcp.com/moa/" data-alt-headline-b="For years, pediatric SR-aGvHD had no approved treatment. RYONCIL changed that." data-alt-headline-c="Pediatric SR-aGvHD patients under 12 finally have an FDA-approved treatment option" data-alt-primary-b="Biomarker data that shows RYONCIL rebalancing the immune system — for the patients in your care right now." data-alt-primary-c="The first and only FDA-approved MSC therapy. Keep it as your go-to for pediatric SR-aGvHD."></div>
+        <div class="acct-msg-data" data-msg="1" data-img="assets/mesoblast/moa-prescribers-fb.png" data-title="Prescribing — Facebook" data-ig="" data-fb="MAT310" data-li="" data-headline="Day 28 showed response. Day 180 confirmed it. 70% Overall Response Rate." data-caption="RYONCIL's MSCs are activated by inflammatory cytokines, triggering a cascade of antiinflammatory effects." data-dest="https://www.ryoncilhcp.com/moa/" data-channel="Facebook" data-placement="Static" data-brief="Prescribing physicians · Facebook|TNFR1 reduced 79% · ST2 reduced 75% · T cells reduced 64%|Full treatment course completed in  data-alt-headline-b="For years, pediatric SR-aGvHD had no approved treatment. RYONCIL changed that." data-alt-headline-c="Pediatric SR-aGvHD patients under 12 finally have an FDA-approved treatment option" data-alt-primary-b="Biomarker data that shows RYONCIL rebalancing the immune system — for the patients in your care right now." data-alt-primary-c="The first and only FDA-approved MSC therapy. Keep it as your go-to for pediatric SR-aGvHD.">85% of patients|Destination: ryoncilhcp.com/moa/"></div>
+        <div class="acct-msg-data" data-msg="2" data-img="assets/mesoblast/moa-prescribers-li.png" data-title="Prescribing — LinkedIn" data-ig="" data-fb="" data-li="MAT312" data-headline="When steroids stop working, RYONCIL works differently." data-caption="RYONCIL's MSCs are activated by inflammatory cytokines, triggering a cascade of antiinflammatory effects." data-dest="https://www.ryoncilhcp.com/moa/" data-channel="LinkedIn" data-placement="Static" data-brief="Prescribing physicians · LinkedIn|Inhibits T cell activation · Increases regulatory T cells|Reduces pro-inflammatory cytokines · Raises anti-inflammatory mediators|Destination: ryoncilhcp.com/moa/" data-alt-headline-b="RYONCIL is a cellular immunomodulator — targeting the immune pathways driving SR-aGvHD" data-alt-headline-c="RYONCIL works differently than a steroid — suppressing the activated T cells and cytokines driving SR-aGvHD" data-alt-primary-b="Biomarker data that shows RYONCIL rebalancing the immune system — for the patients in your care right now." data-alt-primary-c="The first and only FDA-approved MSC therapy. Keep it as your go-to for pediatric SR-aGvHD."></div>
+        <div class="acct-msg-data" data-msg="3" data-img="assets/mesoblast/moa-nonprescribers-ig.png" data-title="Non-Prescribing — Instagram" data-ig="MAT314" data-fb="" data-li="" data-headline="Before 2024, no FDA-approved therapies existed for pediatric SR-aGvHD patients under 12. Now there's RYONCIL." data-caption="RYONCIL's MSCs are activated by inflammatory cytokines, triggering a cascade of antiinflammatory effects." data-dest="https://www.ryoncilhcp.com/moa/" data-channel="Instagram" data-placement="Static" data-brief="Non-prescribing physicians · Instagram|First and only FDA-approved MSC therapy|70% ORR at Day 28 — n=54 · P=0.0003 · No HLA matching required|Destination: ryoncilhcp.com/moa/" data-alt-headline-b="Pediatric SR-aGvHD now has a first and only FDA-approved treatment — indicated from 2 months of age" data-alt-headline-c="RYONCIL doesn't just treat SR-aGvHD — it's believed to rebalance the immune response driving it"></div>
+        <div class="acct-msg-data" data-msg="4" data-img="assets/mesoblast/moa-nonprescribers-fb.png" data-title="Non-Prescribing — Facebook" data-ig="" data-fb="MAT313" data-li="" data-headline="Before 2024, no FDA-approved therapies existed for pediatric SR-aGvHD patients under 12. Now there's RYONCIL." data-caption="RYONCIL's MSCs are activated by inflammatory cytokines, triggering a cascade of antiinflammatory effects." data-dest="https://www.ryoncilhcp.com/moa/" data-channel="Facebook" data-placement="Static" data-brief="Non-prescribing physicians · Facebook|TNFR1 reduced 79% · ST2 reduced 75% · T cells reduced 64%|Overall Response Rate 70% at Day 28 (38/54) P=0.0003|Destination: ryoncilhcp.com/moa/" data-alt-headline-b="Pediatric SR-aGvHD now has a first and only FDA-approved treatment — indicated from 2 months of age" data-alt-headline-c="RYONCIL doesn't just treat SR-aGvHD — it's believed to rebalance the immune response driving it"></div>
+        <div class="acct-msg-data" data-msg="5" data-img="assets/mesoblast/moa-nonprescribers-li.png" data-title="Non-Prescribing — LinkedIn" data-ig="" data-fb="" data-li="MAT315" data-headline="MSCs are activated by inflammatory cytokines, triggering a cascade of anti-inflammatory effects" data-caption="RYONCIL's MSCs are activated by inflammatory cytokines, triggering a cascade of antiinflammatory effects." data-dest="https://www.ryoncilhcp.com/moa/" data-channel="LinkedIn" data-placement="Static" data-brief="Non-prescribing physicians · LinkedIn|Inhibits T cell activation · Increases regulatory T cells|Reduces pro-inflammatory cytokines · Raises anti-inflammatory mediators|Destination: ryoncilhcp.com/moa/" data-alt-headline-b="RYONCIL targets the inflammatory pathways driving SR-aGvHD — working differently than a steroid" data-alt-headline-c="RYONCIL is believed to be a cellular immunomodulator that reduces inflammatory cytokine levels to help rebalance the immune system"></div>
+      </div>
+      <div class="acct-campaign" data-label="ISI" data-msgs="0" data-isi="assets/mesoblast/isi.png"></div>
     </div>
 
   </div>
 
-  <!-- ══════════════════════════════════════════ -->
   <!-- AD LIBRARY PANEL                          -->
   <!-- ══════════════════════════════════════════ -->
   <div class="panel" id="panel-library">
@@ -776,9 +999,9 @@
   </div>
 
   <!-- ══════════════════════════════════════════ -->
-  <!-- CREATIVE TIMELINE PANEL                   -->
+  <!-- CREATIVE TIMELINE (hidden — rendered in Resources) -->
   <!-- ══════════════════════════════════════════ -->
-  <div class="panel" id="panel-timeline">
+  <div style="display:none" id="panel-timeline">
     <div class="detail-timeline">
 
       <div class="dtl-stage">
@@ -914,11 +1137,6 @@
   <!-- ══════════════════════════════════════════ -->
   <!-- RESOURCES PANEL                           -->
   <!-- ══════════════════════════════════════════ -->
-  <!-- ── DESIGN ELEMENTS PANEL ── -->
-  <div class="panel" id="panel-design">
-    <div id="design-content"><div class="de-loading">Loading design elements…</div></div>
-  </div>
-
   <!-- ── AD SPECS PANEL ── -->
   <div class="panel" id="panel-adspecs">
     <div class="account-nav" style="margin-bottom:0;">
@@ -2023,11 +2241,11 @@
 
   <div class="panel" id="panel-resources">
     <div class="resource-grid">
-      <a class="resource-card" href="creative-specs.pdf" target="_blank">
-        <div class="resource-card-icon">📐</div>
-        <div class="resource-card-title">Creative Specs, Examples & Best Practices</div>
-        <div class="resource-card-desc">Platform specs, ad examples, and creative best practices across channels — the full EQ5 reference guide.</div>
-        <div class="resource-card-link">Open PDF</div>
+      <a class="resource-card" href="#" onclick="event.preventDefault();document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));document.querySelectorAll('.main-nav-btn').forEach(b=>b.classList.remove('active'));document.getElementById('panel-adspecs').classList.add('active');">
+        <div class="resource-card-icon">📏</div>
+        <div class="resource-card-title">Creative Specs and Best Practices</div>
+        <div class="resource-card-desc">Platform-by-platform ad specifications, size requirements, and format guidelines across all channels.</div>
+        <div class="resource-card-link">View Specs</div>
       </a>
       <a class="resource-card" href="glossary/">
         <div class="resource-card-icon">📖</div>
@@ -2047,6 +2265,12 @@
         <div class="resource-card-desc">Design vocabulary and strategy — typography, color, layout, and how to speak confidently in client conversations.</div>
         <div class="resource-card-link">Open</div>
       </a>
+      <a class="resource-card" href="#" onclick="event.preventDefault();toggleTimelineResource(this);">
+        <div class="resource-card-icon">📅</div>
+        <div class="resource-card-title">Creative Timeline</div>
+        <div class="resource-card-desc">Step-by-step creative development process — from brief through MLR submission.</div>
+        <div class="resource-card-link">View Timeline</div>
+      </a>
       <a class="resource-card" href="training/">
         <div class="resource-card-icon">🏗️</div>
         <div class="resource-card-title">Systems Architecture</div>
@@ -2054,6 +2278,10 @@
         <div class="resource-card-link">Open Training</div>
       </a>
     </div>
+    <div id="resources-timeline-expanded" style="display:none; margin-top:1.5rem;">
+      <div id="resources-timeline-content"></div>
+    </div>
+
     <div class="section" style="margin-top:2rem;">
       <div class="section-header">
         <span class="section-title">Creative Assets</span>
@@ -2082,7 +2310,7 @@
 
 </div>
 
-<div class="version-badge">v1.4.0 · 2026-06-18 · Grace Irwin</div>
+<div class="version-badge">v1.5.0 · 2026-06-29 · Grace Irwin</div>
 
 <script>
 function showPanel(id) {
@@ -2090,76 +2318,375 @@ function showPanel(id) {
   document.querySelectorAll('.main-nav-btn').forEach(b => b.classList.remove('active'));
   document.getElementById('panel-' + id).classList.add('active');
   event.target.classList.add('active');
-  if (id === 'design') loadDesignElements();
 }
 
-let _designLoaded = false;
-async function loadDesignElements() {
-  if (_designLoaded) return;
-  const container = document.getElementById('design-content');
-  try {
-    const res = await fetch('design-elements/index.html');
-    const html = await res.text();
-    const doc = new DOMParser().parseFromString(html, 'text/html');
+// ── ACCOUNTS ──
+let _acctClient = null;
+let _acctCampaign = 0;
+let _acctView = 'grid';
 
-    const sections = [
-      { key: 'typography',  label: 'Typography' },
-      { key: 'color',       label: 'Color Palettes' },
-      { key: 'layout',      label: 'Layout & Placement' },
-      { key: 'sizing',      label: 'Sizing' },
-      { key: 'imagery',     label: 'Imagery' },
-      { key: 'iconography', label: 'Iconography' },
-    ];
+function showClient(key) {
+  _acctClient = key;
+  _acctCampaign = 0;
+  _acctView = 'detail';
 
-    // Build top nav
-    const nav = document.createElement('div');
-    nav.className = 'de-top-nav';
+  const data = document.getElementById('acct-data-' + key);
+  const name = data.querySelector('.acct-client-label').textContent;
 
-    // Content wrapper
-    const content = document.createElement('div');
+  document.getElementById('acctTitle').textContent = name;
+  document.getElementById('acctSubtitle').textContent = data.dataset.subtitle || 'Pharma — HCP Awareness';
 
-    sections.forEach((s, i) => {
-      // Nav button
-      const btn = document.createElement('button');
-      btn.className = 'de-nav-btn' + (i === 0 ? ' active' : '');
-      btn.textContent = s.label;
-      btn.onclick = () => {
-        nav.querySelectorAll('.de-nav-btn').forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        content.querySelectorAll('.doc-section').forEach(p => p.classList.remove('active'));
-        const target = content.querySelector('#section-' + s.key);
-        if (target) target.classList.add('active');
-      };
-      nav.appendChild(btn);
+  _buildClientSidebar(key);
 
-      // Section content
-      const section = doc.querySelector('#section-' + s.key);
-      if (section) {
-        if (i === 0) section.classList.add('active');
-        content.appendChild(section);
-      }
-    });
+  const guidelinesData = data.querySelector('.acct-guidelines-data');
+  document.getElementById('acct-tab-guidelines').innerHTML = guidelinesData ? guidelinesData.innerHTML : '';
 
-    container.innerHTML = '';
-    container.appendChild(nav);
-    container.appendChild(content);
+  const mlrData = data.querySelector('.acct-mlr-data');
+  document.getElementById('acct-tab-mlr').innerHTML = mlrData ? mlrData.innerHTML : '';
 
-    // Run accordion JS
-    const scriptEl = doc.querySelector('script');
-    if (scriptEl) { try { new Function(scriptEl.textContent)(); } catch(e) {} }
+  document.getElementById('acct-tab-campaigns').innerHTML = '';
 
-    _designLoaded = true;
-  } catch(e) {
-    container.innerHTML = '<div class="de-loading">Could not load design elements.</div>';
+  document.querySelectorAll('.acct-tab-btn').forEach((b,i) => b.classList.toggle('active', i===0));
+  document.querySelectorAll('.acct-tab-panel').forEach((p,i) => p.classList.toggle('active', i===0));
+
+  document.getElementById('acct-grid-view').style.display = 'none';
+  document.getElementById('acct-detail-view').style.display = 'flex';
+  document.getElementById('acct-message-view').style.display = 'none';
+}
+
+function _buildClientSidebar(activeKey) {
+  const clients = {a:'Client A', b:'Client B', c:'Client C', d:'Client D', mesoblast:'Mesoblast'};
+  const sidebar = document.getElementById('acctSidebar');
+  sidebar.innerHTML = '<button class="acct-sidebar-top-tab" onclick="showClientGrid()">Clients</button>';
+  const btn = document.createElement('button');
+  btn.className = 'acct-sidebar-client-btn active';
+  btn.textContent = clients[activeKey] || ('Client ' + activeKey.toUpperCase());
+  sidebar.appendChild(btn);
+}
+
+function _buildCampaignSidebar(clientKey, activeCampaignIdx, activeItem) {
+  const data = document.getElementById('acct-data-' + clientKey);
+  const clientName = data.querySelector('.acct-client-label').textContent;
+  const campaigns = data.querySelectorAll('.acct-campaign');
+
+  const sidebar = document.getElementById('acctMsgSidebar');
+  sidebar.innerHTML = '<button class="acct-sidebar-top-tab" onclick="showClientGrid()">Clients</button><div class="acct-sidebar-section-label">CLIENT ' + clientName.replace('Client ','') + '</div>';
+
+  campaigns.forEach((camp, ci) => {
+    const campLabel = camp.dataset.label || ('Campaign ' + (ci+1));
+    const campBtn = document.createElement('button');
+    campBtn.className = 'acct-sidebar-campaign-btn' + (ci === activeCampaignIdx ? ' active' : '');
+    campBtn.textContent = campLabel;
+    const isISI = !!camp.dataset.isi;
+    campBtn.onclick = () => isISI ? showISI(clientKey, ci) : showCampaignOverview(clientKey, ci);
+    sidebar.appendChild(campBtn);
+
+    if (ci === activeCampaignIdx && !isISI) {
+      const subWrap = document.createElement('div');
+      subWrap.className = 'acct-sidebar-sub';
+      const msgCount = parseInt(camp.dataset.msgs || '4');
+      const msgItems = ['Overview'];
+      for (let mi = 1; mi <= msgCount; mi++) msgItems.push('Message ' + mi);
+      msgItems.forEach((item, ii) => {
+        const itemKey = ii === 0 ? 'overview' : 'msg-' + (ii-1);
+        const msgBtn = document.createElement('button');
+        msgBtn.className = 'acct-sidebar-msg-btn' + (activeItem === itemKey ? ' active' : '');
+        msgBtn.textContent = item;
+        msgBtn.onclick = () => {
+          if (ii === 0) showCampaignOverview(clientKey, ci);
+          else showMessage(clientKey, ci, ii-1);
+        };
+        subWrap.appendChild(msgBtn);
+      });
+      sidebar.appendChild(subWrap);
+    }
+  });
+}
+
+function showISI(clientKey, campaignIdx) {
+  _acctClient = clientKey;
+  _acctCampaign = campaignIdx;
+  _acctView = 'isi';
+  const data = document.getElementById('acct-data-' + clientKey);
+  const campaigns = data.querySelectorAll('.acct-campaign');
+  const camp = campaigns[campaignIdx];
+  _buildCampaignSidebar(clientKey, campaignIdx, 'isi');
+  document.getElementById('acctMsgMain').innerHTML = `
+    <div class="acct-main-title" style="margin-bottom:24px;">Important Safety Information</div>
+    <img src="${camp.dataset.isi}" style="width:100%;max-width:900px;display:block;border-radius:8px;">
+  `;
+  document.getElementById('acct-grid-view').style.display = 'none';
+  document.getElementById('acct-detail-view').style.display = 'none';
+  document.getElementById('acct-message-view').style.display = 'flex';
+}
+
+function showCampaignOverview(clientKey, campaignIdx) {
+  _acctClient = clientKey;
+  _acctCampaign = campaignIdx;
+  _acctView = 'message';
+
+  const data = document.getElementById('acct-data-' + clientKey);
+  const clientName = data.querySelector('.acct-client-label').textContent;
+  const campaigns = data.querySelectorAll('.acct-campaign');
+  const camp = campaigns[campaignIdx];
+
+  _buildCampaignSidebar(clientKey, campaignIdx, 'overview');
+
+  const main = document.getElementById('acctMsgMain');
+  main.innerHTML = `
+    <div class="acct-main-title">${clientName} — ${camp.dataset.label || 'Campaign'}</div>
+    <div class="acct-main-subtitle">${data.dataset.subtitle || 'Pharma — HCP Awareness'}</div>
+    <div class="acct-tabs">
+      <button class="acct-tab-btn" onclick="showClient('${clientKey}')">Brand Guidelines</button>
+      <button class="acct-tab-btn" onclick="showClient('${clientKey}');setTimeout(()=>{document.querySelectorAll('.acct-tab-btn')[1].click()},50)">MLR Requirements</button>
+      <button class="acct-tab-btn active">Campaigns</button>
+    </div>
+    <div style="margin-top:28px;">
+      ${_buildTimelineHTML()}
+      <div class="acct-section-label" style="margin-top:28px;">CAMPAIGN GOALS</div>
+      ${_buildMetricCardsHTML()}
+      <div class="acct-section-label" style="margin-top:28px;">CAMPAIGN METRIC ACTUALS</div>
+      ${_buildMetricCardsHTML()}
+      <div class="acct-section-label" style="margin-top:28px;">ADS</div>
+      ${_buildAdMessageCardsHTML(clientKey, campaignIdx)}
+    </div>
+  `;
+
+  document.getElementById('acct-grid-view').style.display = 'none';
+  document.getElementById('acct-detail-view').style.display = 'none';
+  document.getElementById('acct-message-view').style.display = 'flex';
+}
+
+function showMessage(clientKey, campaignIdx, msgIdx) {
+  _acctClient = clientKey;
+  _acctCampaign = campaignIdx;
+  _acctView = 'message';
+
+  const data = document.getElementById('acct-data-' + clientKey);
+  const clientName = data.querySelector('.acct-client-label').textContent;
+  const subtitle = data.dataset.subtitle || 'Pharma — HCP Awareness';
+  const campaigns = data.querySelectorAll('.acct-campaign');
+  const camp = campaigns[campaignIdx];
+  const msgData = camp ? camp.querySelector('.acct-msg-data[data-msg="' + msgIdx + '"]') : null;
+
+  const rawTitle   = msgData ? (msgData.dataset.title || ('Message ' + (msgIdx+1))) : ('Message ' + (msgIdx+1));
+  const campLabel  = camp ? (camp.dataset.label || '') : '';
+  // Build formatted title: "Concept 01 — Awareness · Targeting Prescribing Doctors · Instagram"
+  const audienceMap = {'Prescribing': 'Targeting Prescribing Doctors', 'Non-Prescribing': 'Targeting Non-Prescribing Doctors'};
+  const titleParts = rawTitle.split(' — ');
+  const audienceKey = titleParts[0] ? titleParts[0].trim() : '';
+  const channelPart = titleParts[1] ? titleParts[1].trim() : '';
+  const audienceLabel = audienceMap[audienceKey] || audienceKey;
+  const msgTitle = campLabel && audienceLabel && channelPart
+    ? campLabel + ' &nbsp;·&nbsp; ' + audienceLabel + ' &nbsp;·&nbsp; ' + channelPart
+    : rawTitle;
+  const msgIg      = msgData ? (msgData.dataset.ig || '') : '';
+  const msgFb      = msgData ? (msgData.dataset.fb || '') : '';
+  const msgLi      = msgData ? (msgData.dataset.li || '') : '';
+  const msgCaption = msgData ? (msgData.dataset.caption || 'The first and only FDA-approved SR-aGvHD treatment for pediatric patients 2 months of age and older.') : 'The first and only FDA-approved SR-aGvHD treatment for pediatric patients 2 months of age and older.';
+  const msgDest    = msgData ? (msgData.dataset.dest || 'URL') : 'URL';
+  const msgChannel = msgData ? (msgData.dataset.channel || 'Meta') : 'Meta';
+  const msgPlace   = msgData ? (msgData.dataset.placement || 'Static') : 'Static';
+  const msgBriefRaw = msgData ? (msgData.dataset.brief || '') : '';
+  const msgBriefLines = msgBriefRaw ? msgBriefRaw.split('|').join('<br>') : 'Branded ads<br>targeting prescribing and non-prescribing Doctors<br>Mirror HCP landing page branding<br>Images should portray happy patients';
+  const altHeadlineB  = msgData ? (msgData.dataset.altHeadlineB || '') : '';
+  const altHeadlineC  = msgData ? (msgData.dataset.altHeadlineC || '') : '';
+  const altCalloutB   = msgData ? (msgData.dataset.altCalloutB || '') : '';
+  const altCalloutC   = msgData ? (msgData.dataset.altCalloutC || '') : '';
+  const altPrimaryB   = msgData ? (msgData.dataset.altPrimaryB || '') : '';
+  const altPrimaryC   = msgData ? (msgData.dataset.altPrimaryC || '') : '';
+  const hasAltCopy = altHeadlineB || altHeadlineC || altCalloutB || altCalloutC || altPrimaryB || altPrimaryC;
+  function altRow(label, b, c) {
+    if (!b && !c) return '';
+    return `<div class="alt-copy-group">
+      <div class="alt-copy-label">${label}</div>
+      ${b ? `<div class="alt-copy-row"><span class="alt-copy-tag opt-b">Option B</span><span class="alt-copy-text">${b}</span></div>` : ''}
+      ${c ? `<div class="alt-copy-row"><span class="alt-copy-tag opt-c">Option C</span><span class="alt-copy-text">${c}</span></div>` : ''}
+    </div>`;
   }
+  const jobParts = [];
+  if (msgIg) jobParts.push(msgIg);
+  if (msgFb) jobParts.push(msgFb);
+  if (msgLi) jobParts.push(msgLi);
+  const jobCodesDisplay = jobParts.length ? jobParts.join(' &nbsp;·&nbsp; ') : 'XXX';
+
+  _buildCampaignSidebar(clientKey, campaignIdx, 'msg-' + msgIdx);
+
+  const msgNum = msgIdx + 1;
+  const main = document.getElementById('acctMsgMain');
+  main.innerHTML = `
+    <div class="acct-main-title">${clientName}</div>
+    <div class="acct-main-subtitle">${subtitle}</div>
+    <div class="acct-tabs">
+      <button class="acct-tab-btn" onclick="showClient('${clientKey}')">Brand Guidelines</button>
+      <button class="acct-tab-btn">MLR Requirements</button>
+      <button class="acct-tab-btn active">Campaigns</button>
+    </div>
+    <div style="margin-top:28px;">
+      <div class="acct-msg-heading">${msgTitle}</div>
+      ${_buildTimelineHTML()}
+      <div class="acct-section-label" style="margin-top:20px;">CAMPAIGN METRIC ACTUALS BY CREATIVE</div>
+      ${_buildMetricCardsHTML()}
+      <div class="acct-section-label" style="margin-top:28px;">MESSAGE ${msgNum} CREATIVE</div>
+      <div class="acct-msg-detail-layout">
+        <div class="acct-creative-preview">
+          ${msgData && msgData.dataset.img ? `<img src="${msgData.dataset.img}" style="width:100%;display:block;border-radius:8px;">` : `<div class="ad-mock">
+            <div class="ad-mock-header">
+              <div class="ad-mock-logo">R</div>
+              <div class="ad-mock-brand">
+                <div class="ad-mock-name">Rare Pediatric News <span class="ad-mock-verified">✓</span></div>
+                <div class="ad-mock-sponsored">Sponsored · 🌐</div>
+              </div>
+              <div class="ad-mock-dots">⋮</div>
+            </div>
+            <div class="ad-mock-image"><span>CREATIVE PREVIEW</span></div>
+            <div class="ad-mock-cta"><span class="ad-mock-cta-text">Learn more</span><span class="ad-mock-cta-arrow">›</span></div>
+            <div class="ad-mock-actions">
+              <span class="ad-mock-action-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#262626" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></span>
+              <span class="ad-mock-action-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#262626" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><circle cx="9" cy="11" r="0.8" fill="#262626" stroke="none"/><circle cx="12" cy="11" r="0.8" fill="#262626" stroke="none"/><circle cx="15" cy="11" r="0.8" fill="#262626" stroke="none"/></svg></span>
+              <span class="ad-mock-action-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#262626" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg></span>
+              <div class="ad-mock-dots-row">
+                <div class="ad-mock-dot"></div>
+                <div class="ad-mock-dot inactive"></div>
+                <div class="ad-mock-dot inactive"></div>
+                <div class="ad-mock-dot inactive"></div>
+                <div class="ad-mock-dot inactive"></div>
+              </div>
+              <span class="ad-mock-bookmark"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#262626" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg></span>
+            </div>
+            <div class="ad-mock-likes">326 likes</div>
+            <div class="ad-mock-caption">${msgCaption}</div>
+          </div>`}
+        </div>
+        <div class="acct-creative-meta">
+          <div class="acct-meta-fields">
+            <div class="acct-meta-field"><div class="acct-meta-label">Status</div><div class="acct-meta-value">In Review</div></div>
+            <div class="acct-meta-field"><div class="acct-meta-label">Job Codes</div><div class="acct-meta-value" style="font-size:14px;">${jobCodesDisplay}</div></div>
+            <div class="acct-meta-field"><div class="acct-meta-label">Run Dates</div><div class="acct-meta-value">TBD</div></div>
+            <div class="acct-meta-field"><div class="acct-meta-label">Channel</div><div class="acct-meta-value">${msgChannel}</div></div>
+            <div class="acct-meta-field"><div class="acct-meta-label">Placement</div><div class="acct-meta-value">${msgPlace}</div></div>
+            <div class="acct-meta-field"><div class="acct-meta-label">Destination Link</div><div class="acct-meta-value" style="font-size:13px;"><a href="${msgDest}" target="_blank" style="color:var(--cyan);text-decoration:none;">${msgDest}</a></div></div>
+          </div>
+          <div class="acct-creative-cols">
+            <div>
+              <div class="acct-section-label" style="margin-top:20px;">CREATIVE DETAILS</div>
+              <div class="acct-creative-list">
+                <strong style="color:#dde4f5;">Font</strong><br>Inter<br><br>
+                <strong style="color:#dde4f5;">Colors</strong><br>Ryoncil Orange (#F47920) · Navy Blue (#1A3A8F) · White · Light Blue (#A8C4E0)<br><br>
+                <strong style="color:#dde4f5;">Ad Type</strong><br>Static — Dynamic Scrolling ISI<br><br>
+                <strong style="color:#dde4f5;">Dimensions</strong><br>1080 × 1080 px (IG/FB) · 1200 × 627 px (LI)<br><br>
+                <strong style="color:#dde4f5;">Design Elements</strong><br>Pediatric patient photography · Ryoncil logo · ISI footer · CTA button<br><br>
+                <strong style="color:#dde4f5;">Logo</strong><br><img src="assets/mesoblast/ryoncil-logo.png" style="height:48px;margin-top:6px;display:block;">
+              </div>
+            </div>
+            <div>
+              ${hasAltCopy ? `
+              <div class="acct-section-label" style="margin-top:20px;">ALTERNATE COPY</div>
+              <div class="alt-copy-block">
+                ${altRow('Headline', altHeadlineB, altHeadlineC)}
+                ${altRow('Call Out', altCalloutB, altCalloutC)}
+                ${altRow('Primary Text', altPrimaryB, altPrimaryC)}
+              </div>` : ''}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  `;
+
+  document.getElementById('acct-grid-view').style.display = 'none';
+  document.getElementById('acct-detail-view').style.display = 'none';
+  document.getElementById('acct-message-view').style.display = 'flex';
 }
 
-function showAccount(id) {
-  document.querySelectorAll('.account-panel').forEach(p => p.classList.remove('active'));
-  document.querySelectorAll('.account-btn').forEach(b => b.classList.remove('active'));
-  document.getElementById('account-' + id).classList.add('active');
-  event.target.classList.add('active');
-  document.getElementById('adDetailPanel').classList.remove('visible');
+function showClientGrid() {
+  document.getElementById('acct-grid-view').style.display = 'block';
+  document.getElementById('acct-detail-view').style.display = 'none';
+  document.getElementById('acct-message-view').style.display = 'none';
+  _acctClient = null;
+}
+
+function showAcctTab(btn, key) {
+  if (key === 'campaigns') {
+    showCampaignOverview(_acctClient, 0);
+    return;
+  }
+  document.querySelectorAll('.acct-tab-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.acct-tab-panel').forEach(p => p.classList.remove('active'));
+  document.getElementById('acct-tab-' + key).classList.add('active');
+}
+
+function _buildTimelineHTML() {
+  const milestones = [
+    {date:'May 14', label:'Kickoff'},
+    {date:'Jun 10', label:'Concepts'},
+    {date:'Jun 30', label:'In Review'},
+    {date:'TBD', label:'MLR Submit'},
+    {date:'TBD', label:'MLR Approval'},
+    {date:'TBD', label:'Launch'},
+  ];
+  const items = milestones.map((m, i) => `
+    <div class="acct-tl-milestone">
+      <div class="acct-tl-date">${m.date}</div>
+      <div class="acct-tl-dot${i < 2 ? ' passed' : i===2 ? ' active' : ''}"></div>
+      <div class="acct-tl-label">${m.label}</div>
+    </div>
+  `).join('');
+  return `
+    <div class="acct-section-label">TIMELINE</div>
+    <div class="acct-timeline">${items}</div>
+  `;
+}
+
+function _buildMetricCardsHTML() {
+  const metrics = [
+    {label:'Identified Impressions', value:'N/A', sub:''},
+    {label:'Reach', value:'N/A', sub:''},
+    {label:'Average CTR', value:'N/A', sub:''},
+    {label:'Identified Clicks', value:'N/A', sub:''},
+  ];
+  return '<div class="acct-metric-grid">' + metrics.map(m => `
+    <div class="acct-metric-card">
+      <div class="acct-metric-label">${m.label}</div>
+      <div class="acct-metric-value">${m.value}</div>
+      <div class="acct-metric-sub">${m.sub}</div>
+    </div>
+  `).join('') + '</div>';
+}
+
+function _buildAdMessageCardsHTML(clientKey, campaignIdx) {
+  const msgs = [
+    {name:'Message 1', status:'Running', statusClass:'running'},
+    {name:'Message 2', status:'In Review', statusClass:'review'},
+    {name:'Message 3', status:'In Review', statusClass:'review'},
+    {name:'Message 4', status:'Running', statusClass:'running'},
+  ];
+  return '<div class="acct-msg-grid">' + msgs.map((m, i) => `
+    <div class="acct-msg-card" onclick="showMessage('${clientKey}', ${campaignIdx}, ${i})">
+      <div class="acct-msg-status ${m.statusClass}">${m.status}</div>
+      <div class="acct-msg-name">${m.name}</div>
+      <div class="acct-msg-campaign">HCP Awareness Q2 2025</div>
+    </div>
+  `).join('') + '</div>';
+}
+
+function toggleTimelineResource(card) {
+  const expanded = document.getElementById('resources-timeline-expanded');
+  const isOpen = expanded.style.display !== 'none';
+  if (isOpen) {
+    expanded.style.display = 'none';
+    card.querySelector('.resource-card-link').textContent = 'View Timeline';
+    return;
+  }
+  const content = document.getElementById('resources-timeline-content');
+  const source = document.getElementById('panel-timeline');
+  if (source && !content.innerHTML.trim()) {
+    content.innerHTML = source.innerHTML;
+  }
+  expanded.style.display = 'block';
+  card.querySelector('.resource-card-link').textContent = 'Hide Timeline';
+  expanded.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 
 function showClinical(id) {
