@@ -605,6 +605,122 @@
 .specs-isi-card { background:var(--surface); border:1px solid var(--border); border-radius:12px; padding:18px 20px; }
 .specs-isi-number { font-size:24px; font-weight:800; color:var(--cyan); margin-bottom:8px; }
 .specs-isi-desc { font-size:13px; color:#dde4f5; line-height:1.5; }
+
+/* ── MLR MOCKUP PANEL ── */
+#mlr-layout { display:flex; gap:40px; align-items:flex-start; min-height:calc(100vh - 160px); }
+#mlr-form-col { flex-shrink:0; width:300px; }
+#mlr-preview-col { flex:1; background:#fff; border-radius:12px; overflow:hidden; min-height:600px; display:flex; align-items:flex-start; justify-content:center; padding:40px; }
+.mlr-form-heading { font-size:22px; font-weight:800; color:var(--white); letter-spacing:-0.02em; margin-bottom:4px; }
+.mlr-form-sub { font-size:13px; color:var(--muted); margin-bottom:28px; }
+.mlr-field-group { margin-bottom:16px; }
+.mlr-field-label { font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; color:var(--muted); margin-bottom:6px; }
+.mlr-field-note { font-weight:400; text-transform:none; letter-spacing:0; font-size:11px; }
+.mlr-input { width:100%; background:var(--surface); border:1px solid rgba(255,255,255,0.08); border-radius:6px; padding:8px 12px; font-size:13px; color:#dde4f5; font-family:var(--font); outline:none; box-sizing:border-box; transition:border-color .15s; }
+.mlr-input:focus { border-color:var(--cyan); }
+.mlr-textarea { resize:vertical; min-height:70px; line-height:1.5; }
+input[type="file"].mlr-input { padding:6px 10px; color:var(--muted); cursor:pointer; }
+.mlr-channel-row { display:flex; gap:16px; }
+.mlr-channel-check { display:flex; align-items:center; gap:6px; font-size:13px; color:#dde4f5; cursor:pointer; }
+.mlr-channel-check input { accent-color:var(--cyan); width:14px; height:14px; cursor:pointer; }
+.mlr-export-btn { margin-top:24px; width:100%; height:44px; background:linear-gradient(93.8deg,#3571cb 0,#01b0b0 100%); border:none; border-radius:8px; color:#fff; font-size:14px; font-weight:700; font-family:var(--font); cursor:pointer; letter-spacing:0.02em; transition:opacity .15s; }
+.mlr-export-btn:hover { opacity:0.88; }
+
+/* preview canvas */
+#mlr-preview-wrap { width:100%; font-family:'Inter',system-ui,sans-serif; }
+#mlr-label-block { margin-bottom:32px; }
+#mlr-label-jobcode { font-size:28px; font-weight:700; color:#000; letter-spacing:-0.02em; line-height:1.2; white-space:pre-line; }
+#mlr-label-format { font-size:13px; font-weight:600; color:#6f6f6f; margin-top:4px; }
+#mlr-label-dest { font-size:13px; color:#6f6f6f; margin-top:2px; }
+#mlr-mocks-row { display:flex; gap:20px; align-items:flex-start; justify-content:center; flex-wrap:nowrap; width:100%; }
+
+/* platform mock cards */
+.mlr-mock-wrap { display:flex; flex-direction:column; align-items:stretch; gap:10px; flex:1; min-width:0; }
+.mlr-mock-platform-label { font-size:11px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:#6f6f6f; }
+.mlr-mock-card { border:1px solid #000; border-radius:0; background:#fff; overflow:hidden; }
+
+/* Facebook mock */
+.fb-card { width:100%; font-family:'Inter',system-ui,sans-serif; }
+.fb-header { display:flex; align-items:center; gap:8px; padding:10px 12px 8px; }
+.fb-avatar { width:38px; height:38px; border-radius:50%; background:#b8c0c7; flex-shrink:0; position:relative; }
+.fb-avatar-plus { position:absolute; bottom:-2px; right:-2px; width:16px; height:16px; background:#1877f2; border-radius:50%; border:2px solid #fff; font-size:11px; font-weight:700; color:#fff; display:flex; align-items:center; justify-content:center; line-height:1; }
+.fb-handle-wrap { flex:1; }
+.fb-handle { font-size:13.5px; font-weight:700; color:#050505; line-height:1.2; display:flex; align-items:center; gap:4px; }
+.fb-meta { font-size:11.5px; color:#65676b; display:flex; align-items:center; gap:4px; margin-top:1px; }
+.fb-sponsored-dot { width:2px; height:2px; background:#65676b; border-radius:50%; }
+.fb-more { margin-left:auto; display:flex; align-items:center; padding:0 2px; }
+.fb-primary { padding:0 12px 8px; font-size:13.5px; color:#050505; line-height:1.5; }
+.fb-image { width:100%; aspect-ratio:1/1; background:#b8c0c7; display:flex; align-items:center; justify-content:center; overflow:hidden; }
+.fb-image img { width:100%; height:100%; object-fit:cover; }
+.fb-image-placeholder { font-size:13px; font-weight:700; color:#fff; letter-spacing:0.06em; }
+.fb-footer { background:#eff3f7; padding:10px 12px; display:flex; align-items:center; gap:8px; }
+.fb-footer-text { flex:1; }
+.fb-display-url { font-size:10.5px; color:#65676b; text-transform:uppercase; letter-spacing:0.04em; }
+.fb-headline { font-size:13.5px; font-weight:700; color:#050505; line-height:1.3; margin-top:1px; }
+.fb-cta-btn { flex-shrink:0; background:#e4e6eb; border:none; border-radius:6px; padding:7px 14px; font-size:13px; font-weight:700; color:#050505; cursor:pointer; white-space:nowrap; font-family:'Inter',system-ui,sans-serif; }
+.fb-actions { display:flex; padding:2px 8px; border-top:1px solid #e4e6eb; }
+.fb-action-btn { flex:1; padding:8px 0; display:flex; align-items:center; justify-content:center; gap:6px; font-size:13px; font-weight:600; color:#65676b; }
+
+/* Instagram mock */
+.ig-card { width:100%; font-family:'Inter',system-ui,sans-serif; }
+.ig-header { display:flex; align-items:center; gap:8px; padding:8px 12px; }
+.ig-avatar { width:34px; height:34px; border-radius:50%; background:linear-gradient(45deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888); flex-shrink:0; padding:2px; }
+.ig-avatar-inner { width:100%; height:100%; border-radius:50%; background:#b8c0c7; border:2px solid #fff; }
+.ig-handle-wrap { flex:1; }
+.ig-handle { font-size:13px; font-weight:700; color:#000; display:flex; align-items:center; gap:4px; }
+.ig-meta { font-size:11px; color:#737373; display:flex; align-items:center; gap:3px; margin-top:1px; }
+.ig-more { display:flex; align-items:center; padding:0 2px; }
+.ig-image { width:100%; aspect-ratio:1/1; background:#b8c0c7; display:flex; align-items:center; justify-content:center; overflow:hidden; }
+.ig-image img { width:100%; height:100%; object-fit:cover; }
+.ig-image-placeholder { font-size:13px; font-weight:700; color:#fff; letter-spacing:0.06em; }
+.ig-cta-row { display:flex; align-items:center; justify-content:space-between; padding:8px 12px; border-bottom:1px solid #efefef; }
+.ig-cta-text { font-size:13px; font-weight:600; color:#000; }
+.ig-cta-chevron { font-size:16px; color:#737373; font-weight:300; }
+.ig-actions-row { display:flex; align-items:center; padding:8px 12px 4px; gap:12px; }
+.ig-action-icon { display:flex; align-items:center; line-height:1; }
+.ig-bookmark { margin-left:auto; }
+.ig-dots-inline { flex:1; display:flex; justify-content:center; align-items:center; gap:4px; }
+.ig-dot { width:5px; height:5px; border-radius:50%; display:inline-block; }
+.ig-dot.active { background:#0095f6; }
+.ig-dot.inactive { background:#a8a8a8; }
+.ig-likes { padding:0 12px 3px; font-size:13px; font-weight:700; color:#000; }
+.ig-caption { padding:0 12px 10px; font-size:13px; color:#000; line-height:1.45; }
+
+/* LinkedIn mock */
+.li-card { width:100%; font-family:'Inter',system-ui,sans-serif; }
+.li-header { display:flex; align-items:flex-start; gap:8px; padding:10px 12px 8px; }
+.li-avatar { width:44px; height:44px; border-radius:50%; background:#b8c0c7; flex-shrink:0; position:relative; }
+.li-avatar-plus { position:absolute; bottom:-2px; right:-2px; width:16px; height:16px; background:#0a66c2; border-radius:50%; border:2px solid #fff; font-size:11px; font-weight:700; color:#fff; display:flex; align-items:center; justify-content:center; line-height:1; }
+.li-handle-wrap { flex:1; }
+.li-handle { font-size:13.5px; font-weight:600; color:#000000e6; line-height:1.2; }
+.li-sub { font-size:11.5px; color:#00000099; line-height:1.4; margin-top:1px; }
+.li-more { display:flex; align-items:center; padding:0 2px; margin-top:2px; }
+.li-primary { padding:0 12px 8px; font-size:13.5px; color:#000000e6; line-height:1.5; }
+.li-image { width:100%; aspect-ratio:1/1; background:#b8c0c7; display:flex; align-items:center; justify-content:center; overflow:hidden; }
+.li-image img { width:100%; height:100%; object-fit:cover; }
+.li-image-placeholder { font-size:13px; font-weight:700; color:#fff; letter-spacing:0.06em; }
+.li-footer { background:#eff3f7; padding:10px 12px; display:flex; align-items:center; gap:8px; border-top:1px solid #e0e0e0; }
+.li-footer-text { flex:1; }
+.li-display-url { font-size:10.5px; color:#00000099; text-transform:uppercase; letter-spacing:0.04em; margin-top:1px; }
+.li-headline { font-size:13.5px; font-weight:600; color:#000000e6; line-height:1.3; }
+.li-cta-btn { flex-shrink:0; background:transparent; border:1.5px solid #0a66c2; border-radius:999px; padding:5px 14px; font-size:12.5px; font-weight:600; color:#0a66c2; cursor:pointer; white-space:nowrap; font-family:'Inter',system-ui,sans-serif; }
+.li-reactions { padding:5px 12px 3px; font-size:12px; color:#00000099; display:flex; align-items:center; gap:4px; border-top:1px solid #e0e0e0; }
+.li-actions { display:flex; padding:2px 4px 6px; border-top:1px solid #e0e0e0; }
+.li-action-btn { flex:1; padding:6px 0; font-size:11px; color:#00000099; font-weight:600; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:3px; }
+
+@media print {
+  @page { size: landscape; margin: 0.5in; }
+  * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+  body { background:#fff !important; }
+  .main-nav, #mlr-form-col, .version-badge, #panel-accounts, #panel-library,
+  #panel-clinical, #panel-asset-search, #panel-resources, #panel-adspecs { display:none !important; }
+  .panel { display:none !important; }
+  #panel-mlr { display:block !important; }
+  #mlr-layout { display:block !important; }
+  #mlr-preview-col { background:#fff !important; padding:0 !important; border-radius:0 !important; box-shadow:none !important; min-height:0 !important; display:block !important; }
+  #mlr-preview-wrap { width:100% !important; }
+  #mlr-mocks-row { transform:none !important; justify-content:flex-start !important; gap:16px !important; }
+  .mlr-mock-wrap { break-inside:avoid; }
+}
 </style>
 </head>
 <body>
@@ -627,6 +743,7 @@
     <button class="main-nav-btn" onclick="showPanel('clinical')">Clinical Index</button>
     <button class="main-nav-btn" onclick="showPanel('library')">Ad Library</button>
     <button class="main-nav-btn" onclick="showPanel('resources')">Resources</button>
+    <button class="main-nav-btn" onclick="showPanel('mlr')">MLR Mockup</button>
   </nav>
 
   <!-- ══════════════════════════════════════════ -->
@@ -845,6 +962,11 @@
         <div class="acct-msg-data" data-msg="3" data-img="assets/mesoblast/moa-nonprescribers-ig.png" data-title="Non-Prescribing — Instagram" data-ig="MAT314" data-fb="" data-li="" data-headline="Before 2024, no FDA-approved therapies existed for pediatric SR-aGvHD patients under 12. Now there's RYONCIL." data-caption="RYONCIL's MSCs are activated by inflammatory cytokines, triggering a cascade of antiinflammatory effects." data-dest="https://www.ryoncilhcp.com/moa/" data-channel="Instagram" data-placement="Static" data-brief="Non-prescribing physicians · Instagram|First and only FDA-approved MSC therapy|70% ORR at Day 28 — n=54 · P=0.0003 · No HLA matching required|Destination: ryoncilhcp.com/moa/" data-alt-headline-b="Pediatric SR-aGvHD now has a first and only FDA-approved treatment — indicated from 2 months of age" data-alt-headline-c="RYONCIL doesn't just treat SR-aGvHD — it's believed to rebalance the immune response driving it"></div>
         <div class="acct-msg-data" data-msg="4" data-img="assets/mesoblast/moa-nonprescribers-fb.png" data-title="Non-Prescribing — Facebook" data-ig="" data-fb="MAT313" data-li="" data-headline="Before 2024, no FDA-approved therapies existed for pediatric SR-aGvHD patients under 12. Now there's RYONCIL." data-caption="RYONCIL's MSCs are activated by inflammatory cytokines, triggering a cascade of antiinflammatory effects." data-dest="https://www.ryoncilhcp.com/moa/" data-channel="Facebook" data-placement="Static" data-brief="Non-prescribing physicians · Facebook|TNFR1 reduced 79% · ST2 reduced 75% · T cells reduced 64%|Overall Response Rate 70% at Day 28 (38/54) P=0.0003|Destination: ryoncilhcp.com/moa/" data-alt-headline-b="Pediatric SR-aGvHD now has a first and only FDA-approved treatment — indicated from 2 months of age" data-alt-headline-c="RYONCIL doesn't just treat SR-aGvHD — it's believed to rebalance the immune response driving it"></div>
         <div class="acct-msg-data" data-msg="5" data-img="assets/mesoblast/moa-nonprescribers-li.png" data-title="Non-Prescribing — LinkedIn" data-ig="" data-fb="" data-li="MAT315" data-headline="MSCs are activated by inflammatory cytokines, triggering a cascade of anti-inflammatory effects" data-caption="RYONCIL's MSCs are activated by inflammatory cytokines, triggering a cascade of antiinflammatory effects." data-dest="https://www.ryoncilhcp.com/moa/" data-channel="LinkedIn" data-placement="Static" data-brief="Non-prescribing physicians · LinkedIn|Inhibits T cell activation · Increases regulatory T cells|Reduces pro-inflammatory cytokines · Raises anti-inflammatory mediators|Destination: ryoncilhcp.com/moa/" data-alt-headline-b="RYONCIL targets the inflammatory pathways driving SR-aGvHD — working differently than a steroid" data-alt-headline-c="RYONCIL is believed to be a cellular immunomodulator that reduces inflammatory cytokine levels to help rebalance the immune system"></div>
+      </div>
+      <div class="acct-campaign" data-label="Concept 04 — [New Campaign]" data-msgs="3">
+        <div class="acct-msg-data" data-msg="0" data-img="" data-title="Prescribing — Instagram" data-ig="[JOB-CODE-IG]" data-fb="" data-li="" data-headline="[Headline copy goes here]" data-caption="[Primary text / caption copy goes here.]" data-dest="https://www.ryoncilhcp.com/" data-channel="Instagram" data-placement="Static" data-brief="Prescribing physicians · Instagram|[Key message 1]|[Key message 2]|Destination: ryoncilhcp.com/" data-alt-headline-b="[Option B headline]" data-alt-headline-c="[Option C headline]" data-alt-primary-b="[Option B primary text]" data-alt-primary-c="[Option C primary text]"></div>
+        <div class="acct-msg-data" data-msg="1" data-img="" data-title="Prescribing — Facebook" data-ig="" data-fb="[JOB-CODE-FB]" data-li="" data-headline="[Headline copy goes here]" data-caption="[Primary text / caption copy goes here.]" data-dest="https://www.ryoncilhcp.com/" data-channel="Facebook" data-placement="Static" data-brief="Prescribing physicians · Facebook|[Key message 1]|[Key message 2]|Destination: ryoncilhcp.com/" data-alt-headline-b="[Option B headline]" data-alt-headline-c="[Option C headline]" data-alt-primary-b="[Option B primary text]" data-alt-primary-c="[Option C primary text]"></div>
+        <div class="acct-msg-data" data-msg="2" data-img="" data-title="Prescribing — LinkedIn" data-ig="" data-fb="" data-li="[JOB-CODE-LI]" data-headline="[Headline copy goes here]" data-caption="[Primary text / caption copy goes here.]" data-dest="https://www.ryoncilhcp.com/" data-channel="LinkedIn" data-placement="Static" data-brief="Prescribing physicians · LinkedIn|[Key message 1]|[Key message 2]|Destination: ryoncilhcp.com/" data-alt-headline-b="[Option B headline]" data-alt-headline-c="[Option C headline]" data-alt-primary-b="[Option B primary text]" data-alt-primary-c="[Option C primary text]"></div>
       </div>
       <div class="acct-campaign" data-label="ISI" data-msgs="0" data-isi="assets/mesoblast/isi.png"></div>
     </div>
@@ -2308,9 +2430,79 @@
     </div>
   </div>
 
+  <!-- MLR MOCKUP PANEL -->
+  <div class="panel" id="panel-mlr">
+    <div id="mlr-layout">
+      <div id="mlr-form-col">
+        <div class="mlr-form-heading">MLR Mockup Builder</div>
+        <div class="mlr-form-sub">Fill in the brief — the preview updates live.</div>
+
+        <div class="mlr-field-group">
+          <div class="mlr-field-label">Channels</div>
+          <div class="mlr-channel-row">
+            <label class="mlr-channel-check"><input type="checkbox" id="mlr-ch-ig" checked onchange="mlrRender()"> Instagram</label>
+            <label class="mlr-channel-check"><input type="checkbox" id="mlr-ch-fb" checked onchange="mlrRender()"> Facebook</label>
+            <label class="mlr-channel-check"><input type="checkbox" id="mlr-ch-li" checked onchange="mlrRender()"> LinkedIn</label>
+          </div>
+        </div>
+
+        <div class="mlr-field-group">
+          <div class="mlr-field-label">Job Code — Instagram</div>
+          <input class="mlr-input" id="mlr-job-ig" type="text" placeholder="e.g. MAT320" oninput="mlrRender()">
+        </div>
+        <div class="mlr-field-group">
+          <div class="mlr-field-label">Job Code — Facebook</div>
+          <input class="mlr-input" id="mlr-job-fb" type="text" placeholder="e.g. MAT319" oninput="mlrRender()">
+        </div>
+        <div class="mlr-field-group">
+          <div class="mlr-field-label">Job Code — LinkedIn</div>
+          <input class="mlr-input" id="mlr-job-li" type="text" placeholder="e.g. MAT321" oninput="mlrRender()">
+        </div>
+
+        <div class="mlr-field-group">
+          <div class="mlr-field-label">Account Handle</div>
+          <input class="mlr-input" id="mlr-handle" type="text" placeholder="@ryoncil_hcp" oninput="mlrRender()">
+        </div>
+        <div class="mlr-field-group">
+          <div class="mlr-field-label">Primary Text</div>
+          <textarea class="mlr-input mlr-textarea" id="mlr-primary" rows="3" placeholder="Caption / primary copy…" oninput="mlrRender()"></textarea>
+        </div>
+        <div class="mlr-field-group">
+          <div class="mlr-field-label">Headline <span class="mlr-field-note">(Facebook &amp; LinkedIn)</span></div>
+          <input class="mlr-input" id="mlr-headline" type="text" placeholder="Headline copy…" oninput="mlrRender()">
+        </div>
+        <div class="mlr-field-group">
+          <div class="mlr-field-label">CTA</div>
+          <input class="mlr-input" id="mlr-cta" type="text" placeholder="Learn More" oninput="mlrRender()">
+        </div>
+        <div class="mlr-field-group">
+          <div class="mlr-field-label">Destination URL</div>
+          <input class="mlr-input" id="mlr-dest" type="text" placeholder="https://www.ryoncilhcp.com/" oninput="mlrRender()">
+        </div>
+        <div class="mlr-field-group">
+          <div class="mlr-field-label">Ad Image <span class="mlr-field-note">(1080×1080 PNG)</span></div>
+          <input class="mlr-input" id="mlr-img-input" type="file" accept="image/*" onchange="mlrLoadImage(this)">
+        </div>
+
+        <button class="mlr-export-btn" onclick="mlrExportPDF()">Export to PDF</button>
+      </div>
+
+      <div id="mlr-preview-col">
+        <div id="mlr-preview-wrap">
+          <div id="mlr-label-block">
+            <div id="mlr-label-jobcode">JOB CODE</div>
+            <div id="mlr-label-format">HCP Social Media Ad · Static — Dynamic Scrolling ISI</div>
+            <div id="mlr-label-dest">Destination Link: —</div>
+          </div>
+          <div id="mlr-mocks-row"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
 </div>
 
-<div class="version-badge">v1.5.0 · 2026-06-29 · Grace Irwin</div>
+<div class="version-badge">v1.6.0 · 2026-06-30 · Grace Irwin</div>
 
 <script>
 function showPanel(id) {
@@ -2912,6 +3104,199 @@ function showSpecsPlatform(id) {
   document.getElementById('specs-' + id).classList.add('active');
   event.target.classList.add('active');
 }
+
+// ── MLR MOCKUP BUILDER ──
+let _mlrImageSrc = null;
+
+function mlrLoadImage(input) {
+  const file = input.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = e => { _mlrImageSrc = e.target.result; mlrRender(); };
+  reader.readAsDataURL(file);
+}
+
+function mlrVal(id) { return (document.getElementById(id)||{}).value || ''; }
+function mlrChecked(id) { return (document.getElementById(id)||{}).checked; }
+
+function mlrImageSlot(cls) {
+  return _mlrImageSrc
+    ? `<div class="${cls}"><img src="${_mlrImageSrc}" alt="Ad"></div>`
+    : `<div class="${cls}"><span class="${cls.split('-')[0]}-image-placeholder">AD PNG</span></div>`;
+}
+
+const MLR_SVG = {
+  // shared
+  globe:      `<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#65676b" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>`,
+  globeIg:    `<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#737373" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>`,
+  dotsH:      `<svg width="18" height="5" viewBox="0 0 18 5" fill="#65676b"><circle cx="2.5" cy="2.5" r="2"/><circle cx="9" cy="2.5" r="2"/><circle cx="15.5" cy="2.5" r="2"/></svg>`,
+  dotsHB:     `<svg width="18" height="5" viewBox="0 0 18 5" fill="#000"><circle cx="2.5" cy="2.5" r="2"/><circle cx="9" cy="2.5" r="2"/><circle cx="15.5" cy="2.5" r="2"/></svg>`,
+  dotsV:      `<svg width="4" height="18" viewBox="0 0 4 18" fill="#000"><circle cx="2" cy="2.5" r="2"/><circle cx="2" cy="9" r="2"/><circle cx="2" cy="15.5" r="2"/></svg>`,
+  dotsVLi:    `<svg width="4" height="18" viewBox="0 0 4 18" fill="#00000099"><circle cx="2" cy="2.5" r="2"/><circle cx="2" cy="9" r="2"/><circle cx="2" cy="15.5" r="2"/></svg>`,
+  verified:   `<svg width="14" height="14" viewBox="0 0 24 24" fill="#1877f2"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 14.5l-4-4 1.41-1.41L10 13.67l6.59-6.59L18 8.5l-8 8z"/></svg>`,
+  verifiedIg: `<svg width="13" height="13" viewBox="0 0 24 24" fill="#1d9bf0"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 14.5l-4-4 1.41-1.41L10 13.67l6.59-6.59L18 8.5l-8 8z"/></svg>`,
+  // Facebook actions
+  fbLike:     `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#65676b" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 10v12"/><path d="M15 5.88L14 10h5.83a2 2 0 0 1 1.92 2.56l-2.33 8A2 2 0 0 1 17.5 22H4a2 2 0 0 1-2-2v-8a2 2 0 0 1 2-2h2.76a2 2 0 0 0 1.79-1.11L12 2a3.13 3.13 0 0 1 3 3.88z"/></svg>`,
+  fbComment:  `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#65676b" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" stroke-linejoin="miter"/></svg>`,
+  fbShare:    `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#65676b" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>`,
+  // Instagram actions
+  igHeart:    `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>`,
+  igComment:  `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>`,
+  igSend:     `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2L11 13"/><path d="M22 2L15 22l-4-9-9-4 20-7z"/></svg>`,
+  igBookmark: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>`,
+  // LinkedIn actions
+  liLike:     `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#00000099" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3H14z"/><path d="M7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"/></svg>`,
+  liComment:  `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#00000099" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>`,
+  liRepost:   `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#00000099" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 1l4 4-4 4"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><path d="M7 23l-4-4 4-4"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg>`,
+  liSend:     `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#00000099" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2L11 13"/><path d="M22 2L15 22l-4-9-9-4 20-7z"/></svg>`,
+  liReaction: `<svg width="18" height="18" viewBox="0 0 18 18"><circle cx="9" cy="9" r="9" fill="#0a66c2"/><g transform="translate(3,3) scale(0.6)"><path fill="#fff" d="M2 10.5a1.5 1.5 0 113 0v6a1.5 1.5 0 01-3 0v-6zM6 10.333v5.43a2 2 0 001.106 1.79l.05.025A4 4 0 008.943 18h5.416a2 2 0 001.962-1.608l1.2-6A2 2 0 0015.56 8H12V4a2 2 0 00-2-2 1 1 0 00-1 1v.667a4 4 0 01-.8 2.4L6.8 7.933a4 4 0 00-.8 2.4z"/></g></svg>`,
+};
+
+function mlrBuildFacebook(handle, primary, headline, dest, cta) {
+  const displayUrl = dest.replace(/https?:\/\//i,'').replace(/\/.*/,'').toUpperCase() || 'DISPLAY URL';
+  return `<div class="mlr-mock-card fb-card">
+    <div class="fb-header">
+      <div class="fb-avatar"><div class="fb-avatar-plus">+</div></div>
+      <div class="fb-handle-wrap">
+        <div class="fb-handle">${handle||'ACCOUNT HANDLE'} ${MLR_SVG.verified}</div>
+        <div class="fb-meta">Sponsored <span class="fb-sponsored-dot"></span> ${MLR_SVG.globe}</div>
+      </div>
+      <div class="fb-more">${MLR_SVG.dotsH}</div>
+    </div>
+    <div class="fb-primary">${primary||'PRIMARY TEXT'}</div>
+    ${mlrImageSlot('fb-image')}
+    <div class="fb-footer">
+      <div class="fb-footer-text">
+        <div class="fb-display-url">${displayUrl||'DISPLAY URL'}</div>
+        <div class="fb-headline">${headline||'HEADLINE'}</div>
+      </div>
+      <button class="fb-cta-btn">${cta||'CTA'}</button>
+    </div>
+    <div class="fb-actions">
+      <div class="fb-action-btn">${MLR_SVG.fbLike} Like</div>
+      <div class="fb-action-btn">${MLR_SVG.fbComment} Comment</div>
+      <div class="fb-action-btn">${MLR_SVG.fbShare} Share</div>
+    </div>
+  </div>`;
+}
+
+function mlrBuildInstagram(handle, primary, cta) {
+  return `<div class="mlr-mock-card ig-card">
+    <div class="ig-header">
+      <div class="ig-avatar"><div class="ig-avatar-inner"></div></div>
+      <div class="ig-handle-wrap">
+        <div class="ig-handle">${handle||'ACCOUNT HANDLE'} ${MLR_SVG.verifiedIg}</div>
+        <div class="ig-meta">Sponsored ${MLR_SVG.globeIg}</div>
+      </div>
+      <div class="ig-more">${MLR_SVG.dotsV}</div>
+    </div>
+    ${mlrImageSlot('ig-image')}
+    <div class="ig-cta-row">
+      <span class="ig-cta-text">${cta||'CTA'}</span>
+      <span class="ig-cta-chevron">›</span>
+    </div>
+    <div class="ig-actions-row">
+      <div class="ig-action-icon">${MLR_SVG.igHeart}</div>
+      <div class="ig-action-icon">${MLR_SVG.igComment}</div>
+      <div class="ig-action-icon">${MLR_SVG.igSend}</div>
+      <div class="ig-dots-inline">
+        <span class="ig-dot active"></span>
+        <span class="ig-dot inactive"></span>
+        <span class="ig-dot inactive"></span>
+        <span class="ig-dot inactive"></span>
+      </div>
+      <div class="ig-action-icon ig-bookmark">${MLR_SVG.igBookmark}</div>
+    </div>
+    <div class="ig-likes">326 likes</div>
+    <div class="ig-caption">${primary||'PRIMARY TEXT'}</div>
+  </div>`;
+}
+
+function mlrBuildLinkedIn(handle, primary, headline, dest, cta) {
+  const displayUrl = dest.replace(/https?:\/\//i,'').replace(/\/.*/,'').toUpperCase() || 'DISPLAY URL';
+  return `<div class="mlr-mock-card li-card">
+    <div class="li-header">
+      <div class="li-avatar"><div class="li-avatar-plus">+</div></div>
+      <div class="li-handle-wrap">
+        <div class="li-handle">${handle||'ACCOUNT HANDLE'}</div>
+        <div class="li-sub">Promoted</div>
+      </div>
+      <div class="li-more">${MLR_SVG.dotsVLi}</div>
+    </div>
+    <div class="li-primary">${primary||'PRIMARY TEXT'}</div>
+    ${mlrImageSlot('li-image')}
+    <div class="li-footer">
+      <div class="li-footer-text">
+        <div class="li-headline">${headline||'HEADLINE'}</div>
+        <div class="li-display-url">${displayUrl||'DISPLAY URL'}</div>
+      </div>
+      <button class="li-cta-btn">${cta||'CTA'}</button>
+    </div>
+    <div class="li-reactions">${MLR_SVG.liReaction}<span>47</span><span style="margin-left:auto;">21 Comments</span></div>
+    <div class="li-actions">
+      <div class="li-action-btn">${MLR_SVG.liLike} Like</div>
+      <div class="li-action-btn">${MLR_SVG.liComment} Comment</div>
+      <div class="li-action-btn">${MLR_SVG.liRepost} Repost</div>
+      <div class="li-action-btn">${MLR_SVG.liSend} Send</div>
+    </div>
+  </div>`;
+}
+
+function mlrRender() {
+  const handle  = mlrVal('mlr-handle');
+  const primary = mlrVal('mlr-primary');
+  const headline= mlrVal('mlr-headline');
+  const cta     = mlrVal('mlr-cta');
+  const dest    = mlrVal('mlr-dest');
+  const jobIg   = mlrVal('mlr-job-ig');
+  const jobFb   = mlrVal('mlr-job-fb');
+  const jobLi   = mlrVal('mlr-job-li');
+  const showIg  = mlrChecked('mlr-ch-ig');
+  const showFb  = mlrChecked('mlr-ch-fb');
+  const showLi  = mlrChecked('mlr-ch-li');
+
+  const jobParts = [jobIg,jobFb,jobLi].filter(Boolean);
+  document.getElementById('mlr-label-jobcode').textContent = jobParts.join(' / ') || 'JOB CODE';
+  document.getElementById('mlr-label-dest').textContent = 'Destination Link: ' + (dest || '—');
+
+  const row = document.getElementById('mlr-mocks-row');
+  let html = '';
+  if (showIg) html += `<div class="mlr-mock-wrap"><div class="mlr-mock-platform-label">Instagram</div>${mlrBuildInstagram(handle,primary,cta)}</div>`;
+  if (showFb) html += `<div class="mlr-mock-wrap"><div class="mlr-mock-platform-label">Facebook</div>${mlrBuildFacebook(handle,primary,headline,dest,cta)}</div>`;
+  if (showLi) html += `<div class="mlr-mock-wrap"><div class="mlr-mock-platform-label">LinkedIn</div>${mlrBuildLinkedIn(handle,primary,headline,dest,cta)}</div>`;
+  row.innerHTML = html || '<div style="color:#aaa;font-size:14px;">Select at least one channel.</div>';
+  setTimeout(mlrScaleFit, 10);
+}
+
+function mlrExportPDF() {
+  // Switch all panels off except MLR, print, then restore
+  const panels = document.querySelectorAll('.panel');
+  const prevActive = document.querySelector('.panel.active');
+  panels.forEach(p => p.classList.remove('active'));
+  document.getElementById('panel-mlr').classList.add('active');
+  setTimeout(() => { window.print(); }, 100);
+  setTimeout(() => {
+    panels.forEach(p => p.classList.remove('active'));
+    if (prevActive) prevActive.classList.add('active');
+  }, 500);
+}
+
+function mlrScaleFit() {
+  const col = document.getElementById('mlr-preview-col');
+  const row = document.getElementById('mlr-mocks-row');
+  if (!col || !row) return;
+  row.style.transform = 'scale(1)';
+  const available = col.clientWidth - 80; // 40px padding each side
+  const natural = row.scrollWidth;
+  const scale = natural > available ? available / natural : 1;
+  row.style.transform = `scale(${scale})`;
+  // shrink the container height to match scaled content
+  row.parentElement.style.minHeight = Math.round(row.scrollHeight * scale + 80) + 'px';
+}
+
+// init preview on load
+document.addEventListener('DOMContentLoaded', () => { mlrRender(); setTimeout(mlrScaleFit, 50); });
+window.addEventListener('resize', mlrScaleFit);
 </script>
 
 </body>
