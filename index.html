@@ -607,6 +607,33 @@
 .specs-isi-desc { font-size:13px; color:#dde4f5; line-height:1.5; }
 
 /* ── MLR MOCKUP PANEL ── */
+.mlr-subtabs { display:flex; align-items:center; gap:8px; height:44px; margin-bottom:28px; }
+.mlr-subtab-btn { height:36px; padding:0 24px; background:transparent; border:1px solid transparent; border-radius:8px; font-size:14px; font-weight:500; color:var(--muted); cursor:pointer; white-space:nowrap; transition:all .15s; font-family:var(--font); }
+.mlr-subtab-btn:hover { color:#dde4f5; }
+.mlr-subtab-btn.active { background:var(--surface); border-color:var(--cyan); color:var(--white); }
+.mlr-subtab-panel { display:none; }
+.mlr-subtab-panel.active { display:block; }
+#mlr-sent-accounts-view, #mlr-sent-campaigns-view, #mlr-sent-jobcodes-view { margin-top:12px; }
+.mlr-sent-card-sub { font-size:12px; font-weight:500; text-transform:none; letter-spacing:normal; color:var(--muted); margin-top:4px; }
+.mlr-sent-back-btn { background:transparent; border:none; color:var(--muted); font-size:13px; font-weight:600; cursor:pointer; font-family:var(--font); padding:0; margin-bottom:16px; transition:color .15s; }
+.mlr-sent-back-btn:hover { color:var(--cyan); }
+.mlr-sent-breadcrumb-title { font-size:22px; font-weight:800; color:var(--white); letter-spacing:-0.02em; margin:0 0 20px; }
+.mlr-sent-row { display:flex; align-items:center; gap:16px; background:var(--surface); border-radius:8px; padding:14px 18px; margin-bottom:10px; }
+.mlr-sent-jobcode { flex:1; font-size:15px; font-weight:700; color:var(--white); }
+.mlr-sent-version { font-size:12px; color:var(--muted); width:150px; flex-shrink:0; }
+.mlr-sent-date { font-size:12px; color:var(--muted); width:170px; flex-shrink:0; }
+.mlr-sent-open { background:transparent; border:1px solid rgba(255,255,255,0.15); border-radius:6px; padding:6px 16px; font-size:12px; color:#dde4f5; cursor:pointer; font-family:var(--font); transition:border-color .15s, color .15s; }
+.mlr-sent-open:hover { border-color:var(--cyan); color:var(--cyan); }
+.mlr-sent-empty { font-size:13px; color:var(--muted); }
+
+/* feedback file uploads */
+.mlr-fb-add-row { display:flex; gap:10px; align-items:center; margin-bottom:24px; }
+.mlr-fb-upload-row { margin-bottom:20px; }
+.mlr-fb-file-row { display:flex; align-items:center; gap:16px; background:var(--surface); border-radius:8px; padding:14px 18px; margin-bottom:10px; }
+.mlr-fb-file-name { flex:1; font-size:14px; font-weight:600; color:#dde4f5; }
+.mlr-fb-file-meta { font-size:12px; color:var(--muted); width:190px; flex-shrink:0; }
+.mlr-fb-file-actions { display:flex; gap:8px; flex-shrink:0; }
+
 #mlr-layout { display:flex; gap:40px; align-items:flex-start; min-height:calc(100vh - 160px); }
 #mlr-form-col { flex-shrink:0; width:300px; }
 #mlr-preview-col { flex:1; background:#fff; border-radius:12px; overflow:hidden; min-height:600px; display:flex; align-items:flex-start; justify-content:center; padding:40px; }
@@ -625,16 +652,27 @@ input[type="file"].mlr-input { padding:6px 10px; color:var(--muted); cursor:poin
 .mlr-export-btn { margin-top:24px; width:100%; height:44px; background:linear-gradient(93.8deg,#3571cb 0,#01b0b0 100%); border:none; border-radius:8px; color:#fff; font-size:14px; font-weight:700; font-family:var(--font); cursor:pointer; letter-spacing:0.02em; transition:opacity .15s; }
 .mlr-export-btn:hover { opacity:0.88; }
 
+/* saved version snapshots per job code */
+.mlr-version-history { margin:-8px 0 16px; }
+.mlr-version-title { font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; color:var(--muted); margin-bottom:6px; }
+.mlr-version-row { display:flex; align-items:center; gap:10px; background:var(--surface); border-radius:6px; padding:8px 10px; margin-bottom:6px; }
+.mlr-version-num { font-size:13px; font-weight:700; color:#dde4f5; width:30px; flex-shrink:0; }
+.mlr-version-date { flex:1; font-size:12px; color:var(--muted); }
+.mlr-version-load { background:transparent; border:1px solid rgba(255,255,255,0.15); border-radius:6px; padding:4px 12px; font-size:12px; color:#dde4f5; cursor:pointer; font-family:var(--font); transition:border-color .15s, color .15s; }
+.mlr-version-load:hover { border-color:var(--cyan); color:var(--cyan); }
+
 /* preview canvas */
 #mlr-preview-wrap { width:100%; font-family:'Inter',system-ui,sans-serif; }
 #mlr-label-block { margin-bottom:32px; }
-#mlr-label-jobcode { font-size:28px; font-weight:700; color:#000; letter-spacing:-0.02em; line-height:1.2; white-space:pre-line; }
+#mlr-label-campaign, #mlr-label-jobcode { font-size:28px; font-weight:700; color:#000; letter-spacing:-0.02em; line-height:1.2; white-space:pre-line; }
 #mlr-label-format { font-size:13px; font-weight:600; color:#6f6f6f; margin-top:4px; }
 #mlr-label-dest { font-size:13px; color:#6f6f6f; margin-top:2px; }
 #mlr-mocks-row { display:flex; gap:20px; align-items:flex-start; justify-content:center; flex-wrap:nowrap; width:100%; }
 
 /* platform mock cards */
-.mlr-mock-wrap { display:flex; flex-direction:column; align-items:stretch; gap:10px; flex:1; min-width:0; }
+/* Fixed at 1/3 of the row so a layout is always the size it is with all
+   three channels showing — fewer channels just get centered, never enlarged. */
+.mlr-mock-wrap { display:flex; flex-direction:column; align-items:stretch; gap:10px; flex:0 0 calc((100% - 40px) / 3); min-width:0; }
 .mlr-mock-platform-label { font-size:11px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:#6f6f6f; }
 .mlr-mock-card { border:1px solid #000; border-radius:0; background:#fff; overflow:hidden; }
 
@@ -718,7 +756,7 @@ input[type="file"].mlr-input { padding:6px 10px; color:var(--muted); cursor:poin
   #mlr-layout { display:block !important; }
   #mlr-preview-col { background:#fff !important; padding:0 !important; border-radius:0 !important; box-shadow:none !important; min-height:0 !important; display:block !important; }
   #mlr-preview-wrap { width:100% !important; }
-  #mlr-mocks-row { transform:none !important; justify-content:flex-start !important; gap:16px !important; }
+  #mlr-mocks-row { transform:none !important; justify-content:center !important; gap:16px !important; }
   .mlr-mock-wrap { break-inside:avoid; }
 }
 </style>
@@ -743,7 +781,7 @@ input[type="file"].mlr-input { padding:6px 10px; color:var(--muted); cursor:poin
     <button class="main-nav-btn" onclick="showPanel('clinical')">Clinical Index</button>
     <button class="main-nav-btn" onclick="showPanel('library')">Ad Library</button>
     <button class="main-nav-btn" onclick="showPanel('resources')">Resources</button>
-    <button class="main-nav-btn" onclick="showPanel('mlr')">MLR Mockup</button>
+    <button class="main-nav-btn" onclick="showPanel('mlr')">MLR Mockups</button>
   </nav>
 
   <!-- ══════════════════════════════════════════ -->
@@ -821,7 +859,9 @@ input[type="file"].mlr-input { padding:6px 10px; color:var(--muted); cursor:poin
           <div class="acct-info-card"><div class="acct-info-label">Run Dates</div><div class="acct-info-value">X/XX/XX–X/XX/XX</div></div>
           <div class="acct-info-card"><div class="acct-info-label">ISI</div><div class="acct-info-value">LINK</div></div>
           <div class="acct-info-card"><div class="acct-info-label">Destination Link</div><div class="acct-info-value">URL</div></div>
+          <div class="acct-info-card"><div class="acct-info-label">Matrix Link</div><input class="mlr-input acct-matrix-input" type="text" placeholder="Paste Google Drive spreadsheet link…" oninput="acctSaveMatrixLink(this)"></div>
         </div>
+        <button class="mlr-export-btn" style="width:auto; padding:0 20px;" onclick="acctCopyCrossCheckPrompt()">Copy Cross-Check Prompt for Claude</button>
       </div>
       <div class="acct-campaign" data-label="HCP Awareness — Q2 2025"></div>
       <div class="acct-campaign" data-label="Patient Retention — Q3 2025"></div>
@@ -850,7 +890,9 @@ input[type="file"].mlr-input { padding:6px 10px; color:var(--muted); cursor:poin
           <div class="acct-info-card"><div class="acct-info-label">Run Dates</div><div class="acct-info-value">X/XX/XX–X/XX/XX</div></div>
           <div class="acct-info-card"><div class="acct-info-label">ISI</div><div class="acct-info-value">LINK</div></div>
           <div class="acct-info-card"><div class="acct-info-label">Destination Link</div><div class="acct-info-value">URL</div></div>
+          <div class="acct-info-card"><div class="acct-info-label">Matrix Link</div><input class="mlr-input acct-matrix-input" type="text" placeholder="Paste Google Drive spreadsheet link…" oninput="acctSaveMatrixLink(this)"></div>
         </div>
+        <button class="mlr-export-btn" style="width:auto; padding:0 20px;" onclick="acctCopyCrossCheckPrompt()">Copy Cross-Check Prompt for Claude</button>
       </div>
       <div class="acct-campaign" data-label="Brand Launch — Q1 2025"></div>
       <div class="acct-campaign" data-label="HCP Outreach — Q2 2025"></div>
@@ -879,7 +921,9 @@ input[type="file"].mlr-input { padding:6px 10px; color:var(--muted); cursor:poin
           <div class="acct-info-card"><div class="acct-info-label">Run Dates</div><div class="acct-info-value">X/XX/XX–X/XX/XX</div></div>
           <div class="acct-info-card"><div class="acct-info-label">ISI</div><div class="acct-info-value">LINK</div></div>
           <div class="acct-info-card"><div class="acct-info-label">Destination Link</div><div class="acct-info-value">URL</div></div>
+          <div class="acct-info-card"><div class="acct-info-label">Matrix Link</div><input class="mlr-input acct-matrix-input" type="text" placeholder="Paste Google Drive spreadsheet link…" oninput="acctSaveMatrixLink(this)"></div>
         </div>
+        <button class="mlr-export-btn" style="width:auto; padding:0 20px;" onclick="acctCopyCrossCheckPrompt()">Copy Cross-Check Prompt for Claude</button>
       </div>
       <div class="acct-campaign" data-label="Awareness Campaign — Q1 2025"></div>
       <div class="acct-campaign" data-label="Retention Drive — Q2 2025"></div>
@@ -908,7 +952,9 @@ input[type="file"].mlr-input { padding:6px 10px; color:var(--muted); cursor:poin
           <div class="acct-info-card"><div class="acct-info-label">Run Dates</div><div class="acct-info-value">X/XX/XX–X/XX/XX</div></div>
           <div class="acct-info-card"><div class="acct-info-label">ISI</div><div class="acct-info-value">LINK</div></div>
           <div class="acct-info-card"><div class="acct-info-label">Destination Link</div><div class="acct-info-value">URL</div></div>
+          <div class="acct-info-card"><div class="acct-info-label">Matrix Link</div><input class="mlr-input acct-matrix-input" type="text" placeholder="Paste Google Drive spreadsheet link…" oninput="acctSaveMatrixLink(this)"></div>
         </div>
+        <button class="mlr-export-btn" style="width:auto; padding:0 20px;" onclick="acctCopyCrossCheckPrompt()">Copy Cross-Check Prompt for Claude</button>
       </div>
       <div class="acct-campaign" data-label="Market Entry — Q1 2025"></div>
       <div class="acct-campaign" data-label="Patient Support — Q3 2025"></div>
@@ -937,7 +983,9 @@ input[type="file"].mlr-input { padding:6px 10px; color:var(--muted); cursor:poin
           <div class="acct-info-card"><div class="acct-info-label">Handle</div><div class="acct-info-value">@ Rare Pediatric News</div></div>
           <div class="acct-info-card"><div class="acct-info-label">ISI</div><div class="acct-info-value">See full Prescribing Information</div></div>
           <div class="acct-info-card"><div class="acct-info-label">Audience</div><div class="acct-info-value">Prescribing · Non-prescribing physicians</div></div>
+          <div class="acct-info-card"><div class="acct-info-label">Matrix Link</div><input class="mlr-input acct-matrix-input" type="text" placeholder="Paste Google Drive spreadsheet link…" oninput="acctSaveMatrixLink(this)"></div>
         </div>
+        <button class="mlr-export-btn" style="width:auto; padding:0 20px;" onclick="acctCopyCrossCheckPrompt()">Copy Cross-Check Prompt for Claude</button>
       </div>
       <div class="acct-campaign" data-label="Concept 01 — Awareness" data-msgs="6">
         <div class="acct-msg-data" data-msg="0" data-img="assets/mesoblast/awareness-prescribers-ig.png" data-title="Prescribing — Instagram" data-ig="MAT299" data-fb="" data-li="" data-headline="70% ORR at Day 28 — including patients with Grade C and D disease" data-caption="RYONCIL is the first and only FDA-approved SR-aGvHD treatment for pediatric patients 2 months of age and older." data-dest="https://www.ryoncilhcp.com/efficacy/" data-channel="Instagram" data-placement="Static" data-brief="Prescribing physicians · Instagram|70% ORR at Day 28 — including Grade C and D disease|Discover a Different Approach CTA|Destination: ryoncilhcp.com/efficacy/" data-alt-headline-b="~50% of pediatric aGvHD patients become steroid-refractory" data-alt-headline-c="70% ORR at Day 28 in pediatric SR-aGvHD" data-alt-callout-b="The first and only FDA-approved treatment for pediatric SR-aGvHD — including the only option for patients under 12." data-alt-callout-c="RYONCIL is the first and only FDA-approved therapy for pediatric SR-aGvHD — including the only option for patients under 12" data-alt-primary-b="The FDA-approved MSC therapy for pediatric SR-aGvHD. Familiar, proven, and ready within 24–48 hours." data-alt-primary-c="Off-the-shelf and ready in 24–48 hours. For your patients — and the families beside them."></div>
@@ -2432,10 +2480,32 @@ input[type="file"].mlr-input { padding:6px 10px; color:var(--muted); cursor:poin
 
   <!-- MLR MOCKUP PANEL -->
   <div class="panel" id="panel-mlr">
+    <div class="mlr-subtabs">
+      <button class="mlr-subtab-btn active" onclick="showMlrSubtab(this,'builder')">MLR Mockup Builder</button>
+      <button class="mlr-subtab-btn" onclick="showMlrSubtab(this,'sent')">Sent for Review</button>
+      <button class="mlr-subtab-btn" onclick="showMlrSubtab(this,'feedback')">Feedback</button>
+    </div>
+
+    <div class="mlr-subtab-panel active" id="mlr-subtab-builder">
     <div id="mlr-layout">
       <div id="mlr-form-col">
         <div class="mlr-form-heading">MLR Mockup Builder</div>
         <div class="mlr-form-sub">Fill in the brief — the preview updates live.</div>
+
+        <div class="mlr-field-group">
+          <div class="mlr-field-label">Account</div>
+          <input class="mlr-input" id="mlr-account" type="text" placeholder="e.g. Mesoblast" oninput="localStorage.setItem('mlr-builder-account', this.value)">
+        </div>
+
+        <div class="mlr-field-group">
+          <div class="mlr-field-label">Campaign Name <span class="mlr-field-note">(used to name exported PDFs)</span></div>
+          <input class="mlr-input" id="mlr-campaign-name" type="text" placeholder="e.g. Ryoncil HCP Social" oninput="localStorage.setItem('mlr-builder-campaign-name', this.value); mlrRender()">
+        </div>
+
+        <div class="mlr-field-group">
+          <div class="mlr-field-label">Matrix Link</div>
+          <input class="mlr-input" id="mlr-matrix-link" type="text" placeholder="Paste Google Drive spreadsheet link…" oninput="localStorage.setItem('mlr-builder-matrix-link', this.value)">
+        </div>
 
         <div class="mlr-field-group">
           <div class="mlr-field-label">Channels</div>
@@ -2447,17 +2517,21 @@ input[type="file"].mlr-input { padding:6px 10px; color:var(--muted); cursor:poin
         </div>
 
         <div class="mlr-field-group">
-          <div class="mlr-field-label">Job Code — Instagram</div>
-          <input class="mlr-input" id="mlr-job-ig" type="text" placeholder="e.g. MAT320" oninput="mlrRender()">
+          <div class="mlr-field-label">Ad Type</div>
+          <select class="mlr-input" id="mlr-ad-type" onchange="mlrRender()">
+            <option value="Static">Static</option>
+            <option value="Static-Dynamic">Static-Dynamic</option>
+            <option value="Animation">Animation</option>
+            <option value="Video">Video</option>
+          </select>
         </div>
+
         <div class="mlr-field-group">
-          <div class="mlr-field-label">Job Code — Facebook</div>
-          <input class="mlr-input" id="mlr-job-fb" type="text" placeholder="e.g. MAT319" oninput="mlrRender()">
+          <div class="mlr-field-label">Job Code</div>
+          <input class="mlr-input" id="mlr-job-code" type="text" placeholder="e.g. MAT320" oninput="mlrRender()">
         </div>
-        <div class="mlr-field-group">
-          <div class="mlr-field-label">Job Code — LinkedIn</div>
-          <input class="mlr-input" id="mlr-job-li" type="text" placeholder="e.g. MAT321" oninput="mlrRender()">
-        </div>
+
+        <div id="mlr-version-history"></div>
 
         <div class="mlr-field-group">
           <div class="mlr-field-label">Account Handle</div>
@@ -2480,29 +2554,90 @@ input[type="file"].mlr-input { padding:6px 10px; color:var(--muted); cursor:poin
           <input class="mlr-input" id="mlr-dest" type="text" placeholder="https://www.ryoncilhcp.com/" oninput="mlrRender()">
         </div>
         <div class="mlr-field-group">
+          <div class="mlr-field-label">Display URL <span class="mlr-field-note">(Facebook &amp; LinkedIn)</span></div>
+          <input class="mlr-input" id="mlr-display-url" type="text" placeholder="RYONCILHCP.COM" oninput="mlrRender()">
+        </div>
+        <div class="mlr-field-group">
           <div class="mlr-field-label">Ad Image <span class="mlr-field-note">(1080×1080 PNG)</span></div>
           <input class="mlr-input" id="mlr-img-input" type="file" accept="image/*" onchange="mlrLoadImage(this)">
         </div>
 
+        <label class="mlr-channel-check" style="margin-top:12px;"><input type="checkbox" id="mlr-sent-to-client"> Sent to client</label>
         <button class="mlr-export-btn" onclick="mlrExportPDF()">Export to PDF</button>
+        <button class="mlr-export-btn" style="margin-top:10px; background:transparent; border:1px solid rgba(255,255,255,0.15);" onclick="mlrCopyCrossCheckPrompt()">Copy Cross-Check Prompt for Claude</button>
       </div>
 
       <div id="mlr-preview-col">
         <div id="mlr-preview-wrap">
           <div id="mlr-label-block">
+            <div id="mlr-label-campaign">CAMPAIGN NAME</div>
             <div id="mlr-label-jobcode">JOB CODE</div>
-            <div id="mlr-label-format">HCP Social Media Ad · Static — Dynamic Scrolling ISI</div>
+            <div id="mlr-label-format">HCP Social Media Ad · Static</div>
             <div id="mlr-label-dest">Destination Link: —</div>
           </div>
           <div id="mlr-mocks-row"></div>
         </div>
       </div>
     </div>
+    </div>
+
+    <div class="mlr-subtab-panel" id="mlr-subtab-sent">
+      <div class="mlr-form-heading">Sent for Review</div>
+      <div class="mlr-form-sub">Browse by account, then campaign, to find mockup versions sent to a client.</div>
+
+      <div id="mlr-sent-accounts-view">
+        <div id="mlr-sent-account-grid" class="client-grid"></div>
+      </div>
+
+      <div id="mlr-sent-campaigns-view" style="display:none;">
+        <button class="mlr-sent-back-btn" onclick="mlrShowSentAccounts()">← Accounts</button>
+        <h3 class="mlr-sent-breadcrumb-title" id="mlr-sent-campaigns-title"></h3>
+        <div id="mlr-sent-campaign-grid" class="client-grid"></div>
+      </div>
+
+      <div id="mlr-sent-jobcodes-view" style="display:none;">
+        <button class="mlr-sent-back-btn" onclick="mlrShowSentCampaigns()">← <span id="mlr-sent-back-account-label"></span></button>
+        <h3 class="mlr-sent-breadcrumb-title" id="mlr-sent-jobcodes-title"></h3>
+        <div id="mlr-sent-jobcode-list"></div>
+      </div>
+    </div>
+
+    <div class="mlr-subtab-panel" id="mlr-subtab-feedback">
+      <div class="mlr-form-heading">Feedback</div>
+      <div class="mlr-form-sub">Upload and store client feedback files, organized by account and campaign. Stored in this browser only — not shared with teammates.</div>
+
+      <div id="mlr-fb-accounts-view">
+        <div class="mlr-fb-add-row">
+          <input class="mlr-input" id="mlr-fb-new-account" type="text" placeholder="New account name…" style="max-width:260px;">
+          <button class="mlr-sent-open" onclick="mlrFbAddAccount()">+ Add Account</button>
+        </div>
+        <div id="mlr-fb-account-grid" class="client-grid"></div>
+      </div>
+
+      <div id="mlr-fb-campaigns-view" style="display:none;">
+        <button class="mlr-sent-back-btn" onclick="mlrFbShowAccounts()">← Accounts</button>
+        <h3 class="mlr-sent-breadcrumb-title" id="mlr-fb-campaigns-title"></h3>
+        <div class="mlr-fb-add-row">
+          <input class="mlr-input" id="mlr-fb-new-campaign" type="text" placeholder="New campaign name…" style="max-width:260px;">
+          <button class="mlr-sent-open" onclick="mlrFbAddCampaign()">+ Add Campaign</button>
+        </div>
+        <div id="mlr-fb-campaign-grid" class="client-grid"></div>
+      </div>
+
+      <div id="mlr-fb-files-view" style="display:none;">
+        <button class="mlr-sent-back-btn" onclick="mlrFbShowCampaigns()">← <span id="mlr-fb-back-account-label"></span></button>
+        <h3 class="mlr-sent-breadcrumb-title" id="mlr-fb-files-title"></h3>
+        <div class="mlr-fb-upload-row">
+          <input class="mlr-input" type="file" id="mlr-fb-file-input" onchange="mlrFbUploadFiles(this)" multiple>
+        </div>
+        <div id="mlr-fb-file-list"></div>
+      </div>
+    </div>
   </div>
 
 </div>
 
-<div class="version-badge">v1.6.0 · 2026-06-30 · Grace Irwin</div>
+<div class="version-badge">v2.6.0 · 2026-07-02 · Grace Irwin</div>
 
 <script>
 function showPanel(id) {
@@ -2536,6 +2671,9 @@ function showClient(key) {
   const mlrData = data.querySelector('.acct-mlr-data');
   document.getElementById('acct-tab-mlr').innerHTML = mlrData ? mlrData.innerHTML : '';
 
+  const matrixInput = document.getElementById('acct-tab-mlr').querySelector('.acct-matrix-input');
+  if (matrixInput) matrixInput.value = localStorage.getItem('mlr-matrix-link-' + key) || '';
+
   document.getElementById('acct-tab-campaigns').innerHTML = '';
 
   document.querySelectorAll('.acct-tab-btn').forEach((b,i) => b.classList.toggle('active', i===0));
@@ -2544,6 +2682,34 @@ function showClient(key) {
   document.getElementById('acct-grid-view').style.display = 'none';
   document.getElementById('acct-detail-view').style.display = 'flex';
   document.getElementById('acct-message-view').style.display = 'none';
+}
+
+function acctSaveMatrixLink(input) {
+  if (!_acctClient) return;
+  localStorage.setItem('mlr-matrix-link-' + _acctClient, input.value);
+}
+
+// Builds a ready-to-paste prompt with the account's matrix link and creative
+// details so the actual cross-check can be run in a Claude chat (this static
+// page has no backend/API key to call Claude directly).
+function acctCopyCrossCheckPrompt() {
+  if (!_acctClient) return;
+  const data = document.getElementById('acct-data-' + _acctClient);
+  const clientName = data.querySelector('.acct-client-label').textContent;
+  const matrixLink = localStorage.getItem('mlr-matrix-link-' + _acctClient) || '[no matrix link saved — paste one in the Matrix Link field first]';
+
+  const rows = [...data.querySelectorAll('.acct-msg-data')].map(el => {
+    const d = el.dataset;
+    return `- ${d.title || 'Untitled'} | Job codes — IG:${d.ig||'—'} FB:${d.fb||'—'} LI:${d.li||'—'} | Headline: "${d.headline||''}" | Caption: "${d.caption||''}" | Destination: ${d.dest||'—'}`;
+  }).join('\n');
+
+  const prompt = `Cross-check the ${clientName} creative details below against the MLR matrix at ${matrixLink}. Flag any mismatches in job codes, headlines, captions, or destination URLs:\n\n${rows || '(no creative messages found for this account)'}`;
+
+  navigator.clipboard.writeText(prompt).then(() => {
+    alert('Cross-check prompt copied — paste it into a Claude chat to run the check against the matrix.');
+  }, () => {
+    alert('Could not copy automatically. Prompt:\n\n' + prompt);
+  });
 }
 
 function _buildClientSidebar(activeKey) {
@@ -3152,8 +3318,7 @@ const MLR_SVG = {
   liReaction: `<svg width="18" height="18" viewBox="0 0 18 18"><circle cx="9" cy="9" r="9" fill="#0a66c2"/><g transform="translate(3,3) scale(0.6)"><path fill="#fff" d="M2 10.5a1.5 1.5 0 113 0v6a1.5 1.5 0 01-3 0v-6zM6 10.333v5.43a2 2 0 001.106 1.79l.05.025A4 4 0 008.943 18h5.416a2 2 0 001.962-1.608l1.2-6A2 2 0 0015.56 8H12V4a2 2 0 00-2-2 1 1 0 00-1 1v.667a4 4 0 01-.8 2.4L6.8 7.933a4 4 0 00-.8 2.4z"/></g></svg>`,
 };
 
-function mlrBuildFacebook(handle, primary, headline, dest, cta) {
-  const displayUrl = dest.replace(/https?:\/\//i,'').replace(/\/.*/,'').toUpperCase() || 'DISPLAY URL';
+function mlrBuildFacebook(handle, primary, headline, displayUrl, cta) {
   return `<div class="mlr-mock-card fb-card">
     <div class="fb-header">
       <div class="fb-avatar"><div class="fb-avatar-plus">+</div></div>
@@ -3212,8 +3377,7 @@ function mlrBuildInstagram(handle, primary, cta) {
   </div>`;
 }
 
-function mlrBuildLinkedIn(handle, primary, headline, dest, cta) {
-  const displayUrl = dest.replace(/https?:\/\//i,'').replace(/\/.*/,'').toUpperCase() || 'DISPLAY URL';
+function mlrBuildLinkedIn(handle, primary, headline, displayUrl, cta) {
   return `<div class="mlr-mock-card li-card">
     <div class="li-header">
       <div class="li-avatar"><div class="li-avatar-plus">+</div></div>
@@ -3248,37 +3412,511 @@ function mlrRender() {
   const headline= mlrVal('mlr-headline');
   const cta     = mlrVal('mlr-cta');
   const dest    = mlrVal('mlr-dest');
-  const jobIg   = mlrVal('mlr-job-ig');
-  const jobFb   = mlrVal('mlr-job-fb');
-  const jobLi   = mlrVal('mlr-job-li');
+  const displayUrl = mlrVal('mlr-display-url');
+  const jobCode = mlrVal('mlr-job-code');
   const showIg  = mlrChecked('mlr-ch-ig');
   const showFb  = mlrChecked('mlr-ch-fb');
   const showLi  = mlrChecked('mlr-ch-li');
 
-  const jobParts = [jobIg,jobFb,jobLi].filter(Boolean);
-  document.getElementById('mlr-label-jobcode').textContent = jobParts.join(' / ') || 'JOB CODE';
+  document.getElementById('mlr-label-campaign').textContent = mlrVal('mlr-campaign-name') || 'CAMPAIGN NAME';
+  document.getElementById('mlr-label-jobcode').textContent = jobCode || 'JOB CODE';
+  document.getElementById('mlr-label-format').textContent = 'HCP Social Media Ad · ' + mlrVal('mlr-ad-type');
   document.getElementById('mlr-label-dest').textContent = 'Destination Link: ' + (dest || '—');
 
   const row = document.getElementById('mlr-mocks-row');
   let html = '';
   if (showIg) html += `<div class="mlr-mock-wrap"><div class="mlr-mock-platform-label">Instagram</div>${mlrBuildInstagram(handle,primary,cta)}</div>`;
-  if (showFb) html += `<div class="mlr-mock-wrap"><div class="mlr-mock-platform-label">Facebook</div>${mlrBuildFacebook(handle,primary,headline,dest,cta)}</div>`;
-  if (showLi) html += `<div class="mlr-mock-wrap"><div class="mlr-mock-platform-label">LinkedIn</div>${mlrBuildLinkedIn(handle,primary,headline,dest,cta)}</div>`;
+  if (showFb) html += `<div class="mlr-mock-wrap"><div class="mlr-mock-platform-label">Facebook</div>${mlrBuildFacebook(handle,primary,headline,displayUrl,cta)}</div>`;
+  if (showLi) html += `<div class="mlr-mock-wrap"><div class="mlr-mock-platform-label">LinkedIn</div>${mlrBuildLinkedIn(handle,primary,headline,displayUrl,cta)}</div>`;
   row.innerHTML = html || '<div style="color:#aaa;font-size:14px;">Select at least one channel.</div>';
   setTimeout(mlrScaleFit, 10);
+  mlrRenderVersionHistory();
+}
+
+// Slugifies text for use in a filename (lowercase, alnum + dashes only).
+function mlrSlug(s) {
+  return (s || '').trim().toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-+|-+$)/g, '');
+}
+
+// ── VERSION SNAPSHOTS ──
+// Saves the brief's field values (not the ad image — too large for browser
+// storage) per job code each time a PDF is exported, so a past version can be
+// reloaded into the form for editing after review feedback, then re-exported.
+function mlrGetSnapshots(jobCode) {
+  const all = JSON.parse(localStorage.getItem('mlr-snapshots') || '{}');
+  return all[mlrSlug(jobCode)] || [];
+}
+
+function mlrSaveSnapshot(jobCode, version, sentToClient) {
+  const key = mlrSlug(jobCode) || 'untitled';
+  const all = JSON.parse(localStorage.getItem('mlr-snapshots') || '{}');
+  const list = all[key] || [];
+  list.push({
+    version,
+    jobCode,
+    sentToClient,
+    savedAt: new Date().toISOString(),
+    account: mlrVal('mlr-account'),
+    campaignName: mlrVal('mlr-campaign-name'),
+    adType: mlrVal('mlr-ad-type'),
+    ig: mlrChecked('mlr-ch-ig'),
+    fb: mlrChecked('mlr-ch-fb'),
+    li: mlrChecked('mlr-ch-li'),
+    handle: mlrVal('mlr-handle'),
+    primary: mlrVal('mlr-primary'),
+    headline: mlrVal('mlr-headline'),
+    cta: mlrVal('mlr-cta'),
+    dest: mlrVal('mlr-dest'),
+    displayUrl: mlrVal('mlr-display-url'),
+  });
+  all[key] = list;
+  localStorage.setItem('mlr-snapshots', JSON.stringify(all));
+}
+
+function mlrRenderVersionHistory() {
+  const el = document.getElementById('mlr-version-history');
+  if (!el) return;
+  const jobCode = mlrVal('mlr-job-code');
+  const list = mlrGetSnapshots(jobCode);
+  if (!jobCode || !list.length) { el.innerHTML = ''; return; }
+  const rows = list.map((snap, idx) => `
+    <div class="mlr-version-row">
+      <span class="mlr-version-num">v${snap.version}</span>
+      <span class="mlr-version-date">${new Date(snap.savedAt).toLocaleString()}${snap.sentToClient ? ' · Sent to client' : ''}</span>
+      <button class="mlr-version-load" onclick="mlrLoadSnapshot(${idx})">Load</button>
+    </div>`).join('');
+  el.innerHTML = `<div class="mlr-version-title">Version History — ${jobCode}</div>${rows}`;
+}
+
+function mlrApplySnapshot(snap) {
+  document.getElementById('mlr-job-code').value = snap.jobCode || '';
+  document.getElementById('mlr-account').value = snap.account || '';
+  localStorage.setItem('mlr-builder-account', snap.account || '');
+  document.getElementById('mlr-campaign-name').value = snap.campaignName || '';
+  localStorage.setItem('mlr-builder-campaign-name', snap.campaignName || '');
+  document.getElementById('mlr-ad-type').value = snap.adType || 'Static';
+  document.getElementById('mlr-ch-ig').checked = !!snap.ig;
+  document.getElementById('mlr-ch-fb').checked = !!snap.fb;
+  document.getElementById('mlr-ch-li').checked = !!snap.li;
+  document.getElementById('mlr-handle').value = snap.handle || '';
+  document.getElementById('mlr-primary').value = snap.primary || '';
+  document.getElementById('mlr-headline').value = snap.headline || '';
+  document.getElementById('mlr-cta').value = snap.cta || '';
+  document.getElementById('mlr-dest').value = snap.dest || '';
+  document.getElementById('mlr-display-url').value = snap.displayUrl || '';
+  mlrRender();
+}
+
+function mlrLoadSnapshot(idx) {
+  const jobCode = mlrVal('mlr-job-code');
+  const snap = mlrGetSnapshots(jobCode)[idx];
+  if (!snap) return;
+  mlrApplySnapshot(snap);
+  alert(`Loaded v${snap.version} (saved ${new Date(snap.savedAt).toLocaleString()}). The ad image isn't saved in snapshots — re-upload it if this version needs one.`);
+}
+
+// ── MLR SUB-TABS: Builder / Sent for Review ──
+function showMlrSubtab(btn, id) {
+  document.querySelectorAll('.mlr-subtab-btn').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('.mlr-subtab-panel').forEach(p => p.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById('mlr-subtab-' + id).classList.add('active');
+  if (id === 'sent') mlrRenderSentForReview();
+  if (id === 'feedback') mlrRenderFeedback();
+}
+
+// Drill-down: Accounts → Campaigns → job codes sent to a client, mirroring
+// the Accounts tab's folder navigation.
+let _mlrSentAccount = null;
+let _mlrSentCampaign = null;
+
+function mlrEscHtml(s) {
+  return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+}
+
+// {account: {campaign: [{key, latest, sentCount}, ...]}} — only job codes
+// with at least one version exported while "Sent to client" was checked.
+function mlrGetSentGroups() {
+  const all = JSON.parse(localStorage.getItem('mlr-snapshots') || '{}');
+  const groups = {};
+  Object.keys(all).forEach(key => {
+    const sentList = all[key].filter(s => s.sentToClient);
+    if (!sentList.length) return;
+    const latest = sentList[sentList.length - 1];
+    const account = latest.account || 'Account';
+    const campaign = latest.campaignName || 'Campaign';
+    groups[account] = groups[account] || {};
+    groups[account][campaign] = groups[account][campaign] || [];
+    groups[account][campaign].push({ key, latest, sentCount: sentList.length });
+  });
+  return groups;
+}
+
+function mlrRenderSentForReview() {
+  mlrShowSentAccounts();
+}
+
+function mlrShowSentAccounts() {
+  _mlrSentAccount = null;
+  _mlrSentCampaign = null;
+  document.getElementById('mlr-sent-accounts-view').style.display = 'block';
+  document.getElementById('mlr-sent-campaigns-view').style.display = 'none';
+  document.getElementById('mlr-sent-jobcodes-view').style.display = 'none';
+
+  const groups = mlrGetSentGroups();
+  const accounts = Object.keys(groups).sort();
+  const grid = document.getElementById('mlr-sent-account-grid');
+  if (!accounts.length) {
+    grid.innerHTML = '<div class="mlr-sent-empty">Nothing sent to a client yet — check "Sent to client" before exporting a PDF to have it show up here.</div>';
+    return;
+  }
+  grid.innerHTML = accounts.map(account => {
+    const n = Object.keys(groups[account]).length;
+    return `<div class="client-grid-card" data-account="${mlrEscHtml(account)}" onclick="mlrShowSentCampaigns(this.dataset.account)">${mlrEscHtml(account)}<div class="mlr-sent-card-sub">${n} campaign${n > 1 ? 's' : ''}</div></div>`;
+  }).join('');
+}
+
+function mlrShowSentCampaigns(account) {
+  if (account !== undefined) _mlrSentAccount = account;
+  _mlrSentCampaign = null;
+  document.getElementById('mlr-sent-accounts-view').style.display = 'none';
+  document.getElementById('mlr-sent-campaigns-view').style.display = 'block';
+  document.getElementById('mlr-sent-jobcodes-view').style.display = 'none';
+  document.getElementById('mlr-sent-campaigns-title').textContent = _mlrSentAccount;
+
+  const groups = mlrGetSentGroups();
+  const campaigns = Object.keys(groups[_mlrSentAccount] || {}).sort();
+  document.getElementById('mlr-sent-campaign-grid').innerHTML = campaigns.map(campaign => {
+    const n = groups[_mlrSentAccount][campaign].length;
+    return `<div class="client-grid-card" data-campaign="${mlrEscHtml(campaign)}" onclick="mlrShowSentJobCodes(this.dataset.campaign)">${mlrEscHtml(campaign)}<div class="mlr-sent-card-sub">${n} saved project${n > 1 ? 's' : ''}</div></div>`;
+  }).join('');
+}
+
+function mlrShowSentJobCodes(campaign) {
+  if (campaign !== undefined) _mlrSentCampaign = campaign;
+  document.getElementById('mlr-sent-accounts-view').style.display = 'none';
+  document.getElementById('mlr-sent-campaigns-view').style.display = 'none';
+  document.getElementById('mlr-sent-jobcodes-view').style.display = 'block';
+  document.getElementById('mlr-sent-back-account-label').textContent = _mlrSentAccount;
+  document.getElementById('mlr-sent-jobcodes-title').textContent = _mlrSentCampaign;
+
+  const groups = mlrGetSentGroups();
+  const items = (groups[_mlrSentAccount] && groups[_mlrSentAccount][_mlrSentCampaign]) || [];
+  document.getElementById('mlr-sent-jobcode-list').innerHTML = items.map(({ key, latest, sentCount }) => `
+    <div class="mlr-sent-row">
+      <span class="mlr-sent-jobcode">${mlrEscHtml(latest.jobCode || key)}</span>
+      <span class="mlr-sent-version">v${latest.version} · sent ${sentCount} time${sentCount > 1 ? 's' : ''}</span>
+      <span class="mlr-sent-date">${new Date(latest.savedAt).toLocaleString()}</span>
+      <button class="mlr-sent-open" onclick="mlrOpenFromSent('${key}')">Open in Builder</button>
+    </div>`).join('');
+}
+
+function mlrOpenFromSent(key) {
+  const all = JSON.parse(localStorage.getItem('mlr-snapshots') || '{}');
+  const sentList = (all[key] || []).filter(s => s.sentToClient);
+  if (!sentList.length) return;
+  mlrApplySnapshot(sentList[sentList.length - 1]);
+  document.querySelector('.mlr-subtab-btn[onclick*="builder"]').click();
+}
+
+// ── FEEDBACK: Account → Campaign → uploaded files ──
+// Folder structure lives in localStorage; file bytes live in IndexedDB (the
+// only browser storage that can hold blobs at any real size). Both are
+// browser-local only — not synced anywhere or visible to teammates.
+let _mlrFbAccount = null;
+let _mlrFbCampaign = null;
+let _mlrFbDB = null;
+
+function mlrUid() {
+  return (window.crypto && crypto.randomUUID) ? crypto.randomUUID() : 'id-' + Date.now() + '-' + Math.random().toString(36).slice(2);
+}
+
+function mlrFbDBOpen() {
+  return new Promise((resolve, reject) => {
+    if (_mlrFbDB) return resolve(_mlrFbDB);
+    const req = indexedDB.open('mlr-feedback-files', 1);
+    req.onupgradeneeded = () => {
+      if (!req.result.objectStoreNames.contains('files')) req.result.createObjectStore('files', { keyPath: 'id' });
+    };
+    req.onsuccess = () => { _mlrFbDB = req.result; resolve(_mlrFbDB); };
+    req.onerror = () => reject(req.error);
+  });
+}
+
+function mlrFbDBPut(record) {
+  return mlrFbDBOpen().then(db => new Promise((resolve, reject) => {
+    const tx = db.transaction('files', 'readwrite');
+    tx.objectStore('files').put(record);
+    tx.oncomplete = () => resolve();
+    tx.onerror = () => reject(tx.error);
+  }));
+}
+
+function mlrFbDBGet(id) {
+  return mlrFbDBOpen().then(db => new Promise((resolve, reject) => {
+    const req = db.transaction('files', 'readonly').objectStore('files').get(id);
+    req.onsuccess = () => resolve(req.result);
+    req.onerror = () => reject(req.error);
+  }));
+}
+
+function mlrFbDBDelete(id) {
+  return mlrFbDBOpen().then(db => new Promise((resolve, reject) => {
+    const tx = db.transaction('files', 'readwrite');
+    tx.objectStore('files').delete(id);
+    tx.oncomplete = () => resolve();
+    tx.onerror = () => reject(tx.error);
+  }));
+}
+
+function mlrFbGetIndex() {
+  return JSON.parse(localStorage.getItem('mlr-feedback-index') || '{}');
+}
+
+function mlrFbSaveIndex(idx) {
+  localStorage.setItem('mlr-feedback-index', JSON.stringify(idx));
+}
+
+function mlrRenderFeedback() {
+  mlrFbShowAccounts();
+}
+
+function mlrFbShowAccounts() {
+  _mlrFbAccount = null;
+  _mlrFbCampaign = null;
+  document.getElementById('mlr-fb-accounts-view').style.display = 'block';
+  document.getElementById('mlr-fb-campaigns-view').style.display = 'none';
+  document.getElementById('mlr-fb-files-view').style.display = 'none';
+
+  const idx = mlrFbGetIndex();
+  const accountIds = Object.keys(idx);
+  const grid = document.getElementById('mlr-fb-account-grid');
+  if (!accountIds.length) { grid.innerHTML = '<div class="mlr-sent-empty">No accounts yet — add one above.</div>'; return; }
+  grid.innerHTML = accountIds.map(id => {
+    const n = Object.keys(idx[id].campaigns || {}).length;
+    return `<div class="client-grid-card" onclick="mlrFbShowCampaigns('${id}')">${mlrEscHtml(idx[id].name)}<div class="mlr-sent-card-sub">${n} campaign${n === 1 ? '' : 's'}</div></div>`;
+  }).join('');
+}
+
+function mlrFbAddAccount() {
+  const input = document.getElementById('mlr-fb-new-account');
+  const name = input.value.trim();
+  if (!name) return;
+  const idx = mlrFbGetIndex();
+  idx[mlrUid()] = { name, campaigns: {} };
+  mlrFbSaveIndex(idx);
+  input.value = '';
+  mlrFbShowAccounts();
+}
+
+function mlrFbShowCampaigns(accountId) {
+  if (accountId !== undefined) _mlrFbAccount = accountId;
+  _mlrFbCampaign = null;
+  document.getElementById('mlr-fb-accounts-view').style.display = 'none';
+  document.getElementById('mlr-fb-campaigns-view').style.display = 'block';
+  document.getElementById('mlr-fb-files-view').style.display = 'none';
+
+  const idx = mlrFbGetIndex();
+  const acct = idx[_mlrFbAccount];
+  document.getElementById('mlr-fb-campaigns-title').textContent = acct ? acct.name : '';
+  const campaignIds = acct ? Object.keys(acct.campaigns) : [];
+  const grid = document.getElementById('mlr-fb-campaign-grid');
+  if (!campaignIds.length) { grid.innerHTML = '<div class="mlr-sent-empty">No campaigns yet — add one above.</div>'; return; }
+  grid.innerHTML = campaignIds.map(id => {
+    const n = (acct.campaigns[id].files || []).length;
+    return `<div class="client-grid-card" onclick="mlrFbShowFiles('${id}')">${mlrEscHtml(acct.campaigns[id].name)}<div class="mlr-sent-card-sub">${n} file${n === 1 ? '' : 's'}</div></div>`;
+  }).join('');
+}
+
+function mlrFbAddCampaign() {
+  const input = document.getElementById('mlr-fb-new-campaign');
+  const name = input.value.trim();
+  if (!name || !_mlrFbAccount) return;
+  const idx = mlrFbGetIndex();
+  idx[_mlrFbAccount].campaigns[mlrUid()] = { name, files: [] };
+  mlrFbSaveIndex(idx);
+  input.value = '';
+  mlrFbShowCampaigns();
+}
+
+function mlrFbShowFiles(campaignId) {
+  if (campaignId !== undefined) _mlrFbCampaign = campaignId;
+  document.getElementById('mlr-fb-accounts-view').style.display = 'none';
+  document.getElementById('mlr-fb-campaigns-view').style.display = 'none';
+  document.getElementById('mlr-fb-files-view').style.display = 'block';
+
+  const idx = mlrFbGetIndex();
+  const acct = idx[_mlrFbAccount];
+  const camp = acct.campaigns[_mlrFbCampaign];
+  document.getElementById('mlr-fb-back-account-label').textContent = acct.name;
+  document.getElementById('mlr-fb-files-title').textContent = camp.name;
+  mlrFbRenderFileList();
+}
+
+function mlrFbFormatSize(bytes) {
+  if (bytes < 1024) return bytes + ' B';
+  if (bytes < 1024 * 1024) return (bytes / 1024).toFixed(1) + ' KB';
+  return (bytes / (1024 * 1024)).toFixed(1) + ' MB';
+}
+
+function mlrFbRenderFileList() {
+  const idx = mlrFbGetIndex();
+  const camp = idx[_mlrFbAccount].campaigns[_mlrFbCampaign];
+  const list = document.getElementById('mlr-fb-file-list');
+  if (!camp.files.length) { list.innerHTML = '<div class="mlr-sent-empty">No feedback files uploaded yet.</div>'; return; }
+  list.innerHTML = camp.files.map(f => `
+    <div class="mlr-fb-file-row">
+      <span class="mlr-fb-file-name">${mlrEscHtml(f.name)}</span>
+      <span class="mlr-fb-file-meta">${mlrFbFormatSize(f.size)} · ${new Date(f.uploadedAt).toLocaleString()}</span>
+      <div class="mlr-fb-file-actions">
+        <button class="mlr-sent-open" onclick="mlrFbDownloadFile('${f.id}')">Download</button>
+        <button class="mlr-sent-open" onclick="mlrFbDeleteFile('${f.id}')">Delete</button>
+      </div>
+    </div>`).join('');
+}
+
+function mlrFbUploadFiles(input) {
+  const files = [...input.files];
+  if (!files.length) return;
+  const idx = mlrFbGetIndex();
+  const camp = idx[_mlrFbAccount].campaigns[_mlrFbCampaign];
+  Promise.all(files.map(file => {
+    const id = mlrUid();
+    return mlrFbDBPut({ id, blob: file }).then(() => {
+      camp.files.push({ id, name: file.name, size: file.size, type: file.type, uploadedAt: new Date().toISOString() });
+    });
+  })).then(() => {
+    mlrFbSaveIndex(idx);
+    input.value = '';
+    mlrFbRenderFileList();
+  }).catch(err => alert('Upload failed: ' + err.message));
+}
+
+function mlrFbDownloadFile(id) {
+  mlrFbDBGet(id).then(record => {
+    if (!record) { alert('File not found — it may have been deleted.'); return; }
+    const url = URL.createObjectURL(record.blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = record.blob.name || 'feedback-file';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    setTimeout(() => URL.revokeObjectURL(url), 1000);
+  });
+}
+
+function mlrFbDeleteFile(id) {
+  if (!confirm('Delete this feedback file? This cannot be undone.')) return;
+  mlrFbDBDelete(id).then(() => {
+    const idx = mlrFbGetIndex();
+    const camp = idx[_mlrFbAccount].campaigns[_mlrFbCampaign];
+    camp.files = camp.files.filter(f => f.id !== id);
+    mlrFbSaveIndex(idx);
+    mlrFbRenderFileList();
+  });
 }
 
 function mlrExportPDF() {
-  // Switch all panels off except MLR, print, then restore
-  const panels = document.querySelectorAll('.panel');
-  const prevActive = document.querySelector('.panel.active');
-  panels.forEach(p => p.classList.remove('active'));
-  document.getElementById('panel-mlr').classList.add('active');
-  setTimeout(() => { window.print(); }, 100);
-  setTimeout(() => {
-    panels.forEach(p => p.classList.remove('active'));
-    if (prevActive) prevActive.classList.add('active');
-  }, 500);
+  const mockWraps = [...document.querySelectorAll('#mlr-mocks-row .mlr-mock-wrap')];
+  if (!mockWraps.length) { alert('Select at least one channel first.'); return; }
+
+  // Collect all platform chrome CSS rules from the inline <style> block
+  const platformCSS = [...document.styleSheets].flatMap(s => {
+    try {
+      return [...s.cssRules].filter(r => r.selectorText && /\.(fb|ig|li)-/.test(r.selectorText)).map(r => r.cssText);
+    } catch(e) { return []; }
+  }).join('\n');
+
+  const labelBlockHTML = document.getElementById('mlr-label-block').outerHTML;
+
+  // One page per channel so a job code's PDF is multipage instead of a single
+  // cramped side-by-side layout — each page repeats the job code/format/dest
+  // label so it reads correctly if a page is viewed on its own after review edits.
+  const pagesHTML = mockWraps.map((mock, i) => `
+    <section class="mlr-export-page"${i < mockWraps.length - 1 ? ' style="page-break-after: always; break-after: page;"' : ''}>
+      ${labelBlockHTML}
+      <div id="mlr-mocks-row">${mock.outerHTML}</div>
+    </section>`).join('');
+
+  // Auto-name the file by campaign + job code + version + date so exports
+  // stay organized when saved into Drive/folders — version auto-increments
+  // per job code so re-exports after review edits don't overwrite each other.
+  const jobCode = mlrVal('mlr-job-code');
+  const campaignName = mlrVal('mlr-campaign-name');
+  const versionKey = 'mlr-export-version-' + (mlrSlug(jobCode) || 'untitled');
+  const version = parseInt(localStorage.getItem(versionKey) || '0', 10) + 1;
+  localStorage.setItem(versionKey, String(version));
+  const dateStr = new Date().toISOString().slice(0, 10);
+  const filename = [mlrSlug(campaignName), mlrSlug(jobCode) || 'untitled', 'v' + version, dateStr].filter(Boolean).join('_');
+
+  const sentToClient = mlrChecked('mlr-sent-to-client');
+  mlrSaveSnapshot(jobCode, version, sentToClient);
+  mlrRenderVersionHistory();
+  document.getElementById('mlr-sent-to-client').checked = false;
+
+  // Print via a hidden same-page iframe (not window.open) so the browser's
+  // print scope is always just the mockup markup, never the hub page behind it.
+  const iframe = document.createElement('iframe');
+  iframe.style.cssText = 'position:fixed; right:0; bottom:0; width:0; height:0; border:0;';
+  document.body.appendChild(iframe);
+
+  const doc = iframe.contentWindow.document;
+  doc.open();
+  doc.write(`<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>${filename}</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  @page { size: landscape; margin: 0.5in; }
+  *, *::before, *::after { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; background: #ffffff !important; font-family: 'Inter', system-ui, sans-serif; color: #000; }
+  .mlr-export-page { padding: 48px; }
+  #mlr-label-block { margin-bottom: 32px; }
+  #mlr-label-campaign, #mlr-label-jobcode { font-size: 32px; font-weight: 700; color: #000; letter-spacing: -0.02em; line-height: 1.2; white-space: pre-line; }
+  #mlr-label-format { font-size: 13px; font-weight: 600; color: #6f6f6f; margin-top: 4px; }
+  #mlr-label-dest { font-size: 13px; color: #6f6f6f; margin-top: 2px; }
+  #mlr-mocks-row { display: flex; justify-content: center; }
+  .mlr-mock-wrap { flex: 0 0 420px; display: flex; flex-direction: column; gap: 8px; }
+  .mlr-mock-platform-label { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #6f6f6f; }
+  .mlr-mock-card { border: 1px solid #000; background: #fff; width: 100%; }
+  ${platformCSS}
+</style>
+</head>
+<body>${pagesHTML}</body>
+</html>`);
+  doc.close();
+
+  iframe.onload = function() {
+    setTimeout(function() {
+      iframe.contentWindow.focus();
+      iframe.contentWindow.print();
+      setTimeout(function() { document.body.removeChild(iframe); }, 1000);
+    }, 300);
+  };
+}
+
+// Builds a ready-to-paste prompt with the matrix link and current brief
+// details so the actual cross-check can be run in a Claude chat (this static
+// page has no backend/API key to call Claude directly).
+function mlrCopyCrossCheckPrompt() {
+  const matrixLink = mlrVal('mlr-matrix-link') || '[no matrix link entered — paste one in the Matrix Link field first]';
+  const prompt = `Cross-check this MLR mockup against the matrix at ${matrixLink}. Flag any mismatches:
+- Job Code: ${mlrVal('mlr-job-code')||'—'}
+- Account Handle: ${mlrVal('mlr-handle')||'—'}
+- Primary Text: "${mlrVal('mlr-primary')||''}"
+- Headline: "${mlrVal('mlr-headline')||''}"
+- CTA: "${mlrVal('mlr-cta')||''}"
+- Destination URL: ${mlrVal('mlr-dest')||'—'}
+- Display URL: ${mlrVal('mlr-display-url')||'—'}`;
+
+  navigator.clipboard.writeText(prompt).then(() => {
+    alert('Cross-check prompt copied — paste it into a Claude chat to run the check against the matrix.');
+  }, () => {
+    alert('Could not copy automatically. Prompt:\n\n' + prompt);
+  });
 }
 
 function mlrScaleFit() {
@@ -3295,7 +3933,13 @@ function mlrScaleFit() {
 }
 
 // init preview on load
-document.addEventListener('DOMContentLoaded', () => { mlrRender(); setTimeout(mlrScaleFit, 50); });
+document.addEventListener('DOMContentLoaded', () => {
+  document.getElementById('mlr-matrix-link').value = localStorage.getItem('mlr-builder-matrix-link') || '';
+  document.getElementById('mlr-account').value = localStorage.getItem('mlr-builder-account') || '';
+  document.getElementById('mlr-campaign-name').value = localStorage.getItem('mlr-builder-campaign-name') || '';
+  mlrRender();
+  setTimeout(mlrScaleFit, 50);
+});
 window.addEventListener('resize', mlrScaleFit);
 </script>
 
