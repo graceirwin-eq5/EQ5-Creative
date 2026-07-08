@@ -541,8 +541,6 @@
 .acct-carousel-dot { width:6px; height:6px; border-radius:50%; background:var(--border); cursor:pointer; transition:background 0.15s; }
 .acct-carousel-dot.active { background:var(--cyan); }
 .brief-preview-toolbar { display:flex; align-items:center; gap:12px; margin-bottom:18px; }
-.brief-save-status { font-size:13px; font-weight:600; color:var(--cyan); opacity:0; transition:opacity .3s var(--ease-glow); }
-.brief-save-status.visible { opacity:1; }
 .brief-doc-scroll { overflow-x:auto; padding:4px; }
 .brief-doc { background:#fff; color:#000; max-width:800px; margin:0 auto; font-family:Arial, Helvetica, sans-serif; box-shadow:0 8px 30px rgba(0,0,0,0.35); }
 .brief-doc-topbar { background:#1a2744; color:#fff; font-size:11px; font-weight:700; letter-spacing:0.04em; padding:6px 12px; }
@@ -3042,31 +3040,13 @@ function acctBriefToggleCheckbox(clientKey, fieldKey, option) {
 }
 
 function _buildCreativeBriefHTML(clientKey) {
-  const lastSaved = localStorage.getItem(_creativeBriefStorageKey(clientKey, 'lastSaved'));
   return `
     <div class="brief-preview-toolbar">
-      <button class="mlr-export-btn" style="width:auto; padding:0 20px;" onclick="acctBriefSave('${clientKey}')">Save</button>
       <button class="mlr-export-btn" style="width:auto; padding:0 20px;" onclick="acctBriefExportPDF('${clientKey}')">Export to PDF</button>
-      <span class="brief-save-status${lastSaved ? ' visible' : ''}" id="briefSaveStatus-${clientKey}">${lastSaved ? 'Saved ✓' : ''}</span>
     </div>
-    <div class="mlr-form-sub" style="margin-bottom:14px;">Fill in the brief directly on the document below — not every field applies to every client. Changes are kept in this browser as you type; click Save to confirm, or Export whenever it's ready to share.</div>
+    <div class="mlr-form-sub" style="margin-bottom:14px;">Fill in the brief directly on the document below — not every field applies to every client. Changes are saved automatically as you type; export whenever it's ready to share.</div>
     <div class="brief-doc-scroll">${_buildCreativeBriefEditableDocumentHTML(clientKey)}</div>
   `;
-}
-
-function acctBriefSave(clientKey) {
-  // Blur the active field first so its final value commits before we confirm —
-  // fields already save on every keystroke, this just gives an explicit confirmation.
-  if (document.activeElement && typeof document.activeElement.blur === 'function') {
-    document.activeElement.blur();
-  }
-  localStorage.setItem(_creativeBriefStorageKey(clientKey, 'lastSaved'), new Date().toISOString());
-  const status = document.getElementById('briefSaveStatus-' + clientKey);
-  if (!status) return;
-  status.textContent = 'Saved ✓';
-  status.classList.add('visible');
-  clearTimeout(status._hideTimer);
-  status._hideTimer = setTimeout(() => status.classList.remove('visible'), 2500);
 }
 
 function _briefFieldEditableHTML(clientKey, f) {
