@@ -35,7 +35,7 @@
   transition: color 0.15s, border-color 0.15s;
 }
 .main-nav-btn:hover { color: var(--white); }
-.main-nav-btn.active { color: var(--white); border-bottom-color: var(--cyan); }
+.main-nav-btn.active { color: var(--white); border-bottom-color: var(--cyan); text-shadow: 0 0 20px rgba(1,176,176,0.5); }
 
 /* ── SECTION PANELS ── */
 .panel { display: none; }
@@ -58,10 +58,10 @@
   background: transparent;
   color: var(--muted);
   cursor: pointer;
-  transition: all 0.15s;
+  transition: all 0.25s var(--ease-glow);
 }
-.account-btn:hover { border-color: var(--cyan); color: var(--white); }
-.account-btn.active { background: var(--surface); border-color: var(--cyan-alt); color: var(--white); }
+.account-btn:hover { border-color: var(--cyan); color: var(--white); box-shadow: 0 0 14px rgba(1,176,176,0.16); }
+.account-btn.active { background: var(--glass-bg-hover); border-color: var(--cyan-alt); color: var(--white); box-shadow: 0 0 16px rgba(1,176,176,0.2); }
 
 /* ── ACCOUNT PANEL ── */
 .account-panel { display: none; }
@@ -96,7 +96,10 @@
   display: flex;
   gap: 4px;
   margin-bottom: 1.75rem;
-  background: var(--surface);
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border: 1px solid var(--glass-border);
   border-radius: 10px;
   padding: 4px;
   width: fit-content;
@@ -111,10 +114,10 @@
   background: transparent;
   color: var(--muted);
   cursor: pointer;
-  transition: all 0.15s;
+  transition: all 0.25s var(--ease-glow);
 }
 .campaign-btn:hover { color: var(--white); }
-.campaign-btn.active { background: var(--surface-deep); color: var(--white); }
+.campaign-btn.active { background: var(--surface-deep); color: var(--white); box-shadow: 0 0 14px rgba(1,176,176,0.18); }
 .campaign-panel { display: none; }
 .campaign-panel.active { display: block; }
 
@@ -138,9 +141,11 @@
   gap: 12px;
 }
 .bg-card {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 12px;
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border: 1px solid var(--glass-border);
+  border-radius: 14px;
   padding: 16px 18px;
 }
 .bg-card-label {
@@ -176,9 +181,11 @@
   gap: 10px;
 }
 .goal-card {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 12px;
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border: 1px solid var(--glass-border);
+  border-radius: 14px;
   padding: 14px 16px;
 }
 .goal-card-label { font-size: 10px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); margin-bottom: 6px; }
@@ -382,11 +389,11 @@
 .cas-results-meta { font-size:12px; color:var(--muted); margin-bottom:1rem; }
 .cas-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:16px; }
 .cas-card {
-  background:var(--surface); border:1px solid var(--border); border-radius:12px;
+  background:var(--glass-bg); backdrop-filter:blur(var(--glass-blur)); -webkit-backdrop-filter:blur(var(--glass-blur)); border:1px solid var(--glass-border); border-radius:14px;
   overflow:hidden; cursor:pointer; transition:all 0.15s;
 }
-.cas-card:hover { border-color:var(--cyan); transform:translateY(-2px); }
-.cas-card.active { border-color:var(--cyan); }
+.cas-card:hover { border-color:var(--cyan); transform:translateY(-3px); box-shadow:var(--glow-cyan); }
+.cas-card.active { border-color:var(--cyan); box-shadow:var(--glow-cyan); }
 .cas-thumb {
   width:100%; aspect-ratio:1/1; background:var(--bg);
   display:flex; align-items:center; justify-content:center;
@@ -422,14 +429,14 @@
 
 /* Clinical Index inline grids */
 .specialty-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(180px,1fr)); gap:12px; margin-bottom:1.5rem; }
-.specialty-card { background:var(--surface); border:1px solid var(--border); border-radius:12px; padding:16px 18px; cursor:pointer; transition:all 0.15s; }
-.specialty-card:hover { border-color:var(--cyan); }
-.specialty-card.active { border-color:var(--cyan); background:rgba(1,176,176,.08); }
+.specialty-card { background:var(--glass-bg); backdrop-filter:blur(var(--glass-blur)); -webkit-backdrop-filter:blur(var(--glass-blur)); border:1px solid var(--glass-border); border-radius:14px; padding:16px 18px; cursor:pointer; transition:all 0.15s; }
+.specialty-card:hover { border-color:var(--cyan); box-shadow:0 0 20px rgba(1,176,176,0.16); }
+.specialty-card.active { border-color:var(--cyan); background:rgba(1,176,176,.1); box-shadow:var(--glow-cyan); }
 .specialty-name { font-weight:600; font-size:14px; color:#dde4f5; margin-bottom:4px; }
 .specialty-count { font-size:12px; color:var(--muted); }
 .indication-badge { display:inline-block; font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:.05em; padding:2px 8px; border-radius:4px; margin-bottom:8px; background:rgba(1,176,176,.15); color:var(--cyan); }
 .indication-badge:has(+ .specialty-name) { }
-.clinical-detail { display:none; background:var(--surface); border:1px solid var(--border); border-radius:12px; padding:24px 28px; margin-top:8px; }
+.clinical-detail { display:none; background:var(--glass-bg); backdrop-filter:blur(var(--glass-blur)); -webkit-backdrop-filter:blur(var(--glass-blur)); border:1px solid var(--glass-border); border-radius:14px; padding:24px 28px; margin-top:8px; }
 .clinical-detail.visible { display:block; }
 .detail-heading { font-size:18px; font-weight:700; color:#dde4f5; margin-bottom:12px; }
 .empty-state { color:var(--muted); font-size:14px; }
@@ -448,10 +455,11 @@
 .acct-grid-main { max-width:1200px; margin:0 auto; padding:0 32px; }
 .clients-heading { text-align:center; font-size:34px; font-weight:700; color:var(--white); letter-spacing:-0.02em; margin-bottom:32px; }
 .client-grid { display:grid; grid-template-columns:repeat(3,375px); gap:15px; justify-content:center; }
-.client-grid-card { width:375px; height:140px; background:var(--surface); border-radius:8px; border-top:3px solid var(--cyan); cursor:pointer; display:flex; align-items:flex-end; padding:0 16px 16px; font-size:16px; font-weight:700; color:#dde4f5; text-transform:uppercase; letter-spacing:0.08em; transition:opacity .2s; }
-.client-grid-card:hover { opacity:.85; }
-.client-grid-card--placeholder { cursor:default; opacity:.45; }
-.client-grid-card--placeholder:hover { opacity:.45; }
+.client-grid-card { position:relative; width:375px; height:140px; background:var(--glass-bg); backdrop-filter:blur(var(--glass-blur)); -webkit-backdrop-filter:blur(var(--glass-blur)); border:1px solid var(--glass-border); border-radius:14px; cursor:pointer; display:flex; align-items:flex-end; padding:0 16px 16px; font-size:16px; font-weight:700; color:#dde4f5; text-transform:uppercase; letter-spacing:0.08em; overflow:hidden; transition:transform .3s var(--ease-glow), border-color .3s var(--ease-glow), box-shadow .3s var(--ease-glow); }
+.client-grid-card::before { content:''; position:absolute; top:0; left:0; right:0; height:3px; background:var(--gradient); opacity:0.9; }
+.client-grid-card:hover { transform:translateY(-4px); border-color:rgba(1,176,176,0.5); box-shadow:var(--glow-cyan); }
+.client-grid-card--placeholder { cursor:default; opacity:.4; }
+.client-grid-card--placeholder:hover { transform:none; border-color:var(--glass-border); box-shadow:none; opacity:.4; }
 
 #acct-detail-view, #acct-message-view { display:flex; }
 
@@ -460,24 +468,24 @@
 .acct-sidebar-top-tab { display:block; width:184px; height:40px; margin:12px 8px 4px; background:transparent; border:none; border-left:3px solid var(--cyan); border-radius:4px; text-align:left; padding:0 0 0 14px; font-family:var(--font); font-size:13px; font-weight:700; text-transform:uppercase; letter-spacing:0.12em; color:var(--white); cursor:pointer; line-height:40px; transition:all .15s; }
 .acct-sidebar-top-tab:hover { background:rgba(1,176,176,0.06); }
 .acct-sidebar-client-btn,
-.acct-sidebar-campaign-btn { display:block; width:184px; height:40px; margin:0 8px; background:transparent; border:none; border-left:3px solid transparent; border-radius:4px; text-align:left; padding:0 0 0 14px; font-size:16px; font-weight:500; color:#dde4f5; cursor:pointer; line-height:40px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+.acct-sidebar-campaign-btn { display:block; width:184px; height:40px; margin:0 8px; background:transparent; border:none; border-left:3px solid transparent; border-radius:4px; text-align:left; padding:0 0 0 14px; font-size:16px; font-weight:500; color:#dde4f5; cursor:pointer; line-height:40px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; transition:background .2s var(--ease-glow), border-color .2s var(--ease-glow); }
 .acct-sidebar-client-btn:hover,
-.acct-sidebar-campaign-btn:hover { background:rgba(1,176,176,0.06); }
+.acct-sidebar-campaign-btn:hover { background:rgba(1,176,176,0.08); }
 .acct-sidebar-client-btn.active,
-.acct-sidebar-campaign-btn.active { background:rgba(1,176,176,0.1); border-left:3px solid var(--cyan); }
+.acct-sidebar-campaign-btn.active { background:linear-gradient(90deg, rgba(1,176,176,0.14), rgba(1,176,176,0.03)); border-left:3px solid var(--cyan); box-shadow:inset 0 0 20px rgba(1,176,176,0.08); }
 .acct-sidebar-sub { display:flex; flex-direction:column; }
-.acct-sidebar-msg-btn { display:block; width:184px; height:40px; margin:0 8px; background:transparent; border:none; border-left:3px solid transparent; border-radius:4px; text-align:left; padding:0 0 0 28px; font-size:14px; font-weight:500; color:var(--muted); cursor:pointer; line-height:40px; }
-.acct-sidebar-msg-btn:hover { background:rgba(1,176,176,0.06); color:#dde4f5; }
-.acct-sidebar-msg-btn.active { background:rgba(1,176,176,0.1); border-left:3px solid var(--cyan); color:#dde4f5; }
+.acct-sidebar-msg-btn { display:block; width:184px; height:40px; margin:0 8px; background:transparent; border:none; border-left:3px solid transparent; border-radius:4px; text-align:left; padding:0 0 0 28px; font-size:14px; font-weight:500; color:var(--muted); cursor:pointer; line-height:40px; transition:background .2s var(--ease-glow), border-color .2s var(--ease-glow), color .2s var(--ease-glow); }
+.acct-sidebar-msg-btn:hover { background:rgba(1,176,176,0.08); color:#dde4f5; }
+.acct-sidebar-msg-btn.active { background:linear-gradient(90deg, rgba(1,176,176,0.14), rgba(1,176,176,0.03)); border-left:3px solid var(--cyan); color:#dde4f5; box-shadow:inset 0 0 20px rgba(1,176,176,0.08); }
 
 .acct-main { flex:1; padding:28px 32px 40px; }
 .acct-main-title { font-size:34px; font-weight:700; color:#dde4f5; letter-spacing:-0.02em; margin-bottom:8px; }
 .acct-main-subtitle { font-size:16px; color:var(--muted); margin-bottom:24px; }
 
 .acct-tabs { display:flex; align-items:center; gap:8px; height:44px; margin-bottom:28px; }
-.acct-tab-btn { height:36px; padding:0 24px; background:transparent; border:1px solid transparent; border-radius:8px; font-size:14px; font-weight:500; color:var(--muted); cursor:pointer; white-space:nowrap; transition:all .15s; }
-.acct-tab-btn:hover { color:#dde4f5; }
-.acct-tab-btn.active { background:var(--surface); border-color:var(--cyan); color:var(--white); }
+.acct-tab-btn { height:36px; padding:0 24px; background:transparent; border:1px solid transparent; border-radius:8px; font-size:14px; font-weight:500; color:var(--muted); cursor:pointer; white-space:nowrap; transition:all .25s var(--ease-glow); }
+.acct-tab-btn:hover { color:#dde4f5; background:rgba(255,255,255,0.04); }
+.acct-tab-btn.active { background:var(--glass-bg-hover); backdrop-filter:blur(var(--glass-blur)); -webkit-backdrop-filter:blur(var(--glass-blur)); border-color:var(--cyan-alt); color:var(--white); box-shadow:0 0 18px rgba(1,176,176,0.2); }
 
 .acct-tab-panel { display:none; }
 .acct-tab-panel.active { display:block; }
@@ -485,7 +493,9 @@
 .acct-section-label { font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:0.15em; color:var(--muted); margin-bottom:16px; }
 
 .acct-info-grid { display:grid; grid-template-columns:repeat(3,375px); gap:15px; margin-bottom:28px; }
-.acct-info-card { width:375px; height:140px; background:var(--surface); border-radius:8px; border-top:3px solid var(--cyan); padding:16px; box-sizing:border-box; }
+.acct-info-card { position:relative; width:375px; height:140px; background:var(--glass-bg); backdrop-filter:blur(var(--glass-blur)); -webkit-backdrop-filter:blur(var(--glass-blur)); border:1px solid var(--glass-border); border-radius:12px; padding:16px; box-sizing:border-box; overflow:hidden; transition:border-color .3s var(--ease-glow), box-shadow .3s var(--ease-glow); }
+.acct-info-card::before { content:''; position:absolute; top:0; left:0; right:0; height:3px; background:var(--gradient); opacity:0.9; }
+.acct-info-card:hover { border-color:rgba(1,176,176,0.4); box-shadow:0 0 24px rgba(1,176,176,0.14); }
 .acct-info-label { font-size:13px; font-weight:600; text-transform:uppercase; letter-spacing:0.08em; color:var(--muted); margin-bottom:8px; }
 .acct-info-value { font-size:16px; font-weight:500; color:#dde4f5; max-width:343px; }
 
@@ -499,23 +509,69 @@
 .acct-tl-label { font-size:13px; color:#dde4f5; }
 
 .acct-metric-grid { display:grid; grid-template-columns:repeat(4,280px); gap:12px; margin-bottom:8px; }
-.acct-metric-card { width:280px; height:100px; background:var(--surface); border-radius:8px; border-top:2px solid var(--cyan); padding:14px; box-sizing:border-box; }
+.acct-metric-card { position:relative; width:280px; height:100px; background:var(--glass-bg); backdrop-filter:blur(var(--glass-blur)); -webkit-backdrop-filter:blur(var(--glass-blur)); border:1px solid var(--glass-border); border-radius:10px; padding:14px; box-sizing:border-box; overflow:hidden; }
+.acct-metric-card::before { content:''; position:absolute; top:0; left:0; right:0; height:2px; background:var(--gradient); }
 .acct-metric-label { font-size:13px; font-weight:600; text-transform:uppercase; letter-spacing:0.08em; color:var(--muted); margin-bottom:4px; }
 .acct-metric-value { font-size:28px; font-weight:800; color:#dde4f5; letter-spacing:-0.02em; margin-bottom:4px; }
 .acct-metric-sub { font-size:13px; color:var(--muted); }
 
 .acct-msg-grid { display:grid; grid-template-columns:repeat(4,280px); gap:12px; }
-.acct-msg-card { width:280px; height:120px; background:var(--surface); border-radius:8px; border-top:3px solid var(--cyan); padding:12px; box-sizing:border-box; cursor:pointer; transition:opacity .15s; }
-.acct-msg-card:hover { opacity:.85; }
+.acct-msg-card { position:relative; width:280px; height:120px; background:var(--glass-bg); backdrop-filter:blur(var(--glass-blur)); -webkit-backdrop-filter:blur(var(--glass-blur)); border:1px solid var(--glass-border); border-radius:10px; padding:12px; box-sizing:border-box; overflow:hidden; cursor:pointer; transition:transform .25s var(--ease-glow), box-shadow .25s var(--ease-glow), border-color .25s var(--ease-glow); }
+.acct-msg-card::before { content:''; position:absolute; top:0; left:0; right:0; height:3px; background:var(--gradient); }
+.acct-msg-card:hover { transform:translateY(-2px); border-color:rgba(1,176,176,0.4); box-shadow:0 0 20px rgba(1,176,176,0.16); }
 .acct-msg-status { display:inline-block; height:20px; line-height:20px; padding:0 8px; border-radius:4px; font-size:12px; font-weight:600; margin-bottom:8px; }
 .acct-msg-status.running { background:rgba(1,176,176,0.12); color:var(--cyan); }
 .acct-msg-status.review { background:rgba(167,139,250,0.12); color:#a78bfa; }
+.acct-msg-status.scheduled { background:rgba(230,164,42,0.14); color:#e0a42a; }
 .acct-msg-name { font-size:16px; font-weight:600; color:#dde4f5; margin-bottom:4px; }
 .acct-msg-campaign { font-size:13px; color:var(--muted); }
 .acct-msg-heading { font-size:24px; font-weight:700; color:#dde4f5; margin-bottom:20px; }
 
 .acct-msg-detail-layout { display:flex; gap:32px; align-items:flex-start; margin-top:16px; }
 .acct-creative-preview { flex-shrink:0; width:384px; }
+.acct-carousel-wrap { display:flex; flex-direction:column; gap:10px; }
+.acct-carousel { position:relative; border-radius:8px; overflow:hidden; background:var(--surface); }
+.acct-carousel-img { width:100%; display:block; }
+.acct-carousel-label { position:absolute; top:10px; left:10px; z-index:2; background:rgba(10,16,32,0.72); color:var(--white); font-size:11px; font-weight:700; letter-spacing:0.04em; text-transform:uppercase; padding:4px 10px; border-radius:20px; }
+.acct-carousel-arrow { position:absolute; top:290px; z-index:2; width:32px; height:32px; border-radius:50%; border:none; background:rgba(10,16,32,0.6); color:var(--white); font-size:18px; line-height:1; cursor:pointer; display:flex; align-items:center; justify-content:center; transition:background 0.15s; }
+.acct-carousel-arrow:hover { background:rgba(10,16,32,0.85); }
+.acct-carousel-arrow.prev { left:10px; }
+.acct-carousel-arrow.next { right:10px; }
+.acct-carousel-dots { display:flex; justify-content:center; gap:6px; }
+.acct-carousel-dot { width:6px; height:6px; border-radius:50%; background:var(--border); cursor:pointer; transition:background 0.15s; }
+.acct-carousel-dot.active { background:var(--cyan); }
+.brief-preview-toolbar { display:flex; align-items:center; gap:12px; margin-bottom:18px; }
+.brief-save-status { font-size:13px; font-weight:600; color:var(--cyan); opacity:0; transition:opacity .3s var(--ease-glow); }
+.brief-save-status.visible { opacity:1; }
+.brief-doc-scroll { overflow-x:auto; padding:4px; }
+.brief-doc { background:#fff; color:#000; max-width:800px; margin:0 auto; font-family:Arial, Helvetica, sans-serif; box-shadow:0 8px 30px rgba(0,0,0,0.35); }
+.brief-doc-topbar { background:#1a2744; color:#fff; font-size:11px; font-weight:700; letter-spacing:0.04em; padding:6px 12px; }
+.brief-doc-confidential { font-weight:400; color:#a9b4cc; }
+.brief-doc-title-bar { background:#1a2744; padding:18px 16px 14px; margin-bottom:14px; }
+.brief-doc-title { color:#fff; font-size:34px; font-weight:800; letter-spacing:0.01em; }
+.brief-doc-subtitle { color:#5fd0d0; font-size:13px; margin-top:2px; }
+.brief-doc-section { margin:0 16px 14px; }
+.brief-doc-section-header { background:#1a2744; color:#fff; font-size:12px; font-weight:700; letter-spacing:0.03em; padding:5px 10px; }
+.brief-doc-table { width:100%; border-collapse:collapse; border:1px solid #c7cbd6; }
+.brief-doc-table tr { border-bottom:1px solid #c7cbd6; }
+.brief-doc-label { width:190px; background:#eef0f5; font-weight:700; font-size:12px; color:#1a2744; padding:8px 10px; vertical-align:top; border-right:1px solid #c7cbd6; }
+.brief-doc-value { padding:8px 10px; font-size:12px; color:#222; vertical-align:top; }
+.brief-doc-value-text { white-space:pre-wrap; }
+.brief-doc-value-empty { color:#a8adba; font-style:italic; }
+.brief-doc-checkbox-list { display:flex; flex-wrap:wrap; gap:4px 16px; }
+.brief-doc-checkbox-item { color:#a8adba; }
+.brief-doc-checkbox-item.checked { color:#000; font-weight:700; }
+.brief-doc-input { display:block; width:100%; border:none; background:transparent; font-family:inherit; font-size:12px; color:#222; padding:0; outline:none; }
+.brief-doc-input:focus { background:#fffce8; box-shadow:0 0 0 1px #d9c855 inset; border-radius:2px; }
+.brief-doc-input::placeholder { color:#a8adba; font-style:italic; }
+.brief-doc-input-textarea { resize:vertical; min-height:48px; line-height:1.5; }
+.brief-doc-checkbox-edit { display:flex; flex-wrap:wrap; gap:6px 16px; }
+.brief-doc-checkbox-edit-item { display:flex; align-items:center; gap:5px; color:#222; font-size:12px; cursor:pointer; }
+.brief-doc-checkbox-edit-item input { cursor:pointer; }
+.brief-doc-notes-header { background:#2a8a8a; color:#fff; font-size:12px; font-weight:700; letter-spacing:0.03em; padding:5px 10px; margin:0 16px; }
+.brief-doc-notes-box { border:1px solid #c7cbd6; border-top:none; min-height:70px; padding:10px; font-size:12px; color:#222; margin:0 16px 16px; }
+.brief-doc-disclaimer { font-size:10px; color:#666; font-style:italic; margin:14px 16px; }
+.brief-doc-footer { font-size:10px; color:#888; border-top:1px solid #ddd; padding:8px 16px 16px; margin:0 16px; }
 .acct-creative-meta { flex:1; }
 /* Social media ad mockup */
 .ad-mock { background:#fff; border-radius:12px; overflow:hidden; font-family:-apple-system,'Segoe UI',sans-serif; }
@@ -557,9 +613,9 @@
 
 /* Ad Specs panel */
 .specs-platform-nav { display:flex; flex-wrap:wrap; gap:6px; margin-bottom:2rem; }
-.specs-platform-btn { font-family:var(--font); font-size:12px; font-weight:600; padding:6px 14px; border-radius:20px; border:1px solid var(--border); background:transparent; color:var(--muted); cursor:pointer; transition:all 0.15s; }
-.specs-platform-btn:hover { border-color:var(--cyan); color:#fff; }
-.specs-platform-btn.active { background:rgba(1,176,176,.12); border-color:var(--cyan); color:var(--cyan); }
+.specs-platform-btn { font-family:var(--font); font-size:12px; font-weight:600; padding:6px 14px; border-radius:20px; border:1px solid var(--border); background:transparent; color:var(--muted); cursor:pointer; transition:all 0.25s var(--ease-glow); }
+.specs-platform-btn:hover { border-color:var(--cyan); color:#fff; box-shadow:0 0 14px rgba(1,176,176,0.16); }
+.specs-platform-btn.active { background:rgba(1,176,176,.14); border-color:var(--cyan); color:var(--cyan); box-shadow:0 0 16px rgba(1,176,176,0.2); }
 .specs-platform-panel { display:none; }
 .specs-platform-panel.active { display:block; }
 .specs-channel-header { margin-bottom:1.5rem; }
@@ -573,7 +629,7 @@
 .specs-ad-types { display:flex; flex-wrap:wrap; gap:6px; margin-bottom:2rem; }
 .specs-ad-type { font-size:11px; font-weight:600; padding:4px 10px; border-radius:8px; background:rgba(53,113,203,.15); color:#6fa3e8; }
 .specs-formats { display:flex; flex-direction:column; gap:16px; }
-.specs-format-card { background:var(--surface); border:1px solid var(--border); border-radius:12px; overflow:hidden; }
+.specs-format-card { background:var(--glass-bg); backdrop-filter:blur(var(--glass-blur)); -webkit-backdrop-filter:blur(var(--glass-blur)); border:1px solid var(--glass-border); border-radius:14px; overflow:hidden; }
 .specs-format-title { font-size:13px; font-weight:700; color:#dde4f5; padding:14px 18px; border-bottom:1px solid var(--border); background:rgba(255,255,255,.03); }
 .specs-format-body { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:0; }
 .specs-format-col { padding:14px 18px; border-right:1px solid var(--border); }
@@ -588,29 +644,29 @@
 .specs-cta-tag { font-size:11px; padding:3px 9px; border-radius:8px; background:rgba(255,255,255,.05); border:1px solid var(--border); color:var(--muted); }
 .specs-section-divider { margin:2rem 0 1.5rem; border:none; border-top:1px solid var(--border); }
 .specs-best-practices { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:16px; margin-bottom:2rem; }
-.specs-bp-card { background:var(--surface); border:1px solid var(--border); border-radius:12px; padding:20px 22px; }
+.specs-bp-card { background:var(--glass-bg); backdrop-filter:blur(var(--glass-blur)); -webkit-backdrop-filter:blur(var(--glass-blur)); border:1px solid var(--glass-border); border-radius:14px; padding:20px 22px; }
 .specs-bp-card h4 { font-size:13px; font-weight:700; text-transform:uppercase; letter-spacing:.05em; color:var(--cyan); margin-bottom:10px; }
 .specs-bp-card ul { margin:0; padding:0; list-style:none; }
 .specs-bp-card li { font-size:13px; color:#dde4f5; padding:4px 0; line-height:1.5; padding-left:14px; position:relative; }
 .specs-bp-card li::before { content:"–"; position:absolute; left:0; color:var(--muted); }
 .specs-benchmark-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:12px; margin-bottom:1.5rem; }
-.specs-benchmark-card { background:var(--surface); border:1px solid var(--border); border-radius:12px; padding:18px 20px; text-align:center; }
+.specs-benchmark-card { background:var(--glass-bg); backdrop-filter:blur(var(--glass-blur)); -webkit-backdrop-filter:blur(var(--glass-blur)); border:1px solid var(--glass-border); border-radius:14px; padding:18px 20px; text-align:center; }
 .specs-benchmark-number { font-size:28px; font-weight:800; background:linear-gradient(93.8deg,#3571cb,#01b0b0); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
 .specs-benchmark-label { font-size:12px; color:var(--muted); margin-top:4px; }
 .specs-listening-cards { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:16px; }
-.specs-listening-card { background:var(--surface); border:1px solid var(--border); border-radius:12px; padding:20px 22px; }
+.specs-listening-card { background:var(--glass-bg); backdrop-filter:blur(var(--glass-blur)); -webkit-backdrop-filter:blur(var(--glass-blur)); border:1px solid var(--glass-border); border-radius:14px; padding:20px 22px; }
 .specs-listening-card h4 { font-size:14px; font-weight:700; color:#dde4f5; margin-bottom:8px; }
 .specs-listening-card p { font-size:13px; color:var(--muted); line-height:1.6; margin:0; }
 .specs-isi-cards { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:12px; }
-.specs-isi-card { background:var(--surface); border:1px solid var(--border); border-radius:12px; padding:18px 20px; }
+.specs-isi-card { background:var(--glass-bg); backdrop-filter:blur(var(--glass-blur)); -webkit-backdrop-filter:blur(var(--glass-blur)); border:1px solid var(--glass-border); border-radius:14px; padding:18px 20px; }
 .specs-isi-number { font-size:24px; font-weight:800; color:var(--cyan); margin-bottom:8px; }
 .specs-isi-desc { font-size:13px; color:#dde4f5; line-height:1.5; }
 
 /* ── MLR MOCKUP PANEL ── */
 .mlr-subtabs { display:flex; align-items:center; gap:8px; height:44px; margin-bottom:28px; }
-.mlr-subtab-btn { height:36px; padding:0 24px; background:transparent; border:1px solid transparent; border-radius:8px; font-size:14px; font-weight:500; color:var(--muted); cursor:pointer; white-space:nowrap; transition:all .15s; font-family:var(--font); }
-.mlr-subtab-btn:hover { color:#dde4f5; }
-.mlr-subtab-btn.active { background:var(--surface); border-color:var(--cyan); color:var(--white); }
+.mlr-subtab-btn { height:36px; padding:0 24px; background:transparent; border:1px solid transparent; border-radius:8px; font-size:14px; font-weight:500; color:var(--muted); cursor:pointer; white-space:nowrap; transition:all .25s var(--ease-glow); font-family:var(--font); }
+.mlr-subtab-btn:hover { color:#dde4f5; background:rgba(255,255,255,0.04); }
+.mlr-subtab-btn.active { background:var(--glass-bg-hover); backdrop-filter:blur(var(--glass-blur)); -webkit-backdrop-filter:blur(var(--glass-blur)); border-color:var(--cyan-alt); color:var(--white); box-shadow:0 0 18px rgba(1,176,176,0.2); }
 .mlr-subtab-panel { display:none; }
 .mlr-subtab-panel.active { display:block; }
 #mlr-sent-accounts-view, #mlr-sent-campaigns-view, #mlr-sent-jobcodes-view { margin-top:12px; }
@@ -642,15 +698,16 @@
 .mlr-field-group { margin-bottom:16px; }
 .mlr-field-label { font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; color:var(--muted); margin-bottom:6px; }
 .mlr-field-note { font-weight:400; text-transform:none; letter-spacing:0; font-size:11px; }
-.mlr-input { width:100%; background:var(--surface); border:1px solid rgba(255,255,255,0.08); border-radius:6px; padding:8px 12px; font-size:13px; color:#dde4f5; font-family:var(--font); outline:none; box-sizing:border-box; transition:border-color .15s; }
-.mlr-input:focus { border-color:var(--cyan); }
+.mlr-input { width:100%; background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); border-radius:6px; padding:8px 12px; font-size:13px; color:#dde4f5; font-family:var(--font); outline:none; box-sizing:border-box; transition:border-color .2s var(--ease-glow), box-shadow .2s var(--ease-glow), background .2s var(--ease-glow); }
+.mlr-input:focus { border-color:var(--cyan); background:rgba(1,176,176,0.05); box-shadow:0 0 0 3px rgba(1,176,176,0.15); }
 .mlr-textarea { resize:vertical; min-height:70px; line-height:1.5; }
 input[type="file"].mlr-input { padding:6px 10px; color:var(--muted); cursor:pointer; }
 .mlr-channel-row { display:flex; gap:16px; }
 .mlr-channel-check { display:flex; align-items:center; gap:6px; font-size:13px; color:#dde4f5; cursor:pointer; }
 .mlr-channel-check input { accent-color:var(--cyan); width:14px; height:14px; cursor:pointer; }
-.mlr-export-btn { margin-top:24px; width:100%; height:44px; background:linear-gradient(93.8deg,#3571cb 0,#01b0b0 100%); border:none; border-radius:8px; color:#fff; font-size:14px; font-weight:700; font-family:var(--font); cursor:pointer; letter-spacing:0.02em; transition:opacity .15s; }
-.mlr-export-btn:hover { opacity:0.88; }
+.mlr-export-btn { margin-top:24px; width:100%; height:44px; background:linear-gradient(93.8deg,#3571cb 0,#01b0b0 100%); background-size:160% 100%; background-position:0% 0%; border:none; border-radius:8px; color:#fff; font-size:14px; font-weight:700; font-family:var(--font); cursor:pointer; letter-spacing:0.02em; box-shadow:0 6px 20px rgba(1,176,176,0.16); transition:background-position .4s var(--ease-glow), box-shadow .3s var(--ease-glow), transform .2s var(--ease-glow); }
+.mlr-export-btn:hover { background-position:100% 0%; box-shadow:var(--glow-cyan); transform:translateY(-1px); }
+.mlr-export-btn:active { transform:translateY(0); }
 
 /* saved version snapshots per job code */
 .mlr-version-history { margin:-8px 0 16px; }
@@ -799,7 +856,7 @@ input[type="file"].mlr-input { padding:6px 10px; color:var(--muted); cursor:poin
           <div class="client-grid-card" onclick="showClient('c')">CLIENT C</div>
           <div class="client-grid-card" onclick="showClient('d')">CLIENT D</div>
           <div class="client-grid-card" onclick="showClient('mesoblast')">MESOBLAST</div>
-          <div class="client-grid-card client-grid-card--placeholder">CLIENT F</div>
+          <div class="client-grid-card" onclick="showClient('healthmonitor')">HEALTH MONITOR NETWORK</div>
           <div class="client-grid-card client-grid-card--placeholder">CLIENT G</div>
           <div class="client-grid-card client-grid-card--placeholder">CLIENT H</div>
           <div class="client-grid-card client-grid-card--placeholder">CLIENT I</div>
@@ -820,11 +877,13 @@ input[type="file"].mlr-input { padding:6px 10px; color:var(--muted); cursor:poin
         <div class="acct-main-title" id="acctTitle"></div>
         <div class="acct-main-subtitle" id="acctSubtitle"></div>
         <div class="acct-tabs">
-          <button class="acct-tab-btn active" onclick="showAcctTab(this,'guidelines')">Brand Guidelines</button>
+          <button class="acct-tab-btn active" onclick="showAcctTab(this,'brief')">Creative Brief</button>
+          <button class="acct-tab-btn" onclick="showAcctTab(this,'guidelines')">Brand Guidelines</button>
           <button class="acct-tab-btn" onclick="showAcctTab(this,'mlr')">MLR Requirements</button>
           <button class="acct-tab-btn" onclick="showCampaignOverview(_acctClient,0)">Campaigns</button>
         </div>
-        <div class="acct-tab-panel active" id="acct-tab-guidelines"></div>
+        <div class="acct-tab-panel active" id="acct-tab-brief"></div>
+        <div class="acct-tab-panel" id="acct-tab-guidelines"></div>
         <div class="acct-tab-panel" id="acct-tab-mlr"></div>
         <div class="acct-tab-panel" id="acct-tab-campaigns"></div>
       </div>
@@ -1017,6 +1076,45 @@ input[type="file"].mlr-input { padding:6px 10px; color:var(--muted); cursor:poin
         <div class="acct-msg-data" data-msg="2" data-img="" data-title="Prescribing — LinkedIn" data-ig="" data-fb="" data-li="[JOB-CODE-LI]" data-headline="[Headline copy goes here]" data-caption="[Primary text / caption copy goes here.]" data-dest="https://www.ryoncilhcp.com/" data-channel="LinkedIn" data-placement="Static" data-brief="Prescribing physicians · LinkedIn|[Key message 1]|[Key message 2]|Destination: ryoncilhcp.com/" data-alt-headline-b="[Option B headline]" data-alt-headline-c="[Option C headline]" data-alt-primary-b="[Option B primary text]" data-alt-primary-c="[Option C primary text]"></div>
       </div>
       <div class="acct-campaign" data-label="ISI" data-msgs="0" data-isi="assets/mesoblast/isi.png"></div>
+    </div>
+
+    <!-- ── Hidden data: Health Monitor Network ── -->
+    <div id="acct-data-healthmonitor" data-subtitle="Unbranded HCP Digital — Cognitive Health (Kisunla)" data-logo="assets/healthmonitor/logo-avatar.png" style="display:none">
+      <span class="acct-client-label">Health Monitor Network</span>
+      <div class="acct-guidelines-data">
+        <div class="acct-section-label">BRAND GUIDELINES</div>
+        <div class="acct-info-grid">
+          <div class="acct-info-card"><div class="acct-info-label">Primary Colors</div><div class="acct-info-value">#1E2D5B (Navy) · #DEE0E7 (Silver) · #000000 · #FFFFFF</div></div>
+          <div class="acct-info-card"><div class="acct-info-label">Typography</div><div class="acct-info-value">Darby Serif Display (headlines) · Inter Bold (section labels) · SF Pro (native UI text)</div></div>
+          <div class="acct-info-card"><div class="acct-info-label">Logo Usage</div><div class="acct-info-value">Health Monitor Clinician Update roundel + wordmark</div></div>
+          <div class="acct-info-card"><div class="acct-info-label">Brand Voice</div><div class="acct-info-value">Clinical, editorial, evidence-based — unbranded disease-state education</div></div>
+          <div class="acct-info-card"><div class="acct-info-label">Photography</div><div class="acct-info-value">Painterly/editorial illustration · Clinician–patient moments · Aging &amp; cognitive health</div></div>
+          <div class="acct-info-card"><div class="acct-info-label">Indication Context</div><div class="acct-info-value">Unbranded Cognitive Health (Kisunla) — cognitively unimpaired population</div></div>
+        </div>
+      </div>
+      <div class="acct-mlr-data">
+        <div class="acct-section-label">MLR REQUIREMENTS</div>
+        <div class="acct-info-grid">
+          <div class="acct-info-card"><div class="acct-info-label">Campaign</div><div class="acct-info-value">Digital Clinician Update — Cognitive Health (Cognitively Unimpaired) — Kisunla Unbranded 2026</div></div>
+          <div class="acct-info-card"><div class="acct-info-label">Job Code</div><div class="acct-info-value">LUJ26-DCU-CH-UBSIK</div></div>
+          <div class="acct-info-card"><div class="acct-info-label">Social Channels</div><div class="acct-info-value">Facebook &amp; Instagram — In-Feed Static</div></div>
+          <div class="acct-info-card"><div class="acct-info-label">Handle</div><div class="acct-info-value">Health Monitor Clinician Update (Facebook)</div></div>
+          <div class="acct-info-card"><div class="acct-info-label">ISI</div><div class="acct-info-value">N/A — unbranded disease-state content</div></div>
+          <div class="acct-info-card"><div class="acct-info-label">Audience</div><div class="acct-info-value">HCPs / Clinicians — NPI-targeted</div></div>
+          <div class="acct-info-card"><div class="acct-info-label">Run Dates</div><div class="acct-info-value">7/8/2026 – 8/31/2026 · Budget $23,520</div></div>
+          <div class="acct-info-card"><div class="acct-info-label">Matrix Link</div><input class="mlr-input acct-matrix-input" type="text" placeholder="Paste Google Drive spreadsheet link…" oninput="acctSaveMatrixLink(this)"></div>
+        </div>
+        <button class="mlr-export-btn" style="width:auto; padding:0 20px;" onclick="acctCopyCrossCheckPrompt()">Copy Cross-Check Prompt for Claude</button>
+      </div>
+      <div class="acct-campaign" data-label="Digital Clinician Update — Cognitive Health" data-msgs="7">
+        <div class="acct-msg-data" data-msg="0" data-status="Approved" data-img="assets/healthmonitor/msg1-clinician-update.png" data-img-instagram="assets/healthmonitor/msg1-instagram.png" data-title="Clinicians — Facebook &amp; Instagram" data-ig="" data-fb="msg1guide.LUJ26-DCU-CH-UBSIK" data-li="" data-headline="See the Clinician Update on Cognitive Health" data-caption="Learn why cognitive screening should be a routine part of patient care." data-dest="https://clinician.healthmonitornetwork.com/cognitive-health-3/?utm_source=meta&utm_medium=paid_social&utm_campaign=kisunlacog&utm_content=msg1guide.LUJ26-DCU-CH-UBSIK" data-channel="Facebook &amp; Instagram" data-placement="In-Feed Static" data-brief="Section: View Health Monitor Clinician Update: Cognitive Health|Learn why cognitive screening should be a routine part of patient care.|Section label: Improving outcomes|CTA: Learn more|Destination: clinician.healthmonitornetwork.com/cognitive-health-3/"></div>
+        <div class="acct-msg-data" data-msg="1" data-status="Approved" data-img="assets/healthmonitor/msg2-innovations-screening.png" data-img-instagram="assets/healthmonitor/msg2-instagram.png" data-title="Clinicians — Facebook &amp; Instagram" data-ig="" data-fb="msg2model.LUJ26-DCU-CH-UBSIK" data-li="" data-headline="Innovations in screening: Harnessing technology to support cognitive care" data-caption="Assessment in the digital age is easier than ever with apps and other technology that support screening while saving time." data-dest="https://clinician.healthmonitornetwork.com/cognitive-health-3/?utm_source=meta&utm_medium=paid_social&utm_campaign=kisunlacog&utm_content=msg2model.LUJ26-DCU-CH-UBSIK#group-section-Model-of-Care-UTgGl1b5As" data-channel="Facebook &amp; Instagram" data-placement="In-Feed Static" data-brief="Section: Model of Care|Assessment in the digital age is easier than ever with apps and other technology that support screening while saving time.|Section label: Diagnostic strategies|CTA: Learn more|Destination: clinician.healthmonitornetwork.com/cognitive-health-3/"></div>
+        <div class="acct-msg-data" data-msg="2" data-status="Approved" data-img="assets/healthmonitor/msg3-loneliness.png" data-img-instagram="assets/healthmonitor/msg3-instagram.png" data-title="Clinicians — Facebook &amp; Instagram" data-ig="" data-fb="msg3practice.LUJ26-DCU-CH-UBSIK" data-li="" data-headline="Is loneliness affecting your patient's brain function?" data-caption="Social isolation is a major risk factor for cognitive decline. Here's how to help older adults stay connected." data-dest="https://clinician.healthmonitornetwork.com/cognitive-health-3/?utm_source=meta&utm_medium=paid_social&utm_campaign=kisunlacog&utm_content=msg3practice.LUJ26-DCU-CH-UBSIK#group-section-Practice-Pearls-yVvSyhA7KZ" data-channel="Facebook &amp; Instagram" data-placement="In-Feed Static" data-brief="Section: Practice pearls|Social isolation is a major risk factor for cognitive decline. Here's how to help older adults stay connected.|Section label: Supportive care|CTA: Learn more|Destination: clinician.healthmonitornetwork.com/cognitive-health-3/"></div>
+        <div class="acct-msg-data" data-msg="3" data-status="Approved" data-img="assets/healthmonitor/msg4-lifestyle-habits.png" data-img-instagram="assets/healthmonitor/msg4-instagram.png" data-title="Clinicians — Facebook &amp; Instagram" data-ig="" data-fb="msg4patient.LUJ26-DCU-CH-UBSIK" data-li="" data-headline="The lifestyle habits proven to keep the brain sharp" data-caption="Learn counseling strategies to help patients adopt evidence-based habits that boost cognition." data-dest="https://clinician.healthmonitornetwork.com/cognitive-health-3/?utm_source=meta&utm_medium=paid_social&utm_campaign=kisunlacog&utm_content=msg4patient.LUJ26-DCU-CH-UBSIK#group-section-Patient-Engagement-IHbEGcxIfj" data-channel="Facebook &amp; Instagram" data-placement="In-Feed Static" data-brief="Section: Patient engagement|Learn counseling strategies to help patients adopt evidence-based habits that boost cognition.|Section label: Lifestyle interventions|CTA: Learn more|Destination: clinician.healthmonitornetwork.com/cognitive-health-3/"></div>
+        <div class="acct-msg-data" data-msg="4" data-status="Approved" data-img="assets/healthmonitor/msg5-case-study.png" data-img-instagram="assets/healthmonitor/msg5-instagram.png" data-title="Clinicians — Facebook &amp; Instagram" data-ig="" data-fb="msg5case.LUJ26-DCU-CH-UBSIK" data-li="" data-headline="Case Study on Cognitive Health" data-caption="Considerations for cognitive screening and follow-up." data-dest="https://clinician.healthmonitornetwork.com/cognitive-health-3/?utm_source=meta&utm_medium=paid_social&utm_campaign=kisunlacog&utm_content=msg5case.LUJ26-DCU-CH-UBSIK#group-section-Case-Study-Vm7QGFIwSh" data-channel="Facebook &amp; Instagram" data-placement="In-Feed Static" data-brief="Section: Case Study|Considerations for cognitive screening and follow-up.|Section label: How would you manage this patient?|CTA: Learn more|Destination: clinician.healthmonitornetwork.com/cognitive-health-3/"></div>
+        <div class="acct-msg-data" data-msg="5" data-status="Approved" data-img="assets/healthmonitor/msg6-qa.png" data-img-instagram="assets/healthmonitor/msg6-instagram.png" data-title="Clinicians — Facebook &amp; Instagram" data-ig="" data-fb="msg6QA.LUJ26-DCU-CH-UBSIK" data-li="" data-headline="Q&amp;A on Cognitive Health" data-caption="Learn real-world strategies for comprehensive cognitive care." data-dest="https://clinician.healthmonitornetwork.com/cognitive-health-3/?utm_source=meta&utm_medium=paid_social&utm_campaign=kisunlacog&utm_content=msg6QA.LUJ26-DCU-CH-UBSIK#group-section-QandA-9ZbSE7AKEE" data-channel="Facebook &amp; Instagram" data-placement="In-Feed Static" data-brief="Section: Q&amp;A|Learn real-world strategies for comprehensive cognitive care.|Section label: Expert insight|CTA: Learn more|Destination: clinician.healthmonitornetwork.com/cognitive-health-3/"></div>
+        <div class="acct-msg-data" data-msg="6" data-status="Approved" data-img="assets/healthmonitor/msg7-quiz.png" data-img-instagram="assets/healthmonitor/msg7-instagram.png" data-title="Clinicians — Facebook &amp; Instagram" data-ig="" data-fb="msg7quiz.LUJ26-DCU-CH-UBSIK" data-li="" data-headline="Quiz on Cognitive Health" data-caption="Test your knowledge of cognitive health." data-dest="https://clinician.healthmonitornetwork.com/cognitive-health-3/?utm_source=meta&utm_medium=paid_social&utm_campaign=kisunlacog&utm_content=msg7quiz.LUJ26-DCU-CH-UBSIK#group-section-Quiz-GQ0zLoNcad" data-channel="Facebook &amp; Instagram" data-placement="In-Feed Static" data-brief="Section: Quiz|Test your knowledge of cognitive health.|Section label: Take the quiz!|CTA: Learn more|Destination: clinician.healthmonitornetwork.com/cognitive-health-3/"></div>
+      </div>
     </div>
 
   </div>
@@ -2637,7 +2735,7 @@ input[type="file"].mlr-input { padding:6px 10px; color:var(--muted); cursor:poin
 
 </div>
 
-<div class="version-badge">v2.6.1 · 2026-07-06 · Grace Irwin</div>
+<div class="version-badge">v3.2.0 · 2026-07-08 · Grace Irwin</div>
 
 <script>
 function showPanel(id) {
@@ -2651,8 +2749,34 @@ function showPanel(id) {
 let _acctClient = null;
 let _acctCampaign = 0;
 let _acctView = 'grid';
+let _acctCarouselSlides = [];
+let _acctCarouselIdx = 0;
 
-function showClient(key) {
+function _acctCarouselRender() {
+  const slide = _acctCarouselSlides[_acctCarouselIdx];
+  if (!slide) return;
+  const img = document.getElementById('acctCarouselImg');
+  const label = document.getElementById('acctCarouselLabel');
+  if (img) img.src = slide.src;
+  if (label) label.textContent = slide.label;
+  document.querySelectorAll('#acctCarouselDots .acct-carousel-dot').forEach((d, i) => {
+    d.classList.toggle('active', i === _acctCarouselIdx);
+  });
+}
+
+function acctCarouselNav(dir) {
+  if (!_acctCarouselSlides.length) return;
+  _acctCarouselIdx = (_acctCarouselIdx + dir + _acctCarouselSlides.length) % _acctCarouselSlides.length;
+  _acctCarouselRender();
+}
+
+function acctCarouselGoTo(i) {
+  _acctCarouselIdx = i;
+  _acctCarouselRender();
+}
+
+function showClient(key, tabIdx) {
+  tabIdx = tabIdx || 0;
   _acctClient = key;
   _acctCampaign = 0;
   _acctView = 'detail';
@@ -2665,6 +2789,8 @@ function showClient(key) {
 
   _buildClientSidebar(key);
 
+  document.getElementById('acct-tab-brief').innerHTML = _buildCreativeBriefHTML(key);
+
   const guidelinesData = data.querySelector('.acct-guidelines-data');
   document.getElementById('acct-tab-guidelines').innerHTML = guidelinesData ? guidelinesData.innerHTML : '';
 
@@ -2676,8 +2802,8 @@ function showClient(key) {
 
   document.getElementById('acct-tab-campaigns').innerHTML = '';
 
-  document.querySelectorAll('.acct-tab-btn').forEach((b,i) => b.classList.toggle('active', i===0));
-  document.querySelectorAll('.acct-tab-panel').forEach((p,i) => p.classList.toggle('active', i===0));
+  document.querySelectorAll('.acct-tab-btn').forEach((b,i) => b.classList.toggle('active', i===tabIdx));
+  document.querySelectorAll('.acct-tab-panel').forEach((p,i) => p.classList.toggle('active', i===tabIdx));
 
   document.getElementById('acct-grid-view').style.display = 'none';
   document.getElementById('acct-detail-view').style.display = 'flex';
@@ -2713,7 +2839,7 @@ function acctCopyCrossCheckPrompt() {
 }
 
 function _buildClientSidebar(activeKey) {
-  const clients = {a:'Client A', b:'Client B', c:'Client C', d:'Client D', mesoblast:'Mesoblast'};
+  const clients = {a:'Client A', b:'Client B', c:'Client C', d:'Client D', mesoblast:'Mesoblast', healthmonitor:'Health Monitor Network'};
   const sidebar = document.getElementById('acctSidebar');
   sidebar.innerHTML = '<button class="acct-sidebar-top-tab" onclick="showClientGrid()">Clients</button>';
   const btn = document.createElement('button');
@@ -2795,8 +2921,9 @@ function showCampaignOverview(clientKey, campaignIdx) {
     <div class="acct-main-title">${clientName} — ${camp.dataset.label || 'Campaign'}</div>
     <div class="acct-main-subtitle">${data.dataset.subtitle || 'Pharma — HCP Awareness'}</div>
     <div class="acct-tabs">
-      <button class="acct-tab-btn" onclick="showClient('${clientKey}')">Brand Guidelines</button>
-      <button class="acct-tab-btn" onclick="showClient('${clientKey}');setTimeout(()=>{document.querySelectorAll('.acct-tab-btn')[1].click()},50)">MLR Requirements</button>
+      <button class="acct-tab-btn" onclick="showClient('${clientKey}', 0)">Creative Brief</button>
+      <button class="acct-tab-btn" onclick="showClient('${clientKey}', 1)">Brand Guidelines</button>
+      <button class="acct-tab-btn" onclick="showClient('${clientKey}', 2)">MLR Requirements</button>
       <button class="acct-tab-btn active">Campaigns</button>
     </div>
     <div style="margin-top:28px;">
@@ -2815,6 +2942,312 @@ function showCampaignOverview(clientKey, campaignIdx) {
   document.getElementById('acct-message-view').style.display = 'flex';
 }
 
+// Mirrors equals5.com/Equals5_Pharma_Creative_Brief — see creative_brief_template.md for reference.
+const CREATIVE_BRIEF_SECTIONS = [
+  { title: '01 / PROJECT OVERVIEW', fields: [
+    {key:'brandName', label:'Brand / Product Name', type:'text', placeholder:'e.g., BRANDX (generic name)'},
+    {key:'therapeuticArea', label:'Therapeutic Area', type:'text', placeholder:'e.g., Oncology, Cardiology, Rare Disease'},
+    {key:'clientAgency', label:'Client / Agency', type:'text', placeholder:'Company name and primary agency partner (if applicable)'},
+    {key:'campaignName', label:'Campaign / Project Name', type:'text', placeholder:'Working title for this effort'},
+    {key:'briefDate', label:'Brief Date', type:'date'},
+    {key:'kickoffDate', label:'Kickoff Date', type:'date'},
+    {key:'creativeDueDate', label:'Creative Due Date', type:'date'},
+    {key:'campaignLiveDate', label:'Campaign Live Date', type:'date'},
+    {key:'briefOwner', label:'Brief Owner', type:'text', placeholder:'Name, title, and email of the point of contact'},
+  ]},
+  { title: '02 / TARGET AUDIENCE', fields: [
+    {key:'primaryAudience', label:'Primary Audience', type:'checkbox', options:['HCP','Patient / Consumer','Caregiver','Payer','Both HCP & Patient']},
+    {key:'hcpSpecialty', label:'HCP Specialty / NPI Segment', type:'textarea', placeholder:'e.g., Cardiologists, PCPs, Nurse Practitioners — include NPI list or segment details if available'},
+    {key:'patientDemo', label:'Patient Demographics', type:'textarea', placeholder:'Age range, gender, diagnosis stage, co-morbidities, health literacy level'},
+    {key:'behavioralProfile', label:'Behavioral Profile', type:'textarea', placeholder:'Where are they in the treatment journey? Prior therapies, adherence challenges, decision triggers'},
+    {key:'audienceInsight', label:'Audience Insight', type:'textarea', rows:4, placeholder:'What is the single most important insight about this audience that should shape the creative? What do they believe, fear, or hope for?'},
+  ]},
+  { title: '03 / BRAND & PRODUCT CONTEXT', fields: [
+    {key:'indication', label:'Indication', type:'textarea', placeholder:'FDA-approved indication(s) this campaign supports'},
+    {key:'keyEfficacyData', label:'Key Efficacy Data', type:'textarea', placeholder:'Top 2–3 data points the creative should convey (include study names if relevant)'},
+    {key:'safetyProfile', label:'Safety Profile / ISI Summary', type:'textarea', placeholder:'Brief summary of key risks, warnings, and ISI considerations for creative guidance'},
+    {key:'differentiators', label:'Differentiators vs. SOC / Competitors', type:'textarea', placeholder:'What sets this brand apart? MOA, dosing convenience, safety, outcomes, patient experience'},
+    {key:'brandStage', label:'Brand Stage', type:'text'},
+  ]},
+  { title: '04 / CAMPAIGN OBJECTIVES & KPIs', fields: [
+    {key:'primaryGoal', label:'Primary Campaign Goal', type:'checkbox', options:['Awareness / Reach','HCP Rx Intent','Patient Diagnosis / Discussion','Adherence / Persistence','Event / Webinar Attendance','Other']},
+    {key:'campaignGoals', label:'Campaign Goals & Success Metric(s)', type:'textarea', placeholder:'What specific, measurable outcomes does this campaign need to achieve? Include baseline metrics if known.'},
+    {key:'primaryKpi', label:'Primary KPI', type:'text', placeholder:'e.g., CTR, Script Lift, HCP Reach, Video Completion Rate'},
+    {key:'secondaryKpis', label:'Secondary KPIs', type:'text', placeholder:'e.g., Engagement, Traffic, Awareness'},
+    {key:'successBenchmark', label:'Success Benchmark', type:'textarea', placeholder:"How will you measure 'good'? Reference industry benchmarks or internal historical data"},
+  ]},
+  { title: '05 / MESSAGE STRATEGY', fields: [
+    {key:'singleMindedMessage', label:'Single Minded Message', type:'textarea', placeholder:'If the audience remembers only ONE thing after seeing this creative, what should it be?'},
+    {key:'supportingMessages', label:'Supporting Messages', type:'textarea', placeholder:'List 2–4 secondary messages or proof points that reinforce the core message'},
+    {key:'tonePersonality', label:'Tone & Personality', type:'text', placeholder:'e.g., Empowering, Clinical & Authoritative, Warm & Human, Urgent, Hopeful'},
+    {key:'claimsConstraints', label:'Claims / Messaging Constraints', type:'textarea', placeholder:'Any pre-approved claims, required legal/ISI language, or messaging that is OFF LIMITS per MLR guidance'},
+    {key:'approvedCopyPlatform', label:'Approved Copy Platform / Tagline', type:'textarea', placeholder:'If a tagline or brand voice guide exists, note it here or attach'},
+  ]},
+  { title: '06 / CHANNELS & CREATIVE FORMATS', fields: [
+    {key:'digitalProgrammatic', label:'Digital / Programmatic', type:'checkbox', options:['Display Banner','Newsletter/eNL','Native/Contextual','Connected TV','Streaming Audio','DOOH','Gaming','Podcast']},
+    {key:'socialMedia', label:'Social Media', type:'checkbox', options:['Facebook','Instagram','TikTok','Reddit','X / Twitter','LinkedIn','Quora','Pinterest','Snapchat','Yahoo','Microsoft','Amazon']},
+    {key:'hcpChannels', label:'HCP-Specific Channels', type:'checkbox', options:['Real Medical Network','Other']},
+    {key:'emailDirect', label:'Email / Direct', type:'checkbox', options:['HCP Email']},
+    {key:'otherChannel', label:'Other', type:'text'},
+    {key:'adSizesSpecs', label:'Required Ad Sizes / Specs', type:'textarea', placeholder:'List all required dimensions, file types, video lengths (e.g., 300×250, 728×90, :15s video, :06s bumper)'},
+    {key:'accessibility', label:'Accessibility Requirements', type:'text', placeholder:'e.g., WCAG 2.1 AA, closed captions, alt text, screen reader compatibility'},
+  ]},
+  { title: '07 / CREATIVE DIRECTION & ASSETS', fields: [
+    {key:'creativeConceptDirection', label:'Creative Concept Direction', type:'textarea', placeholder:'Any conceptual direction, mood, visual metaphors, or campaign territory the client wants to explore (or explicitly avoid)'},
+    {key:'imageryGuidance', label:'Imagery Guidance', type:'checkbox', options:['Real patients','Actors / Models','HCP imagery','Abstract / Conceptual','Data visualization','Product / MOA animation']},
+    {key:'brandAssetsAvailable', label:'Brand Assets Available', type:'textarea', placeholder:'Logo files, style guide, approved imagery library, font files, color palette — list what will be provided and by when'},
+    {key:'referenceInspiration', label:'Reference / Inspiration', type:'textarea', placeholder:'URLs, competitor ads, or prior campaigns to inform (or contrast) the creative approach'},
+    {key:'regulatoryStage', label:'Regulatory / Compliance Stage', type:'checkbox', options:['Pre-MLR concepting only','Requires full MLR review','Prior MLR approval available','Global / Local alignment needed']},
+    {key:'pvConsiderations', label:'Pharmacovigilance (PV) Considerations', type:'textarea', placeholder:'Will this run on social media? Are comment monitoring and adverse event escalation workflows needed? Note any PV obligations.'},
+  ]},
+  { title: '08 / BUDGET & TIMELINE', fields: [
+    {key:'totalCreativeBudget', label:'Total Creative Budget', type:'text', placeholder:'Estimated range for creative development (exclude media spend)'},
+    {key:'mediaBudget', label:'Media / Activation Budget', type:'text', placeholder:'Total or estimated media investment this creative will support'},
+    {key:'mlrReviewTimeline', label:'MLR Review Timeline', type:'checkbox', options:['Standard (4–6 weeks)','Expedited (2–3 weeks)','Already in queue','No MLR required']},
+    {key:'revisionRounds', label:'Rounds of Revisions', type:'text', placeholder:'Number of creative revision rounds included in scope'},
+    {key:'keyMilestones', label:'Key Milestones', type:'textarea', placeholder:'List key dates: strategy alignment, concept presentation, copy review, MLR submission, final assets delivery, go-live'},
+  ]},
+  { title: '09 / APPROVALS & DISTRIBUTION', fields: [
+    {key:'brandLeadApprover', label:'Brand Lead / Approver', type:'text', placeholder:'Name and title of client-side approver'},
+    {key:'medicalRegulatoryContact', label:'Medical / Regulatory Contact', type:'text', placeholder:'Name and team for MLR submission'},
+    {key:'agencyPartnersCcd', label:"Agency Partners CC'd", type:'text', placeholder:'Other agency leads who should receive this brief'},
+    {key:'distributionRestrictions', label:'Distribution Restrictions', type:'text', placeholder:'e.g., Internal only, NDA required, do not forward'},
+  ]},
+  { title: 'ADDITIONAL NOTES / OPEN QUESTIONS', fields: [
+    {key:'additionalNotes', label:'', type:'textarea', rows:6, placeholder:'Additional notes or open questions…'},
+  ]},
+];
+
+function _creativeBriefStorageKey(clientKey, fieldKey) {
+  return 'creative-brief-' + clientKey + '-' + fieldKey;
+}
+
+function acctBriefSaveField(clientKey, fieldKey, value) {
+  localStorage.setItem(_creativeBriefStorageKey(clientKey, fieldKey), value);
+}
+
+function acctBriefToggleCheckbox(clientKey, fieldKey, option) {
+  const sk = _creativeBriefStorageKey(clientKey, fieldKey);
+  let saved = [];
+  try { saved = JSON.parse(localStorage.getItem(sk) || '[]'); } catch (e) {}
+  const idx = saved.indexOf(option);
+  if (idx >= 0) saved.splice(idx, 1); else saved.push(option);
+  localStorage.setItem(sk, JSON.stringify(saved));
+}
+
+function _buildCreativeBriefHTML(clientKey) {
+  const lastSaved = localStorage.getItem(_creativeBriefStorageKey(clientKey, 'lastSaved'));
+  return `
+    <div class="brief-preview-toolbar">
+      <button class="mlr-export-btn" style="width:auto; padding:0 20px;" onclick="acctBriefSave('${clientKey}')">Save</button>
+      <button class="mlr-export-btn" style="width:auto; padding:0 20px;" onclick="acctBriefExportPDF('${clientKey}')">Export to PDF</button>
+      <span class="brief-save-status${lastSaved ? ' visible' : ''}" id="briefSaveStatus-${clientKey}">${lastSaved ? 'Saved ✓' : ''}</span>
+    </div>
+    <div class="mlr-form-sub" style="margin-bottom:14px;">Fill in the brief directly on the document below — not every field applies to every client. Changes are kept in this browser as you type; click Save to confirm, or Export whenever it's ready to share.</div>
+    <div class="brief-doc-scroll">${_buildCreativeBriefEditableDocumentHTML(clientKey)}</div>
+  `;
+}
+
+function acctBriefSave(clientKey) {
+  // Blur the active field first so its final value commits before we confirm —
+  // fields already save on every keystroke, this just gives an explicit confirmation.
+  if (document.activeElement && typeof document.activeElement.blur === 'function') {
+    document.activeElement.blur();
+  }
+  localStorage.setItem(_creativeBriefStorageKey(clientKey, 'lastSaved'), new Date().toISOString());
+  const status = document.getElementById('briefSaveStatus-' + clientKey);
+  if (!status) return;
+  status.textContent = 'Saved ✓';
+  status.classList.add('visible');
+  clearTimeout(status._hideTimer);
+  status._hideTimer = setTimeout(() => status.classList.remove('visible'), 2500);
+}
+
+function _briefFieldEditableHTML(clientKey, f) {
+  const sk = _creativeBriefStorageKey(clientKey, f.key);
+  if (f.type === 'checkbox') {
+    let saved = [];
+    try { saved = JSON.parse(localStorage.getItem(sk) || '[]'); } catch (e) {}
+    return `<div class="brief-doc-checkbox-edit">${f.options.map(opt => `<label class="brief-doc-checkbox-edit-item"><input type="checkbox" ${saved.includes(opt) ? 'checked' : ''} onchange="acctBriefToggleCheckbox('${clientKey}','${f.key}','${opt.replace(/'/g, "\\'")}')"> ${opt}</label>`).join('')}</div>`;
+  }
+  const saved = localStorage.getItem(sk) || '';
+  const savedAttr = saved.replace(/"/g, '&quot;');
+  if (f.type === 'textarea') {
+    return `<textarea class="brief-doc-input brief-doc-input-textarea" rows="${f.rows || 3}" placeholder="${f.placeholder || ''}" oninput="acctBriefSaveField('${clientKey}','${f.key}',this.value)">${saved}</textarea>`;
+  }
+  return `<input class="brief-doc-input" type="${f.type === 'date' ? 'date' : 'text'}" placeholder="${f.placeholder || ''}" value="${savedAttr}" oninput="acctBriefSaveField('${clientKey}','${f.key}',this.value)">`;
+}
+
+function _buildCreativeBriefEditableDocumentHTML(clientKey) {
+  const data = document.getElementById('acct-data-' + clientKey);
+  const clientName = data ? data.querySelector('.acct-client-label').textContent : clientKey;
+  const sections = CREATIVE_BRIEF_SECTIONS.filter(s => s.title !== 'ADDITIONAL NOTES / OPEN QUESTIONS');
+  const notesSection = CREATIVE_BRIEF_SECTIONS.find(s => s.title === 'ADDITIONAL NOTES / OPEN QUESTIONS');
+  return `
+    <div class="brief-doc" id="briefDoc-${clientKey}">
+      <div class="brief-doc-topbar">EQUALS 5 &nbsp;|&nbsp; PHARMA CREATIVE BRIEF <span class="brief-doc-confidential">· CONFIDENTIAL</span></div>
+      <div class="brief-doc-title-bar">
+        <div class="brief-doc-title">CREATIVE BRIEF</div>
+        <div class="brief-doc-subtitle">Pharma Brand Marketing &nbsp;|&nbsp; Equals 5 &nbsp;·&nbsp; ${clientName}</div>
+      </div>
+      ${sections.map(section => `
+        <div class="brief-doc-section">
+          <div class="brief-doc-section-header">${section.title}</div>
+          <table class="brief-doc-table">
+            ${section.fields.map(f => `
+              <tr>
+                <td class="brief-doc-label">${f.label || ''}</td>
+                <td class="brief-doc-value">${_briefFieldEditableHTML(clientKey, f)}</td>
+              </tr>
+            `).join('')}
+          </table>
+        </div>
+      `).join('')}
+      ${notesSection ? `
+        <div class="brief-doc-notes-header">ADDITIONAL NOTES / OPEN QUESTIONS</div>
+        <div class="brief-doc-notes-box">${_briefFieldEditableHTML(clientKey, notesSection.fields[0])}</div>
+      ` : ''}
+      <div class="brief-doc-disclaimer">ⓘ This brief is confidential. Distribution is limited to approved project team members only. Ensure all creative and claims have received appropriate MLR review before any public use.</div>
+    </div>
+  `;
+}
+
+function _briefFieldValueHTML(clientKey, f) {
+  const sk = _creativeBriefStorageKey(clientKey, f.key);
+  if (f.type === 'checkbox') {
+    let saved = [];
+    try { saved = JSON.parse(localStorage.getItem(sk) || '[]'); } catch (e) {}
+    return `<div class="brief-doc-checkbox-list">${f.options.map(opt => `<span class="brief-doc-checkbox-item${saved.includes(opt) ? ' checked' : ''}">${saved.includes(opt) ? '☑' : '☐'} ${opt}</span>`).join('')}</div>`;
+  }
+  const val = (localStorage.getItem(sk) || '').trim();
+  return val ? `<span class="brief-doc-value-text">${val.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/\n/g, '<br>')}</span>` : '<span class="brief-doc-value-empty">—</span>';
+}
+
+function _buildCreativeBriefDocumentHTML(clientKey) {
+  const data = document.getElementById('acct-data-' + clientKey);
+  const clientName = data ? data.querySelector('.acct-client-label').textContent : clientKey;
+  const dateStr = localStorage.getItem(_creativeBriefStorageKey(clientKey, 'briefDate')) || new Date().toISOString().slice(0, 10);
+  const sections = CREATIVE_BRIEF_SECTIONS.filter(s => s.title !== 'ADDITIONAL NOTES / OPEN QUESTIONS');
+  const notesSection = CREATIVE_BRIEF_SECTIONS.find(s => s.title === 'ADDITIONAL NOTES / OPEN QUESTIONS');
+  return `
+    <div class="brief-doc" id="briefDoc-${clientKey}">
+      <div class="brief-doc-topbar">EQUALS 5 &nbsp;|&nbsp; PHARMA CREATIVE BRIEF <span class="brief-doc-confidential">· CONFIDENTIAL</span></div>
+      <div class="brief-doc-title-bar">
+        <div class="brief-doc-title">CREATIVE BRIEF</div>
+        <div class="brief-doc-subtitle">Pharma Brand Marketing &nbsp;|&nbsp; Equals 5 &nbsp;·&nbsp; ${clientName}</div>
+      </div>
+      ${sections.map(section => `
+        <div class="brief-doc-section">
+          <div class="brief-doc-section-header">${section.title}</div>
+          <table class="brief-doc-table">
+            ${section.fields.map(f => `
+              <tr>
+                <td class="brief-doc-label">${f.label || ''}</td>
+                <td class="brief-doc-value">${_briefFieldValueHTML(clientKey, f)}</td>
+              </tr>
+            `).join('')}
+          </table>
+        </div>
+      `).join('')}
+      ${notesSection ? `
+        <div class="brief-doc-notes-header">ADDITIONAL NOTES / OPEN QUESTIONS</div>
+        <div class="brief-doc-notes-box">${_briefFieldValueHTML(clientKey, notesSection.fields[0])}</div>
+      ` : ''}
+      <div class="brief-doc-disclaimer">ⓘ This brief is confidential. Distribution is limited to approved project team members only. Ensure all creative and claims have received appropriate MLR review before any public use.</div>
+      <div class="brief-doc-footer">equals5.com &nbsp;|&nbsp; Confidential &amp; Proprietary &nbsp;|&nbsp; ${clientName} &nbsp;|&nbsp; ${dateStr}</div>
+    </div>
+  `;
+}
+
+// Shared CSS for the rendered brief document — used both for the on-page
+// preview (via the static .brief-doc rules in <head>) and injected verbatim
+// into the print iframe, which is a separate document with no access to the
+// hub's stylesheet. Keep these two in sync when adjusting the look.
+function _briefDocCSS() {
+  return `
+    .brief-doc { background:#fff; color:#000; max-width:800px; margin:0 auto; font-family:Arial, Helvetica, sans-serif; }
+    .brief-doc-topbar { background:#1a2744; color:#fff; font-size:11px; font-weight:700; letter-spacing:0.04em; padding:6px 12px; }
+    .brief-doc-confidential { font-weight:400; color:#a9b4cc; }
+    .brief-doc-title-bar { background:#1a2744; padding:18px 16px 14px; margin-bottom:14px; }
+    .brief-doc-title { color:#fff; font-size:34px; font-weight:800; letter-spacing:0.01em; }
+    .brief-doc-subtitle { color:#5fd0d0; font-size:13px; margin-top:2px; }
+    .brief-doc-section { margin:0 16px 14px; page-break-inside:avoid; break-inside:avoid; }
+    .brief-doc-section-header { background:#1a2744; color:#fff; font-size:12px; font-weight:700; letter-spacing:0.03em; padding:5px 10px; }
+    .brief-doc-table { width:100%; border-collapse:collapse; border:1px solid #c7cbd6; }
+    .brief-doc-table tr { border-bottom:1px solid #c7cbd6; }
+    .brief-doc-table tr:last-child { border-bottom:1px solid #c7cbd6; }
+    .brief-doc-label { width:190px; background:#eef0f5; font-weight:700; font-size:12px; color:#1a2744; padding:8px 10px; vertical-align:top; border-right:1px solid #c7cbd6; }
+    .brief-doc-value { padding:8px 10px; font-size:12px; color:#222; vertical-align:top; }
+    .brief-doc-value-text { white-space:pre-wrap; }
+    .brief-doc-value-empty { color:#a8adba; font-style:italic; }
+    .brief-doc-checkbox-list { display:flex; flex-wrap:wrap; gap:4px 16px; }
+    .brief-doc-checkbox-item { color:#a8adba; }
+    .brief-doc-checkbox-item.checked { color:#000; font-weight:700; }
+    .brief-doc-notes-header { background:#2a8a8a; color:#fff; font-size:12px; font-weight:700; letter-spacing:0.03em; padding:5px 10px; margin:0 16px; }
+    .brief-doc-notes-box { border:1px solid #c7cbd6; border-top:none; min-height:70px; padding:10px; font-size:12px; color:#222; margin:0 16px 16px; page-break-inside:avoid; break-inside:avoid; }
+    .brief-doc-disclaimer { font-size:10px; color:#666; font-style:italic; margin:14px 16px; }
+    .brief-doc-footer { font-size:10px; color:#888; border-top:1px solid #ddd; padding:8px 16px 16px; margin:0 16px; }
+  `;
+}
+
+function acctBriefExportPDF(clientKey) {
+  const data = document.getElementById('acct-data-' + clientKey);
+  const clientName = data ? data.querySelector('.acct-client-label').textContent : clientKey;
+  const docHTML = _buildCreativeBriefDocumentHTML(clientKey);
+
+  const dateStr = new Date().toISOString().slice(0, 10);
+  const filename = ['creative-brief', clientName.toLowerCase().replace(/[^a-z0-9]+/g, '-'), dateStr].filter(Boolean).join('_');
+
+  const iframe = document.createElement('iframe');
+  iframe.style.cssText = 'position:fixed; right:0; bottom:0; width:0; height:0; border:0;';
+  document.body.appendChild(iframe);
+
+  const doc = iframe.contentWindow.document;
+  doc.open();
+  doc.write(`<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>${filename}</title>
+<style>
+  @page { size: portrait; margin: 0.5in; }
+  *, *::before, *::after { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; background: #ffffff !important; font-family: Arial, Helvetica, sans-serif; color: #000; }
+  ${_briefDocCSS(true)}
+</style>
+</head>
+<body>${docHTML}</body>
+</html>`);
+  doc.close();
+
+  iframe.onload = function() {
+    setTimeout(function() {
+      iframe.contentWindow.focus();
+      iframe.contentWindow.print();
+      setTimeout(function() { document.body.removeChild(iframe); }, 1000);
+    }, 300);
+  };
+}
+
+const CLIENT_CREATIVE_META = {
+  mesoblast: {
+    font: 'Inter',
+    colors: 'Ryoncil Orange (#F47920) · Navy Blue (#1A3A8F) · White · Light Blue (#A8C4E0)',
+    adType: 'Static — Dynamic Scrolling ISI',
+    dimensions: '1080 × 1080 px',
+    designElements: 'Pediatric patient photography · Ryoncil logo · ISI footer · CTA button',
+    logo: 'assets/mesoblast/ryoncil-logo.png',
+  },
+  healthmonitor: {
+    font: 'Darby Serif Display (headlines) · Inter Bold (section labels) · SF Pro (native UI text)',
+    colors: '#1E2D5B (Navy) · #DEE0E7 (Silver) · #000000 · #FFFFFF',
+    adType: 'Static — In-Feed (Facebook &amp; Instagram)',
+    dimensions: '1080 × 1080 px',
+    designElements: 'Editorial illustration/photography · Health Monitor Clinician Update roundel · Section label bar · "Learn more" CTA',
+    logo: 'assets/healthmonitor/logo-avatar.png',
+  },
+};
+
 function showMessage(clientKey, campaignIdx, msgIdx) {
   _acctClient = clientKey;
   _acctCampaign = campaignIdx;
@@ -2826,6 +3259,7 @@ function showMessage(clientKey, campaignIdx, msgIdx) {
   const campaigns = data.querySelectorAll('.acct-campaign');
   const camp = campaigns[campaignIdx];
   const msgData = camp ? camp.querySelector('.acct-msg-data[data-msg="' + msgIdx + '"]') : null;
+  const creativeMeta = CLIENT_CREATIVE_META[clientKey] || CLIENT_CREATIVE_META.mesoblast;
 
   const rawTitle   = msgData ? (msgData.dataset.title || ('Message ' + (msgIdx+1))) : ('Message ' + (msgIdx+1));
   const campLabel  = camp ? (camp.dataset.label || '') : '';
@@ -2868,6 +3302,17 @@ function showMessage(clientKey, campaignIdx, msgIdx) {
   if (msgLi) jobParts.push(msgLi);
   const jobCodesDisplay = jobParts.length ? jobParts.join(' &nbsp;·&nbsp; ') : 'XXX';
 
+  // When the same creative/messaging runs across multiple social channels (e.g. Meta
+  // Facebook + Instagram), show a swipeable carousel instead of a single static image.
+  const carouselSlides = [];
+  if (msgData) {
+    if (msgData.dataset.img) carouselSlides.push({src: msgData.dataset.img, label: 'Facebook'});
+    if (msgData.dataset.imgInstagram) carouselSlides.push({src: msgData.dataset.imgInstagram, label: 'Instagram'});
+    if (msgData.dataset.imgLinkedin) carouselSlides.push({src: msgData.dataset.imgLinkedin, label: 'LinkedIn'});
+  }
+  _acctCarouselSlides = carouselSlides;
+  _acctCarouselIdx = 0;
+
   _buildCampaignSidebar(clientKey, campaignIdx, 'msg-' + msgIdx);
 
   const msgNum = msgIdx + 1;
@@ -2876,8 +3321,9 @@ function showMessage(clientKey, campaignIdx, msgIdx) {
     <div class="acct-main-title">${clientName}</div>
     <div class="acct-main-subtitle">${subtitle}</div>
     <div class="acct-tabs">
-      <button class="acct-tab-btn" onclick="showClient('${clientKey}')">Brand Guidelines</button>
-      <button class="acct-tab-btn">MLR Requirements</button>
+      <button class="acct-tab-btn" onclick="showClient('${clientKey}', 0)">Creative Brief</button>
+      <button class="acct-tab-btn" onclick="showClient('${clientKey}', 1)">Brand Guidelines</button>
+      <button class="acct-tab-btn" onclick="showClient('${clientKey}', 2)">MLR Requirements</button>
       <button class="acct-tab-btn active">Campaigns</button>
     </div>
     <div style="margin-top:28px;">
@@ -2888,7 +3334,19 @@ function showMessage(clientKey, campaignIdx, msgIdx) {
       <div class="acct-section-label" style="margin-top:28px;">MESSAGE ${msgNum} CREATIVE</div>
       <div class="acct-msg-detail-layout">
         <div class="acct-creative-preview">
-          ${msgData && msgData.dataset.img ? `<img src="${msgData.dataset.img}" style="width:100%;display:block;border-radius:8px;">` : `<div class="ad-mock">
+          ${carouselSlides.length > 1 ? `
+          <div class="acct-carousel-wrap">
+            <div class="acct-carousel">
+              <div class="acct-carousel-label" id="acctCarouselLabel">${carouselSlides[0].label}</div>
+              <img class="acct-carousel-img" id="acctCarouselImg" src="${carouselSlides[0].src}">
+              <button class="acct-carousel-arrow prev" onclick="acctCarouselNav(-1)" aria-label="Previous">‹</button>
+              <button class="acct-carousel-arrow next" onclick="acctCarouselNav(1)" aria-label="Next">›</button>
+            </div>
+            <div class="acct-carousel-dots" id="acctCarouselDots">
+              ${carouselSlides.map((s,i) => `<span class="acct-carousel-dot${i===0?' active':''}" onclick="acctCarouselGoTo(${i})"></span>`).join('')}
+            </div>
+          </div>
+          ` : carouselSlides.length === 1 ? `<img src="${carouselSlides[0].src}" style="width:100%;display:block;border-radius:8px;">` : `<div class="ad-mock">
             <div class="ad-mock-header">
               <div class="ad-mock-logo">R</div>
               <div class="ad-mock-brand">
@@ -2929,12 +3387,12 @@ function showMessage(clientKey, campaignIdx, msgIdx) {
             <div>
               <div class="acct-section-label" style="margin-top:20px;">CREATIVE DETAILS</div>
               <div class="acct-creative-list">
-                <strong style="color:#dde4f5;">Font</strong><br>Inter<br><br>
-                <strong style="color:#dde4f5;">Colors</strong><br>Ryoncil Orange (#F47920) · Navy Blue (#1A3A8F) · White · Light Blue (#A8C4E0)<br><br>
-                <strong style="color:#dde4f5;">Ad Type</strong><br>Static — Dynamic Scrolling ISI<br><br>
-                <strong style="color:#dde4f5;">Dimensions</strong><br>1080 × 1080 px<br><br>
-                <strong style="color:#dde4f5;">Design Elements</strong><br>Pediatric patient photography · Ryoncil logo · ISI footer · CTA button<br><br>
-                <strong style="color:#dde4f5;">Logo</strong><br><img src="assets/mesoblast/ryoncil-logo.png" style="height:48px;margin-top:6px;display:block;">
+                <strong style="color:#dde4f5;">Font</strong><br>${creativeMeta.font}<br><br>
+                <strong style="color:#dde4f5;">Colors</strong><br>${creativeMeta.colors}<br><br>
+                <strong style="color:#dde4f5;">Ad Type</strong><br>${creativeMeta.adType}<br><br>
+                <strong style="color:#dde4f5;">Dimensions</strong><br>${creativeMeta.dimensions}<br><br>
+                <strong style="color:#dde4f5;">Design Elements</strong><br>${creativeMeta.designElements}<br><br>
+                <strong style="color:#dde4f5;">Logo</strong><br><img src="${creativeMeta.logo}" style="height:48px;margin-top:6px;display:block;">
               </div>
             </div>
             <div>
@@ -3014,17 +3472,32 @@ function _buildMetricCardsHTML() {
 }
 
 function _buildAdMessageCardsHTML(clientKey, campaignIdx) {
-  const msgs = [
-    {name:'Message 1', status:'Running', statusClass:'running'},
-    {name:'Message 2', status:'In Review', statusClass:'review'},
-    {name:'Message 3', status:'In Review', statusClass:'review'},
-    {name:'Message 4', status:'Running', statusClass:'running'},
+  const data = document.getElementById('acct-data-' + clientKey);
+  const campaigns = data ? data.querySelectorAll('.acct-campaign') : [];
+  const camp = campaigns[campaignIdx];
+  const msgEls = camp ? [...camp.querySelectorAll('.acct-msg-data')] : [];
+  const statusClassFor = s => {
+    const key = (s || '').toLowerCase();
+    if (key === 'approved' || key === 'scheduled') return 'scheduled';
+    if (key === 'running' || key === 'live') return 'running';
+    return 'review';
+  };
+  const msgs = msgEls.length ? msgEls.map((el, i) => ({
+    name: 'Message ' + (i + 1),
+    status: el.dataset.status || 'In Review',
+    statusClass: statusClassFor(el.dataset.status),
+    campaign: camp.dataset.label || '',
+  })) : [
+    {name:'Message 1', status:'Running', statusClass:'running', campaign:'HCP Awareness Q2 2025'},
+    {name:'Message 2', status:'In Review', statusClass:'review', campaign:'HCP Awareness Q2 2025'},
+    {name:'Message 3', status:'In Review', statusClass:'review', campaign:'HCP Awareness Q2 2025'},
+    {name:'Message 4', status:'Running', statusClass:'running', campaign:'HCP Awareness Q2 2025'},
   ];
   return '<div class="acct-msg-grid">' + msgs.map((m, i) => `
     <div class="acct-msg-card" onclick="showMessage('${clientKey}', ${campaignIdx}, ${i})">
       <div class="acct-msg-status ${m.statusClass}">${m.status}</div>
       <div class="acct-msg-name">${m.name}</div>
-      <div class="acct-msg-campaign">HCP Awareness Q2 2025</div>
+      <div class="acct-msg-campaign">${m.campaign}</div>
     </div>
   `).join('') + '</div>';
 }
@@ -3870,16 +4343,16 @@ function mlrExportPDF() {
 <title>${filename}</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
-  @page { size: landscape; margin: 0.5in; }
+  @page { size: portrait; margin: 0.5in; }
   *, *::before, *::after { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; box-sizing: border-box; }
   html, body { margin: 0; padding: 0; background: #ffffff !important; font-family: 'Inter', system-ui, sans-serif; color: #000; }
-  .mlr-export-page { padding: 48px; }
-  #mlr-label-block { margin-bottom: 32px; }
+  .mlr-export-page { padding: 48px; page-break-inside: avoid; break-inside: avoid; }
+  #mlr-label-block { margin-bottom: 32px; page-break-inside: avoid; break-inside: avoid; }
   #mlr-label-campaign, #mlr-label-jobcode { font-size: 32px; font-weight: 700; color: #000; letter-spacing: -0.02em; line-height: 1.2; white-space: pre-line; }
   #mlr-label-format { font-size: 13px; font-weight: 600; color: #6f6f6f; margin-top: 4px; }
   #mlr-label-dest { font-size: 13px; color: #6f6f6f; margin-top: 2px; }
   #mlr-mocks-row { display: flex; justify-content: center; }
-  .mlr-mock-wrap { flex: 0 0 420px; display: flex; flex-direction: column; gap: 8px; }
+  .mlr-mock-wrap { flex: 0 0 420px; display: flex; flex-direction: column; gap: 8px; page-break-inside: avoid; break-inside: avoid; }
   .mlr-mock-platform-label { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #6f6f6f; }
   .mlr-mock-card { border: 1px solid #000; background: #fff; width: 100%; }
   ${platformCSS}
