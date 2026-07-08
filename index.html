@@ -879,11 +879,13 @@ input[type="file"].mlr-input { padding:6px 10px; color:var(--muted); cursor:poin
           <button class="acct-tab-btn" onclick="showAcctTab(this,'guidelines')">Brand Guidelines</button>
           <button class="acct-tab-btn" onclick="showAcctTab(this,'mlr')">MLR Requirements</button>
           <button class="acct-tab-btn" onclick="showCampaignOverview(_acctClient,0)">Campaigns</button>
+          <button class="acct-tab-btn" onclick="showAcctTab(this,'benchmarks')">Benchmark Metrics</button>
         </div>
         <div class="acct-tab-panel active" id="acct-tab-brief"></div>
         <div class="acct-tab-panel" id="acct-tab-guidelines"></div>
         <div class="acct-tab-panel" id="acct-tab-mlr"></div>
         <div class="acct-tab-panel" id="acct-tab-campaigns"></div>
+        <div class="acct-tab-panel" id="acct-tab-benchmarks"></div>
       </div>
     </div>
 
@@ -2806,6 +2808,8 @@ function showClient(key, tabIdx) {
 
   document.getElementById('acct-tab-campaigns').innerHTML = '';
 
+  document.getElementById('acct-tab-benchmarks').innerHTML = _buildBenchmarkMetricsHTML();
+
   document.querySelectorAll('.acct-tab-btn').forEach((b,i) => b.classList.toggle('active', i===tabIdx));
   document.querySelectorAll('.acct-tab-panel').forEach((p,i) => p.classList.toggle('active', i===tabIdx));
 
@@ -2929,6 +2933,7 @@ function showCampaignOverview(clientKey, campaignIdx) {
       <button class="acct-tab-btn" onclick="showClient('${clientKey}', 1)">Brand Guidelines</button>
       <button class="acct-tab-btn" onclick="showClient('${clientKey}', 2)">MLR Requirements</button>
       <button class="acct-tab-btn active">Campaigns</button>
+      <button class="acct-tab-btn" onclick="showClient('${clientKey}', 4)">Benchmark Metrics</button>
     </div>
     <div style="margin-top:28px;">
       ${_buildTimelineHTML()}
@@ -3311,6 +3316,7 @@ function showMessage(clientKey, campaignIdx, msgIdx) {
       <button class="acct-tab-btn" onclick="showClient('${clientKey}', 1)">Brand Guidelines</button>
       <button class="acct-tab-btn" onclick="showClient('${clientKey}', 2)">MLR Requirements</button>
       <button class="acct-tab-btn active">Campaigns</button>
+      <button class="acct-tab-btn" onclick="showClient('${clientKey}', 4)">Benchmark Metrics</button>
     </div>
     <div style="margin-top:28px;">
       <div class="acct-msg-heading">${msgTitle}</div>
@@ -3455,6 +3461,13 @@ function _buildMetricCardsHTML() {
       <div class="acct-metric-sub">${m.sub}</div>
     </div>
   `).join('') + '</div>';
+}
+
+function _buildBenchmarkMetricsHTML() {
+  return `
+    <div class="acct-section-label">BENCHMARK METRICS</div>
+    ${_buildMetricCardsHTML()}
+  `;
 }
 
 function _buildAdMessageCardsHTML(clientKey, campaignIdx) {
