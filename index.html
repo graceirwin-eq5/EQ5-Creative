@@ -474,7 +474,7 @@
 .acct-sidebar-client-btn.active,
 .acct-sidebar-campaign-btn.active { background:linear-gradient(90deg, rgba(1,176,176,0.14), rgba(1,176,176,0.03)); border-left:3px solid var(--cyan); box-shadow:inset 0 0 20px rgba(1,176,176,0.08); }
 .acct-sidebar-sub { display:flex; flex-direction:column; }
-.acct-sidebar-msg-btn { display:block; width:184px; height:40px; margin:0 8px; background:transparent; border:none; border-left:3px solid transparent; border-radius:4px; text-align:left; padding:0 0 0 28px; font-size:14px; font-weight:500; color:var(--muted); cursor:pointer; line-height:40px; transition:background .2s var(--ease-glow), border-color .2s var(--ease-glow), color .2s var(--ease-glow); }
+.acct-sidebar-msg-btn { display:block; width:184px; min-height:40px; margin:0 8px; background:transparent; border:none; border-left:3px solid transparent; border-radius:4px; text-align:left; padding:8px 8px 8px 28px; box-sizing:border-box; font-size:14px; font-weight:500; color:var(--muted); cursor:pointer; line-height:1.3; white-space:normal; word-wrap:break-word; transition:background .2s var(--ease-glow), border-color .2s var(--ease-glow), color .2s var(--ease-glow); }
 .acct-sidebar-msg-btn:hover { background:rgba(1,176,176,0.08); color:#dde4f5; }
 .acct-sidebar-msg-btn.active { background:linear-gradient(90deg, rgba(1,176,176,0.14), rgba(1,176,176,0.03)); border-left:3px solid var(--cyan); color:#dde4f5; box-shadow:inset 0 0 20px rgba(1,176,176,0.08); }
 
@@ -507,6 +507,23 @@
 .acct-tl-dot.active { background:var(--cyan); border-color:var(--cyan); }
 .acct-tl-dot.passed { background:var(--muted); border-color:var(--muted); }
 .acct-tl-label { font-size:13px; color:#dde4f5; }
+
+.acct-cm-empty { padding:24px; background:var(--glass-bg); border:1px dashed var(--glass-border); border-radius:12px; color:var(--muted); font-size:14px; margin-bottom:28px; }
+.acct-cm-wrap { background:var(--glass-bg); border:1px solid var(--glass-border); border-radius:12px; overflow-x:auto; margin-bottom:28px; }
+.acct-cm-table { border-collapse:collapse; width:100%; min-width:1300px; }
+.acct-cm-table th { padding:12px 14px; text-align:left; font-size:11px; text-transform:uppercase; letter-spacing:0.08em; color:var(--muted); font-weight:700; border-bottom:1px solid var(--border); white-space:nowrap; }
+.acct-cm-table td { padding:12px 14px; border-bottom:1px solid var(--border); font-size:13px; color:#dde4f5; vertical-align:middle; white-space:nowrap; }
+.acct-cm-table tr:last-child td { border-bottom:none; }
+.acct-cm-matrix-link { color:var(--cyan); text-decoration:underline; font-size:12px; }
+.acct-cm-table th:last-child, .acct-cm-table td:last-child { border-left:2px solid rgba(1,176,176,0.3); }
+.acct-cm-table th:last-child { color:var(--cyan-alt); font-size:12px; }
+.acct-cm-timeline-cell { padding:10px 14px !important; background:rgba(1,176,176,0.045); }
+.acct-cm-timeline { display:grid; align-items:center; height:44px; background-image:linear-gradient(to right, var(--border) 1px, transparent 1px); background-repeat:repeat-x; background-position:left top; }
+.acct-cm-bar { grid-row:1; height:32px; border-radius:6px; background:var(--gradient); box-shadow:0 0 16px rgba(1,176,176,0.35); }
+.acct-cm-bar.is-tbd { background:linear-gradient(93.8deg, rgba(53,113,203,.45) 0, rgba(1,176,176,.45) 100%); border:1px dashed rgba(255,255,255,.45); box-shadow:none; }
+.acct-cm-month-hd { display:grid; font-size:11px; font-weight:600; letter-spacing:0.04em; color:var(--muted); text-align:center; padding-bottom:6px; background-image:linear-gradient(to right, var(--border) 1px, transparent 1px); background-repeat:repeat-x; background-position:left bottom; }
+.acct-cm-est-tag { color:var(--muted); font-style:italic; }
+.acct-cm-tbd-note { color:var(--muted); font-size:12px; font-style:italic; margin:-10px 0 16px; }
 
 .acct-metric-grid { display:grid; grid-template-columns:repeat(4,280px); gap:12px; margin-bottom:8px; }
 .acct-metric-card { position:relative; width:280px; height:100px; background:var(--glass-bg); backdrop-filter:blur(var(--glass-blur)); -webkit-backdrop-filter:blur(var(--glass-blur)); border:1px solid var(--glass-border); border-radius:10px; padding:14px; box-sizing:border-box; overflow:hidden; }
@@ -700,6 +717,7 @@
 .mlr-input:focus { border-color:var(--cyan); background:rgba(1,176,176,0.05); box-shadow:0 0 0 3px rgba(1,176,176,0.15); }
 .mlr-textarea { resize:vertical; min-height:70px; line-height:1.5; }
 input[type="file"].mlr-input { padding:6px 10px; color:var(--muted); cursor:pointer; }
+input[type="date"].mlr-input { color-scheme:dark; }
 .mlr-channel-row { display:flex; gap:16px; }
 .mlr-channel-check { display:flex; align-items:center; gap:6px; font-size:13px; color:#dde4f5; cursor:pointer; }
 .mlr-channel-check input { accent-color:var(--cyan); width:14px; height:14px; cursor:pointer; }
@@ -877,13 +895,15 @@ input[type="file"].mlr-input { padding:6px 10px; color:var(--muted); cursor:poin
         <div class="acct-tabs">
           <button class="acct-tab-btn active" onclick="showAcctTab(this,'brief')">Creative Brief</button>
           <button class="acct-tab-btn" onclick="showAcctTab(this,'guidelines')">Brand Guidelines</button>
-          <button class="acct-tab-btn" onclick="showAcctTab(this,'mlr')">MLR Requirements</button>
+          <button class="acct-tab-btn" onclick="showAcctTab(this,'mlr')">Resources</button>
+          <button class="acct-tab-btn" onclick="showAcctTab(this,'contentmap')">Content Map</button>
           <button class="acct-tab-btn" onclick="showCampaignOverview(_acctClient,0)">Campaigns</button>
           <button class="acct-tab-btn" onclick="showAcctTab(this,'benchmarks')">Benchmark Metrics</button>
         </div>
         <div class="acct-tab-panel active" id="acct-tab-brief"></div>
         <div class="acct-tab-panel" id="acct-tab-guidelines"></div>
         <div class="acct-tab-panel" id="acct-tab-mlr"></div>
+        <div class="acct-tab-panel" id="acct-tab-contentmap"></div>
         <div class="acct-tab-panel" id="acct-tab-campaigns"></div>
         <div class="acct-tab-panel" id="acct-tab-benchmarks"></div>
       </div>
@@ -910,17 +930,39 @@ input[type="file"].mlr-input { padding:6px 10px; color:var(--muted); cursor:poin
         </div>
       </div>
       <div class="acct-mlr-data">
-        <div class="acct-section-label">MLR REQUIREMENTS</div>
+        <div class="acct-section-label">RESOURCES</div>
         <div class="acct-info-grid">
           <div class="acct-info-card"><div class="acct-info-label">Ad Name</div><div class="acct-info-value">XXXXX</div></div>
           <div class="acct-info-card"><div class="acct-info-label">Job Code</div><div class="acct-info-value">US-BBB-XXXX</div></div>
           <div class="acct-info-card"><div class="acct-info-label">Social Channel</div><div class="acct-info-value">Meta</div></div>
           <div class="acct-info-card"><div class="acct-info-label">Run Dates</div><div class="acct-info-value">X/XX/XX–X/XX/XX</div></div>
-          <div class="acct-info-card"><div class="acct-info-label">ISI</div><div class="acct-info-value">LINK</div></div>
+          <div class="acct-info-card"><div class="acct-info-label">ISI</div><input class="mlr-input acct-field-input" type="text" data-field="isi-link" placeholder="Paste ISI link…" oninput="acctSaveField(this)"></div>
+          <div class="acct-info-card"><div class="acct-info-label">HCP Landing Site</div><input class="mlr-input acct-field-input" type="text" data-field="hcp-landing-site" placeholder="Paste HCP landing site link…" oninput="acctSaveField(this)"></div>
+          <div class="acct-info-card"><div class="acct-info-label">MLR Submission Date</div><input class="mlr-input acct-field-input" type="date" data-field="mlr-submission-date" oninput="acctSaveField(this)"></div>
+          <div class="acct-info-card"><div class="acct-info-label">MLR Review Meeting Date</div><input class="mlr-input acct-field-input" type="date" data-field="mlr-review-date" oninput="acctSaveField(this)"></div>
+          <div class="acct-info-card"><div class="acct-info-label">Examples / Reference Files</div><input class="mlr-input acct-field-input" type="text" data-field="examples-link" placeholder="Paste link to past ads/examples…" oninput="acctSaveField(this)"></div>
           <div class="acct-info-card"><div class="acct-info-label">Destination Link</div><div class="acct-info-value">URL</div></div>
           <div class="acct-info-card"><div class="acct-info-label">Matrix Link</div><input class="mlr-input acct-matrix-input" type="text" placeholder="Paste Google Drive spreadsheet link…" oninput="acctSaveMatrixLink(this)"></div>
         </div>
         <button class="mlr-export-btn" style="width:auto; padding:0 20px;" onclick="acctCopyCrossCheckPrompt()">Copy Cross-Check Prompt for Claude</button>
+      </div>
+      <div class="acct-contentmap-data">
+        <div class="acct-cm-row" data-campaign="Romvimza — Equals 5 Rare Medical Network" data-sources="Facebook · Instagram" data-matrix="https://docs.google.com/spreadsheets/d/1gTEfJwqvgT3wAjYt9LKBKl33RRX4eD3ILV-N_k1z9V8/edit" data-creative="Romvimza- Adset A1- Spotlight" data-type="Static" data-assets="Ad set A assets" data-target="6,424 · 97% Match rate" data-start="2026-05-15" data-end="2026-08-15"></div>
+        <div class="acct-cm-row" data-campaign="Romvimza — Equals 5 Rare Medical Network" data-sources="Facebook · Instagram" data-matrix="https://docs.google.com/spreadsheets/d/1gTEfJwqvgT3wAjYt9LKBKl33RRX4eD3ILV-N_k1z9V8/edit" data-creative="Romvimza- Adset B1- 5 Facts (Fact 1)" data-type="Static" data-assets="Ad set B assets" data-target="6,424 · 97% Match rate" data-start="2026-05-15" data-end="2026-08-15"></div>
+        <div class="acct-cm-row" data-campaign="Romvimza — Equals 5 Rare Medical Network" data-sources="Facebook · Instagram" data-matrix="https://docs.google.com/spreadsheets/d/1gTEfJwqvgT3wAjYt9LKBKl33RRX4eD3ILV-N_k1z9V8/edit" data-creative="Romvimza- Adset C1- Rare IQ" data-type="Static" data-assets="Ad set C assets" data-target="6,424 · 97% Match rate" data-start="2026-05-15" data-end="2026-08-15"></div>
+        <div class="acct-cm-row" data-campaign="Romvimza — Equals 5 Rare Medical Network" data-sources="Facebook · Instagram" data-matrix="https://docs.google.com/spreadsheets/d/1gTEfJwqvgT3wAjYt9LKBKl33RRX4eD3ILV-N_k1z9V8/edit" data-creative="Romvimza- Adset D1- Rare View" data-type="Static" data-assets="Ad set D assets" data-target="6,424 · 97% Match rate" data-start="2026-05-15" data-end="2026-08-15"></div>
+        <div class="acct-cm-row" data-campaign="Romvimza — Equals 5 Rare Medical Network" data-sources="Facebook · Instagram" data-matrix="https://docs.google.com/spreadsheets/d/1gTEfJwqvgT3wAjYt9LKBKl33RRX4eD3ILV-N_k1z9V8/edit" data-creative="Romvimza- Adset A2- Spotlight" data-type="Static" data-assets="Ad set A assets" data-target="6,424 · 97% Match rate" data-start="2026-08-16" data-end="2026-11-30"></div>
+        <div class="acct-cm-row" data-campaign="Romvimza — Equals 5 Rare Medical Network" data-sources="Facebook · Instagram" data-matrix="https://docs.google.com/spreadsheets/d/1gTEfJwqvgT3wAjYt9LKBKl33RRX4eD3ILV-N_k1z9V8/edit" data-creative="Romvimza- Adset B2- 5 Facts (Fact 2)" data-type="Static" data-assets="Ad set B assets" data-target="6,424 · 97% Match rate" data-start="2026-08-16" data-end="2026-11-30"></div>
+        <div class="acct-cm-row" data-campaign="Romvimza — Equals 5 Rare Medical Network" data-sources="Facebook · Instagram" data-matrix="https://docs.google.com/spreadsheets/d/1gTEfJwqvgT3wAjYt9LKBKl33RRX4eD3ILV-N_k1z9V8/edit" data-creative="Romvimza- Adset C2- Rare IQ" data-type="Static" data-assets="Ad set C assets" data-target="6,424 · 97% Match rate" data-start="2026-08-16" data-end="2026-11-30"></div>
+        <div class="acct-cm-row" data-campaign="Romvimza — Equals 5 Rare Medical Network" data-sources="Facebook · Instagram" data-matrix="https://docs.google.com/spreadsheets/d/1gTEfJwqvgT3wAjYt9LKBKl33RRX4eD3ILV-N_k1z9V8/edit" data-creative="Romvimza- Adset D2- Rare View" data-type="Static" data-assets="Ad set D assets" data-target="6,424 · 97% Match rate" data-start="2026-08-16" data-end="2026-11-30"></div>
+        <div class="acct-cm-row" data-campaign="Romvimza — Equals 5 Rare Medical Network" data-sources="Facebook · Instagram" data-matrix="https://docs.google.com/spreadsheets/d/1gTEfJwqvgT3wAjYt9LKBKl33RRX4eD3ILV-N_k1z9V8/edit" data-creative="Romvimza- Adset A3- Spotlight" data-type="Static" data-assets="Ad set A assets" data-target="6,424 · 97% Match rate" data-start="2026-12-01" data-end="2027-02-28"></div>
+        <div class="acct-cm-row" data-campaign="Romvimza — Equals 5 Rare Medical Network" data-sources="Facebook · Instagram" data-matrix="https://docs.google.com/spreadsheets/d/1gTEfJwqvgT3wAjYt9LKBKl33RRX4eD3ILV-N_k1z9V8/edit" data-creative="Romvimza- Adset B3- 5 Facts (Fact 3)" data-type="Static" data-assets="Ad set B assets" data-target="6,424 · 97% Match rate" data-start="2026-12-01" data-end="2027-02-28"></div>
+        <div class="acct-cm-row" data-campaign="Romvimza — Equals 5 Rare Medical Network" data-sources="Facebook · Instagram" data-matrix="https://docs.google.com/spreadsheets/d/1gTEfJwqvgT3wAjYt9LKBKl33RRX4eD3ILV-N_k1z9V8/edit" data-creative="Romvimza- Adset C3- Rare IQ" data-type="Static" data-assets="Ad set C assets" data-target="6,424 · 97% Match rate" data-start="2026-12-01" data-end="2027-02-28"></div>
+        <div class="acct-cm-row" data-campaign="Romvimza — Equals 5 Rare Medical Network" data-sources="Facebook · Instagram" data-matrix="https://docs.google.com/spreadsheets/d/1gTEfJwqvgT3wAjYt9LKBKl33RRX4eD3ILV-N_k1z9V8/edit" data-creative="Romvimza- Adset D3- Rare View" data-type="Static" data-assets="Ad set D assets" data-target="6,424 · 97% Match rate" data-start="2026-12-01" data-end="2027-02-28"></div>
+        <div class="acct-cm-row" data-campaign="Romvimza — Equals 5 Rare Medical Network" data-sources="Facebook · Instagram" data-matrix="https://docs.google.com/spreadsheets/d/1gTEfJwqvgT3wAjYt9LKBKl33RRX4eD3ILV-N_k1z9V8/edit" data-creative="Romvimza- Adset A4- Spotlight" data-type="Static" data-assets="Ad set A assets" data-target="6,424 · 97% Match rate" data-start="2027-03-01" data-end="2027-05-31"></div>
+        <div class="acct-cm-row" data-campaign="Romvimza — Equals 5 Rare Medical Network" data-sources="Facebook · Instagram" data-matrix="https://docs.google.com/spreadsheets/d/1gTEfJwqvgT3wAjYt9LKBKl33RRX4eD3ILV-N_k1z9V8/edit" data-creative="Romvimza- Adset B4- 5 Facts (Facts 4 &amp; 5)" data-type="Static" data-assets="Ad set B assets" data-target="6,424 · 97% Match rate" data-start="2027-03-01" data-end="2027-05-31"></div>
+        <div class="acct-cm-row" data-campaign="Romvimza — Equals 5 Rare Medical Network" data-sources="Facebook · Instagram" data-matrix="https://docs.google.com/spreadsheets/d/1gTEfJwqvgT3wAjYt9LKBKl33RRX4eD3ILV-N_k1z9V8/edit" data-creative="Romvimza- Adset C4- Rare IQ" data-type="Static" data-assets="Ad set C assets" data-target="6,424 · 97% Match rate" data-start="2027-03-01" data-end="2027-05-31"></div>
+        <div class="acct-cm-row" data-campaign="Romvimza — Equals 5 Rare Medical Network" data-sources="Facebook · Instagram" data-matrix="https://docs.google.com/spreadsheets/d/1gTEfJwqvgT3wAjYt9LKBKl33RRX4eD3ILV-N_k1z9V8/edit" data-creative="Romvimza- Adset D4- Rare View" data-type="Static" data-assets="Ad set D assets" data-target="6,424 · 97% Match rate" data-start="2027-03-01" data-end="2027-05-31"></div>
       </div>
       <div class="acct-campaign" data-label="HCP Awareness — Q2 2025"></div>
       <div class="acct-campaign" data-label="Patient Retention — Q3 2025"></div>
@@ -941,13 +983,17 @@ input[type="file"].mlr-input { padding:6px 10px; color:var(--muted); cursor:poin
         </div>
       </div>
       <div class="acct-mlr-data">
-        <div class="acct-section-label">MLR REQUIREMENTS</div>
+        <div class="acct-section-label">RESOURCES</div>
         <div class="acct-info-grid">
           <div class="acct-info-card"><div class="acct-info-label">Ad Name</div><div class="acct-info-value">XXXXX</div></div>
           <div class="acct-info-card"><div class="acct-info-label">Job Code</div><div class="acct-info-value">US-BBB-XXXX</div></div>
           <div class="acct-info-card"><div class="acct-info-label">Social Channel</div><div class="acct-info-value">Meta</div></div>
           <div class="acct-info-card"><div class="acct-info-label">Run Dates</div><div class="acct-info-value">X/XX/XX–X/XX/XX</div></div>
-          <div class="acct-info-card"><div class="acct-info-label">ISI</div><div class="acct-info-value">LINK</div></div>
+          <div class="acct-info-card"><div class="acct-info-label">ISI</div><input class="mlr-input acct-field-input" type="text" data-field="isi-link" placeholder="Paste ISI link…" oninput="acctSaveField(this)"></div>
+          <div class="acct-info-card"><div class="acct-info-label">HCP Landing Site</div><input class="mlr-input acct-field-input" type="text" data-field="hcp-landing-site" placeholder="Paste HCP landing site link…" oninput="acctSaveField(this)"></div>
+          <div class="acct-info-card"><div class="acct-info-label">MLR Submission Date</div><input class="mlr-input acct-field-input" type="date" data-field="mlr-submission-date" oninput="acctSaveField(this)"></div>
+          <div class="acct-info-card"><div class="acct-info-label">MLR Review Meeting Date</div><input class="mlr-input acct-field-input" type="date" data-field="mlr-review-date" oninput="acctSaveField(this)"></div>
+          <div class="acct-info-card"><div class="acct-info-label">Examples / Reference Files</div><input class="mlr-input acct-field-input" type="text" data-field="examples-link" placeholder="Paste link to past ads/examples…" oninput="acctSaveField(this)"></div>
           <div class="acct-info-card"><div class="acct-info-label">Destination Link</div><div class="acct-info-value">URL</div></div>
           <div class="acct-info-card"><div class="acct-info-label">Matrix Link</div><input class="mlr-input acct-matrix-input" type="text" placeholder="Paste Google Drive spreadsheet link…" oninput="acctSaveMatrixLink(this)"></div>
         </div>
@@ -972,13 +1018,17 @@ input[type="file"].mlr-input { padding:6px 10px; color:var(--muted); cursor:poin
         </div>
       </div>
       <div class="acct-mlr-data">
-        <div class="acct-section-label">MLR REQUIREMENTS</div>
+        <div class="acct-section-label">RESOURCES</div>
         <div class="acct-info-grid">
           <div class="acct-info-card"><div class="acct-info-label">Ad Name</div><div class="acct-info-value">XXXXX</div></div>
           <div class="acct-info-card"><div class="acct-info-label">Job Code</div><div class="acct-info-value">US-BBB-XXXX</div></div>
           <div class="acct-info-card"><div class="acct-info-label">Social Channel</div><div class="acct-info-value">Meta</div></div>
           <div class="acct-info-card"><div class="acct-info-label">Run Dates</div><div class="acct-info-value">X/XX/XX–X/XX/XX</div></div>
-          <div class="acct-info-card"><div class="acct-info-label">ISI</div><div class="acct-info-value">LINK</div></div>
+          <div class="acct-info-card"><div class="acct-info-label">ISI</div><input class="mlr-input acct-field-input" type="text" data-field="isi-link" placeholder="Paste ISI link…" oninput="acctSaveField(this)"></div>
+          <div class="acct-info-card"><div class="acct-info-label">HCP Landing Site</div><input class="mlr-input acct-field-input" type="text" data-field="hcp-landing-site" placeholder="Paste HCP landing site link…" oninput="acctSaveField(this)"></div>
+          <div class="acct-info-card"><div class="acct-info-label">MLR Submission Date</div><input class="mlr-input acct-field-input" type="date" data-field="mlr-submission-date" oninput="acctSaveField(this)"></div>
+          <div class="acct-info-card"><div class="acct-info-label">MLR Review Meeting Date</div><input class="mlr-input acct-field-input" type="date" data-field="mlr-review-date" oninput="acctSaveField(this)"></div>
+          <div class="acct-info-card"><div class="acct-info-label">Examples / Reference Files</div><input class="mlr-input acct-field-input" type="text" data-field="examples-link" placeholder="Paste link to past ads/examples…" oninput="acctSaveField(this)"></div>
           <div class="acct-info-card"><div class="acct-info-label">Destination Link</div><div class="acct-info-value">URL</div></div>
           <div class="acct-info-card"><div class="acct-info-label">Matrix Link</div><input class="mlr-input acct-matrix-input" type="text" placeholder="Paste Google Drive spreadsheet link…" oninput="acctSaveMatrixLink(this)"></div>
         </div>
@@ -1003,13 +1053,17 @@ input[type="file"].mlr-input { padding:6px 10px; color:var(--muted); cursor:poin
         </div>
       </div>
       <div class="acct-mlr-data">
-        <div class="acct-section-label">MLR REQUIREMENTS</div>
+        <div class="acct-section-label">RESOURCES</div>
         <div class="acct-info-grid">
           <div class="acct-info-card"><div class="acct-info-label">Ad Name</div><div class="acct-info-value">XXXXX</div></div>
           <div class="acct-info-card"><div class="acct-info-label">Job Code</div><div class="acct-info-value">US-BBB-XXXX</div></div>
           <div class="acct-info-card"><div class="acct-info-label">Social Channel</div><div class="acct-info-value">Meta</div></div>
           <div class="acct-info-card"><div class="acct-info-label">Run Dates</div><div class="acct-info-value">X/XX/XX–X/XX/XX</div></div>
-          <div class="acct-info-card"><div class="acct-info-label">ISI</div><div class="acct-info-value">LINK</div></div>
+          <div class="acct-info-card"><div class="acct-info-label">ISI</div><input class="mlr-input acct-field-input" type="text" data-field="isi-link" placeholder="Paste ISI link…" oninput="acctSaveField(this)"></div>
+          <div class="acct-info-card"><div class="acct-info-label">HCP Landing Site</div><input class="mlr-input acct-field-input" type="text" data-field="hcp-landing-site" placeholder="Paste HCP landing site link…" oninput="acctSaveField(this)"></div>
+          <div class="acct-info-card"><div class="acct-info-label">MLR Submission Date</div><input class="mlr-input acct-field-input" type="date" data-field="mlr-submission-date" oninput="acctSaveField(this)"></div>
+          <div class="acct-info-card"><div class="acct-info-label">MLR Review Meeting Date</div><input class="mlr-input acct-field-input" type="date" data-field="mlr-review-date" oninput="acctSaveField(this)"></div>
+          <div class="acct-info-card"><div class="acct-info-label">Examples / Reference Files</div><input class="mlr-input acct-field-input" type="text" data-field="examples-link" placeholder="Paste link to past ads/examples…" oninput="acctSaveField(this)"></div>
           <div class="acct-info-card"><div class="acct-info-label">Destination Link</div><div class="acct-info-value">URL</div></div>
           <div class="acct-info-card"><div class="acct-info-label">Matrix Link</div><input class="mlr-input acct-matrix-input" type="text" placeholder="Paste Google Drive spreadsheet link…" oninput="acctSaveMatrixLink(this)"></div>
         </div>
@@ -1034,17 +1088,26 @@ input[type="file"].mlr-input { padding:6px 10px; color:var(--muted); cursor:poin
         </div>
       </div>
       <div class="acct-mlr-data">
-        <div class="acct-section-label">MLR REQUIREMENTS</div>
+        <div class="acct-section-label">RESOURCES</div>
         <div class="acct-info-grid">
           <div class="acct-info-card"><div class="acct-info-label">Campaign</div><div class="acct-info-value">Ryoncil HCP Social — Concept Mockups</div></div>
           <div class="acct-info-card"><div class="acct-info-label">Job Codes</div><div class="acct-info-value">MAT298–MAT315</div></div>
           <div class="acct-info-card"><div class="acct-info-label">Social Channels</div><div class="acct-info-value">Instagram · Facebook · LinkedIn</div></div>
           <div class="acct-info-card"><div class="acct-info-label">Handle</div><div class="acct-info-value">@ Rare Pediatric News</div></div>
-          <div class="acct-info-card"><div class="acct-info-label">ISI</div><div class="acct-info-value">See full Prescribing Information</div></div>
+          <div class="acct-info-card"><div class="acct-info-label">ISI</div><input class="mlr-input acct-field-input" type="text" data-field="isi-link" data-default="See full Prescribing Information" placeholder="Paste ISI link…" oninput="acctSaveField(this)"></div>
+          <div class="acct-info-card"><div class="acct-info-label">HCP Landing Site</div><input class="mlr-input acct-field-input" type="text" data-field="hcp-landing-site" data-default="https://www.ryoncilhcp.com" placeholder="Paste HCP landing site link…" oninput="acctSaveField(this)"></div>
+          <div class="acct-info-card"><div class="acct-info-label">MLR Submission Date</div><input class="mlr-input acct-field-input" type="date" data-field="mlr-submission-date" oninput="acctSaveField(this)"></div>
+          <div class="acct-info-card"><div class="acct-info-label">MLR Review Meeting Date</div><input class="mlr-input acct-field-input" type="date" data-field="mlr-review-date" oninput="acctSaveField(this)"></div>
+          <div class="acct-info-card"><div class="acct-info-label">Examples / Reference Files</div><input class="mlr-input acct-field-input" type="text" data-field="examples-link" placeholder="Paste link to past ads/examples…" oninput="acctSaveField(this)"></div>
           <div class="acct-info-card"><div class="acct-info-label">Audience</div><div class="acct-info-value">Prescribing · Non-prescribing physicians</div></div>
           <div class="acct-info-card"><div class="acct-info-label">Matrix Link</div><input class="mlr-input acct-matrix-input" type="text" placeholder="Paste Google Drive spreadsheet link…" oninput="acctSaveMatrixLink(this)"></div>
         </div>
         <button class="mlr-export-btn" style="width:auto; padding:0 20px;" onclick="acctCopyCrossCheckPrompt()">Copy Cross-Check Prompt for Claude</button>
+      </div>
+      <div class="acct-contentmap-data">
+        <div class="acct-cm-row" data-tbd="true" data-campaign="RYONCIL HCP Social" data-sources="Instagram · Facebook · LinkedIn" data-creative="Awareness — Prescribing &amp; Non-Prescribing" data-type="Static" data-assets="6 creative variants (2 audiences × 3 channels)" data-target="TBD" data-start="2026-10-01" data-end="2026-12-31"></div>
+        <div class="acct-cm-row" data-tbd="true" data-campaign="RYONCIL HCP Social" data-sources="Instagram · Facebook · LinkedIn" data-creative="Education — Prescribing &amp; Non-Prescribing" data-type="Static" data-assets="6 creative variants (2 audiences × 3 channels)" data-target="TBD" data-start="2027-01-01" data-end="2027-03-31"></div>
+        <div class="acct-cm-row" data-tbd="true" data-campaign="RYONCIL HCP Social" data-sources="Instagram · Facebook · LinkedIn" data-creative="MOA — Prescribing &amp; Non-Prescribing" data-type="Static" data-assets="6 creative variants (2 audiences × 3 channels)" data-target="TBD" data-start="2027-04-01" data-end="2027-06-30"></div>
       </div>
       <div class="acct-campaign" data-label="RYONCIL HCP Social" data-msgs="18">
         <div class="acct-msg-data" data-msg="0" data-concept="Awareness" data-img="assets/mesoblast/awareness-prescribers-ig.png" data-title="Prescribing — Instagram" data-ig="MAT299" data-fb="" data-li="" data-headline="70% ORR at Day 28 — including patients with Grade C and D disease" data-caption="RYONCIL is the first and only FDA-approved SR-aGvHD treatment for pediatric patients 2 months of age and older." data-dest="https://www.ryoncilhcp.com/efficacy/" data-channel="Instagram" data-placement="Static" data-brief="Prescribing physicians · Instagram|70% ORR at Day 28 — including Grade C and D disease|Discover a Different Approach CTA|Destination: ryoncilhcp.com/efficacy/" data-alt-headline-b="~50% of pediatric aGvHD patients become steroid-refractory" data-alt-headline-c="70% ORR at Day 28 in pediatric SR-aGvHD" data-alt-callout-b="The first and only FDA-approved treatment for pediatric SR-aGvHD — including the only option for patients under 12." data-alt-callout-c="RYONCIL is the first and only FDA-approved therapy for pediatric SR-aGvHD — including the only option for patients under 12" data-alt-primary-b="The FDA-approved MSC therapy for pediatric SR-aGvHD. Familiar, proven, and ready within 24–48 hours." data-alt-primary-c="Off-the-shelf and ready in 24–48 hours. For your patients — and the families beside them."></div>
@@ -1084,13 +1147,17 @@ input[type="file"].mlr-input { padding:6px 10px; color:var(--muted); cursor:poin
         </div>
       </div>
       <div class="acct-mlr-data">
-        <div class="acct-section-label">MLR REQUIREMENTS</div>
+        <div class="acct-section-label">RESOURCES</div>
         <div class="acct-info-grid">
           <div class="acct-info-card"><div class="acct-info-label">Campaign</div><div class="acct-info-value">Digital Clinician Update — Cognitive Health (Cognitively Unimpaired) — Kisunla Unbranded 2026</div></div>
           <div class="acct-info-card"><div class="acct-info-label">Job Code</div><div class="acct-info-value">LUJ26-DCU-CH-UBSIK</div></div>
           <div class="acct-info-card"><div class="acct-info-label">Social Channels</div><div class="acct-info-value">Facebook &amp; Instagram — In-Feed Static</div></div>
           <div class="acct-info-card"><div class="acct-info-label">Handle</div><div class="acct-info-value">Health Monitor Clinician Update (Facebook)</div></div>
-          <div class="acct-info-card"><div class="acct-info-label">ISI</div><div class="acct-info-value">N/A — unbranded disease-state content</div></div>
+          <div class="acct-info-card"><div class="acct-info-label">ISI</div><input class="mlr-input acct-field-input" type="text" data-field="isi-link" data-default="N/A — unbranded disease-state content" placeholder="Paste ISI link…" oninput="acctSaveField(this)"></div>
+          <div class="acct-info-card"><div class="acct-info-label">HCP Landing Site</div><input class="mlr-input acct-field-input" type="text" data-field="hcp-landing-site" placeholder="Paste HCP landing site link…" oninput="acctSaveField(this)"></div>
+          <div class="acct-info-card"><div class="acct-info-label">MLR Submission Date</div><input class="mlr-input acct-field-input" type="date" data-field="mlr-submission-date" oninput="acctSaveField(this)"></div>
+          <div class="acct-info-card"><div class="acct-info-label">MLR Review Meeting Date</div><input class="mlr-input acct-field-input" type="date" data-field="mlr-review-date" oninput="acctSaveField(this)"></div>
+          <div class="acct-info-card"><div class="acct-info-label">Examples / Reference Files</div><input class="mlr-input acct-field-input" type="text" data-field="examples-link" placeholder="Paste link to past ads/examples…" oninput="acctSaveField(this)"></div>
           <div class="acct-info-card"><div class="acct-info-label">Audience</div><div class="acct-info-value">HCPs / Clinicians — NPI-targeted</div></div>
           <div class="acct-info-card"><div class="acct-info-label">Run Dates</div><div class="acct-info-value">7/8/2026 – 8/31/2026 · Budget $23,520</div></div>
           <div class="acct-info-card"><div class="acct-info-label">Matrix Link</div><input class="mlr-input acct-matrix-input" type="text" placeholder="Paste Google Drive spreadsheet link…" oninput="acctSaveMatrixLink(this)"></div>
@@ -2741,7 +2808,7 @@ input[type="file"].mlr-input { padding:6px 10px; color:var(--muted); cursor:poin
 
 </div>
 
-<div class="version-badge">v3.2.0 · 2026-07-08 · Grace Irwin</div>
+<div class="version-badge">v3.4.0 · 2026-07-13 · Grace Irwin</div>
 
 <script>
 function showPanel(id) {
@@ -2806,6 +2873,13 @@ function showClient(key, tabIdx) {
   const matrixInput = document.getElementById('acct-tab-mlr').querySelector('.acct-matrix-input');
   if (matrixInput) matrixInput.value = localStorage.getItem('mlr-matrix-link-' + key) || '';
 
+  document.getElementById('acct-tab-mlr').querySelectorAll('[data-field]').forEach(inp => {
+    const saved = localStorage.getItem('acct-field-' + inp.dataset.field + '-' + key);
+    inp.value = saved !== null ? saved : (inp.dataset.default || '');
+  });
+
+  document.getElementById('acct-tab-contentmap').innerHTML = _buildContentMapHTML(key);
+
   document.getElementById('acct-tab-campaigns').innerHTML = '';
 
   document.getElementById('acct-tab-benchmarks').innerHTML = _buildBenchmarkMetricsHTML();
@@ -2821,6 +2895,13 @@ function showClient(key, tabIdx) {
 function acctSaveMatrixLink(input) {
   if (!_acctClient) return;
   localStorage.setItem('mlr-matrix-link-' + _acctClient, input.value);
+}
+
+// Generic per-client save for Resources-tab fields (ISI link, HCP landing
+// site, MLR dates, examples/reference link) — keyed by data-field + client.
+function acctSaveField(input) {
+  if (!_acctClient || !input.dataset.field) return;
+  localStorage.setItem('acct-field-' + input.dataset.field + '-' + _acctClient, input.value);
 }
 
 // Builds a ready-to-paste prompt with the account's matrix link and creative
@@ -2862,7 +2943,7 @@ function _buildCampaignSidebar(clientKey, activeCampaignIdx, activeItem) {
   const campaigns = data.querySelectorAll('.acct-campaign');
 
   const sidebar = document.getElementById('acctMsgSidebar');
-  sidebar.innerHTML = '<button class="acct-sidebar-top-tab" onclick="showClientGrid()">Clients</button><div class="acct-sidebar-section-label">CLIENT ' + clientName.replace('Client ','') + '</div>';
+  sidebar.innerHTML = '<button class="acct-sidebar-top-tab" onclick="showClientGrid()">Clients</button><div class="acct-sidebar-section-label">' + clientName + '</div>';
 
   campaigns.forEach((camp, ci) => {
     const campLabel = camp.dataset.label || ('Campaign ' + (ci+1));
@@ -2930,7 +3011,7 @@ function showCampaignOverview(clientKey, campaignIdx) {
     <div class="acct-tabs">
       <button class="acct-tab-btn" onclick="showClient('${clientKey}', 0)">Creative Brief</button>
       <button class="acct-tab-btn" onclick="showClient('${clientKey}', 1)">Brand Guidelines</button>
-      <button class="acct-tab-btn" onclick="showClient('${clientKey}', 2)">MLR Requirements</button>
+      <button class="acct-tab-btn" onclick="showClient('${clientKey}', 2)">Resources</button>
       <button class="acct-tab-btn active">Campaigns</button>
       <button class="acct-tab-btn" onclick="showClient('${clientKey}', 4)">Benchmark Metrics</button>
     </div>
@@ -3315,7 +3396,7 @@ function showMessage(clientKey, campaignIdx, msgIdx) {
     <div class="acct-tabs">
       <button class="acct-tab-btn" onclick="showClient('${clientKey}', 0)">Creative Brief</button>
       <button class="acct-tab-btn" onclick="showClient('${clientKey}', 1)">Brand Guidelines</button>
-      <button class="acct-tab-btn" onclick="showClient('${clientKey}', 2)">MLR Requirements</button>
+      <button class="acct-tab-btn" onclick="showClient('${clientKey}', 2)">Resources</button>
       <button class="acct-tab-btn active">Campaigns</button>
       <button class="acct-tab-btn" onclick="showClient('${clientKey}', 4)">Benchmark Metrics</button>
     </div>
@@ -3424,6 +3505,71 @@ function showAcctTab(btn, key) {
   btn.classList.add('active');
   document.querySelectorAll('.acct-tab-panel').forEach(p => p.classList.remove('active'));
   document.getElementById('acct-tab-' + key).classList.add('active');
+}
+
+// Renders a per-client content map: full media-plan columns (matching the
+// source spreadsheet) plus a Gantt bar per row instead of filled month cells.
+function _buildContentMapHTML(clientKey) {
+  const data = document.getElementById('acct-data-' + clientKey);
+  const cmData = data.querySelector('.acct-contentmap-data');
+  const rows = cmData ? [...cmData.querySelectorAll('.acct-cm-row')] : [];
+
+  if (!rows.length) {
+    return '<div class="acct-section-label">CONTENT MAP</div>' +
+      '<div class="acct-cm-empty">No content map added yet. Add <code>.acct-cm-row</code> entries (campaign, sources, creative, type, assets, target list size, start/end dates, matrix link) to this client\'s data block to plot creative against a run-date timeline — see Client A for a filled-in example.</div>';
+  }
+
+  const parseDate = s => { const [y,m,d] = s.split('-').map(Number); return new Date(y, m - 1, d); };
+  const monthIndex = d => d.getFullYear() * 12 + d.getMonth();
+
+  const minM = Math.min(...rows.map(r => monthIndex(parseDate(r.dataset.start))));
+  const maxM = Math.max(...rows.map(r => monthIndex(parseDate(r.dataset.end))));
+  const monthCount = maxM - minM + 1;
+  const colWidth = 64;
+
+  const monthLabel = i => {
+    const y = Math.floor((minM + i) / 12), m = (minM + i) % 12;
+    return new Date(y, m, 1).toLocaleString('en-US', { month: 'short' });
+  };
+
+  const monthGridStyle = 'grid-template-columns:repeat(' + monthCount + ',' + colWidth + 'px); background-size:' + colWidth + 'px 100%;';
+  const monthHeaderCells = Array.from({ length: monthCount }, (_, i) => '<div>' + monthLabel(i) + '</div>').join('');
+
+  const anyTbd = rows.some(r => r.dataset.tbd === 'true');
+
+  const bodyRows = rows.map(r => {
+    const d = r.dataset;
+    const isTbd = d.tbd === 'true';
+    const sIdx = monthIndex(parseDate(d.start)) - minM;
+    const eIdx = monthIndex(parseDate(d.end)) - minM;
+    const span = eIdx - sIdx + 1;
+    const matrixCell = d.matrix ? '<a class="acct-cm-matrix-link" href="' + d.matrix + '" target="_blank" rel="noopener">View</a>' : '<span style="color:var(--muted)">—</span>';
+    const estTag = isTbd ? ' <span class="acct-cm-est-tag">(est.)</span>' : '';
+    return '<tr>' +
+        '<td><strong>' + (d.creative || '') + '</strong></td>' +
+        '<td>' + (d.sources || '') + '</td>' +
+        '<td>' + (d.type || '') + '</td>' +
+        '<td>' + (d.assets || '') + '</td>' +
+        '<td>' + (d.target || '') + '</td>' +
+        '<td>' + (d.start || '') + estTag + '</td>' +
+        '<td>' + (d.end || '') + estTag + '</td>' +
+        '<td>' + matrixCell + '</td>' +
+        '<td class="acct-cm-timeline-cell"><div class="acct-cm-timeline" style="' + monthGridStyle + '"><div class="acct-cm-bar' + (isTbd ? ' is-tbd' : '') + '" style="grid-column:' + (sIdx + 1) + ' / span ' + span + ';" title="' + (d.creative || '') + ' — ' + d.start + ' to ' + d.end + (isTbd ? ' (estimated, pending confirmed flight dates)' : '') + '"></div></div></td>' +
+      '</tr>';
+  }).join('');
+
+  const campaignLabel = rows[0].dataset.campaign || '';
+  const tbdNote = anyTbd ? '<div class="acct-cm-tbd-note">Dashed bars are estimated placeholder windows, pending confirmed flight dates.</div>' : '';
+
+  return '<div class="acct-section-label">CONTENT MAP' + (campaignLabel ? ' — ' + campaignLabel : '') + '</div>' +
+    tbdNote +
+    '<div class="acct-cm-wrap">' +
+      '<table class="acct-cm-table">' +
+        '<tr><th>Creative</th><th>Sources</th><th>Type</th><th>Assets</th><th>Target List</th><th>Start</th><th>End</th><th>Matrix</th><th>Timeline</th></tr>' +
+        '<tr><td colspan="8"></td><td class="acct-cm-timeline-cell"><div class="acct-cm-month-hd" style="' + monthGridStyle + '">' + monthHeaderCells + '</div></td></tr>' +
+        bodyRows +
+      '</table>' +
+    '</div>';
 }
 
 function _buildTimelineHTML() {
