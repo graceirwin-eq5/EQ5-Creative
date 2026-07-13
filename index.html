@@ -894,6 +894,7 @@ input[type="date"].mlr-input { color-scheme:dark; }
         <div class="acct-main-subtitle" id="acctSubtitle"></div>
         <div class="acct-tabs">
           <button class="acct-tab-btn active" onclick="showAcctTab(this,'brief')">Creative Brief</button>
+          <button class="acct-tab-btn" onclick="showAcctTab(this,'stratbrief')">Strategic Brief</button>
           <button class="acct-tab-btn" onclick="showAcctTab(this,'guidelines')">Brand Guidelines</button>
           <button class="acct-tab-btn" onclick="showAcctTab(this,'mlr')">Resources</button>
           <button class="acct-tab-btn" onclick="showAcctTab(this,'contentmap')">Content Map</button>
@@ -901,6 +902,7 @@ input[type="date"].mlr-input { color-scheme:dark; }
           <button class="acct-tab-btn" onclick="showAcctTab(this,'benchmarks')">Benchmark Metrics</button>
         </div>
         <div class="acct-tab-panel active" id="acct-tab-brief"></div>
+        <div class="acct-tab-panel" id="acct-tab-stratbrief"></div>
         <div class="acct-tab-panel" id="acct-tab-guidelines"></div>
         <div class="acct-tab-panel" id="acct-tab-mlr"></div>
         <div class="acct-tab-panel" id="acct-tab-contentmap"></div>
@@ -2808,7 +2810,7 @@ input[type="date"].mlr-input { color-scheme:dark; }
 
 </div>
 
-<div class="version-badge">v3.4.0 · 2026-07-13 · Grace Irwin</div>
+<div class="version-badge">v3.5.0 · 2026-07-13 · Grace Irwin</div>
 
 <script>
 function showPanel(id) {
@@ -2863,6 +2865,8 @@ function showClient(key, tabIdx) {
   _buildClientSidebar(key);
 
   document.getElementById('acct-tab-brief').innerHTML = _buildCreativeBriefHTML(key);
+
+  document.getElementById('acct-tab-stratbrief').innerHTML = _buildStrategicBriefHTML(key);
 
   const guidelinesData = data.querySelector('.acct-guidelines-data');
   document.getElementById('acct-tab-guidelines').innerHTML = guidelinesData ? guidelinesData.innerHTML : '';
@@ -3010,10 +3014,12 @@ function showCampaignOverview(clientKey, campaignIdx) {
     <div class="acct-main-subtitle">${data.dataset.subtitle || 'Pharma — HCP Awareness'}</div>
     <div class="acct-tabs">
       <button class="acct-tab-btn" onclick="showClient('${clientKey}', 0)">Creative Brief</button>
-      <button class="acct-tab-btn" onclick="showClient('${clientKey}', 1)">Brand Guidelines</button>
-      <button class="acct-tab-btn" onclick="showClient('${clientKey}', 2)">Resources</button>
+      <button class="acct-tab-btn" onclick="showClient('${clientKey}', 1)">Strategic Brief</button>
+      <button class="acct-tab-btn" onclick="showClient('${clientKey}', 2)">Brand Guidelines</button>
+      <button class="acct-tab-btn" onclick="showClient('${clientKey}', 3)">Resources</button>
+      <button class="acct-tab-btn" onclick="showClient('${clientKey}', 4)">Content Map</button>
       <button class="acct-tab-btn active">Campaigns</button>
-      <button class="acct-tab-btn" onclick="showClient('${clientKey}', 4)">Benchmark Metrics</button>
+      <button class="acct-tab-btn" onclick="showClient('${clientKey}', 6)">Benchmark Metrics</button>
     </div>
     <div style="margin-top:28px;">
       ${_buildTimelineHTML()}
@@ -3300,6 +3306,236 @@ function acctBriefExportPDF(clientKey) {
   };
 }
 
+// Strategic Brief — same editable-document pattern as the Creative Brief
+// (CREATIVE_BRIEF_SECTIONS above), sourced from the EQ5 Digital Campaign
+// Strategic Context / Campaign Intake Q&A template.
+const STRATEGIC_BRIEF_SECTIONS = [
+  { title: '00 / CAMPAIGN INTAKE', fields: [
+    {key:'clientBrand', label:'Client / Brand', type:'text'},
+    {key:'therapeuticArea', label:'Therapeutic Area', type:'text'},
+    {key:'campaignNameIntake', label:'Campaign Name', type:'text'},
+    {key:'dateCompleted', label:'Date Completed', type:'date'},
+    {key:'completedBy', label:'Completed By', type:'text'},
+    {key:'roleTeam', label:'Role / Team', type:'text'},
+  ]},
+  { title: '01 / BRAND PROFILE', fields: [
+    {key:'brandMarketAge', label:'Q1. How long has this brand been on the market?', type:'checkbox', options:['Less than 1 year','1–3 years','4–7 years','8+ years']},
+    {key:'brandMarketAgeNotes', label:'', type:'textarea', placeholder:'e.g., FDA approved in [year] — [X] years on market as of this campaign.'},
+    {key:'brandLifecycleStage', label:'Q2. Is this a launch brand or an established product?', type:'checkbox', options:['Launch Brand (< 12 months)','Early Growth (1–3 yrs)','Established (3+ yrs)','Mature / Defend']},
+    {key:'brandLifecycleNotes', label:'', type:'textarea', placeholder:"Describe the brand's current lifecycle stage and any upcoming milestones (label updates, new indications, biosimilar entry, patent cliff, etc.)."},
+    {key:'primaryTargetAudience', label:'Q3. Who is the primary target audience for this campaign?', type:'textarea', placeholder:'e.g., Cardiologists (primary), PCPs (secondary); DTC targeting adults 45–65 with diagnosed HFrEF.'},
+  ]},
+  { title: '02 / CAMPAIGN & CREATIVE HISTORY', fields: [
+    {key:'campaignAge', label:'Q4. How long has the branded campaign been running?', type:'checkbox', options:['New Campaign (< 3 months)','3–6 months','6–12 months','1–2 years','2+ years']},
+    {key:'campaignAgeNotes', label:'', type:'text', placeholder:'Campaign launch date, or note this is a new campaign launch.'},
+    {key:'creativeContinuity', label:'Q5. Is this new creative or part of a long-running campaign?', type:'checkbox', options:['All-New Creative','Refreshed / Updated Existing','Long-Running Campaign','Mixed (varies by tactic)']},
+    {key:'creativeContinuityNotes', label:'', type:'textarea', placeholder:'Describe the creative continuity and any recent refreshes (e.g., new voiceover, updated end cards, A/B variants introduced).'},
+    {key:'priorPerformanceContext', label:'Q6. Have any creative assets been tested or run in prior campaigns? What performance context exists?', type:'textarea', placeholder:'e.g., Banner set A outperformed set B by 22% CTR in Q3; video :30 drove higher completion rate than :15 across HCP segments.'},
+  ]},
+  { title: '03 / CLINICAL MESSAGING & DATA CURRENCY', fields: [
+    {key:'clinicalMessagingAge', label:'Q7. How old is the core clinical messaging in this campaign?', type:'checkbox', options:['Data < 1 year old','1–2 years old','3–5 years old','5+ years old']},
+    {key:'clinicalMessagingAgeNotes', label:'', type:'text', placeholder:'Data publication / label update date.'},
+    {key:'dataRecency', label:'Q8. Is the clinical messaging based on newly released data, or information on the market for some time?', type:'checkbox', options:['Newly Released (< 12 months)','Recently Published (1–2 yrs)','Established Evidence (2–5 yrs)','Foundational / Longstanding']},
+    {key:'dataRecencyNotes', label:'', type:'textarea', placeholder:'Describe the data source(s): trial name, publication, conference presentation, label update. Note if data is exploratory, confirmatory, or post-marketing.'},
+    {key:'pendingDataReadouts', label:'Q9. Are there any pending data readouts, label updates, or regulatory milestones within the campaign flight window?', type:'textarea', placeholder:'e.g., Phase III readout expected Q2; sNDA submission planned; PDUFA date in [month/year].'},
+    {key:'recentMlrChanges', label:'Q10. Have there been any recent MLR / regulatory reviews or copy changes since the last campaign flight?', type:'textarea', placeholder:'Note any PI updates, fair balance changes, or approved copy modifications that affect digital creative.'},
+  ]},
+  { title: '04 / SOCIAL & DIGITAL ASSET STATUS', fields: [
+    {key:'socialAssetAge', label:'Q11. How old are the social creative assets being used in this campaign?', type:'checkbox', options:['New Assets','Adapted from existing','Assets < 6 months old','Assets 6–18 months old','Assets 18+ months old']},
+    {key:'socialAssetAgeNotes', label:'', type:'text', placeholder:'Asset creation date(s). Creative agency.'},
+    {key:'assetOrigin', label:'Q12. Are we launching new assets, or inheriting ads that have already been running elsewhere?', type:'checkbox', options:['All-new assets','Adapted from offline creative','Migrated from other digital channels','Inherited running ads','Mix of new + inherited']},
+    {key:'assetOriginNotes', label:'', type:'textarea', placeholder:'Describe asset origin: created fresh, adapted from print/TV, migrated from another channel, or repurposed from a prior digital campaign.'},
+    {key:'inheritedPlatformHistory', label:'Q13. If inheriting assets: on which platforms have they previously run, and for how long?', type:'textarea', placeholder:'e.g., Facebook/Instagram: 6 months (Jan–Jun 2024), ~4.2M impressions; EHR: 3 months.'},
+    {key:'platformConstraints', label:'Q14. Are there any platform-specific creative constraints or prior disapprovals we should be aware of?', type:'textarea', placeholder:'Known platform policy issues, category restrictions, or pre-approval requirements. Designated rep contact / channel.'},
+  ]},
+  { title: '05 / CURRENT MEDIA MIX & MEDIA PLAN', fields: [
+    {key:'currentMediaMix', label:'Q15. What is the current or proposed media mix for this campaign?', type:'textarea', placeholder:'e.g., LinkedIn NPI-targeted (confirmed), Facebook/Instagram NPI-targeted (confirmed), programmatic display (confirmed), Sermo (under review).'},
+    {key:'mediaPlanSummary', label:'Media Plan Summary — one line per channel/tactic', type:'textarea', rows:6, placeholder:'Channel/Platform | Tactic/Format | Audience | Targeting Method | Budget Allocation | Flight Dates | KPI/Goal'},
+    {key:'totalBudgetBreakdown', label:'Q16. What is the total confirmed campaign budget, and how is it allocated across channels?', type:'textarea', placeholder:'Total budget: $______  Breakdown: ______ (note any channels still in negotiation).'},
+    {key:'newVsContinuedChannels', label:'Q17. What channels are NEW to this campaign vs. channels used in prior flights?', type:'checkbox', options:['All New Channels','All Continued','Mix of New + Continued','Not Yet Determined']},
+    {key:'newVsContinuedChannelsNotes', label:'', type:'textarea', placeholder:'New channels: ______   Continued from prior flights: ______'},
+    {key:'mediaFlightTimeline', label:'Q18. What is the media flight timeline? Any phased or pulsed activations planned?', type:'textarea', placeholder:'Flight start: ______   Flight end: ______   Phased or burst windows: ______'},
+    {key:'reportingOptimizationOwnership', label:'Q19. How will performance be measured and reported across channels? Who owns optimization decisions?', type:'textarea', placeholder:'Reporting cadence: ______   Dashboard owner: ______   Optimization decision-maker: ______'},
+  ]},
+  { title: '06 / NPI TARGET LIST (EQUALS 5 CAMPAIGN)', fields: [
+    {key:'npiListDetails', label:'Q20. Please provide the NPI target list to be used for this campaign.', type:'textarea', placeholder:'List file name / delivery method: ______   Total NPI count: ______   Specialties included: ______   Segmentation direction: ______'},
+    {key:'npiListAge', label:'Q21. How long has this NPI target list been in use?', type:'checkbox', options:['New List','< 6 Months Old','6–12 Months Old','1–2 Years Old','2+ Years Old','Unknown']},
+    {key:'npiListAgeNotes', label:'', type:'text', placeholder:'List creation / last refresh date.'},
+    {key:'npiListSource', label:'Q22. What is the source of this NPI list, and how was it built?', type:'checkbox', options:['Internal CRM / SF pull','Claims-based','Speaker / Event attendees','Third-party vendor','Combination','Unknown']},
+    {key:'npiListSourceNotes', label:'', type:'textarea', placeholder:'List source: ______   Built by: ______   Segmentation criteria used: ______'},
+    {key:'npiListUpdates', label:'Q23. Are there any planned or expected updates to this NPI target list during the campaign flight?', type:'checkbox', options:['No updates planned','One refresh mid-flight','Quarterly refresh cycle','Dynamic / ongoing updates','Not yet determined']},
+    {key:'npiListUpdatesNotes', label:'', type:'textarea', placeholder:'Expected update(s): ______   Timing: ______   Nature of change (add / remove / re-segment): ______'},
+    {key:'priorSocialActivation', label:'Q24. Have social media ads previously been served to this NPI target list?', type:'checkbox', options:['No — first time activating this list on social','Yes — on Equals 5 previously','Yes — on another platform','Yes — on multiple platforms','Unknown']},
+    {key:'priorSocialActivationNotes', label:'', type:'text', placeholder:'If yes, describe channels and timing.'},
+    {key:'priorResultsSummary', label:'Q25. If social ads have previously run to this NPI list, please share overall results.', type:'textarea', rows:5, placeholder:'Match rate: ______   List reach: ______   Avg CTR: ______   Engagement rate: ______   Top-performing channel: ______   Key optimization learnings: ______'},
+    {key:'suppressionExclusions', label:'Q26. Are there any HCPs on this list who should be suppressed or excluded from this campaign?', type:'textarea', placeholder:'Suppression list available: Yes / No   Estimated suppression count: ______   Reason for exclusions: ______'},
+  ]},
+  { title: '07 / STRATEGIC ALIGNMENT & CAMPAIGN GOALS', fields: [
+    {key:'primaryCampaignObjective', label:'Q27. What is the primary campaign objective for this flight?', type:'checkbox', options:['Awareness / Reach','HCP Education','Patient Activation / DTC','Script Lift / Conversion','Reactivation / Retention','Market Defense']},
+    {key:'primaryCampaignObjectiveNotes', label:'', type:'textarea', placeholder:"Additional context on the campaign's role within the broader brand plan (e.g., supporting a speaker series, aligned to a major congress, counterdetailing a competitor launch)."},
+    {key:'platformMediaObjective', label:'Q28. What is the objective for media set up on the Equals 5 platform?', type:'checkbox', options:['Awareness','Traffic','Engagement']},
+    {key:'platformMediaObjectiveNotes', label:'', type:'textarea', placeholder:'Rationale for Traffic vs. Awareness, whether a blended approach across ad sets is needed, or if the objective may shift mid-flight.'},
+    {key:'primaryKpisList', label:'Q29. What are the primary KPIs this campaign will be held to?', type:'text', placeholder:'Primary KPI: ______   Secondary KPIs: ______'},
+    {key:'campaignExclusions', label:'Q30. Are there any campaign exclusions, competitive restrictions, or contextual adjacency concerns?', type:'textarea', placeholder:'e.g., Block adjacency to competitor brand articles; exclude oncology content for a cardiovascular campaign; no adjacency to negative disease news.'},
+    {key:'approvalWorkflows', label:'Q31. Are there any internal approval workflows, legal holds, or compliance timelines that will affect campaign launch or optimization speed?', type:'textarea', placeholder:'Describe the approval chain and typical turnaround (e.g., MLR review: 10 business days; legal hold lifted [date]; PI update pending).'},
+  ]},
+  { title: '08 / ADDITIONAL CONTEXT & OPEN NOTES', fields: [
+    {key:'competitiveMarketContext', label:'Q32. Is there any competitive or market context that should inform our strategy?', type:'textarea', placeholder:'Recent competitor launches, biosimilar entry, generic availability, managed care wins/losses, or payer dynamics.'},
+    {key:'eventsSeasonality', label:'Q33. Are there any upcoming events, conferences, or seasonality factors the media plan should account for?', type:'textarea', placeholder:'e.g., ADA annual meeting in [month]; Heart Failure Awareness Week [dates]; seasonal uptick in Rx expected Q4.'},
+    {key:'otherStrategicNotes', label:'Q34. Any other strategic context, client sensitivities, or team notes the media team should have before planning begins?', type:'textarea', rows:5, placeholder:'Open notes…'},
+  ]},
+];
+
+function _strategicBriefStorageKey(clientKey, fieldKey) {
+  return 'strategic-brief-' + clientKey + '-' + fieldKey;
+}
+
+function acctStratBriefSaveField(clientKey, fieldKey, value) {
+  localStorage.setItem(_strategicBriefStorageKey(clientKey, fieldKey), value);
+}
+
+function acctStratBriefToggleCheckbox(clientKey, fieldKey, option) {
+  const sk = _strategicBriefStorageKey(clientKey, fieldKey);
+  let saved = [];
+  try { saved = JSON.parse(localStorage.getItem(sk) || '[]'); } catch (e) {}
+  const idx = saved.indexOf(option);
+  if (idx >= 0) saved.splice(idx, 1); else saved.push(option);
+  localStorage.setItem(sk, JSON.stringify(saved));
+}
+
+function _stratBriefFieldEditableHTML(clientKey, f) {
+  const sk = _strategicBriefStorageKey(clientKey, f.key);
+  if (f.type === 'checkbox') {
+    let saved = [];
+    try { saved = JSON.parse(localStorage.getItem(sk) || '[]'); } catch (e) {}
+    return `<div class="brief-doc-checkbox-edit">${f.options.map(opt => `<label class="brief-doc-checkbox-edit-item"><input type="checkbox" ${saved.includes(opt) ? 'checked' : ''} onchange="acctStratBriefToggleCheckbox('${clientKey}','${f.key}','${opt.replace(/'/g, "\\'")}')"> ${opt}</label>`).join('')}</div>`;
+  }
+  const saved = localStorage.getItem(sk) || '';
+  const savedAttr = saved.replace(/"/g, '&quot;');
+  if (f.type === 'textarea') {
+    return `<textarea class="brief-doc-input brief-doc-input-textarea" rows="${f.rows || 3}" placeholder="${f.placeholder || ''}" oninput="acctStratBriefSaveField('${clientKey}','${f.key}',this.value)">${saved}</textarea>`;
+  }
+  return `<input class="brief-doc-input" type="${f.type === 'date' ? 'date' : 'text'}" placeholder="${f.placeholder || ''}" value="${savedAttr}" oninput="acctStratBriefSaveField('${clientKey}','${f.key}',this.value)">`;
+}
+
+function _buildStrategicBriefEditableDocumentHTML(clientKey) {
+  const data = document.getElementById('acct-data-' + clientKey);
+  const clientName = data ? data.querySelector('.acct-client-label').textContent : clientKey;
+  return `
+    <div class="brief-doc" id="stratBriefDoc-${clientKey}">
+      <div class="brief-doc-topbar">EQUALS 5 &nbsp;|&nbsp; DIGITAL CAMPAIGN STRATEGIC CONTEXT <span class="brief-doc-confidential">· CONFIDENTIAL</span></div>
+      <div class="brief-doc-title-bar">
+        <div class="brief-doc-title">STRATEGIC BRIEF</div>
+        <div class="brief-doc-subtitle">Campaign Intake Q&amp;A &nbsp;|&nbsp; Equals 5 &nbsp;·&nbsp; ${clientName}</div>
+      </div>
+      ${STRATEGIC_BRIEF_SECTIONS.map(section => `
+        <div class="brief-doc-section">
+          <div class="brief-doc-section-header">${section.title}</div>
+          <table class="brief-doc-table">
+            ${section.fields.map(f => `
+              <tr>
+                <td class="brief-doc-label">${f.label || ''}</td>
+                <td class="brief-doc-value">${_stratBriefFieldEditableHTML(clientKey, f)}</td>
+              </tr>
+            `).join('')}
+          </table>
+        </div>
+      `).join('')}
+      <div class="brief-doc-disclaimer">ⓘ This document is confidential and intended for internal team alignment purposes only. To be updated at each campaign kickoff and major strategic pivot.</div>
+    </div>
+  `;
+}
+
+function _stratBriefFieldValueHTML(clientKey, f) {
+  const sk = _strategicBriefStorageKey(clientKey, f.key);
+  if (f.type === 'checkbox') {
+    let saved = [];
+    try { saved = JSON.parse(localStorage.getItem(sk) || '[]'); } catch (e) {}
+    return `<div class="brief-doc-checkbox-list">${f.options.map(opt => `<span class="brief-doc-checkbox-item${saved.includes(opt) ? ' checked' : ''}">${saved.includes(opt) ? '☑' : '☐'} ${opt}</span>`).join('')}</div>`;
+  }
+  const val = (localStorage.getItem(sk) || '').trim();
+  return val ? `<span class="brief-doc-value-text">${val.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/\n/g, '<br>')}</span>` : '<span class="brief-doc-value-empty">—</span>';
+}
+
+function _buildStrategicBriefDocumentHTML(clientKey) {
+  const data = document.getElementById('acct-data-' + clientKey);
+  const clientName = data ? data.querySelector('.acct-client-label').textContent : clientKey;
+  const dateStr = localStorage.getItem(_strategicBriefStorageKey(clientKey, 'dateCompleted')) || new Date().toISOString().slice(0, 10);
+  return `
+    <div class="brief-doc" id="stratBriefDoc-${clientKey}">
+      <div class="brief-doc-topbar">EQUALS 5 &nbsp;|&nbsp; DIGITAL CAMPAIGN STRATEGIC CONTEXT <span class="brief-doc-confidential">· CONFIDENTIAL</span></div>
+      <div class="brief-doc-title-bar">
+        <div class="brief-doc-title">STRATEGIC BRIEF</div>
+        <div class="brief-doc-subtitle">Campaign Intake Q&amp;A &nbsp;|&nbsp; Equals 5 &nbsp;·&nbsp; ${clientName}</div>
+      </div>
+      ${STRATEGIC_BRIEF_SECTIONS.map(section => `
+        <div class="brief-doc-section">
+          <div class="brief-doc-section-header">${section.title}</div>
+          <table class="brief-doc-table">
+            ${section.fields.map(f => `
+              <tr>
+                <td class="brief-doc-label">${f.label || ''}</td>
+                <td class="brief-doc-value">${_stratBriefFieldValueHTML(clientKey, f)}</td>
+              </tr>
+            `).join('')}
+          </table>
+        </div>
+      `).join('')}
+      <div class="brief-doc-disclaimer">ⓘ This document is confidential and intended for internal team alignment purposes only. To be updated at each campaign kickoff and major strategic pivot.</div>
+      <div class="brief-doc-footer">equals5.com &nbsp;|&nbsp; Confidential &amp; Proprietary &nbsp;|&nbsp; ${clientName} &nbsp;|&nbsp; ${dateStr}</div>
+    </div>
+  `;
+}
+
+function _buildStrategicBriefHTML(clientKey) {
+  return `
+    <div class="brief-preview-toolbar">
+      <button class="mlr-export-btn" style="width:auto; padding:0 20px;" onclick="acctStratBriefExportPDF('${clientKey}')">Export to PDF</button>
+    </div>
+    <div class="mlr-form-sub" style="margin-bottom:14px;">Fill in the strategic context directly on the document below — not every field applies to every client. Changes are saved automatically as you type; export whenever it's ready to share.</div>
+    <div class="brief-doc-scroll">${_buildStrategicBriefEditableDocumentHTML(clientKey)}</div>
+  `;
+}
+
+function acctStratBriefExportPDF(clientKey) {
+  const data = document.getElementById('acct-data-' + clientKey);
+  const clientName = data ? data.querySelector('.acct-client-label').textContent : clientKey;
+  const docHTML = _buildStrategicBriefDocumentHTML(clientKey);
+
+  const dateStr = new Date().toISOString().slice(0, 10);
+  const filename = ['strategic-brief', clientName.toLowerCase().replace(/[^a-z0-9]+/g, '-'), dateStr].filter(Boolean).join('_');
+
+  const iframe = document.createElement('iframe');
+  iframe.style.cssText = 'position:fixed; right:0; bottom:0; width:0; height:0; border:0;';
+  document.body.appendChild(iframe);
+
+  const doc = iframe.contentWindow.document;
+  doc.open();
+  doc.write(`<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>${filename}</title>
+<style>
+  @page { size: portrait; margin: 0.5in; }
+  *, *::before, *::after { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; background: #ffffff !important; font-family: Arial, Helvetica, sans-serif; color: #000; }
+  ${_briefDocCSS(true)}
+</style>
+</head>
+<body>${docHTML}</body>
+</html>`);
+  doc.close();
+
+  iframe.onload = function() {
+    setTimeout(function() {
+      iframe.contentWindow.focus();
+      iframe.contentWindow.print();
+      setTimeout(function() { document.body.removeChild(iframe); }, 1000);
+    }, 300);
+  };
+}
+
 const CLIENT_CREATIVE_META = {
   mesoblast: {
     font: 'Inter',
@@ -3395,10 +3631,12 @@ function showMessage(clientKey, campaignIdx, msgIdx) {
     <div class="acct-main-subtitle">${subtitle}</div>
     <div class="acct-tabs">
       <button class="acct-tab-btn" onclick="showClient('${clientKey}', 0)">Creative Brief</button>
-      <button class="acct-tab-btn" onclick="showClient('${clientKey}', 1)">Brand Guidelines</button>
-      <button class="acct-tab-btn" onclick="showClient('${clientKey}', 2)">Resources</button>
+      <button class="acct-tab-btn" onclick="showClient('${clientKey}', 1)">Strategic Brief</button>
+      <button class="acct-tab-btn" onclick="showClient('${clientKey}', 2)">Brand Guidelines</button>
+      <button class="acct-tab-btn" onclick="showClient('${clientKey}', 3)">Resources</button>
+      <button class="acct-tab-btn" onclick="showClient('${clientKey}', 4)">Content Map</button>
       <button class="acct-tab-btn active">Campaigns</button>
-      <button class="acct-tab-btn" onclick="showClient('${clientKey}', 4)">Benchmark Metrics</button>
+      <button class="acct-tab-btn" onclick="showClient('${clientKey}', 6)">Benchmark Metrics</button>
     </div>
     <div style="margin-top:28px;">
       <div class="acct-msg-heading">${msgTitle}</div>
