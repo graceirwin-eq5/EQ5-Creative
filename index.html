@@ -507,9 +507,6 @@
 .acct-mlr-date-remove:hover { color:#ff6b6b; }
 .acct-mlr-dates-empty { font-size:13px; color:var(--muted); margin-bottom:8px; }
 
-.acct-mlr-layout { display:flex; gap:24px; align-items:flex-start; }
-.acct-mlr-nav { width:200px; min-width:200px; flex-shrink:0; display:flex; flex-direction:column; gap:2px; }
-.acct-mlr-panels { flex:1; min-width:0; }
 .acct-mlr-panel { display:none; }
 .acct-mlr-panel.active { display:block; }
 .acct-mlr-placeholder-badge { display:inline-block; margin-left:6px; padding:2px 8px; font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:0.06em; color:var(--cyan-alt); border:1px solid rgba(1,176,176,0.4); border-radius:20px; vertical-align:middle; white-space:nowrap; }
@@ -948,28 +945,23 @@ input[type="date"].mlr-input { color-scheme:dark; }
       </div>
       <div class="acct-mlr-data">
         <div class="acct-section-label">RESOURCES</div>
-        <div class="acct-mlr-layout">
-          <div class="acct-mlr-nav">
-            <button type="button" class="acct-sidebar-campaign-btn active" data-mlr-campaign="default" onclick="acctSelectMlrCampaign(this)">Primary Campaign</button>
-          </div>
-          <div class="acct-mlr-panels">
-            <div class="acct-mlr-panel active" data-mlr-campaign-panel="default">
-              <div class="acct-info-grid">
-                <div class="acct-info-card"><div class="acct-info-label">Ad Name</div><div class="acct-info-value">XXXXX</div></div>
-                <div class="acct-info-card"><div class="acct-info-label">Job Code</div><div class="acct-info-value">US-BBB-XXXX</div></div>
-                <div class="acct-info-card"><div class="acct-info-label">Social Channel</div><div class="acct-info-value">Meta</div></div>
-                <div class="acct-info-card"><div class="acct-info-label">Run Dates</div><div class="acct-info-value">X/XX/XX–X/XX/XX</div></div>
-                <div class="acct-info-card"><div class="acct-info-label">ISI</div><input class="mlr-input acct-field-input" type="text" data-field="isi-link" placeholder="Paste ISI link…" oninput="acctSaveField(this)"></div>
-                <div class="acct-info-card"><div class="acct-info-label">HCP Landing Site</div><input class="mlr-input acct-field-input" type="text" data-field="hcp-landing-site" placeholder="Paste HCP landing site link…" oninput="acctSaveField(this)"></div>
-                <div class="acct-info-card"><div class="acct-info-label">MLR Submission Date</div><input class="mlr-input acct-field-input" type="date" data-field="mlr-submission-date" oninput="acctSaveField(this)"></div>
-                <div class="acct-info-card acct-info-card-mlrdates"><div class="acct-info-label">MLR Review Meeting Dates</div><div class="acct-mlr-dates-list" data-mlr-dates></div><button type="button" class="mlr-sent-open" onclick="acctAddMlrDate(this)">+ Add Date</button></div>
-                <div class="acct-info-card"><div class="acct-info-label">Examples / Reference Files</div><input class="mlr-input acct-field-input" type="text" data-field="examples-link" placeholder="Paste link to past ads/examples…" oninput="acctSaveField(this)"></div>
-                <div class="acct-info-card"><div class="acct-info-label">Figma File</div><input class="mlr-input acct-field-input" type="text" data-field="figma-link" placeholder="Paste Figma file link…" oninput="acctSaveField(this)"></div>
-                <div class="acct-info-card"><div class="acct-info-label">Destination Link</div><div class="acct-info-value">URL</div></div>
-                <div class="acct-info-card"><div class="acct-info-label">Matrix Link</div><input class="mlr-input acct-matrix-input" type="text" placeholder="Paste Google Drive spreadsheet link…" oninput="acctSaveMatrixLink(this)"></div>
-              </div>
-              <button class="mlr-export-btn" style="width:auto; padding:0 20px;" onclick="acctCopyCrossCheckPrompt(this)">Copy Cross-Check Prompt for Claude</button>
+        <div class="acct-mlr-panels">
+          <div class="acct-mlr-panel active" data-mlr-campaign-panel="default" data-mlr-campaign-label="Primary Campaign">
+            <div class="acct-info-grid">
+              <div class="acct-info-card"><div class="acct-info-label">Ad Name</div><div class="acct-info-value">XXXXX</div></div>
+              <div class="acct-info-card"><div class="acct-info-label">Job Code</div><div class="acct-info-value">US-BBB-XXXX</div></div>
+              <div class="acct-info-card"><div class="acct-info-label">Social Channel</div><div class="acct-info-value">Meta</div></div>
+              <div class="acct-info-card"><div class="acct-info-label">Run Dates</div><div class="acct-info-value">X/XX/XX–X/XX/XX</div></div>
+              <div class="acct-info-card"><div class="acct-info-label">ISI</div><input class="mlr-input acct-field-input" type="text" data-field="isi-link" placeholder="Paste ISI link…" oninput="acctSaveField(this)"></div>
+              <div class="acct-info-card"><div class="acct-info-label">HCP Landing Site</div><input class="mlr-input acct-field-input" type="text" data-field="hcp-landing-site" placeholder="Paste HCP landing site link…" oninput="acctSaveField(this)"></div>
+              <div class="acct-info-card"><div class="acct-info-label">MLR Submission Date</div><input class="mlr-input acct-field-input" type="date" data-field="mlr-submission-date" oninput="acctSaveField(this)"></div>
+              <div class="acct-info-card acct-info-card-mlrdates"><div class="acct-info-label">MLR Review Meeting Dates</div><div class="acct-mlr-dates-list" data-mlr-dates></div><button type="button" class="mlr-sent-open" onclick="acctAddMlrDate(this)">+ Add Date</button></div>
+              <div class="acct-info-card"><div class="acct-info-label">Examples / Reference Files</div><input class="mlr-input acct-field-input" type="text" data-field="examples-link" placeholder="Paste link to past ads/examples…" oninput="acctSaveField(this)"></div>
+              <div class="acct-info-card"><div class="acct-info-label">Figma File</div><input class="mlr-input acct-field-input" type="text" data-field="figma-link" placeholder="Paste Figma file link…" oninput="acctSaveField(this)"></div>
+              <div class="acct-info-card"><div class="acct-info-label">Destination Link</div><div class="acct-info-value">URL</div></div>
+              <div class="acct-info-card"><div class="acct-info-label">Matrix Link</div><input class="mlr-input acct-matrix-input" type="text" placeholder="Paste Google Drive spreadsheet link…" oninput="acctSaveMatrixLink(this)"></div>
             </div>
+            <button class="mlr-export-btn" style="width:auto; padding:0 20px;" onclick="acctCopyCrossCheckPrompt(this)">Copy Cross-Check Prompt for Claude</button>
           </div>
         </div>
       </div>
@@ -1011,28 +1003,23 @@ input[type="date"].mlr-input { color-scheme:dark; }
       </div>
       <div class="acct-mlr-data">
         <div class="acct-section-label">RESOURCES</div>
-        <div class="acct-mlr-layout">
-          <div class="acct-mlr-nav">
-            <button type="button" class="acct-sidebar-campaign-btn active" data-mlr-campaign="default" onclick="acctSelectMlrCampaign(this)">Primary Campaign</button>
-          </div>
-          <div class="acct-mlr-panels">
-            <div class="acct-mlr-panel active" data-mlr-campaign-panel="default">
-              <div class="acct-info-grid">
-                <div class="acct-info-card"><div class="acct-info-label">Ad Name</div><div class="acct-info-value">XXXXX</div></div>
-                <div class="acct-info-card"><div class="acct-info-label">Job Code</div><div class="acct-info-value">US-BBB-XXXX</div></div>
-                <div class="acct-info-card"><div class="acct-info-label">Social Channel</div><div class="acct-info-value">Meta</div></div>
-                <div class="acct-info-card"><div class="acct-info-label">Run Dates</div><div class="acct-info-value">X/XX/XX–X/XX/XX</div></div>
-                <div class="acct-info-card"><div class="acct-info-label">ISI</div><input class="mlr-input acct-field-input" type="text" data-field="isi-link" placeholder="Paste ISI link…" oninput="acctSaveField(this)"></div>
-                <div class="acct-info-card"><div class="acct-info-label">HCP Landing Site</div><input class="mlr-input acct-field-input" type="text" data-field="hcp-landing-site" placeholder="Paste HCP landing site link…" oninput="acctSaveField(this)"></div>
-                <div class="acct-info-card"><div class="acct-info-label">MLR Submission Date</div><input class="mlr-input acct-field-input" type="date" data-field="mlr-submission-date" oninput="acctSaveField(this)"></div>
-                <div class="acct-info-card acct-info-card-mlrdates"><div class="acct-info-label">MLR Review Meeting Dates</div><div class="acct-mlr-dates-list" data-mlr-dates></div><button type="button" class="mlr-sent-open" onclick="acctAddMlrDate(this)">+ Add Date</button></div>
-                <div class="acct-info-card"><div class="acct-info-label">Examples / Reference Files</div><input class="mlr-input acct-field-input" type="text" data-field="examples-link" placeholder="Paste link to past ads/examples…" oninput="acctSaveField(this)"></div>
-                <div class="acct-info-card"><div class="acct-info-label">Figma File</div><input class="mlr-input acct-field-input" type="text" data-field="figma-link" placeholder="Paste Figma file link…" oninput="acctSaveField(this)"></div>
-                <div class="acct-info-card"><div class="acct-info-label">Destination Link</div><div class="acct-info-value">URL</div></div>
-                <div class="acct-info-card"><div class="acct-info-label">Matrix Link</div><input class="mlr-input acct-matrix-input" type="text" placeholder="Paste Google Drive spreadsheet link…" oninput="acctSaveMatrixLink(this)"></div>
-              </div>
-              <button class="mlr-export-btn" style="width:auto; padding:0 20px;" onclick="acctCopyCrossCheckPrompt(this)">Copy Cross-Check Prompt for Claude</button>
+        <div class="acct-mlr-panels">
+          <div class="acct-mlr-panel active" data-mlr-campaign-panel="default" data-mlr-campaign-label="Primary Campaign">
+            <div class="acct-info-grid">
+              <div class="acct-info-card"><div class="acct-info-label">Ad Name</div><div class="acct-info-value">XXXXX</div></div>
+              <div class="acct-info-card"><div class="acct-info-label">Job Code</div><div class="acct-info-value">US-BBB-XXXX</div></div>
+              <div class="acct-info-card"><div class="acct-info-label">Social Channel</div><div class="acct-info-value">Meta</div></div>
+              <div class="acct-info-card"><div class="acct-info-label">Run Dates</div><div class="acct-info-value">X/XX/XX–X/XX/XX</div></div>
+              <div class="acct-info-card"><div class="acct-info-label">ISI</div><input class="mlr-input acct-field-input" type="text" data-field="isi-link" placeholder="Paste ISI link…" oninput="acctSaveField(this)"></div>
+              <div class="acct-info-card"><div class="acct-info-label">HCP Landing Site</div><input class="mlr-input acct-field-input" type="text" data-field="hcp-landing-site" placeholder="Paste HCP landing site link…" oninput="acctSaveField(this)"></div>
+              <div class="acct-info-card"><div class="acct-info-label">MLR Submission Date</div><input class="mlr-input acct-field-input" type="date" data-field="mlr-submission-date" oninput="acctSaveField(this)"></div>
+              <div class="acct-info-card acct-info-card-mlrdates"><div class="acct-info-label">MLR Review Meeting Dates</div><div class="acct-mlr-dates-list" data-mlr-dates></div><button type="button" class="mlr-sent-open" onclick="acctAddMlrDate(this)">+ Add Date</button></div>
+              <div class="acct-info-card"><div class="acct-info-label">Examples / Reference Files</div><input class="mlr-input acct-field-input" type="text" data-field="examples-link" placeholder="Paste link to past ads/examples…" oninput="acctSaveField(this)"></div>
+              <div class="acct-info-card"><div class="acct-info-label">Figma File</div><input class="mlr-input acct-field-input" type="text" data-field="figma-link" placeholder="Paste Figma file link…" oninput="acctSaveField(this)"></div>
+              <div class="acct-info-card"><div class="acct-info-label">Destination Link</div><div class="acct-info-value">URL</div></div>
+              <div class="acct-info-card"><div class="acct-info-label">Matrix Link</div><input class="mlr-input acct-matrix-input" type="text" placeholder="Paste Google Drive spreadsheet link…" oninput="acctSaveMatrixLink(this)"></div>
             </div>
+            <button class="mlr-export-btn" style="width:auto; padding:0 20px;" onclick="acctCopyCrossCheckPrompt(this)">Copy Cross-Check Prompt for Claude</button>
           </div>
         </div>
       </div>
@@ -1056,28 +1043,23 @@ input[type="date"].mlr-input { color-scheme:dark; }
       </div>
       <div class="acct-mlr-data">
         <div class="acct-section-label">RESOURCES</div>
-        <div class="acct-mlr-layout">
-          <div class="acct-mlr-nav">
-            <button type="button" class="acct-sidebar-campaign-btn active" data-mlr-campaign="default" onclick="acctSelectMlrCampaign(this)">Primary Campaign</button>
-          </div>
-          <div class="acct-mlr-panels">
-            <div class="acct-mlr-panel active" data-mlr-campaign-panel="default">
-              <div class="acct-info-grid">
-                <div class="acct-info-card"><div class="acct-info-label">Ad Name</div><div class="acct-info-value">XXXXX</div></div>
-                <div class="acct-info-card"><div class="acct-info-label">Job Code</div><div class="acct-info-value">US-BBB-XXXX</div></div>
-                <div class="acct-info-card"><div class="acct-info-label">Social Channel</div><div class="acct-info-value">Meta</div></div>
-                <div class="acct-info-card"><div class="acct-info-label">Run Dates</div><div class="acct-info-value">X/XX/XX–X/XX/XX</div></div>
-                <div class="acct-info-card"><div class="acct-info-label">ISI</div><input class="mlr-input acct-field-input" type="text" data-field="isi-link" placeholder="Paste ISI link…" oninput="acctSaveField(this)"></div>
-                <div class="acct-info-card"><div class="acct-info-label">HCP Landing Site</div><input class="mlr-input acct-field-input" type="text" data-field="hcp-landing-site" placeholder="Paste HCP landing site link…" oninput="acctSaveField(this)"></div>
-                <div class="acct-info-card"><div class="acct-info-label">MLR Submission Date</div><input class="mlr-input acct-field-input" type="date" data-field="mlr-submission-date" oninput="acctSaveField(this)"></div>
-                <div class="acct-info-card acct-info-card-mlrdates"><div class="acct-info-label">MLR Review Meeting Dates</div><div class="acct-mlr-dates-list" data-mlr-dates></div><button type="button" class="mlr-sent-open" onclick="acctAddMlrDate(this)">+ Add Date</button></div>
-                <div class="acct-info-card"><div class="acct-info-label">Examples / Reference Files</div><input class="mlr-input acct-field-input" type="text" data-field="examples-link" placeholder="Paste link to past ads/examples…" oninput="acctSaveField(this)"></div>
-                <div class="acct-info-card"><div class="acct-info-label">Figma File</div><input class="mlr-input acct-field-input" type="text" data-field="figma-link" placeholder="Paste Figma file link…" oninput="acctSaveField(this)"></div>
-                <div class="acct-info-card"><div class="acct-info-label">Destination Link</div><div class="acct-info-value">URL</div></div>
-                <div class="acct-info-card"><div class="acct-info-label">Matrix Link</div><input class="mlr-input acct-matrix-input" type="text" placeholder="Paste Google Drive spreadsheet link…" oninput="acctSaveMatrixLink(this)"></div>
-              </div>
-              <button class="mlr-export-btn" style="width:auto; padding:0 20px;" onclick="acctCopyCrossCheckPrompt(this)">Copy Cross-Check Prompt for Claude</button>
+        <div class="acct-mlr-panels">
+          <div class="acct-mlr-panel active" data-mlr-campaign-panel="default" data-mlr-campaign-label="Primary Campaign">
+            <div class="acct-info-grid">
+              <div class="acct-info-card"><div class="acct-info-label">Ad Name</div><div class="acct-info-value">XXXXX</div></div>
+              <div class="acct-info-card"><div class="acct-info-label">Job Code</div><div class="acct-info-value">US-BBB-XXXX</div></div>
+              <div class="acct-info-card"><div class="acct-info-label">Social Channel</div><div class="acct-info-value">Meta</div></div>
+              <div class="acct-info-card"><div class="acct-info-label">Run Dates</div><div class="acct-info-value">X/XX/XX–X/XX/XX</div></div>
+              <div class="acct-info-card"><div class="acct-info-label">ISI</div><input class="mlr-input acct-field-input" type="text" data-field="isi-link" placeholder="Paste ISI link…" oninput="acctSaveField(this)"></div>
+              <div class="acct-info-card"><div class="acct-info-label">HCP Landing Site</div><input class="mlr-input acct-field-input" type="text" data-field="hcp-landing-site" placeholder="Paste HCP landing site link…" oninput="acctSaveField(this)"></div>
+              <div class="acct-info-card"><div class="acct-info-label">MLR Submission Date</div><input class="mlr-input acct-field-input" type="date" data-field="mlr-submission-date" oninput="acctSaveField(this)"></div>
+              <div class="acct-info-card acct-info-card-mlrdates"><div class="acct-info-label">MLR Review Meeting Dates</div><div class="acct-mlr-dates-list" data-mlr-dates></div><button type="button" class="mlr-sent-open" onclick="acctAddMlrDate(this)">+ Add Date</button></div>
+              <div class="acct-info-card"><div class="acct-info-label">Examples / Reference Files</div><input class="mlr-input acct-field-input" type="text" data-field="examples-link" placeholder="Paste link to past ads/examples…" oninput="acctSaveField(this)"></div>
+              <div class="acct-info-card"><div class="acct-info-label">Figma File</div><input class="mlr-input acct-field-input" type="text" data-field="figma-link" placeholder="Paste Figma file link…" oninput="acctSaveField(this)"></div>
+              <div class="acct-info-card"><div class="acct-info-label">Destination Link</div><div class="acct-info-value">URL</div></div>
+              <div class="acct-info-card"><div class="acct-info-label">Matrix Link</div><input class="mlr-input acct-matrix-input" type="text" placeholder="Paste Google Drive spreadsheet link…" oninput="acctSaveMatrixLink(this)"></div>
             </div>
+            <button class="mlr-export-btn" style="width:auto; padding:0 20px;" onclick="acctCopyCrossCheckPrompt(this)">Copy Cross-Check Prompt for Claude</button>
           </div>
         </div>
       </div>
@@ -1101,28 +1083,23 @@ input[type="date"].mlr-input { color-scheme:dark; }
       </div>
       <div class="acct-mlr-data">
         <div class="acct-section-label">RESOURCES</div>
-        <div class="acct-mlr-layout">
-          <div class="acct-mlr-nav">
-            <button type="button" class="acct-sidebar-campaign-btn active" data-mlr-campaign="default" onclick="acctSelectMlrCampaign(this)">Primary Campaign</button>
-          </div>
-          <div class="acct-mlr-panels">
-            <div class="acct-mlr-panel active" data-mlr-campaign-panel="default">
-              <div class="acct-info-grid">
-                <div class="acct-info-card"><div class="acct-info-label">Ad Name</div><div class="acct-info-value">XXXXX</div></div>
-                <div class="acct-info-card"><div class="acct-info-label">Job Code</div><div class="acct-info-value">US-BBB-XXXX</div></div>
-                <div class="acct-info-card"><div class="acct-info-label">Social Channel</div><div class="acct-info-value">Meta</div></div>
-                <div class="acct-info-card"><div class="acct-info-label">Run Dates</div><div class="acct-info-value">X/XX/XX–X/XX/XX</div></div>
-                <div class="acct-info-card"><div class="acct-info-label">ISI</div><input class="mlr-input acct-field-input" type="text" data-field="isi-link" placeholder="Paste ISI link…" oninput="acctSaveField(this)"></div>
-                <div class="acct-info-card"><div class="acct-info-label">HCP Landing Site</div><input class="mlr-input acct-field-input" type="text" data-field="hcp-landing-site" placeholder="Paste HCP landing site link…" oninput="acctSaveField(this)"></div>
-                <div class="acct-info-card"><div class="acct-info-label">MLR Submission Date</div><input class="mlr-input acct-field-input" type="date" data-field="mlr-submission-date" oninput="acctSaveField(this)"></div>
-                <div class="acct-info-card acct-info-card-mlrdates"><div class="acct-info-label">MLR Review Meeting Dates</div><div class="acct-mlr-dates-list" data-mlr-dates></div><button type="button" class="mlr-sent-open" onclick="acctAddMlrDate(this)">+ Add Date</button></div>
-                <div class="acct-info-card"><div class="acct-info-label">Examples / Reference Files</div><input class="mlr-input acct-field-input" type="text" data-field="examples-link" placeholder="Paste link to past ads/examples…" oninput="acctSaveField(this)"></div>
-                <div class="acct-info-card"><div class="acct-info-label">Figma File</div><input class="mlr-input acct-field-input" type="text" data-field="figma-link" placeholder="Paste Figma file link…" oninput="acctSaveField(this)"></div>
-                <div class="acct-info-card"><div class="acct-info-label">Destination Link</div><div class="acct-info-value">URL</div></div>
-                <div class="acct-info-card"><div class="acct-info-label">Matrix Link</div><input class="mlr-input acct-matrix-input" type="text" placeholder="Paste Google Drive spreadsheet link…" oninput="acctSaveMatrixLink(this)"></div>
-              </div>
-              <button class="mlr-export-btn" style="width:auto; padding:0 20px;" onclick="acctCopyCrossCheckPrompt(this)">Copy Cross-Check Prompt for Claude</button>
+        <div class="acct-mlr-panels">
+          <div class="acct-mlr-panel active" data-mlr-campaign-panel="default" data-mlr-campaign-label="Primary Campaign">
+            <div class="acct-info-grid">
+              <div class="acct-info-card"><div class="acct-info-label">Ad Name</div><div class="acct-info-value">XXXXX</div></div>
+              <div class="acct-info-card"><div class="acct-info-label">Job Code</div><div class="acct-info-value">US-BBB-XXXX</div></div>
+              <div class="acct-info-card"><div class="acct-info-label">Social Channel</div><div class="acct-info-value">Meta</div></div>
+              <div class="acct-info-card"><div class="acct-info-label">Run Dates</div><div class="acct-info-value">X/XX/XX–X/XX/XX</div></div>
+              <div class="acct-info-card"><div class="acct-info-label">ISI</div><input class="mlr-input acct-field-input" type="text" data-field="isi-link" placeholder="Paste ISI link…" oninput="acctSaveField(this)"></div>
+              <div class="acct-info-card"><div class="acct-info-label">HCP Landing Site</div><input class="mlr-input acct-field-input" type="text" data-field="hcp-landing-site" placeholder="Paste HCP landing site link…" oninput="acctSaveField(this)"></div>
+              <div class="acct-info-card"><div class="acct-info-label">MLR Submission Date</div><input class="mlr-input acct-field-input" type="date" data-field="mlr-submission-date" oninput="acctSaveField(this)"></div>
+              <div class="acct-info-card acct-info-card-mlrdates"><div class="acct-info-label">MLR Review Meeting Dates</div><div class="acct-mlr-dates-list" data-mlr-dates></div><button type="button" class="mlr-sent-open" onclick="acctAddMlrDate(this)">+ Add Date</button></div>
+              <div class="acct-info-card"><div class="acct-info-label">Examples / Reference Files</div><input class="mlr-input acct-field-input" type="text" data-field="examples-link" placeholder="Paste link to past ads/examples…" oninput="acctSaveField(this)"></div>
+              <div class="acct-info-card"><div class="acct-info-label">Figma File</div><input class="mlr-input acct-field-input" type="text" data-field="figma-link" placeholder="Paste Figma file link…" oninput="acctSaveField(this)"></div>
+              <div class="acct-info-card"><div class="acct-info-label">Destination Link</div><div class="acct-info-value">URL</div></div>
+              <div class="acct-info-card"><div class="acct-info-label">Matrix Link</div><input class="mlr-input acct-matrix-input" type="text" placeholder="Paste Google Drive spreadsheet link…" oninput="acctSaveMatrixLink(this)"></div>
             </div>
+            <button class="mlr-export-btn" style="width:auto; padding:0 20px;" onclick="acctCopyCrossCheckPrompt(this)">Copy Cross-Check Prompt for Claude</button>
           </div>
         </div>
       </div>
@@ -1146,45 +1123,39 @@ input[type="date"].mlr-input { color-scheme:dark; }
       </div>
       <div class="acct-mlr-data">
         <div class="acct-section-label">RESOURCES</div>
-        <div class="acct-mlr-layout">
-          <div class="acct-mlr-nav">
-            <button type="button" class="acct-sidebar-campaign-btn active" data-mlr-campaign="ryoncil-hcp-social" onclick="acctSelectMlrCampaign(this)">RYONCIL HCP Social</button>
-            <button type="button" class="acct-sidebar-campaign-btn" data-mlr-campaign="new-campaign-placeholder" onclick="acctSelectMlrCampaign(this)">+ New Campaign<span class="acct-mlr-placeholder-badge">Placeholder</span></button>
+        <div class="acct-mlr-panels">
+          <div class="acct-mlr-panel active" data-mlr-campaign-panel="ryoncil-hcp-social" data-mlr-campaign-label="RYONCIL HCP Social">
+            <div class="acct-info-grid">
+              <div class="acct-info-card"><div class="acct-info-label">Campaign</div><div class="acct-info-value">Ryoncil HCP Social — Concept Mockups</div></div>
+              <div class="acct-info-card"><div class="acct-info-label">Job Codes</div><div class="acct-info-value">MAT298–MAT315</div></div>
+              <div class="acct-info-card"><div class="acct-info-label">Social Channels</div><div class="acct-info-value">Instagram · Facebook · LinkedIn</div></div>
+              <div class="acct-info-card"><div class="acct-info-label">Handle</div><div class="acct-info-value">@ Rare Pediatric News</div></div>
+              <div class="acct-info-card"><div class="acct-info-label">ISI</div><input class="mlr-input acct-field-input" type="text" data-field="isi-link" data-default="See full Prescribing Information" placeholder="Paste ISI link…" oninput="acctSaveField(this)"></div>
+              <div class="acct-info-card"><div class="acct-info-label">HCP Landing Site</div><input class="mlr-input acct-field-input" type="text" data-field="hcp-landing-site" data-default="https://www.ryoncilhcp.com" placeholder="Paste HCP landing site link…" oninput="acctSaveField(this)"></div>
+              <div class="acct-info-card"><div class="acct-info-label">MLR Submission Date</div><input class="mlr-input acct-field-input" type="date" data-field="mlr-submission-date" oninput="acctSaveField(this)"></div>
+              <div class="acct-info-card acct-info-card-mlrdates"><div class="acct-info-label">MLR Review Meeting Dates</div><div class="acct-mlr-dates-list" data-mlr-dates></div><button type="button" class="mlr-sent-open" onclick="acctAddMlrDate(this)">+ Add Date</button></div>
+              <div class="acct-info-card"><div class="acct-info-label">Examples / Reference Files</div><input class="mlr-input acct-field-input" type="text" data-field="examples-link" placeholder="Paste link to past ads/examples…" oninput="acctSaveField(this)"></div>
+              <div class="acct-info-card"><div class="acct-info-label">Figma File</div><input class="mlr-input acct-field-input" type="text" data-field="figma-link" placeholder="Paste Figma file link…" oninput="acctSaveField(this)"></div>
+              <div class="acct-info-card"><div class="acct-info-label">Audience</div><div class="acct-info-value">Prescribing · Non-prescribing physicians</div></div>
+              <div class="acct-info-card"><div class="acct-info-label">Matrix Link</div><input class="mlr-input acct-matrix-input" type="text" placeholder="Paste Google Drive spreadsheet link…" oninput="acctSaveMatrixLink(this)"></div>
+            </div>
+            <button class="mlr-export-btn" style="width:auto; padding:0 20px;" onclick="acctCopyCrossCheckPrompt(this)">Copy Cross-Check Prompt for Claude</button>
           </div>
-          <div class="acct-mlr-panels">
-            <div class="acct-mlr-panel active" data-mlr-campaign-panel="ryoncil-hcp-social">
-              <div class="acct-info-grid">
-                <div class="acct-info-card"><div class="acct-info-label">Campaign</div><div class="acct-info-value">Ryoncil HCP Social — Concept Mockups</div></div>
-                <div class="acct-info-card"><div class="acct-info-label">Job Codes</div><div class="acct-info-value">MAT298–MAT315</div></div>
-                <div class="acct-info-card"><div class="acct-info-label">Social Channels</div><div class="acct-info-value">Instagram · Facebook · LinkedIn</div></div>
-                <div class="acct-info-card"><div class="acct-info-label">Handle</div><div class="acct-info-value">@ Rare Pediatric News</div></div>
-                <div class="acct-info-card"><div class="acct-info-label">ISI</div><input class="mlr-input acct-field-input" type="text" data-field="isi-link" data-default="See full Prescribing Information" placeholder="Paste ISI link…" oninput="acctSaveField(this)"></div>
-                <div class="acct-info-card"><div class="acct-info-label">HCP Landing Site</div><input class="mlr-input acct-field-input" type="text" data-field="hcp-landing-site" data-default="https://www.ryoncilhcp.com" placeholder="Paste HCP landing site link…" oninput="acctSaveField(this)"></div>
-                <div class="acct-info-card"><div class="acct-info-label">MLR Submission Date</div><input class="mlr-input acct-field-input" type="date" data-field="mlr-submission-date" oninput="acctSaveField(this)"></div>
-                <div class="acct-info-card acct-info-card-mlrdates"><div class="acct-info-label">MLR Review Meeting Dates</div><div class="acct-mlr-dates-list" data-mlr-dates></div><button type="button" class="mlr-sent-open" onclick="acctAddMlrDate(this)">+ Add Date</button></div>
-                <div class="acct-info-card"><div class="acct-info-label">Examples / Reference Files</div><input class="mlr-input acct-field-input" type="text" data-field="examples-link" placeholder="Paste link to past ads/examples…" oninput="acctSaveField(this)"></div>
-                <div class="acct-info-card"><div class="acct-info-label">Figma File</div><input class="mlr-input acct-field-input" type="text" data-field="figma-link" placeholder="Paste Figma file link…" oninput="acctSaveField(this)"></div>
-                <div class="acct-info-card"><div class="acct-info-label">Audience</div><div class="acct-info-value">Prescribing · Non-prescribing physicians</div></div>
-                <div class="acct-info-card"><div class="acct-info-label">Matrix Link</div><input class="mlr-input acct-matrix-input" type="text" placeholder="Paste Google Drive spreadsheet link…" oninput="acctSaveMatrixLink(this)"></div>
-              </div>
-              <button class="mlr-export-btn" style="width:auto; padding:0 20px;" onclick="acctCopyCrossCheckPrompt(this)">Copy Cross-Check Prompt for Claude</button>
+          <div class="acct-mlr-panel" data-mlr-campaign-panel="new-campaign-placeholder" data-mlr-campaign-label="+ New Campaign" data-mlr-placeholder="true">
+            <div class="acct-info-grid">
+              <div class="acct-info-card"><div class="acct-info-label">Campaign</div><div class="acct-info-value">TBD — next Mesoblast campaign</div></div>
+              <div class="acct-info-card"><div class="acct-info-label">Job Codes</div><div class="acct-info-value">TBD</div></div>
+              <div class="acct-info-card"><div class="acct-info-label">Social Channels</div><div class="acct-info-value">TBD</div></div>
+              <div class="acct-info-card"><div class="acct-info-label">Handle</div><div class="acct-info-value">TBD</div></div>
+              <div class="acct-info-card"><div class="acct-info-label">ISI</div><input class="mlr-input acct-field-input" type="text" data-field="isi-link" placeholder="Paste ISI link…" oninput="acctSaveField(this)"></div>
+              <div class="acct-info-card"><div class="acct-info-label">HCP Landing Site</div><input class="mlr-input acct-field-input" type="text" data-field="hcp-landing-site" placeholder="Paste HCP landing site link…" oninput="acctSaveField(this)"></div>
+              <div class="acct-info-card"><div class="acct-info-label">MLR Submission Date</div><input class="mlr-input acct-field-input" type="date" data-field="mlr-submission-date" oninput="acctSaveField(this)"></div>
+              <div class="acct-info-card acct-info-card-mlrdates"><div class="acct-info-label">MLR Review Meeting Dates</div><div class="acct-mlr-dates-list" data-mlr-dates></div><button type="button" class="mlr-sent-open" onclick="acctAddMlrDate(this)">+ Add Date</button></div>
+              <div class="acct-info-card"><div class="acct-info-label">Examples / Reference Files</div><input class="mlr-input acct-field-input" type="text" data-field="examples-link" placeholder="Paste link to past ads/examples…" oninput="acctSaveField(this)"></div>
+              <div class="acct-info-card"><div class="acct-info-label">Figma File</div><input class="mlr-input acct-field-input" type="text" data-field="figma-link" placeholder="Paste Figma file link…" oninput="acctSaveField(this)"></div>
+              <div class="acct-info-card"><div class="acct-info-label">Matrix Link</div><input class="mlr-input acct-matrix-input" type="text" placeholder="Paste Google Drive spreadsheet link…" oninput="acctSaveMatrixLink(this)"></div>
             </div>
-            <div class="acct-mlr-panel" data-mlr-campaign-panel="new-campaign-placeholder">
-              <div class="acct-info-grid">
-                <div class="acct-info-card"><div class="acct-info-label">Campaign</div><div class="acct-info-value">TBD — next Mesoblast campaign</div></div>
-                <div class="acct-info-card"><div class="acct-info-label">Job Codes</div><div class="acct-info-value">TBD</div></div>
-                <div class="acct-info-card"><div class="acct-info-label">Social Channels</div><div class="acct-info-value">TBD</div></div>
-                <div class="acct-info-card"><div class="acct-info-label">Handle</div><div class="acct-info-value">TBD</div></div>
-                <div class="acct-info-card"><div class="acct-info-label">ISI</div><input class="mlr-input acct-field-input" type="text" data-field="isi-link" placeholder="Paste ISI link…" oninput="acctSaveField(this)"></div>
-                <div class="acct-info-card"><div class="acct-info-label">HCP Landing Site</div><input class="mlr-input acct-field-input" type="text" data-field="hcp-landing-site" placeholder="Paste HCP landing site link…" oninput="acctSaveField(this)"></div>
-                <div class="acct-info-card"><div class="acct-info-label">MLR Submission Date</div><input class="mlr-input acct-field-input" type="date" data-field="mlr-submission-date" oninput="acctSaveField(this)"></div>
-                <div class="acct-info-card acct-info-card-mlrdates"><div class="acct-info-label">MLR Review Meeting Dates</div><div class="acct-mlr-dates-list" data-mlr-dates></div><button type="button" class="mlr-sent-open" onclick="acctAddMlrDate(this)">+ Add Date</button></div>
-                <div class="acct-info-card"><div class="acct-info-label">Examples / Reference Files</div><input class="mlr-input acct-field-input" type="text" data-field="examples-link" placeholder="Paste link to past ads/examples…" oninput="acctSaveField(this)"></div>
-                <div class="acct-info-card"><div class="acct-info-label">Figma File</div><input class="mlr-input acct-field-input" type="text" data-field="figma-link" placeholder="Paste Figma file link…" oninput="acctSaveField(this)"></div>
-                <div class="acct-info-card"><div class="acct-info-label">Matrix Link</div><input class="mlr-input acct-matrix-input" type="text" placeholder="Paste Google Drive spreadsheet link…" oninput="acctSaveMatrixLink(this)"></div>
-              </div>
-              <button class="mlr-export-btn" style="width:auto; padding:0 20px;" onclick="acctCopyCrossCheckPrompt(this)">Copy Cross-Check Prompt for Claude</button>
-            </div>
+            <button class="mlr-export-btn" style="width:auto; padding:0 20px;" onclick="acctCopyCrossCheckPrompt(this)">Copy Cross-Check Prompt for Claude</button>
           </div>
         </div>
       </div>
@@ -1232,29 +1203,24 @@ input[type="date"].mlr-input { color-scheme:dark; }
       </div>
       <div class="acct-mlr-data">
         <div class="acct-section-label">RESOURCES</div>
-        <div class="acct-mlr-layout">
-          <div class="acct-mlr-nav">
-            <button type="button" class="acct-sidebar-campaign-btn active" data-mlr-campaign="default" onclick="acctSelectMlrCampaign(this)">Digital Clinician Update — Kisunla Unbranded 2026</button>
-          </div>
-          <div class="acct-mlr-panels">
-            <div class="acct-mlr-panel active" data-mlr-campaign-panel="default">
-              <div class="acct-info-grid">
-                <div class="acct-info-card"><div class="acct-info-label">Campaign</div><div class="acct-info-value">Digital Clinician Update — Cognitive Health (Cognitively Unimpaired) — Kisunla Unbranded 2026</div></div>
-                <div class="acct-info-card"><div class="acct-info-label">Job Code</div><div class="acct-info-value">LUJ26-DCU-CH-UBSIK</div></div>
-                <div class="acct-info-card"><div class="acct-info-label">Social Channels</div><div class="acct-info-value">Facebook &amp; Instagram — In-Feed Static</div></div>
-                <div class="acct-info-card"><div class="acct-info-label">Handle</div><div class="acct-info-value">Health Monitor Clinician Update (Facebook)</div></div>
-                <div class="acct-info-card"><div class="acct-info-label">ISI</div><input class="mlr-input acct-field-input" type="text" data-field="isi-link" data-default="N/A — unbranded disease-state content" placeholder="Paste ISI link…" oninput="acctSaveField(this)"></div>
-                <div class="acct-info-card"><div class="acct-info-label">HCP Landing Site</div><input class="mlr-input acct-field-input" type="text" data-field="hcp-landing-site" placeholder="Paste HCP landing site link…" oninput="acctSaveField(this)"></div>
-                <div class="acct-info-card"><div class="acct-info-label">MLR Submission Date</div><input class="mlr-input acct-field-input" type="date" data-field="mlr-submission-date" oninput="acctSaveField(this)"></div>
-                <div class="acct-info-card acct-info-card-mlrdates"><div class="acct-info-label">MLR Review Meeting Dates</div><div class="acct-mlr-dates-list" data-mlr-dates></div><button type="button" class="mlr-sent-open" onclick="acctAddMlrDate(this)">+ Add Date</button></div>
-                <div class="acct-info-card"><div class="acct-info-label">Examples / Reference Files</div><input class="mlr-input acct-field-input" type="text" data-field="examples-link" placeholder="Paste link to past ads/examples…" oninput="acctSaveField(this)"></div>
-                <div class="acct-info-card"><div class="acct-info-label">Figma File</div><input class="mlr-input acct-field-input" type="text" data-field="figma-link" placeholder="Paste Figma file link…" oninput="acctSaveField(this)"></div>
-                <div class="acct-info-card"><div class="acct-info-label">Audience</div><div class="acct-info-value">HCPs / Clinicians — NPI-targeted</div></div>
-                <div class="acct-info-card"><div class="acct-info-label">Run Dates</div><div class="acct-info-value">7/8/2026 – 8/31/2026 · Budget $23,520</div></div>
-                <div class="acct-info-card"><div class="acct-info-label">Matrix Link</div><input class="mlr-input acct-matrix-input" type="text" placeholder="Paste Google Drive spreadsheet link…" oninput="acctSaveMatrixLink(this)"></div>
-              </div>
-              <button class="mlr-export-btn" style="width:auto; padding:0 20px;" onclick="acctCopyCrossCheckPrompt(this)">Copy Cross-Check Prompt for Claude</button>
+        <div class="acct-mlr-panels">
+          <div class="acct-mlr-panel active" data-mlr-campaign-panel="default" data-mlr-campaign-label="Digital Clinician Update — Kisunla Unbranded 2026">
+            <div class="acct-info-grid">
+              <div class="acct-info-card"><div class="acct-info-label">Campaign</div><div class="acct-info-value">Digital Clinician Update — Cognitive Health (Cognitively Unimpaired) — Kisunla Unbranded 2026</div></div>
+              <div class="acct-info-card"><div class="acct-info-label">Job Code</div><div class="acct-info-value">LUJ26-DCU-CH-UBSIK</div></div>
+              <div class="acct-info-card"><div class="acct-info-label">Social Channels</div><div class="acct-info-value">Facebook &amp; Instagram — In-Feed Static</div></div>
+              <div class="acct-info-card"><div class="acct-info-label">Handle</div><div class="acct-info-value">Health Monitor Clinician Update (Facebook)</div></div>
+              <div class="acct-info-card"><div class="acct-info-label">ISI</div><input class="mlr-input acct-field-input" type="text" data-field="isi-link" data-default="N/A — unbranded disease-state content" placeholder="Paste ISI link…" oninput="acctSaveField(this)"></div>
+              <div class="acct-info-card"><div class="acct-info-label">HCP Landing Site</div><input class="mlr-input acct-field-input" type="text" data-field="hcp-landing-site" placeholder="Paste HCP landing site link…" oninput="acctSaveField(this)"></div>
+              <div class="acct-info-card"><div class="acct-info-label">MLR Submission Date</div><input class="mlr-input acct-field-input" type="date" data-field="mlr-submission-date" oninput="acctSaveField(this)"></div>
+              <div class="acct-info-card acct-info-card-mlrdates"><div class="acct-info-label">MLR Review Meeting Dates</div><div class="acct-mlr-dates-list" data-mlr-dates></div><button type="button" class="mlr-sent-open" onclick="acctAddMlrDate(this)">+ Add Date</button></div>
+              <div class="acct-info-card"><div class="acct-info-label">Examples / Reference Files</div><input class="mlr-input acct-field-input" type="text" data-field="examples-link" placeholder="Paste link to past ads/examples…" oninput="acctSaveField(this)"></div>
+              <div class="acct-info-card"><div class="acct-info-label">Figma File</div><input class="mlr-input acct-field-input" type="text" data-field="figma-link" placeholder="Paste Figma file link…" oninput="acctSaveField(this)"></div>
+              <div class="acct-info-card"><div class="acct-info-label">Audience</div><div class="acct-info-value">HCPs / Clinicians — NPI-targeted</div></div>
+              <div class="acct-info-card"><div class="acct-info-label">Run Dates</div><div class="acct-info-value">7/8/2026 – 8/31/2026 · Budget $23,520</div></div>
+              <div class="acct-info-card"><div class="acct-info-label">Matrix Link</div><input class="mlr-input acct-matrix-input" type="text" placeholder="Paste Google Drive spreadsheet link…" oninput="acctSaveMatrixLink(this)"></div>
             </div>
+            <button class="mlr-export-btn" style="width:auto; padding:0 20px;" onclick="acctCopyCrossCheckPrompt(this)">Copy Cross-Check Prompt for Claude</button>
           </div>
         </div>
       </div>
@@ -2902,7 +2868,7 @@ input[type="date"].mlr-input { color-scheme:dark; }
 
 </div>
 
-<div class="version-badge">v3.8.0 · 2026-07-14 · Grace Irwin</div>
+<div class="version-badge">v3.9.0 · 2026-07-14 · Grace Irwin</div>
 
 <script>
 function showPanel(id) {
@@ -2916,6 +2882,7 @@ function showPanel(id) {
 let _acctClient = null;
 let _acctCampaign = 0;
 let _acctView = 'grid';
+let _acctMlrCampaign = null;
 let _acctCarouselSlides = [];
 let _acctCarouselIdx = 0;
 
@@ -2942,7 +2909,7 @@ function acctCarouselGoTo(i) {
   _acctCarouselRender();
 }
 
-function showClient(key, tabIdx) {
+function showClient(key, tabIdx, campaignSlug) {
   tabIdx = tabIdx || 0;
   _acctClient = key;
   _acctCampaign = 0;
@@ -2950,6 +2917,13 @@ function showClient(key, tabIdx) {
 
   const data = document.getElementById('acct-data-' + key);
   const name = data.querySelector('.acct-client-label').textContent;
+
+  // The Resources tab's campaign picker lives in the main left sidebar (under
+  // the client name), not inside the tab itself — resolve which campaign is
+  // active from the hidden data before building the sidebar, so it can
+  // highlight the right entry.
+  const mlrPanelsHidden = data.querySelectorAll('.acct-mlr-data .acct-mlr-panel');
+  _acctMlrCampaign = campaignSlug || (mlrPanelsHidden[0] && mlrPanelsHidden[0].dataset.mlrCampaignPanel) || null;
 
   document.getElementById('acctTitle').textContent = name;
   document.getElementById('acctSubtitle').textContent = data.dataset.subtitle || 'Pharma — HCP Awareness';
@@ -2966,10 +2940,11 @@ function showClient(key, tabIdx) {
   const mlrData = data.querySelector('.acct-mlr-data');
   document.getElementById('acct-tab-mlr').innerHTML = mlrData ? mlrData.innerHTML : '';
 
-  // Each campaign panel loads its own fields independently — switching
-  // campaigns in the nav just toggles visibility, no re-fetch needed.
+  // Each campaign panel loads its own fields independently — the sidebar
+  // picker just toggles which panel is visible, no re-fetch needed.
   document.getElementById('acct-tab-mlr').querySelectorAll('.acct-mlr-panel').forEach(panel => {
     const campaign = panel.dataset.mlrCampaignPanel;
+    panel.classList.toggle('active', campaign === _acctMlrCampaign);
 
     const matrixInput = panel.querySelector('.acct-matrix-input');
     if (matrixInput) {
@@ -2999,18 +2974,6 @@ function showClient(key, tabIdx) {
   document.getElementById('acct-grid-view').style.display = 'none';
   document.getElementById('acct-detail-view').style.display = 'flex';
   document.getElementById('acct-message-view').style.display = 'none';
-}
-
-// Resources tab now supports multiple campaigns per account (side nav inside
-// the tab) — clicking a campaign just toggles which pre-loaded panel shows.
-function acctSelectMlrCampaign(btn) {
-  const nav = btn.parentElement;
-  nav.querySelectorAll('.acct-sidebar-campaign-btn').forEach(b => b.classList.toggle('active', b === btn));
-
-  const panels = document.getElementById('acct-tab-mlr').querySelector('.acct-mlr-panels');
-  panels.querySelectorAll('.acct-mlr-panel').forEach(p => {
-    p.classList.toggle('active', p.dataset.mlrCampaignPanel === btn.dataset.mlrCampaign);
-  });
 }
 
 function acctSaveMatrixLink(input) {
@@ -3126,6 +3089,25 @@ function _buildClientSidebar(activeKey) {
   btn.className = 'acct-sidebar-client-btn active';
   btn.textContent = clients[activeKey] || ('Client ' + activeKey.toUpperCase());
   sidebar.appendChild(btn);
+
+  // Campaign picker for the Resources tab, nested under the client name —
+  // clicking a campaign jumps straight to Resources scoped to that campaign.
+  const data = document.getElementById('acct-data-' + activeKey);
+  const mlrPanels = data.querySelectorAll('.acct-mlr-data .acct-mlr-panel');
+  if (mlrPanels.length) {
+    const subWrap = document.createElement('div');
+    subWrap.className = 'acct-sidebar-sub';
+    mlrPanels.forEach(panel => {
+      const slug = panel.dataset.mlrCampaignPanel;
+      const campBtn = document.createElement('button');
+      campBtn.className = 'acct-sidebar-campaign-btn' + (slug === _acctMlrCampaign ? ' active' : '');
+      campBtn.innerHTML = (panel.dataset.mlrCampaignLabel || slug) +
+        (panel.dataset.mlrPlaceholder ? ' <span class="acct-mlr-placeholder-badge">Placeholder</span>' : '');
+      campBtn.onclick = () => showClient(activeKey, 3, slug);
+      subWrap.appendChild(campBtn);
+    });
+    sidebar.appendChild(subWrap);
+  }
 }
 
 function _buildCampaignSidebar(clientKey, activeCampaignIdx, activeItem) {
