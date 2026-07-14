@@ -499,6 +499,14 @@
 .acct-info-label { font-size:13px; font-weight:600; text-transform:uppercase; letter-spacing:0.08em; color:var(--muted); margin-bottom:8px; }
 .acct-info-value { font-size:16px; font-weight:500; color:#dde4f5; max-width:343px; }
 
+.acct-info-card-mlrdates { height:auto; min-height:140px; overflow:visible; }
+.acct-mlr-dates-list { display:flex; flex-direction:column; gap:6px; margin-bottom:8px; }
+.acct-mlr-date-row { display:flex; align-items:center; gap:8px; }
+.acct-mlr-date-row .mlr-input { flex:1; }
+.acct-mlr-date-remove { flex-shrink:0; width:22px; height:22px; background:transparent; border:none; color:var(--muted); font-size:14px; line-height:1; cursor:pointer; font-family:var(--font); transition:color .15s; }
+.acct-mlr-date-remove:hover { color:#ff6b6b; }
+.acct-mlr-dates-empty { font-size:13px; color:var(--muted); margin-bottom:8px; }
+
 .acct-timeline { display:flex; align-items:flex-start; position:relative; height:70px; margin-bottom:8px; }
 .acct-timeline::before { content:''; position:absolute; top:29px; left:0; right:0; height:1px; background:var(--border); z-index:0; }
 .acct-tl-milestone { flex:1; display:flex; flex-direction:column; align-items:center; position:relative; z-index:1; }
@@ -941,7 +949,7 @@ input[type="date"].mlr-input { color-scheme:dark; }
           <div class="acct-info-card"><div class="acct-info-label">ISI</div><input class="mlr-input acct-field-input" type="text" data-field="isi-link" placeholder="Paste ISI link…" oninput="acctSaveField(this)"></div>
           <div class="acct-info-card"><div class="acct-info-label">HCP Landing Site</div><input class="mlr-input acct-field-input" type="text" data-field="hcp-landing-site" placeholder="Paste HCP landing site link…" oninput="acctSaveField(this)"></div>
           <div class="acct-info-card"><div class="acct-info-label">MLR Submission Date</div><input class="mlr-input acct-field-input" type="date" data-field="mlr-submission-date" oninput="acctSaveField(this)"></div>
-          <div class="acct-info-card"><div class="acct-info-label">MLR Review Meeting Date</div><input class="mlr-input acct-field-input" type="date" data-field="mlr-review-date" oninput="acctSaveField(this)"></div>
+          <div class="acct-info-card acct-info-card-mlrdates"><div class="acct-info-label">MLR Review Meeting Dates</div><div class="acct-mlr-dates-list" data-mlr-dates></div><button type="button" class="mlr-sent-open" onclick="acctAddMlrDate()">+ Add Date</button></div>
           <div class="acct-info-card"><div class="acct-info-label">Examples / Reference Files</div><input class="mlr-input acct-field-input" type="text" data-field="examples-link" placeholder="Paste link to past ads/examples…" oninput="acctSaveField(this)"></div>
           <div class="acct-info-card"><div class="acct-info-label">Destination Link</div><div class="acct-info-value">URL</div></div>
           <div class="acct-info-card"><div class="acct-info-label">Matrix Link</div><input class="mlr-input acct-matrix-input" type="text" placeholder="Paste Google Drive spreadsheet link…" oninput="acctSaveMatrixLink(this)"></div>
@@ -994,7 +1002,7 @@ input[type="date"].mlr-input { color-scheme:dark; }
           <div class="acct-info-card"><div class="acct-info-label">ISI</div><input class="mlr-input acct-field-input" type="text" data-field="isi-link" placeholder="Paste ISI link…" oninput="acctSaveField(this)"></div>
           <div class="acct-info-card"><div class="acct-info-label">HCP Landing Site</div><input class="mlr-input acct-field-input" type="text" data-field="hcp-landing-site" placeholder="Paste HCP landing site link…" oninput="acctSaveField(this)"></div>
           <div class="acct-info-card"><div class="acct-info-label">MLR Submission Date</div><input class="mlr-input acct-field-input" type="date" data-field="mlr-submission-date" oninput="acctSaveField(this)"></div>
-          <div class="acct-info-card"><div class="acct-info-label">MLR Review Meeting Date</div><input class="mlr-input acct-field-input" type="date" data-field="mlr-review-date" oninput="acctSaveField(this)"></div>
+          <div class="acct-info-card acct-info-card-mlrdates"><div class="acct-info-label">MLR Review Meeting Dates</div><div class="acct-mlr-dates-list" data-mlr-dates></div><button type="button" class="mlr-sent-open" onclick="acctAddMlrDate()">+ Add Date</button></div>
           <div class="acct-info-card"><div class="acct-info-label">Examples / Reference Files</div><input class="mlr-input acct-field-input" type="text" data-field="examples-link" placeholder="Paste link to past ads/examples…" oninput="acctSaveField(this)"></div>
           <div class="acct-info-card"><div class="acct-info-label">Destination Link</div><div class="acct-info-value">URL</div></div>
           <div class="acct-info-card"><div class="acct-info-label">Matrix Link</div><input class="mlr-input acct-matrix-input" type="text" placeholder="Paste Google Drive spreadsheet link…" oninput="acctSaveMatrixLink(this)"></div>
@@ -1029,7 +1037,7 @@ input[type="date"].mlr-input { color-scheme:dark; }
           <div class="acct-info-card"><div class="acct-info-label">ISI</div><input class="mlr-input acct-field-input" type="text" data-field="isi-link" placeholder="Paste ISI link…" oninput="acctSaveField(this)"></div>
           <div class="acct-info-card"><div class="acct-info-label">HCP Landing Site</div><input class="mlr-input acct-field-input" type="text" data-field="hcp-landing-site" placeholder="Paste HCP landing site link…" oninput="acctSaveField(this)"></div>
           <div class="acct-info-card"><div class="acct-info-label">MLR Submission Date</div><input class="mlr-input acct-field-input" type="date" data-field="mlr-submission-date" oninput="acctSaveField(this)"></div>
-          <div class="acct-info-card"><div class="acct-info-label">MLR Review Meeting Date</div><input class="mlr-input acct-field-input" type="date" data-field="mlr-review-date" oninput="acctSaveField(this)"></div>
+          <div class="acct-info-card acct-info-card-mlrdates"><div class="acct-info-label">MLR Review Meeting Dates</div><div class="acct-mlr-dates-list" data-mlr-dates></div><button type="button" class="mlr-sent-open" onclick="acctAddMlrDate()">+ Add Date</button></div>
           <div class="acct-info-card"><div class="acct-info-label">Examples / Reference Files</div><input class="mlr-input acct-field-input" type="text" data-field="examples-link" placeholder="Paste link to past ads/examples…" oninput="acctSaveField(this)"></div>
           <div class="acct-info-card"><div class="acct-info-label">Destination Link</div><div class="acct-info-value">URL</div></div>
           <div class="acct-info-card"><div class="acct-info-label">Matrix Link</div><input class="mlr-input acct-matrix-input" type="text" placeholder="Paste Google Drive spreadsheet link…" oninput="acctSaveMatrixLink(this)"></div>
@@ -1064,7 +1072,7 @@ input[type="date"].mlr-input { color-scheme:dark; }
           <div class="acct-info-card"><div class="acct-info-label">ISI</div><input class="mlr-input acct-field-input" type="text" data-field="isi-link" placeholder="Paste ISI link…" oninput="acctSaveField(this)"></div>
           <div class="acct-info-card"><div class="acct-info-label">HCP Landing Site</div><input class="mlr-input acct-field-input" type="text" data-field="hcp-landing-site" placeholder="Paste HCP landing site link…" oninput="acctSaveField(this)"></div>
           <div class="acct-info-card"><div class="acct-info-label">MLR Submission Date</div><input class="mlr-input acct-field-input" type="date" data-field="mlr-submission-date" oninput="acctSaveField(this)"></div>
-          <div class="acct-info-card"><div class="acct-info-label">MLR Review Meeting Date</div><input class="mlr-input acct-field-input" type="date" data-field="mlr-review-date" oninput="acctSaveField(this)"></div>
+          <div class="acct-info-card acct-info-card-mlrdates"><div class="acct-info-label">MLR Review Meeting Dates</div><div class="acct-mlr-dates-list" data-mlr-dates></div><button type="button" class="mlr-sent-open" onclick="acctAddMlrDate()">+ Add Date</button></div>
           <div class="acct-info-card"><div class="acct-info-label">Examples / Reference Files</div><input class="mlr-input acct-field-input" type="text" data-field="examples-link" placeholder="Paste link to past ads/examples…" oninput="acctSaveField(this)"></div>
           <div class="acct-info-card"><div class="acct-info-label">Destination Link</div><div class="acct-info-value">URL</div></div>
           <div class="acct-info-card"><div class="acct-info-label">Matrix Link</div><input class="mlr-input acct-matrix-input" type="text" placeholder="Paste Google Drive spreadsheet link…" oninput="acctSaveMatrixLink(this)"></div>
@@ -1099,7 +1107,7 @@ input[type="date"].mlr-input { color-scheme:dark; }
           <div class="acct-info-card"><div class="acct-info-label">ISI</div><input class="mlr-input acct-field-input" type="text" data-field="isi-link" data-default="See full Prescribing Information" placeholder="Paste ISI link…" oninput="acctSaveField(this)"></div>
           <div class="acct-info-card"><div class="acct-info-label">HCP Landing Site</div><input class="mlr-input acct-field-input" type="text" data-field="hcp-landing-site" data-default="https://www.ryoncilhcp.com" placeholder="Paste HCP landing site link…" oninput="acctSaveField(this)"></div>
           <div class="acct-info-card"><div class="acct-info-label">MLR Submission Date</div><input class="mlr-input acct-field-input" type="date" data-field="mlr-submission-date" oninput="acctSaveField(this)"></div>
-          <div class="acct-info-card"><div class="acct-info-label">MLR Review Meeting Date</div><input class="mlr-input acct-field-input" type="date" data-field="mlr-review-date" oninput="acctSaveField(this)"></div>
+          <div class="acct-info-card acct-info-card-mlrdates"><div class="acct-info-label">MLR Review Meeting Dates</div><div class="acct-mlr-dates-list" data-mlr-dates></div><button type="button" class="mlr-sent-open" onclick="acctAddMlrDate()">+ Add Date</button></div>
           <div class="acct-info-card"><div class="acct-info-label">Examples / Reference Files</div><input class="mlr-input acct-field-input" type="text" data-field="examples-link" placeholder="Paste link to past ads/examples…" oninput="acctSaveField(this)"></div>
           <div class="acct-info-card"><div class="acct-info-label">Audience</div><div class="acct-info-value">Prescribing · Non-prescribing physicians</div></div>
           <div class="acct-info-card"><div class="acct-info-label">Matrix Link</div><input class="mlr-input acct-matrix-input" type="text" placeholder="Paste Google Drive spreadsheet link…" oninput="acctSaveMatrixLink(this)"></div>
@@ -1158,7 +1166,7 @@ input[type="date"].mlr-input { color-scheme:dark; }
           <div class="acct-info-card"><div class="acct-info-label">ISI</div><input class="mlr-input acct-field-input" type="text" data-field="isi-link" data-default="N/A — unbranded disease-state content" placeholder="Paste ISI link…" oninput="acctSaveField(this)"></div>
           <div class="acct-info-card"><div class="acct-info-label">HCP Landing Site</div><input class="mlr-input acct-field-input" type="text" data-field="hcp-landing-site" placeholder="Paste HCP landing site link…" oninput="acctSaveField(this)"></div>
           <div class="acct-info-card"><div class="acct-info-label">MLR Submission Date</div><input class="mlr-input acct-field-input" type="date" data-field="mlr-submission-date" oninput="acctSaveField(this)"></div>
-          <div class="acct-info-card"><div class="acct-info-label">MLR Review Meeting Date</div><input class="mlr-input acct-field-input" type="date" data-field="mlr-review-date" oninput="acctSaveField(this)"></div>
+          <div class="acct-info-card acct-info-card-mlrdates"><div class="acct-info-label">MLR Review Meeting Dates</div><div class="acct-mlr-dates-list" data-mlr-dates></div><button type="button" class="mlr-sent-open" onclick="acctAddMlrDate()">+ Add Date</button></div>
           <div class="acct-info-card"><div class="acct-info-label">Examples / Reference Files</div><input class="mlr-input acct-field-input" type="text" data-field="examples-link" placeholder="Paste link to past ads/examples…" oninput="acctSaveField(this)"></div>
           <div class="acct-info-card"><div class="acct-info-label">Audience</div><div class="acct-info-value">HCPs / Clinicians — NPI-targeted</div></div>
           <div class="acct-info-card"><div class="acct-info-label">Run Dates</div><div class="acct-info-value">7/8/2026 – 8/31/2026 · Budget $23,520</div></div>
@@ -2810,7 +2818,7 @@ input[type="date"].mlr-input { color-scheme:dark; }
 
 </div>
 
-<div class="version-badge">v3.5.0 · 2026-07-13 · Grace Irwin</div>
+<div class="version-badge">v3.6.0 · 2026-07-14 · Grace Irwin</div>
 
 <script>
 function showPanel(id) {
@@ -2882,6 +2890,8 @@ function showClient(key, tabIdx) {
     inp.value = saved !== null ? saved : (inp.dataset.default || '');
   });
 
+  acctRenderMlrDates();
+
   document.getElementById('acct-tab-contentmap').innerHTML = _buildContentMapHTML(key);
 
   document.getElementById('acct-tab-campaigns').innerHTML = '';
@@ -2902,10 +2912,65 @@ function acctSaveMatrixLink(input) {
 }
 
 // Generic per-client save for Resources-tab fields (ISI link, HCP landing
-// site, MLR dates, examples/reference link) — keyed by data-field + client.
+// site, MLR submission date, examples/reference link) — keyed by data-field + client.
 function acctSaveField(input) {
   if (!_acctClient || !input.dataset.field) return;
   localStorage.setItem('acct-field-' + input.dataset.field + '-' + _acctClient, input.value);
+}
+
+// MLR Review Meeting Dates — stored as a JSON array per client (same storage
+// key as the old single-date field, so any previously saved date migrates in).
+function _acctMlrDatesKey(key) {
+  return 'acct-field-mlr-review-date-' + key;
+}
+
+function _acctGetMlrDates(key) {
+  const raw = localStorage.getItem(_acctMlrDatesKey(key));
+  if (!raw) return [];
+  try {
+    const parsed = JSON.parse(raw);
+    if (Array.isArray(parsed)) return parsed;
+  } catch (e) {}
+  return [raw];
+}
+
+function _acctSaveMlrDates(key, dates) {
+  localStorage.setItem(_acctMlrDatesKey(key), JSON.stringify(dates));
+}
+
+function acctRenderMlrDates() {
+  const key = _acctClient;
+  const list = document.querySelector('#acct-tab-mlr [data-mlr-dates]');
+  if (!key || !list) return;
+  const dates = _acctGetMlrDates(key);
+  list.innerHTML = dates.length ? dates.map((d, i) => `
+    <div class="acct-mlr-date-row">
+      <input class="mlr-input" type="date" value="${d}" oninput="acctSaveMlrDate(${i}, this.value)">
+      <button type="button" class="acct-mlr-date-remove" onclick="acctRemoveMlrDate(${i})" title="Remove date">✕</button>
+    </div>`).join('') : '<div class="acct-mlr-dates-empty">No dates yet</div>';
+}
+
+function acctAddMlrDate() {
+  if (!_acctClient) return;
+  const dates = _acctGetMlrDates(_acctClient);
+  dates.push('');
+  _acctSaveMlrDates(_acctClient, dates);
+  acctRenderMlrDates();
+}
+
+function acctSaveMlrDate(index, value) {
+  if (!_acctClient) return;
+  const dates = _acctGetMlrDates(_acctClient);
+  dates[index] = value;
+  _acctSaveMlrDates(_acctClient, dates);
+}
+
+function acctRemoveMlrDate(index) {
+  if (!_acctClient) return;
+  const dates = _acctGetMlrDates(_acctClient);
+  dates.splice(index, 1);
+  _acctSaveMlrDates(_acctClient, dates);
+  acctRenderMlrDates();
 }
 
 // Builds a ready-to-paste prompt with the account's matrix link and creative
